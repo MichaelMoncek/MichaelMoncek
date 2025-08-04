@@ -1,0 +1,97 @@
+	.text
+	.file	"count_greater_than_50_branchless"
+	.section	.rodata.cst16,"aM",@progbits,16
+	.p2align	4                               # -- Begin function julia_count_greater_than_50_branchless_2778
+.LCPI0_0:
+	.quad	50                              # 0x32
+	.quad	50                              # 0x32
+	.text
+	.globl	julia_count_greater_than_50_branchless_2778
+	.p2align	4, 0x90
+	.type	julia_count_greater_than_50_branchless_2778,@function
+julia_count_greater_than_50_branchless_2778: # @julia_count_greater_than_50_branchless_2778
+# %bb.0:                                # %top
+	push	rbp
+	mov	rbp, rsp
+	mov	rcx, qword ptr [rdi + 8]
+	test	rcx, rcx
+	je	.LBB0_1
+# %bb.2:                                # %L17
+	mov	r10, qword ptr [rdi]
+	xor	eax, eax
+	cmp	qword ptr [r10], 51
+	setge	al
+	cmp	rcx, 1
+	je	.LBB0_10
+# %bb.3:                                # %L38.preheader
+	lea	r8, [rcx - 1]
+	cmp	r8, 8
+	jae	.LBB0_5
+# %bb.4:
+	mov	esi, 2
+	mov	edi, 1
+	jmp	.LBB0_8
+.LBB0_1:
+	xor	eax, eax
+	pop	rbp
+	ret
+.LBB0_5:                                # %vector.ph
+	mov	r9, r8
+	and	r9, -8
+	lea	rdi, [r9 + 1]
+	lea	rsi, [r9 + 2]
+	vmovd	xmm0, eax
+	vpxor	xmm1, xmm1, xmm1
+	xor	eax, eax
+	movabs	rdx, offset .LCPI0_0
+	vmovdqa	xmm2, xmmword ptr [rdx]
+	vpxor	xmm3, xmm3, xmm3
+	vpxor	xmm4, xmm4, xmm4
+	.p2align	4, 0x90
+.LBB0_6:                                # %vector.body
+                                        # =>This Inner Loop Header: Depth=1
+	vmovdqu	xmm5, xmmword ptr [r10 + 8*rax + 8]
+	vmovdqu	xmm6, xmmword ptr [r10 + 8*rax + 24]
+	vmovdqu	xmm7, xmmword ptr [r10 + 8*rax + 40]
+	vmovdqu	xmm8, xmmword ptr [r10 + 8*rax + 56]
+	vpcmpgtq	xmm5, xmm5, xmm2
+	vpsubq	xmm0, xmm0, xmm5
+	vpcmpgtq	xmm5, xmm6, xmm2
+	vpsubq	xmm1, xmm1, xmm5
+	vpcmpgtq	xmm5, xmm7, xmm2
+	vpsubq	xmm3, xmm3, xmm5
+	vpcmpgtq	xmm5, xmm8, xmm2
+	vpsubq	xmm4, xmm4, xmm5
+	add	rax, 8
+	cmp	r9, rax
+	jne	.LBB0_6
+# %bb.7:                                # %middle.block
+	vpaddq	xmm0, xmm1, xmm0
+	vpaddq	xmm0, xmm3, xmm0
+	vpaddq	xmm0, xmm4, xmm0
+	vpshufd	xmm1, xmm0, 238                 # xmm1 = xmm0[2,3,2,3]
+	vpaddq	xmm0, xmm0, xmm1
+	vmovq	rax, xmm0
+	cmp	r8, r9
+	je	.LBB0_10
+.LBB0_8:                                # %scalar.ph
+	sub	rcx, rsi
+	inc	rcx
+	.p2align	4, 0x90
+.LBB0_9:                                # %L38
+                                        # =>This Inner Loop Header: Depth=1
+	xor	edx, edx
+	cmp	qword ptr [r10 + 8*rdi], 51
+	mov	rdi, rsi
+	lea	rsi, [rsi + 1]
+	setge	dl
+	add	rax, rdx
+	dec	rcx
+	jne	.LBB0_9
+.LBB0_10:                               # %L44
+	pop	rbp
+	ret
+.Lfunc_end0:
+	.size	julia_count_greater_than_50_branchless_2778, .Lfunc_end0-julia_count_greater_than_50_branchless_2778
+                                        # -- End function
+	.section	".note.GNU-stack","",@progbits
