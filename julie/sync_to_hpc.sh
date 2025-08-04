@@ -4,7 +4,7 @@
 # Your HPC login details
 HPC_USER="moncek"
 HPC_HOST="r3d3.karlin.mff.cuni.cz"   # e.g., hpc.example.edu
-HPC_PATH="~/usr/users/moncek"
+HPC_PATH="~/Documents"
 
 # Local project path (default: current directory)
 LOCAL_PATH="$(pwd)"
