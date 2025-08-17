@@ -1,0 +1,3374 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'></meta>
+    <link rel='stylesheet' type='text/css' href='statprofiler.css'></link>
+    <title>StatProfilerHTML - interstellar2.jl</title>
+  </head>
+  <body>
+    <div class='report-header'>
+      <div class='backlink'>
+        <a href='index.html'>Report index</a>
+      </div>
+      <div class='report-title'>
+        StatProfilerHTML.jl report
+      </div>
+      <div class='generated-on'>
+        Generated on Sun, 17 Aug 2025 12:41:30
+      </div>
+    </div>
+    <table>
+      <caption>File source code</caption>
+      <thead>
+        <tr>
+          <th>Line</th>
+          <th>Exclusive</th>
+          <th>Inclusive</th>
+          <th>Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id='L1'>
+          <td class='lineno'>1</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># TODO: </span>
+          </td>
+        </tr>
+        <tr id='L2'>
+          <td class='lineno'>2</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># The black hole will be centered at the origin.</span>
+          </td>
+        </tr>
+        <tr id='L3'>
+          <td class='lineno'>3</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># We will use the Schwarzschild metric to describe </span>
+          </td>
+        </tr>
+        <tr id='L4'>
+          <td class='lineno'>4</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>using LinearAlgebra</span>
+          </td>
+        </tr>
+        <tr id='L5'>
+          <td class='lineno'>5</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>using Colors</span>
+          </td>
+        </tr>
+        <tr id='L6'>
+          <td class='lineno'>6</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>using FileIO</span>
+          </td>
+        </tr>
+        <tr id='L7'>
+          <td class='lineno'>7</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>using ImageIO</span>
+          </td>
+        </tr>
+        <tr id='L8'>
+          <td class='lineno'>8</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>using Parameters</span>
+          </td>
+        </tr>
+        <tr id='L9'>
+          <td class='lineno'>9</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># Parameters </span>
+          </td>
+        </tr>
+        <tr id='L10'>
+          <td class='lineno'>10</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># image size </span>
+          </td>
+        </tr>
+        <tr id='L11'>
+          <td class='lineno'>11</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const W &#61; 200 # horizontal resolution </span>
+          </td>
+        </tr>
+        <tr id='L12'>
+          <td class='lineno'>12</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const H &#61; 200 # vertical resolution </span>
+          </td>
+        </tr>
+        <tr id='L13'>
+          <td class='lineno'>13</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># camera</span>
+          </td>
+        </tr>
+        <tr id='L14'>
+          <td class='lineno'>14</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const camera_position &#61; &#91;0.0, 1.0, 3.0&#93; # camera position in space</span>
+          </td>
+        </tr>
+        <tr id='L15'>
+          <td class='lineno'>15</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const fov &#61; π/3 # field of view</span>
+          </td>
+        </tr>
+        <tr id='L16'>
+          <td class='lineno'>16</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const look_at &#61; &#91;0.0, 0.0, 0.0&#93; # point the camera is looking at </span>
+          </td>
+        </tr>
+        <tr id='L17'>
+          <td class='lineno'>17</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const world_up &#61; &#91;1.0, 0.0, 0.0&#93; # world up vector </span>
+          </td>
+        </tr>
+        <tr id='L18'>
+          <td class='lineno'>18</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># sphere and disc</span>
+          </td>
+        </tr>
+        <tr id='L19'>
+          <td class='lineno'>19</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const sphere_position &#61; &#91;0.0, 0.0, 0.0&#93; # center of the sphere </span>
+          </td>
+        </tr>
+        <tr id='L20'>
+          <td class='lineno'>20</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const sphere_radius &#61; 0.5 # radius of the sphere </span>
+          </td>
+        </tr>
+        <tr id='L21'>
+          <td class='lineno'>21</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const second_sphere_position &#61; &#91;1.0, 1.0, -2.0&#93;</span>
+          </td>
+        </tr>
+        <tr id='L22'>
+          <td class='lineno'>22</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const second_sphere_radius &#61; 0.7 </span>
+          </td>
+        </tr>
+        <tr id='L23'>
+          <td class='lineno'>23</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const third_sphere_position &#61; &#91;-1.0, 2.0, -3.0&#93;</span>
+          </td>
+        </tr>
+        <tr id='L24'>
+          <td class='lineno'>24</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const third_sphere_radius &#61; 0.3</span>
+          </td>
+        </tr>
+        <tr id='L25'>
+          <td class='lineno'>25</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const Rin &#61; 0.6 # inner radius of the disc </span>
+          </td>
+        </tr>
+        <tr id='L26'>
+          <td class='lineno'>26</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const Rout &#61; 2.0 # outer radius of the disc </span>
+          </td>
+        </tr>
+        <tr id='L27'>
+          <td class='lineno'>27</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># camera basics </span>
+          </td>
+        </tr>
+        <tr id='L28'>
+          <td class='lineno'>28</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const F &#61; normalize&#40;look_at - camera_position&#41; # where the camera is looking at </span>
+          </td>
+        </tr>
+        <tr id='L29'>
+          <td class='lineno'>29</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const R &#61; normalize&#40;cross&#40;F,world_up&#41;&#41; # horizontal axis of the camera</span>
+          </td>
+        </tr>
+        <tr id='L30'>
+          <td class='lineno'>30</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const U &#61; normalize&#40;cross&#40;F,R&#41;&#41; # vertical axis of the camera -- note that U should be already normalized, we do it for convenience</span>
+          </td>
+        </tr>
+        <tr id='L31'>
+          <td class='lineno'>31</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const aspect_ratio &#61; W / H # aspect ration </span>
+          </td>
+        </tr>
+        <tr id='L32'>
+          <td class='lineno'>32</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const scale &#61; tan&#40;fov / 2&#41; </span>
+          </td>
+        </tr>
+        <tr id='L33'>
+          <td class='lineno'>33</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># physics </span>
+          </td>
+        </tr>
+        <tr id='L34'>
+          <td class='lineno'>34</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>const M &#61; 5.0 # mass of the black hole</span>
+          </td>
+        </tr>
+        <tr id='L35'>
+          <td class='lineno'>35</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L36'>
+          <td class='lineno'>36</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>#Structs </span>
+          </td>
+        </tr>
+        <tr id='L37'>
+          <td class='lineno'>37</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>@with_kw mutable struct Ray</span>
+          </td>
+        </tr>
+        <tr id='L38'>
+          <td class='lineno'>38</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    position::Vector&#123;Float64&#125; </span>
+          </td>
+        </tr>
+        <tr id='L39'>
+          <td class='lineno'>39</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    velocity::Vector&#123;Float64&#125;</span>
+          </td>
+        </tr>
+        <tr id='L40'>
+          <td class='lineno'>40</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    pixel::Tuple&#123;Int, Int&#125; # pixel coordinates of the ray</span>
+          </td>
+        </tr>
+        <tr id='L41'>
+          <td class='lineno'>41</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    color::RGB&#123;Float64&#125; &#61; RGB&#40;0.0, 0.0, 0.0&#41; # default color is black</span>
+          </td>
+        </tr>
+        <tr id='L42'>
+          <td class='lineno'>42</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    flag::Bool &#61; true # flag to indicate if the ray is active or not</span>
+          </td>
+        </tr>
+        <tr id='L43'>
+          <td class='lineno'>43</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end </span>
+          </td>
+        </tr>
+        <tr id='L44'>
+          <td class='lineno'>44</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L45'>
+          <td class='lineno'>45</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>@inline function map_pixel&#40;x::Int, N::Int&#41;::Float64</span>
+          </td>
+        </tr>
+        <tr id='L46'>
+          <td class='lineno'>46</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    return &#40;&#40;x - 0.5&#41; / N - 0.5&#41; * 2.0</span>
+          </td>
+        </tr>
+        <tr id='L47'>
+          <td class='lineno'>47</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L48'>
+          <td class='lineno'>48</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L49'>
+          <td class='lineno'>49</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>@inline function f&#40;r::Float64&#41;::Float64</span>
+          </td>
+        </tr>
+        <tr id='L50'>
+          <td class='lineno'>50</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    return 1 - 2 * M / r </span>
+          </td>
+        </tr>
+        <tr id='L51'>
+          <td class='lineno'>51</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end </span>
+          </td>
+        </tr>
+        <tr id='L52'>
+          <td class='lineno'>52</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L53'>
+          <td class='lineno'>53</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function make_system&#40;W::Int, H::Int&#41;</span>
+          </td>
+        </tr>
+        <tr id='L54'>
+          <td class='lineno'>54</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # This function creates array of rays with initial positions and velocities</span>
+          </td>
+        </tr>
+        <tr id='L55'>
+          <td class='lineno'>55</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # that are moving away from the camera position. </span>
+          </td>
+        </tr>
+        <tr id='L56'>
+          <td class='lineno'>56</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    rays &#61; Vector&#123;Ray&#125;&#40;undef, W*H&#41;</span>
+          </td>
+        </tr>
+        <tr id='L57'>
+          <td class='lineno'>57</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    rays_index &#61; 1</span>
+          </td>
+        </tr>
+        <tr id='L58'>
+          <td class='lineno'>58</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    for j in 1:H</span>
+          </td>
+        </tr>
+        <tr id='L59'>
+          <td class='lineno'>59</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        for i in 1:W </span>
+          </td>
+        </tr>
+        <tr id='L60'>
+          <td class='lineno'>60</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            u &#61; map_pixel&#40;i, W&#41;</span>
+          </td>
+        </tr>
+        <tr id='L61'>
+          <td class='lineno'>61</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            v &#61; map_pixel&#40;j, H&#41;</span>
+          </td>
+        </tr>
+        <tr id='L62'>
+          <td class='lineno'>62</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L63'>
+          <td class='lineno'>63</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            # apply FOV scaling </span>
+          </td>
+        </tr>
+        <tr id='L64'>
+          <td class='lineno'>64</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            px &#61; u * aspect_ratio * scale</span>
+          </td>
+        </tr>
+        <tr id='L65'>
+          <td class='lineno'>65</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            py &#61; -v * scale # minus sign so that the y-axis points up</span>
+          </td>
+        </tr>
+        <tr id='L66'>
+          <td class='lineno'>66</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L67'>
+          <td class='lineno'>67</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            # ray direction </span>
+          </td>
+        </tr>
+        <tr id='L68'>
+          <td class='lineno'>68</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            D &#61; normalize&#40;F &#43; px*R &#43; py*U&#41;</span>
+          </td>
+        </tr>
+        <tr id='L69'>
+          <td class='lineno'>69</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            # ray position </span>
+          </td>
+        </tr>
+        <tr id='L70'>
+          <td class='lineno'>70</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            ray &#61; Ray&#40;position&#61;camera_position, velocity&#61;D, pixel&#61;&#40;i, j&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L71'>
+          <td class='lineno'>71</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            rays&#91;rays_index&#93; &#61; ray# push&#33;&#40;rays, ray&#41;   # this actually leaves the first indeces undefined causing error later</span>
+          </td>
+        </tr>
+        <tr id='L72'>
+          <td class='lineno'>72</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            rays_index &#43;&#61; 1</span>
+          </td>
+        </tr>
+        <tr id='L73'>
+          <td class='lineno'>73</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        end </span>
+          </td>
+        </tr>
+        <tr id='L74'>
+          <td class='lineno'>74</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end </span>
+          </td>
+        </tr>
+        <tr id='L75'>
+          <td class='lineno'>75</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    return rays </span>
+          </td>
+        </tr>
+        <tr id='L76'>
+          <td class='lineno'>76</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L77'>
+          <td class='lineno'>77</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L78'>
+          <td class='lineno'>78</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            <div class='call-sites'>
+              26 &#40;0 &#37;&#41;
+              samples spent in make_system_curved
+              <br />
+              
+              26 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from main
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L284'>line 284</a>
+              <br />
+            </div>
+            
+            <span class='code'>function make_system_curved&#40;W::Int, H::Int&#41;</span>
+          </td>
+        </tr>
+        <tr id='L79'>
+          <td class='lineno'>79</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # This function creates array of rays with initial positions and velocities</span>
+          </td>
+        </tr>
+        <tr id='L80'>
+          <td class='lineno'>80</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # that are moving away from the camera position. </span>
+          </td>
+        </tr>
+        <tr id='L81'>
+          <td class='lineno'>81</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    rays &#61; Vector&#123;Ray&#125;&#40;undef, W*H&#41;</span>
+          </td>
+        </tr>
+        <tr id='L82'>
+          <td class='lineno'>82</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    rays_index &#61; 1</span>
+          </td>
+        </tr>
+        <tr id='L83'>
+          <td class='lineno'>83</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    for j in 1:H</span>
+          </td>
+        </tr>
+        <tr id='L84'>
+          <td class='lineno'>84</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        for i in 1:W </span>
+          </td>
+        </tr>
+        <tr id='L85'>
+          <td class='lineno'>85</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            u &#61; map_pixel&#40;i, W&#41;</span>
+          </td>
+        </tr>
+        <tr id='L86'>
+          <td class='lineno'>86</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            v &#61; map_pixel&#40;j, H&#41;</span>
+          </td>
+        </tr>
+        <tr id='L87'>
+          <td class='lineno'>87</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L88'>
+          <td class='lineno'>88</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            # apply FOV scaling </span>
+          </td>
+        </tr>
+        <tr id='L89'>
+          <td class='lineno'>89</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            px &#61; u * aspect_ratio * scale</span>
+          </td>
+        </tr>
+        <tr id='L90'>
+          <td class='lineno'>90</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            py &#61; -v * scale # minus sign so that the y-axis points up</span>
+          </td>
+        </tr>
+        <tr id='L91'>
+          <td class='lineno'>91</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L92'>
+          <td class='lineno'>92</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            # ray direction </span>
+          </td>
+        </tr>
+        <tr id='L93'>
+          <td class='lineno'>93</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>5 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              3 &#40;60 &#37;&#41;
+              samples spent calling
+              <a href='arraymath.jl-fdbe1c320a0e21e8f0e8d9424658dbf6cd674c3d.html#L12'>&#43;</a>
+              <br />
+              2 &#40;40 &#37;&#41;
+              samples spent calling
+              <a href='arraymath.jl-fdbe1c320a0e21e8f0e8d9424658dbf6cd674c3d.html#L21'>*</a>
+              <br />
+            </div>
+            <span class='code'>            D &#61; normalize&#40;F &#43; px*R &#43; py*U&#41;</span>
+          </td>
+        </tr>
+        <tr id='L94'>
+          <td class='lineno'>94</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            # TODO: here we need to transpher the initial direction to spherical coordinates</span>
+          </td>
+        </tr>
+        <tr id='L95'>
+          <td class='lineno'>95</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>18 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              15 &#40;83 &#37;&#41;
+              samples spent calling
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L236'>cartesian_to_spherical</a>
+              <br />
+              3 &#40;17 &#37;&#41;
+              samples spent calling
+              <a href='array.jl-9351c8e3c3e31a3b8a0c690f5e177533744c07f5.html#L1313'>append&#33;</a>
+              <br />
+            </div>
+            <span class='code'>            D_spherical &#61; append&#33;&#40;cartesian_to_spherical&#40;D&#41;, 0.0&#41;</span>
+          </td>
+        </tr>
+        <tr id='L96'>
+          <td class='lineno'>96</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            # ray position </span>
+          </td>
+        </tr>
+        <tr id='L97'>
+          <td class='lineno'>97</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            # TODO: here we need to transpher the camera position to spherial coordinates  </span>
+          </td>
+        </tr>
+        <tr id='L98'>
+          <td class='lineno'>98</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>2 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              2 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L236'>cartesian_to_spherical</a>
+              <br />
+            </div>
+            <span class='code'>            camera_position_spherical &#61; append&#33;&#40;cartesian_to_spherical&#40;camera_position&#41;, 0.0&#41;</span>
+          </td>
+        </tr>
+        <tr id='L99'>
+          <td class='lineno'>99</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              1 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='Parameters.jl-8d7c1ddca1f4a8c9c943bc374e2f07085815b488.html#L493'>Ray</a>
+              <br />
+            </div>
+            <span class='code'>            ray &#61; Ray&#40;position&#61;camera_position_spherical, velocity&#61;D_spherical, pixel&#61;&#40;i, j&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L100'>
+          <td class='lineno'>100</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            rays&#91;rays_index&#93; &#61; ray# push&#33;&#40;rays, ray&#41;   # this actually leaves the first indeces undefined causing error later</span>
+          </td>
+        </tr>
+        <tr id='L101'>
+          <td class='lineno'>101</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            rays_index &#43;&#61; 1</span>
+          </td>
+        </tr>
+        <tr id='L102'>
+          <td class='lineno'>102</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        end </span>
+          </td>
+        </tr>
+        <tr id='L103'>
+          <td class='lineno'>103</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end </span>
+          </td>
+        </tr>
+        <tr id='L104'>
+          <td class='lineno'>104</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    println&#40;&quot;Created system of rays with curved coordinates&quot;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L105'>
+          <td class='lineno'>105</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    return rays </span>
+          </td>
+        </tr>
+        <tr id='L106'>
+          <td class='lineno'>106</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L107'>
+          <td class='lineno'>107</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L108'>
+          <td class='lineno'>108</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            <div class='call-sites'>
+              21841 &#40;100 &#37;&#41;
+              samples spent in render
+              <br />
+              307 &#40;1 &#37;&#41; &#40;ex.&#41;,
+              21841 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from main
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L287'>line 287</a>
+              <br />
+            </div>
+            
+            <span class='code'>function render&#40;rays::Array, t::Float64, dt::Float64 &#61; 0.01, type::String&#61;&quot;cartesian&quot;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L109'>
+          <td class='lineno'>109</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # This function moves the rays and renders the image</span>
+          </td>
+        </tr>
+        <tr id='L110'>
+          <td class='lineno'>110</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # TODO</span>
+          </td>
+        </tr>
+        <tr id='L111'>
+          <td class='lineno'>111</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # For time t ∈ &#91;0, T&#93; </span>
+          </td>
+        </tr>
+        <tr id='L112'>
+          <td class='lineno'>112</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # For each ray &#40;pixel&#41; &#40;i, j&#41; </span>
+          </td>
+        </tr>
+        <tr id='L113'>
+          <td class='lineno'>113</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # detect collision with the sphere and the disc, if there is a collision, the ray stops </span>
+          </td>
+        </tr>
+        <tr id='L114'>
+          <td class='lineno'>114</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # move_ray&#40;&#40;i,j&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L115'>
+          <td class='lineno'>115</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    #println&#40;&quot;started rendering&quot;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L116'>
+          <td class='lineno'>116</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    for t in 0:dt:t</span>
+          </td>
+        </tr>
+        <tr id='L117'>
+          <td class='lineno'>117</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        # For each ray in rays array move the ray</span>
+          </td>
+        </tr>
+        <tr id='L118'>
+          <td class='lineno'>118</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        # check for intersection with the sphere and the disc, if there is a collision, remove the ray from the array</span>
+          </td>
+        </tr>
+        <tr id='L119'>
+          <td class='lineno'>119</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        # &#40;it needs no longer to be moved so we would be wasting time&#41;</span>
+          </td>
+        </tr>
+        <tr id='L120'>
+          <td class='lineno'>120</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        for k in eachindex&#40;rays&#41;</span>
+          </td>
+        </tr>
+        <tr id='L121'>
+          <td class='lineno'>121</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            # Move each ray only if it is still active</span>
+          </td>
+        </tr>
+        <tr id='L122'>
+          <td class='lineno'>122</td>
+          <td class='tracecount excl'>185 &#40;1 &#37;&#41;</td>
+          <td class='tracecount incl'>193 &#40;1 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              8 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L916'>getindex</a>
+              <br />
+            </div>
+            <span class='code'>            if rays&#91;k&#93;.flag &#61;&#61; true  </span>
+          </td>
+        </tr>
+        <tr id='L123'>
+          <td class='lineno'>123</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>77 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              77 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='string.jl-9df5b4ae5c1405b90972e7487b52582a009be06f.html#L162'>&#61;&#61;</a>
+              <br />
+            </div>
+            <span class='code'>                if type &#61;&#61; &quot;cartesian&quot;</span>
+          </td>
+        </tr>
+        <tr id='L124'>
+          <td class='lineno'>124</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>                    move_ray&#40;rays&#91;k&#93;, dt&#41;</span>
+          </td>
+        </tr>
+        <tr id='L125'>
+          <td class='lineno'>125</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>                    check_for_intersection&#40;rays&#91;k&#93;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L126'>
+          <td class='lineno'>126</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>                else</span>
+          </td>
+        </tr>
+        <tr id='L127'>
+          <td class='lineno'>127</td>
+          <td class='tracecount excl'>5 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>4974 &#40;23 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              4893 &#40;98 &#37;&#41;
+              samples spent calling
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L155'>move_ray_curved</a>
+              <br />
+              61 &#40;1 &#37;&#41;
+              samples spent calling
+              <a href='array.jl-9351c8e3c3e31a3b8a0c690f5e177533744c07f5.html#L155'>move_ray_curved</a>
+              <br />
+              13 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L916'>getindex</a>
+              <br />
+              2 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L155'>move_ray_curved</a>
+              <br />
+            </div>
+            <span class='code'>                    move_ray_curved&#40;rays&#91;k&#93;, dt&#41;</span>
+          </td>
+        </tr>
+        <tr id='L128'>
+          <td class='lineno'>128</td>
+          <td class='tracecount excl'>99 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>16568 &#40;76 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              16304 &#40;99 &#37;&#41;
+              samples spent calling
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L243'>check_for_intersection_curved</a>
+              <br />
+              71 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='generic.jl-669e576cdef04f979af49613717ae8e66469a770.html#L601'>norm</a>
+              <br />
+              37 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='arraymath.jl-fdbe1c320a0e21e8f0e8d9424658dbf6cd674c3d.html#L6'>-</a>
+              <br />
+              33 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L229'>spherical_to_cartesian</a>
+              <br />
+              14 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L916'>getindex</a>
+              <br />
+              8 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='Base.jl-b63de1b034843e706f34083efa09828330e9b63e.html#L243'>check_for_intersection_curved</a>
+              <br />
+              2 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L915'>getindex</a>
+              <br />
+            </div>
+            <span class='code'>                    check_for_intersection_curved&#40;rays&#91;k&#93;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L129'>
+          <td class='lineno'>129</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>                end</span>
+          </td>
+        </tr>
+        <tr id='L130'>
+          <td class='lineno'>130</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            end</span>
+          </td>
+        </tr>
+        <tr id='L131'>
+          <td class='lineno'>131</td>
+          <td class='tracecount excl'>11 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>22 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              11 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='range.jl-e386870aae0c4a6a0b51785dff06b3fb68b7ed36.html#L908'>iterate</a>
+              <br />
+            </div>
+            <span class='code'>        end </span>
+          </td>
+        </tr>
+        <tr id='L132'>
+          <td class='lineno'>132</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end </span>
+          </td>
+        </tr>
+        <tr id='L133'>
+          <td class='lineno'>133</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # Output image</span>
+          </td>
+        </tr>
+        <tr id='L134'>
+          <td class='lineno'>134</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    image &#61; Array&#123;RGB&#123;Float64&#125;&#125;&#40;undef, H, W&#41;</span>
+          </td>
+        </tr>
+        <tr id='L135'>
+          <td class='lineno'>135</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    </span>
+          </td>
+        </tr>
+        <tr id='L136'>
+          <td class='lineno'>136</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    for k in eachindex&#40;rays&#41;</span>
+          </td>
+        </tr>
+        <tr id='L137'>
+          <td class='lineno'>137</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ray &#61; rays&#91;k&#93;</span>
+          </td>
+        </tr>
+        <tr id='L138'>
+          <td class='lineno'>138</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        if ray.flag &#61;&#61; true </span>
+          </td>
+        </tr>
+        <tr id='L139'>
+          <td class='lineno'>139</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            image&#91;ray.pixel&#91;1&#93;, ray.pixel&#91;2&#93;&#93; &#61; RGB&#40;0, 0, 0&#41;</span>
+          </td>
+        </tr>
+        <tr id='L140'>
+          <td class='lineno'>140</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        else </span>
+          </td>
+        </tr>
+        <tr id='L141'>
+          <td class='lineno'>141</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            image&#91;ray.pixel&#91;1&#93;, ray.pixel&#91;2&#93;&#93; &#61; ray.color </span>
+          </td>
+        </tr>
+        <tr id='L142'>
+          <td class='lineno'>142</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        end </span>
+          </td>
+        </tr>
+        <tr id='L143'>
+          <td class='lineno'>143</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    </span>
+          </td>
+        </tr>
+        <tr id='L144'>
+          <td class='lineno'>144</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L145'>
+          <td class='lineno'>145</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    return image</span>
+          </td>
+        </tr>
+        <tr id='L146'>
+          <td class='lineno'>146</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L147'>
+          <td class='lineno'>147</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L148'>
+          <td class='lineno'>148</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function move_ray&#40;ray::Ray, dt::Float64&#41;</span>
+          </td>
+        </tr>
+        <tr id='L149'>
+          <td class='lineno'>149</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # This function moves a single ray according to the Einstein&#39;s equations </span>
+          </td>
+        </tr>
+        <tr id='L150'>
+          <td class='lineno'>150</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # this is basically one step of the RK4 integrator</span>
+          </td>
+        </tr>
+        <tr id='L151'>
+          <td class='lineno'>151</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # TODO </span>
+          </td>
+        </tr>
+        <tr id='L152'>
+          <td class='lineno'>152</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    ray.position &#43;&#61; ray.velocity * dt # this is a simple Euler step, we will replace it with RK4 later </span>
+          </td>
+        </tr>
+        <tr id='L153'>
+          <td class='lineno'>153</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end </span>
+          </td>
+        </tr>
+        <tr id='L154'>
+          <td class='lineno'>154</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L155'>
+          <td class='lineno'>155</td>
+          <td class='tracecount excl'>48 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>48 &#40;0 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              4901 &#40;22 &#37;&#41;
+              samples spent in move_ray_curved
+              <br />
+              71 &#40;1 &#37;&#41; &#40;ex.&#41;,
+              4893 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from render
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L127'>line 127</a>
+              <br />
+              8 &#40;0 &#37;&#41; &#40;ex.&#41;,
+              8 &#40;0 &#37;&#41; &#40;incl.&#41;
+              when called from main
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L287'>line 287</a>
+              <br />
+            </div>
+            
+            <span class='code'>function move_ray_curved&#40;ray::Ray, h::Float64&#41;</span>
+          </td>
+        </tr>
+        <tr id='L156'>
+          <td class='lineno'>156</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>#     velocity &#61; spherical_to_cartesian&#40;ray.velocity&#91;1:3&#93;&#41; </span>
+          </td>
+        </tr>
+        <tr id='L157'>
+          <td class='lineno'>157</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>#     position &#61; spherical_to_cartesian&#40;ray.position&#91;1:3&#93;&#41; </span>
+          </td>
+        </tr>
+        <tr id='L158'>
+          <td class='lineno'>158</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>#     position &#43;&#61; velocity * h </span>
+          </td>
+        </tr>
+        <tr id='L159'>
+          <td class='lineno'>159</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>#     ray.position &#61; cartesian_to_spherical&#40;position&#41;</span>
+          </td>
+        </tr>
+        <tr id='L160'>
+          <td class='lineno'>160</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>#     ray.velocity &#61; cartesian_to_spherical&#40;velocity&#41; </span>
+          </td>
+        </tr>
+        <tr id='L161'>
+          <td class='lineno'>161</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # Euler iteration </span>
+          </td>
+        </tr>
+        <tr id='L162'>
+          <td class='lineno'>162</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>4236 &#40;19 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              3819 &#40;90 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L915'>getindex</a>
+              <br />
+              392 &#40;9 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L916'>getindex</a>
+              <br />
+              25 &#40;1 &#37;&#41;
+              samples spent calling
+              <a href='Base.jl-b63de1b034843e706f34083efa09828330e9b63e.html#L49'>getproperty</a>
+              <br />
+            </div>
+            <span class='code'>    r &#61; ray.position&#91;1&#93;</span>
+          </td>
+        </tr>
+        <tr id='L163'>
+          <td class='lineno'>163</td>
+          <td class='tracecount excl'>29 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>599 &#40;3 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              570 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='operators.jl-5dc7f749ee81f9a1b69996e91008bb7712afdf35.html#L379'>&gt;</a>
+              <br />
+            </div>
+            <span class='code'>    if r &gt; 10.0 </span>
+          </td>
+        </tr>
+        <tr id='L164'>
+          <td class='lineno'>164</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ray.flag &#61;&#61; false</span>
+          </td>
+        </tr>
+        <tr id='L165'>
+          <td class='lineno'>165</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        return</span>
+          </td>
+        </tr>
+        <tr id='L166'>
+          <td class='lineno'>166</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end </span>
+          </td>
+        </tr>
+        <tr id='L167'>
+          <td class='lineno'>167</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              1 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L915'>getindex</a>
+              <br />
+            </div>
+            <span class='code'>    theta &#61; ray.position&#91;2&#93;</span>
+          </td>
+        </tr>
+        <tr id='L168'>
+          <td class='lineno'>168</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    phi &#61; ray.position&#91;3&#93;</span>
+          </td>
+        </tr>
+        <tr id='L169'>
+          <td class='lineno'>169</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    t &#61; ray.position&#91;4&#93; # time coordinate     </span>
+          </td>
+        </tr>
+        <tr id='L170'>
+          <td class='lineno'>170</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L171'>
+          <td class='lineno'>171</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    dr &#61; ray.velocity&#91;1&#93; </span>
+          </td>
+        </tr>
+        <tr id='L172'>
+          <td class='lineno'>172</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    dtheta &#61; ray.velocity&#91;2&#93;</span>
+          </td>
+        </tr>
+        <tr id='L173'>
+          <td class='lineno'>173</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    dphi &#61; ray.velocity&#91;3&#93;</span>
+          </td>
+        </tr>
+        <tr id='L174'>
+          <td class='lineno'>174</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    dt &#61; ray.velocity&#91;4&#93; </span>
+          </td>
+        </tr>
+        <tr id='L175'>
+          <td class='lineno'>175</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L176'>
+          <td class='lineno'>176</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # Update the velocities according to the Schwarzschild equation </span>
+          </td>
+        </tr>
+        <tr id='L177'>
+          <td class='lineno'>177</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>4 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              4 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L29'>sin</a>
+              <br />
+            </div>
+            <span class='code'>    dr &#43;&#61; h * &#40;- 2 * M / &#40;r^2 * f&#40;r&#41;&#41; * dr^2 &#43; r * f&#40;r&#41; * dt^2 &#43; r * f&#40;r&#41; * sin&#40;theta&#41;^2 * dtheta^2 </span>
+          </td>
+        </tr>
+        <tr id='L178'>
+          <td class='lineno'>178</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    - 0.5 * f&#40;r&#41; * 2 * M / r^2 * dt^2&#41; # radial velocity update</span>
+          </td>
+        </tr>
+        <tr id='L179'>
+          <td class='lineno'>179</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>2 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              1 &#40;50 &#37;&#41;
+              samples spent calling
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L29'>sin</a>
+              <br />
+              1 &#40;50 &#37;&#41;
+              samples spent calling
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L98'>cos</a>
+              <br />
+            </div>
+            <span class='code'>    dtheta &#43;&#61; h * &#40;- 2 / r * dtheta * dr &#43; sin&#40;theta&#41; * cos&#40;theta&#41; * dtheta^2&#41;</span>
+          </td>
+        </tr>
+        <tr id='L180'>
+          <td class='lineno'>180</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>7 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              7 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L1135'>cot</a>
+              <br />
+            </div>
+            <span class='code'>    dphi &#43;&#61; h * &#40;- 2 / r * dphi * dr &#43; 2 * cot&#40;theta&#41; * dphi * dtheta&#41;</span>
+          </td>
+        </tr>
+        <tr id='L181'>
+          <td class='lineno'>181</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    dt &#43;&#61; h * &#40;- 2 * M / &#40;r^2 * f&#40;r&#41;&#41; * dt * dr&#41;</span>
+          </td>
+        </tr>
+        <tr id='L182'>
+          <td class='lineno'>182</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L183'>
+          <td class='lineno'>183</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # Update the position </span>
+          </td>
+        </tr>
+        <tr id='L184'>
+          <td class='lineno'>184</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              1 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L0'>getindex</a>
+              <br />
+            </div>
+            <span class='code'>    ray.position&#91;1&#93; &#43;&#61; dr</span>
+          </td>
+        </tr>
+        <tr id='L185'>
+          <td class='lineno'>185</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    ray.position&#91;2&#93; &#43;&#61; dtheta</span>
+          </td>
+        </tr>
+        <tr id='L186'>
+          <td class='lineno'>186</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    ray.position&#91;3&#93; &#43;&#61; dphi</span>
+          </td>
+        </tr>
+        <tr id='L187'>
+          <td class='lineno'>187</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              1 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L915'>getindex</a>
+              <br />
+            </div>
+            <span class='code'>    ray.position&#91;4&#93; &#43;&#61; dt</span>
+          </td>
+        </tr>
+        <tr id='L188'>
+          <td class='lineno'>188</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # Update the velocity</span>
+          </td>
+        </tr>
+        <tr id='L189'>
+          <td class='lineno'>189</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    ray.velocity&#91;1&#93; &#61; dr</span>
+          </td>
+        </tr>
+        <tr id='L190'>
+          <td class='lineno'>190</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    ray.velocity&#91;2&#93; &#61; dtheta</span>
+          </td>
+        </tr>
+        <tr id='L191'>
+          <td class='lineno'>191</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    ray.velocity&#91;3&#93; &#61; dphi</span>
+          </td>
+        </tr>
+        <tr id='L192'>
+          <td class='lineno'>192</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    ray.velocity&#91;4&#93; &#61; dt</span>
+          </td>
+        </tr>
+        <tr id='L193'>
+          <td class='lineno'>193</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L194'>
+          <td class='lineno'>194</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L195'>
+          <td class='lineno'>195</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function check_for_intersection&#40;ray::Ray&#41;</span>
+          </td>
+        </tr>
+        <tr id='L196'>
+          <td class='lineno'>196</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # TODO: remove the ray form the array if it hits something for now each ray has its own flag </span>
+          </td>
+        </tr>
+        <tr id='L197'>
+          <td class='lineno'>197</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    </span>
+          </td>
+        </tr>
+        <tr id='L198'>
+          <td class='lineno'>198</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    R &#61; norm&#40;ray.position - sphere_position&#41;</span>
+          </td>
+        </tr>
+        <tr id='L199'>
+          <td class='lineno'>199</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    if R &lt; sphere_radius</span>
+          </td>
+        </tr>
+        <tr id='L200'>
+          <td class='lineno'>200</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        # ray hit the sphere, we can stop it</span>
+          </td>
+        </tr>
+        <tr id='L201'>
+          <td class='lineno'>201</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ray.color &#61; RGB&#40;1, 1, 1&#41;</span>
+          </td>
+        </tr>
+        <tr id='L202'>
+          <td class='lineno'>202</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ray.flag &#61; false</span>
+          </td>
+        </tr>
+        <tr id='L203'>
+          <td class='lineno'>203</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        return </span>
+          </td>
+        </tr>
+        <tr id='L204'>
+          <td class='lineno'>204</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L205'>
+          <td class='lineno'>205</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    R_second &#61; norm&#40;ray.position - second_sphere_position &#41;</span>
+          </td>
+        </tr>
+        <tr id='L206'>
+          <td class='lineno'>206</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    if R_second &lt; second_sphere_radius </span>
+          </td>
+        </tr>
+        <tr id='L207'>
+          <td class='lineno'>207</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ray.color &#61; RGB&#40;1, 0, 0&#41; </span>
+          </td>
+        </tr>
+        <tr id='L208'>
+          <td class='lineno'>208</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ray.flag &#61; false</span>
+          </td>
+        </tr>
+        <tr id='L209'>
+          <td class='lineno'>209</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        return </span>
+          </td>
+        </tr>
+        <tr id='L210'>
+          <td class='lineno'>210</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end </span>
+          </td>
+        </tr>
+        <tr id='L211'>
+          <td class='lineno'>211</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    R_third &#61; norm&#40;ray.position - third_sphere_position&#41;</span>
+          </td>
+        </tr>
+        <tr id='L212'>
+          <td class='lineno'>212</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    if R_third &lt; third_sphere_radius</span>
+          </td>
+        </tr>
+        <tr id='L213'>
+          <td class='lineno'>213</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ray.color &#61; RGB&#40;0, 1, 0&#41; </span>
+          </td>
+        </tr>
+        <tr id='L214'>
+          <td class='lineno'>214</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ray.flag &#61; false</span>
+          </td>
+        </tr>
+        <tr id='L215'>
+          <td class='lineno'>215</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        return</span>
+          </td>
+        </tr>
+        <tr id='L216'>
+          <td class='lineno'>216</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L217'>
+          <td class='lineno'>217</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    if abs&#40;ray.position&#91;2&#93;&#41; &lt; 5e-2  </span>
+          </td>
+        </tr>
+        <tr id='L218'>
+          <td class='lineno'>218</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        #t_disc &#61; - camera_position&#91;2&#93; / ray.velocity&#91;2&#93; # intersection with the y&#61;0 plane </span>
+          </td>
+        </tr>
+        <tr id='L219'>
+          <td class='lineno'>219</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        #P &#61; camera_position &#43; t_disc * D</span>
+          </td>
+        </tr>
+        <tr id='L220'>
+          <td class='lineno'>220</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        rho &#61; sqrt&#40;ray.position&#91;1&#93;^2 &#43; ray.position&#91;3&#93;^2&#41; </span>
+          </td>
+        </tr>
+        <tr id='L221'>
+          <td class='lineno'>221</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        if Rin &lt;&#61; rho &lt;&#61; Rout</span>
+          </td>
+        </tr>
+        <tr id='L222'>
+          <td class='lineno'>222</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            ray.color &#61; RGB&#40;0, 0, rho / Rout&#41;</span>
+          </td>
+        </tr>
+        <tr id='L223'>
+          <td class='lineno'>223</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            ray.flag &#61; false</span>
+          </td>
+        </tr>
+        <tr id='L224'>
+          <td class='lineno'>224</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            return</span>
+          </td>
+        </tr>
+        <tr id='L225'>
+          <td class='lineno'>225</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        end          </span>
+          </td>
+        </tr>
+        <tr id='L226'>
+          <td class='lineno'>226</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L227'>
+          <td class='lineno'>227</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L228'>
+          <td class='lineno'>228</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L229'>
+          <td class='lineno'>229</td>
+          <td class='tracecount excl'>142 &#40;1 &#37;&#41;</td>
+          <td class='tracecount incl'>142 &#40;1 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              4375 &#40;20 &#37;&#41;
+              samples spent in spherical_to_cartesian
+              <br />
+              226 &#40;5 &#37;&#41; &#40;ex.&#41;,
+              4342 &#40;99 &#37;&#41; &#40;incl.&#41;
+              when called from check_for_intersection_curved
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L245'>line 245</a>
+              <br />
+              33 &#40;1 &#37;&#41; &#40;ex.&#41;,
+              33 &#40;1 &#37;&#41; &#40;incl.&#41;
+              when called from render
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L128'>line 128</a>
+              <br />
+            </div>
+            
+            <span class='code'>function spherical_to_cartesian&#40;position::Vector&#123;Float64&#125;&#41;::Vector&#123;Float64&#125;</span>
+          </td>
+        </tr>
+        <tr id='L230'>
+          <td class='lineno'>230</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>14 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              14 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L915'>getindex</a>
+              <br />
+            </div>
+            <span class='code'>    r &#61; position&#91;1&#93;</span>
+          </td>
+        </tr>
+        <tr id='L231'>
+          <td class='lineno'>231</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>62 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              62 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L916'>getindex</a>
+              <br />
+            </div>
+            <span class='code'>    theta &#61; position&#91;2&#93;</span>
+          </td>
+        </tr>
+        <tr id='L232'>
+          <td class='lineno'>232</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>90 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              88 &#40;98 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L916'>getindex</a>
+              <br />
+              2 &#40;2 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L915'>getindex</a>
+              <br />
+            </div>
+            <span class='code'>    phi &#61; position&#91;3&#93;</span>
+          </td>
+        </tr>
+        <tr id='L233'>
+          <td class='lineno'>233</td>
+          <td class='tracecount excl'>84 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>4034 &#40;18 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              1506 &#40;38 &#37;&#41;
+              samples spent calling
+              <a href='array.jl-9351c8e3c3e31a3b8a0c690f5e177533744c07f5.html#L161'>vect</a>
+              <br />
+              1116 &#40;28 &#37;&#41;
+              samples spent calling
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L98'>cos</a>
+              <br />
+              1028 &#40;26 &#37;&#41;
+              samples spent calling
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L29'>sin</a>
+              <br />
+              99 &#40;3 &#37;&#41;
+              samples spent calling
+              <a href='operators.jl-5dc7f749ee81f9a1b69996e91008bb7712afdf35.html#L596'>*</a>
+              <br />
+              65 &#40;2 &#37;&#41;
+              samples spent calling
+              <a href='float.jl-7170cf60e6d4e9b40a7dcd98416202990131c908.html#L493'>*</a>
+              <br />
+              56 &#40;1 &#37;&#41;
+              samples spent calling
+              <a href='float.jl-7170cf60e6d4e9b40a7dcd98416202990131c908.html#L98'>cos</a>
+              <br />
+              41 &#40;1 &#37;&#41;
+              samples spent calling
+              <a href='array.jl-9351c8e3c3e31a3b8a0c690f5e177533744c07f5.html#L163'>vect</a>
+              <br />
+              36 &#40;1 &#37;&#41;
+              samples spent calling
+              <a href='float.jl-7170cf60e6d4e9b40a7dcd98416202990131c908.html#L29'>sin</a>
+              <br />
+              3 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L98'>cos</a>
+              <br />
+            </div>
+            <span class='code'>    return &#91;r*cos&#40;phi&#41;*sin&#40;theta&#41;, r*cos&#40;theta&#41;, r*sin&#40;phi&#41;*sin&#40;theta&#41;&#93;</span>
+          </td>
+        </tr>
+        <tr id='L234'>
+          <td class='lineno'>234</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end    </span>
+          </td>
+        </tr>
+        <tr id='L235'>
+          <td class='lineno'>235</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L236'>
+          <td class='lineno'>236</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            <div class='call-sites'>
+              17 &#40;0 &#37;&#41;
+              samples spent in cartesian_to_spherical
+              <br />
+              
+              15 &#40;88 &#37;&#41; &#40;incl.&#41;
+              when called from make_system_curved
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L95'>line 95</a>
+              <br />
+              
+              2 &#40;12 &#37;&#41; &#40;incl.&#41;
+              when called from make_system_curved
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L98'>line 98</a>
+              <br />
+            </div>
+            
+            <span class='code'>function cartesian_to_spherical&#40;position::Vector&#123;Float64&#125;&#41;::Vector&#123;Float64&#125;</span>
+          </td>
+        </tr>
+        <tr id='L237'>
+          <td class='lineno'>237</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    r &#61; norm&#40;position&#41;</span>
+          </td>
+        </tr>
+        <tr id='L238'>
+          <td class='lineno'>238</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    theta &#61; acos&#40;position&#91;2&#93; / r&#41;</span>
+          </td>
+        </tr>
+        <tr id='L239'>
+          <td class='lineno'>239</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    phi &#61; atan&#40;position&#91;3&#93;, position&#91;1&#93;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L240'>
+          <td class='lineno'>240</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>17 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              17 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='array.jl-9351c8e3c3e31a3b8a0c690f5e177533744c07f5.html#L161'>vect</a>
+              <br />
+            </div>
+            <span class='code'>    return &#91;r, theta, phi&#93;</span>
+          </td>
+        </tr>
+        <tr id='L241'>
+          <td class='lineno'>241</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L242'>
+          <td class='lineno'>242</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L243'>
+          <td class='lineno'>243</td>
+          <td class='tracecount excl'>60 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>60 &#40;0 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              16304 &#40;75 &#37;&#41;
+              samples spent in check_for_intersection_curved
+              <br />
+              281 &#40;2 &#37;&#41; &#40;ex.&#41;,
+              16304 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from render
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L128'>line 128</a>
+              <br />
+            </div>
+            
+            <span class='code'>function check_for_intersection_curved&#40;ray::Ray&#41;</span>
+          </td>
+        </tr>
+        <tr id='L244'>
+          <td class='lineno'>244</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # TODO: we need to convert the ray back to cartesian coordinates before checking for collisions  </span>
+          </td>
+        </tr>
+        <tr id='L245'>
+          <td class='lineno'>245</td>
+          <td class='tracecount excl'>22 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>6871 &#40;31 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              4342 &#40;63 &#37;&#41;
+              samples spent calling
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L229'>spherical_to_cartesian</a>
+              <br />
+              2037 &#40;30 &#37;&#41;
+              samples spent calling
+              <a href='array.jl-9351c8e3c3e31a3b8a0c690f5e177533744c07f5.html#L927'>getindex</a>
+              <br />
+              409 &#40;6 &#37;&#41;
+              samples spent calling
+              <a href='array.jl-9351c8e3c3e31a3b8a0c690f5e177533744c07f5.html#L929'>getindex</a>
+              <br />
+              19 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L29'>sin</a>
+              <br />
+              18 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='Base.jl-b63de1b034843e706f34083efa09828330e9b63e.html#L49'>getproperty</a>
+              <br />
+              9 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='array.jl-9351c8e3c3e31a3b8a0c690f5e177533744c07f5.html#L0'>getindex</a>
+              <br />
+              8 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L98'>cos</a>
+              <br />
+              7 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='array.jl-9351c8e3c3e31a3b8a0c690f5e177533744c07f5.html#L925'>getindex</a>
+              <br />
+            </div>
+            <span class='code'>    position &#61; spherical_to_cartesian&#40;ray.position&#91;1:3&#93;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L246'>
+          <td class='lineno'>246</td>
+          <td class='tracecount excl'>53 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>3414 &#40;16 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              2285 &#40;68 &#37;&#41;
+              samples spent calling
+              <a href='arraymath.jl-fdbe1c320a0e21e8f0e8d9424658dbf6cd674c3d.html#L6'>-</a>
+              <br />
+              1076 &#40;32 &#37;&#41;
+              samples spent calling
+              <a href='generic.jl-669e576cdef04f979af49613717ae8e66469a770.html#L602'>norm</a>
+              <br />
+            </div>
+            <span class='code'>    R &#61; norm&#40;position - sphere_position&#41;</span>
+          </td>
+        </tr>
+        <tr id='L247'>
+          <td class='lineno'>247</td>
+          <td class='tracecount excl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            
+            <span class='code'>    if R &lt; sphere_radius</span>
+          </td>
+        </tr>
+        <tr id='L248'>
+          <td class='lineno'>248</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        # ray hit the sphere, we can stop it</span>
+          </td>
+        </tr>
+        <tr id='L249'>
+          <td class='lineno'>249</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        # ray.color &#61; RGB&#40;1, 1, 1&#41;</span>
+          </td>
+        </tr>
+        <tr id='L250'>
+          <td class='lineno'>250</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ray.color &#61; RGB&#40;0, 0, 0&#41;</span>
+          </td>
+        </tr>
+        <tr id='L251'>
+          <td class='lineno'>251</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ray.flag &#61; false</span>
+          </td>
+        </tr>
+        <tr id='L252'>
+          <td class='lineno'>252</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        println&#40;&quot;spherical hit&quot;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L253'>
+          <td class='lineno'>253</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        return </span>
+          </td>
+        </tr>
+        <tr id='L254'>
+          <td class='lineno'>254</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L255'>
+          <td class='lineno'>255</td>
+          <td class='tracecount excl'>48 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>2948 &#40;13 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              1874 &#40;65 &#37;&#41;
+              samples spent calling
+              <a href='arraymath.jl-fdbe1c320a0e21e8f0e8d9424658dbf6cd674c3d.html#L6'>-</a>
+              <br />
+              1026 &#40;35 &#37;&#41;
+              samples spent calling
+              <a href='generic.jl-669e576cdef04f979af49613717ae8e66469a770.html#L602'>norm</a>
+              <br />
+            </div>
+            <span class='code'>    R_second &#61; norm&#40;position - second_sphere_position &#41;</span>
+          </td>
+        </tr>
+        <tr id='L256'>
+          <td class='lineno'>256</td>
+          <td class='tracecount excl'>7 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>8 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              1 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='float.jl-7170cf60e6d4e9b40a7dcd98416202990131c908.html#L618'>&lt;</a>
+              <br />
+            </div>
+            <span class='code'>    if R_second &lt; second_sphere_radius </span>
+          </td>
+        </tr>
+        <tr id='L257'>
+          <td class='lineno'>257</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ray.color &#61; RGB&#40;1, 0, 0&#41; </span>
+          </td>
+        </tr>
+        <tr id='L258'>
+          <td class='lineno'>258</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ray.flag &#61; false</span>
+          </td>
+        </tr>
+        <tr id='L259'>
+          <td class='lineno'>259</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        #println&#40;&quot;spherical hit&quot;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L260'>
+          <td class='lineno'>260</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        return </span>
+          </td>
+        </tr>
+        <tr id='L261'>
+          <td class='lineno'>261</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end </span>
+          </td>
+        </tr>
+        <tr id='L262'>
+          <td class='lineno'>262</td>
+          <td class='tracecount excl'>67 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>2935 &#40;13 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              1769 &#40;62 &#37;&#41;
+              samples spent calling
+              <a href='arraymath.jl-fdbe1c320a0e21e8f0e8d9424658dbf6cd674c3d.html#L6'>-</a>
+              <br />
+              1090 &#40;38 &#37;&#41;
+              samples spent calling
+              <a href='generic.jl-669e576cdef04f979af49613717ae8e66469a770.html#L602'>norm</a>
+              <br />
+              9 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='indices.jl-dbbb1ad77bcdeee5841d089829b60511b870b50e.html#L6'>-</a>
+              <br />
+            </div>
+            <span class='code'>    R_third &#61; norm&#40;position - third_sphere_position&#41;</span>
+          </td>
+        </tr>
+        <tr id='L263'>
+          <td class='lineno'>263</td>
+          <td class='tracecount excl'>6 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>6 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            
+            <span class='code'>    if R_third &lt; third_sphere_radius</span>
+          </td>
+        </tr>
+        <tr id='L264'>
+          <td class='lineno'>264</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ray.color &#61; RGB&#40;0, 1, 0&#41; </span>
+          </td>
+        </tr>
+        <tr id='L265'>
+          <td class='lineno'>265</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        #println&#40;&quot;spherical hit&quot;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L266'>
+          <td class='lineno'>266</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        ray.flag &#61; false</span>
+          </td>
+        </tr>
+        <tr id='L267'>
+          <td class='lineno'>267</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        return</span>
+          </td>
+        </tr>
+        <tr id='L268'>
+          <td class='lineno'>268</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L269'>
+          <td class='lineno'>269</td>
+          <td class='tracecount excl'>15 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>50 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              28 &#40;80 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L915'>getindex</a>
+              <br />
+              6 &#40;17 &#37;&#41;
+              samples spent calling
+              <a href='float.jl-7170cf60e6d4e9b40a7dcd98416202990131c908.html#L692'>abs</a>
+              <br />
+              1 &#40;3 &#37;&#41;
+              samples spent calling
+              <a href='float.jl-7170cf60e6d4e9b40a7dcd98416202990131c908.html#L618'>&lt;</a>
+              <br />
+            </div>
+            <span class='code'>    if abs&#40;position&#91;2&#93;&#41; &lt; 5e-1  </span>
+          </td>
+        </tr>
+        <tr id='L270'>
+          <td class='lineno'>270</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        #t_disc &#61; - camera_position&#91;2&#93; / ray.velocity&#91;2&#93; # intersection with the y&#61;0 plane </span>
+          </td>
+        </tr>
+        <tr id='L271'>
+          <td class='lineno'>271</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        #P &#61; camera_position &#43; t_disc * D</span>
+          </td>
+        </tr>
+        <tr id='L272'>
+          <td class='lineno'>272</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              1 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='math.jl-56fc5e216cbc353b40644ff2bba59d7b9504f2a3.html#L609'>sqrt</a>
+              <br />
+            </div>
+            <span class='code'>        rho &#61; sqrt&#40;position&#91;1&#93;^2 &#43; position&#91;3&#93;^2&#41; </span>
+          </td>
+        </tr>
+        <tr id='L273'>
+          <td class='lineno'>273</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>8 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              8 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='float.jl-7170cf60e6d4e9b40a7dcd98416202990131c908.html#L619'>&lt;&#61;</a>
+              <br />
+            </div>
+            <span class='code'>        if Rin &lt;&#61; rho &lt;&#61; Rout</span>
+          </td>
+        </tr>
+        <tr id='L274'>
+          <td class='lineno'>274</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            ray.color &#61; RGB&#40;rho / Rout, rho / Rout, rho / Rout&#41;</span>
+          </td>
+        </tr>
+        <tr id='L275'>
+          <td class='lineno'>275</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            ray.flag &#61; false</span>
+          </td>
+        </tr>
+        <tr id='L276'>
+          <td class='lineno'>276</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            println&#40;&quot;disc hit&quot;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L277'>
+          <td class='lineno'>277</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            return</span>
+          </td>
+        </tr>
+        <tr id='L278'>
+          <td class='lineno'>278</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        end          </span>
+          </td>
+        </tr>
+        <tr id='L279'>
+          <td class='lineno'>279</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L280'>
+          <td class='lineno'>280</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L281'>
+          <td class='lineno'>281</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L282'>
+          <td class='lineno'>282</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            <div class='call-sites'>
+              21879 &#40;100 &#37;&#41;
+              samples spent in main
+              <br />
+              
+              21879 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from eval
+              <a href='boot.jl-2137a51816ac0a4e7f1834b89fc838cd989182c8.html#L430'>line 430</a>
+              <br />
+            </div>
+            
+            <span class='code'>function main&#40;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L283'>
+          <td class='lineno'>283</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # rays &#61; make_system&#40;W, H&#41;</span>
+          </td>
+        </tr>
+        <tr id='L284'>
+          <td class='lineno'>284</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>27 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              26 &#40;96 &#37;&#41;
+              samples spent calling
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L78'>make_system_curved</a>
+              <br />
+              1 &#40;4 &#37;&#41;
+              samples spent calling
+              <a href='arraymath.jl-fdbe1c320a0e21e8f0e8d9424658dbf6cd674c3d.html#L21'>*</a>
+              <br />
+            </div>
+            <span class='code'>    rays_curved &#61; make_system_curved&#40;W, H&#41;</span>
+          </td>
+        </tr>
+        <tr id='L285'>
+          <td class='lineno'>285</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # Move the rays</span>
+          </td>
+        </tr>
+        <tr id='L286'>
+          <td class='lineno'>286</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # image &#61; render&#40;rays, 10.0, 0.01&#41;</span>
+          </td>
+        </tr>
+        <tr id='L287'>
+          <td class='lineno'>287</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>21851 &#40;100 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              21841 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L108'>render</a>
+              <br />
+              8 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L155'>move_ray_curved</a>
+              <br />
+              2 &#40;0 &#37;&#41;
+              samples spent calling
+              <a href='array.jl-9351c8e3c3e31a3b8a0c690f5e177533744c07f5.html#L155'>move_ray_curved</a>
+              <br />
+            </div>
+            <span class='code'>    image_curved &#61; render&#40;rays_curved, 10.0, 0.005, &quot;curved&quot;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L288'>
+          <td class='lineno'>288</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # Save the image</span>
+          </td>
+        </tr>
+        <tr id='L289'>
+          <td class='lineno'>289</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    # save&#40;&quot;sphere_test_ray_casting.png&quot;, image&#41;</span>
+          </td>
+        </tr>
+        <tr id='L290'>
+          <td class='lineno'>290</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td>
+            
+            <div class='callees'>
+              1 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='loadsave.jl-e94225593ff6079470b56a109b4d4278a3f00c40.html#L125'>save</a>
+              <br />
+            </div>
+            <span class='code'>    save&#40;&quot;sphere_test_curved_ray_casting.png&quot;, image_curved&#41;</span>
+          </td>
+        </tr>
+        <tr id='L291'>
+          <td class='lineno'>291</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    println&#40;&quot;Saved sphere_test.png&quot;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L292'>
+          <td class='lineno'>292</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L293'>
+          <td class='lineno'>293</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L294'>
+          <td class='lineno'>294</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>main&#40;&#41;</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
+
