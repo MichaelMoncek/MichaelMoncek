@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'></meta>
     <link rel='stylesheet' type='text/css' href='statprofiler.css'></link>
-    <title>StatProfilerHTML - ../../../../../usr/share/julia/base/tuple.jl</title>
+    <title>StatProfilerHTML - ../../../../../usr/share/julia/base/logging/logging.jl</title>
   </head>
   <body>
     <div class='report-header'>
@@ -14,7 +14,7 @@
         StatProfilerHTML.jl report
       </div>
       <div class='generated-on'>
-        Generated on Sun, 17 Aug 2025 12:41:30
+        Generated on Mon, 18 Aug 2025 17:36:15
       </div>
     </div>
     <table>
@@ -55,7 +55,7 @@
           <td>
             
             
-            <span class='code'># Document NTuple here where we have everything needed for the doc system</span>
+            <span class='code'>module CoreLogging</span>
           </td>
         </tr>
         <tr id='L4'>
@@ -65,7 +65,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L5'>
@@ -75,7 +75,7 @@
           <td>
             
             
-            <span class='code'>    NTuple&#123;N, T&#125;</span>
+            <span class='code'>import Base: isless, &#43;, -, convert, show</span>
           </td>
         </tr>
         <tr id='L6'>
@@ -85,7 +85,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>import Base.ScopedValues: ScopedValue, with, @with</span>
           </td>
         </tr>
         <tr id='L7'>
@@ -95,7 +95,7 @@
           <td>
             
             
-            <span class='code'>A compact way of representing the type for a tuple of length &#96;N&#96; where all elements are of type &#96;T&#96;.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L8'>
@@ -105,7 +105,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>export</span>
           </td>
         </tr>
         <tr id='L9'>
@@ -115,7 +115,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>    AbstractLogger,</span>
           </td>
         </tr>
         <tr id='L10'>
@@ -125,7 +125,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>    LogLevel,</span>
           </td>
         </tr>
         <tr id='L11'>
@@ -135,7 +135,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; isa&#40;&#40;1, 2, 3, 4, 5, 6&#41;, NTuple&#123;6, Int&#125;&#41;</span>
+            <span class='code'>    NullLogger,</span>
           </td>
         </tr>
         <tr id='L12'>
@@ -145,7 +145,7 @@
           <td>
             
             
-            <span class='code'>true</span>
+            <span class='code'>    @debug,</span>
           </td>
         </tr>
         <tr id='L13'>
@@ -155,7 +155,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>    @info,</span>
           </td>
         </tr>
         <tr id='L14'>
@@ -165,7 +165,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    @warn,</span>
           </td>
         </tr>
         <tr id='L15'>
@@ -175,7 +175,7 @@
           <td>
             
             
-            <span class='code'>See also &#91;&#96;ntuple&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'>    @error,</span>
           </td>
         </tr>
         <tr id='L16'>
@@ -185,7 +185,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    @logmsg,</span>
           </td>
         </tr>
         <tr id='L17'>
@@ -195,7 +195,7 @@
           <td>
             
             
-            <span class='code'>NTuple</span>
+            <span class='code'>    with_logger,</span>
           </td>
         </tr>
         <tr id='L18'>
@@ -205,7 +205,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    current_logger,</span>
           </td>
         </tr>
         <tr id='L19'>
@@ -215,7 +215,7 @@
           <td>
             
             
-            <span class='code'># convenience function for extracting N from a Tuple &#40;if defined&#41;</span>
+            <span class='code'>    global_logger,</span>
           </td>
         </tr>
         <tr id='L20'>
@@ -225,7 +225,7 @@
           <td>
             
             
-            <span class='code'># else return &#96;nothing&#96; for anything else given &#40;such as Vararg or other non-sized Union&#41;</span>
+            <span class='code'>    disable_logging,</span>
           </td>
         </tr>
         <tr id='L21'>
@@ -235,7 +235,7 @@
           <td>
             
             
-            <span class='code'>_counttuple&#40;::Type&#123;&lt;:NTuple&#123;N,Any&#125;&#125;&#41; where &#123;N&#125; &#61; N</span>
+            <span class='code'>    SimpleLogger</span>
           </td>
         </tr>
         <tr id='L22'>
@@ -245,7 +245,7 @@
           <td>
             
             
-            <span class='code'>_counttuple&#40;::Type&#41; &#61; nothing</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L23'>
@@ -255,7 +255,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>#-------------------------------------------------------------------------------</span>
           </td>
         </tr>
         <tr id='L24'>
@@ -265,7 +265,7 @@
           <td>
             
             
-            <span class='code'>## indexing ##</span>
+            <span class='code'># The AbstractLogger interface</span>
           </td>
         </tr>
         <tr id='L25'>
@@ -275,7 +275,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L26'>
@@ -285,7 +285,7 @@
           <td>
             
             
-            <span class='code'>length&#40;@nospecialize t::Tuple&#41; &#61; nfields&#40;t&#41;</span>
+            <span class='code'>A logger controls how log records are filtered and dispatched.  When a log</span>
           </td>
         </tr>
         <tr id='L27'>
@@ -295,7 +295,7 @@
           <td>
             
             
-            <span class='code'>firstindex&#40;@nospecialize t::Tuple&#41; &#61; 1</span>
+            <span class='code'>record is generated, the logger is the first piece of user configurable code</span>
           </td>
         </tr>
         <tr id='L28'>
@@ -305,7 +305,7 @@
           <td>
             
             
-            <span class='code'>lastindex&#40;@nospecialize t::Tuple&#41; &#61; length&#40;t&#41;</span>
+            <span class='code'>which gets to inspect the record and decide what to do with it.</span>
           </td>
         </tr>
         <tr id='L29'>
@@ -315,7 +315,7 @@
           <td>
             
             
-            <span class='code'>size&#40;@nospecialize&#40;t::Tuple&#41;, d::Integer&#41; &#61; &#40;d &#61;&#61; 1&#41; ? length&#40;t&#41; : throw&#40;ArgumentError&#40;&quot;invalid tuple dimension &#36;d&quot;&#41;&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L30'>
@@ -325,7 +325,7 @@
           <td>
             
             
-            <span class='code'>axes&#40;@nospecialize t::Tuple&#41; &#61; &#40;OneTo&#40;length&#40;t&#41;&#41;,&#41;</span>
+            <span class='code'>abstract type AbstractLogger ; end</span>
           </td>
         </tr>
         <tr id='L31'>
@@ -335,7 +335,7 @@
           <td>
             
             
-            <span class='code'>getindex&#40;@nospecialize&#40;t::Tuple&#41;, i::Int&#41; &#61; getfield&#40;t, i, @_boundscheck&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L32'>
@@ -345,7 +345,7 @@
           <td>
             
             
-            <span class='code'>getindex&#40;@nospecialize&#40;t::Tuple&#41;, i::Integer&#41; &#61; getfield&#40;t, convert&#40;Int, i&#41;, @_boundscheck&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L33'>
@@ -355,7 +355,7 @@
           <td>
             
             
-            <span class='code'>__safe_getindex&#40;@nospecialize&#40;t::Tuple&#41;, i::Int&#41; &#61; &#40;@_nothrow_noub_meta; getfield&#40;t, i, false&#41;&#41;</span>
+            <span class='code'>    handle_message&#40;logger, level, message, _module, group, id, file, line; key1&#61;val1, ...&#41;</span>
           </td>
         </tr>
         <tr id='L34'>
@@ -365,7 +365,7 @@
           <td>
             
             
-            <span class='code'>getindex&#40;t::Tuple, r::AbstractArray&#123;&lt;:Any,1&#125;&#41; &#61; &#40;eltype&#40;t&#41;&#91;t&#91;ri&#93; for ri in r&#93;...,&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L35'>
@@ -375,7 +375,7 @@
           <td>
             
             
-            <span class='code'>getindex&#40;t::Tuple, b::AbstractArray&#123;Bool,1&#125;&#41; &#61; length&#40;b&#41; &#61;&#61; length&#40;t&#41; ? getindex&#40;t, findall&#40;b&#41;&#41; : throw&#40;BoundsError&#40;t, b&#41;&#41;</span>
+            <span class='code'>Log a message to &#96;logger&#96; at &#96;level&#96;.  The logical location at which the</span>
           </td>
         </tr>
         <tr id='L36'>
@@ -385,7 +385,7 @@
           <td>
             
             
-            <span class='code'>getindex&#40;t::Tuple, c::Colon&#41; &#61; t</span>
+            <span class='code'>message was generated is given by module &#96;_module&#96; and &#96;group&#96;; the source</span>
           </td>
         </tr>
         <tr id='L37'>
@@ -395,7 +395,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>location by &#96;file&#96; and &#96;line&#96;. &#96;id&#96; is an arbitrary unique value &#40;typically a</span>
           </td>
         </tr>
         <tr id='L38'>
@@ -405,7 +405,7 @@
           <td>
             
             
-            <span class='code'>get&#40;t::Tuple, i::Integer, default&#41; &#61; i in 1:length&#40;t&#41; ? getindex&#40;t, i&#41; : default</span>
+            <span class='code'>&#91;&#96;Symbol&#96;&#93;&#40;@ref&#41;&#41; to be used as a key to identify the log statement when</span>
           </td>
         </tr>
         <tr id='L39'>
@@ -415,7 +415,7 @@
           <td>
             
             
-            <span class='code'>get&#40;f::Callable, t::Tuple, i::Integer&#41; &#61; i in 1:length&#40;t&#41; ? getindex&#40;t, i&#41; : f&#40;&#41;</span>
+            <span class='code'>filtering.</span>
           </td>
         </tr>
         <tr id='L40'>
@@ -425,7 +425,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L41'>
@@ -435,7 +435,7 @@
           <td>
             
             
-            <span class='code'># returns new tuple; N.B.: becomes no-op if &#96;i&#96; is out-of-bounds</span>
+            <span class='code'>function handle_message end</span>
           </td>
         </tr>
         <tr id='L42'>
@@ -465,7 +465,7 @@
           <td>
             
             
-            <span class='code'>    setindex&#40;t::Tuple, v, i::Integer&#41;</span>
+            <span class='code'>    shouldlog&#40;logger, level, _module, group, id&#41;</span>
           </td>
         </tr>
         <tr id='L45'>
@@ -485,7 +485,7 @@
           <td>
             
             
-            <span class='code'>Creates a new tuple similar to &#96;t&#96; with the value at index &#96;i&#96; set to &#96;v&#96;.</span>
+            <span class='code'>Return &#96;true&#96; when &#96;logger&#96; accepts a message at &#96;level&#96;, generated for</span>
           </td>
         </tr>
         <tr id='L47'>
@@ -495,7 +495,7 @@
           <td>
             
             
-            <span class='code'>Throws a &#96;BoundsError&#96; when out of bounds.</span>
+            <span class='code'>&#96;_module&#96;, &#96;group&#96; and with unique log identifier &#96;id&#96;.</span>
           </td>
         </tr>
         <tr id='L48'>
@@ -505,7 +505,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L49'>
@@ -515,7 +515,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>function shouldlog end</span>
           </td>
         </tr>
         <tr id='L50'>
@@ -525,7 +525,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L51'>
@@ -535,7 +535,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; Base.setindex&#40;&#40;1, 2, 6&#41;, 2, 3&#41; &#61;&#61; &#40;1, 2, 2&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L52'>
@@ -545,7 +545,7 @@
           <td>
             
             
-            <span class='code'>true</span>
+            <span class='code'>    min_enabled_level&#40;logger&#41;</span>
           </td>
         </tr>
         <tr id='L53'>
@@ -555,7 +555,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L54'>
@@ -565,7 +565,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>Return the minimum enabled level for &#96;logger&#96; for early filtering.  That is,</span>
           </td>
         </tr>
         <tr id='L55'>
@@ -575,7 +575,7 @@
           <td>
             
             
-            <span class='code'>function setindex&#40;x::Tuple, v, i::Integer&#41;</span>
+            <span class='code'>the log level below or equal to which all messages are filtered.</span>
           </td>
         </tr>
         <tr id='L56'>
@@ -585,7 +585,7 @@
           <td>
             
             
-            <span class='code'>    @boundscheck 1 &lt;&#61; i &lt;&#61; length&#40;x&#41; || throw&#40;BoundsError&#40;x, i&#41;&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L57'>
@@ -595,7 +595,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'>function min_enabled_level end</span>
           </td>
         </tr>
         <tr id='L58'>
@@ -605,7 +605,7 @@
           <td>
             
             
-            <span class='code'>    _setindex&#40;v, i, x...&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L59'>
@@ -615,7 +615,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L60'>
@@ -625,7 +625,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    catch_exceptions&#40;logger&#41;</span>
           </td>
         </tr>
         <tr id='L61'>
@@ -635,7 +635,7 @@
           <td>
             
             
-            <span class='code'>function _setindex&#40;v, i::Integer, args::Vararg&#123;Any,N&#125;&#41; where &#123;N&#125;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L62'>
@@ -645,7 +645,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'>Return &#96;true&#96; if the logger should catch exceptions which happen during log</span>
           </td>
         </tr>
         <tr id='L63'>
@@ -655,7 +655,7 @@
           <td>
             
             
-            <span class='code'>    return ntuple&#40;j -&gt; ifelse&#40;j &#61;&#61; i, v, args&#91;j&#93;&#41;, Val&#123;N&#125;&#40;&#41;&#41;</span>
+            <span class='code'>record construction.  By default, messages are caught</span>
           </td>
         </tr>
         <tr id='L64'>
@@ -665,7 +665,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L65'>
@@ -675,7 +675,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>By default all exceptions are caught to prevent log message generation from</span>
           </td>
         </tr>
         <tr id='L66'>
@@ -685,7 +685,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>crashing the program.  This lets users confidently toggle little-used</span>
           </td>
         </tr>
         <tr id='L67'>
@@ -695,7 +695,7 @@
           <td>
             
             
-            <span class='code'>## iterating ##</span>
+            <span class='code'>functionality - such as debug logging - in a production system.</span>
           </td>
         </tr>
         <tr id='L68'>
@@ -715,7 +715,7 @@
           <td>
             
             
-            <span class='code'>function iterate&#40;@nospecialize&#40;t::Tuple&#41;, i::Int&#61;1&#41;</span>
+            <span class='code'>If you want to use logging as an audit trail you should disable this for your</span>
           </td>
         </tr>
         <tr id='L70'>
@@ -725,7 +725,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'>logger type.</span>
           </td>
         </tr>
         <tr id='L71'>
@@ -735,7 +735,7 @@
           <td>
             
             
-            <span class='code'>    return &#40;1 &lt;&#61; i &lt;&#61; length&#40;t&#41;&#41; ? &#40;t&#91;i&#93;, i &#43; 1&#41; : nothing</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L72'>
@@ -745,7 +745,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>catch_exceptions&#40;logger&#41; &#61; true</span>
           </td>
         </tr>
         <tr id='L73'>
@@ -765,7 +765,7 @@
           <td>
             
             
-            <span class='code'>keys&#40;@nospecialize t::Tuple&#41; &#61; OneTo&#40;length&#40;t&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L75'>
@@ -775,7 +775,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># Prevent invalidation when packages define custom loggers</span>
           </td>
         </tr>
         <tr id='L76'>
@@ -785,7 +785,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'># Using invoke in combination with @nospecialize eliminates backedges to these methods</span>
           </td>
         </tr>
         <tr id='L77'>
@@ -795,7 +795,7 @@
           <td>
             
             
-            <span class='code'>    prevind&#40;A, i&#41;</span>
+            <span class='code'>Base.@constprop :none function _invoked_shouldlog&#40;logger, level, _module, group, id&#41;</span>
           </td>
         </tr>
         <tr id='L78'>
@@ -805,7 +805,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    @nospecialize</span>
           </td>
         </tr>
         <tr id='L79'>
@@ -815,7 +815,7 @@
           <td>
             
             
-            <span class='code'>Return the index before &#96;i&#96; in &#96;A&#96;. The returned index is often equivalent to</span>
+            <span class='code'>    return invoke&#40;</span>
           </td>
         </tr>
         <tr id='L80'>
@@ -825,7 +825,7 @@
           <td>
             
             
-            <span class='code'>&#96;i - 1&#96; for an integer &#96;i&#96;. This function can be useful for generic code.</span>
+            <span class='code'>        shouldlog,</span>
           </td>
         </tr>
         <tr id='L81'>
@@ -835,7 +835,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        Tuple&#123;typeof&#40;logger&#41;, typeof&#40;level&#41;, typeof&#40;_module&#41;, typeof&#40;group&#41;, typeof&#40;id&#41;&#125;,</span>
           </td>
         </tr>
         <tr id='L82'>
@@ -845,7 +845,7 @@
           <td>
             
             
-            <span class='code'>&#33;&#33;&#33; warning</span>
+            <span class='code'>        logger, level, _module, group, id</span>
           </td>
         </tr>
         <tr id='L83'>
@@ -855,7 +855,7 @@
           <td>
             
             
-            <span class='code'>    The returned index might be out of bounds. Consider using</span>
+            <span class='code'>    &#41;::Bool</span>
           </td>
         </tr>
         <tr id='L84'>
@@ -865,7 +865,7 @@
           <td>
             
             
-            <span class='code'>    &#91;&#96;checkbounds&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L85'>
@@ -885,7 +885,7 @@
           <td>
             
             
-            <span class='code'>See also: &#91;&#96;nextind&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'>function _invoked_min_enabled_level&#40;@nospecialize&#40;logger&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L87'>
@@ -895,7 +895,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    return invoke&#40;min_enabled_level, Tuple&#123;typeof&#40;logger&#41;&#125;, logger&#41;::LogLevel</span>
           </td>
         </tr>
         <tr id='L88'>
@@ -905,7 +905,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L89'>
@@ -915,7 +915,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L90'>
@@ -925,7 +925,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; x &#61; &#91;1 2; 3 4&#93;</span>
+            <span class='code'>function _invoked_catch_exceptions&#40;@nospecialize&#40;logger&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L91'>
@@ -935,7 +935,7 @@
           <td>
             
             
-            <span class='code'>2×2 Matrix&#123;Int64&#125;:</span>
+            <span class='code'>    return invoke&#40;catch_exceptions, Tuple&#123;typeof&#40;logger&#41;&#125;, logger&#41;::Bool</span>
           </td>
         </tr>
         <tr id='L92'>
@@ -945,7 +945,7 @@
           <td>
             
             
-            <span class='code'> 1  2</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L93'>
@@ -955,7 +955,7 @@
           <td>
             
             
-            <span class='code'> 3  4</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L94'>
@@ -965,7 +965,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L95'>
@@ -975,7 +975,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; prevind&#40;x, 4&#41; # valid result</span>
+            <span class='code'>    NullLogger&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L96'>
@@ -985,7 +985,7 @@
           <td>
             
             
-            <span class='code'>3</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L97'>
@@ -995,7 +995,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>Logger which disables all messages and produces no output - the logger</span>
           </td>
         </tr>
         <tr id='L98'>
@@ -1005,7 +1005,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; prevind&#40;x, 1&#41; # invalid result</span>
+            <span class='code'>equivalent of /dev/null.</span>
           </td>
         </tr>
         <tr id='L99'>
@@ -1015,7 +1015,7 @@
           <td>
             
             
-            <span class='code'>0</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L100'>
@@ -1025,7 +1025,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>struct NullLogger &lt;: AbstractLogger; end</span>
           </td>
         </tr>
         <tr id='L101'>
@@ -1035,7 +1035,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; prevind&#40;x, CartesianIndex&#40;2, 2&#41;&#41; # valid result</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L102'>
@@ -1045,7 +1045,7 @@
           <td>
             
             
-            <span class='code'>CartesianIndex&#40;1, 2&#41;</span>
+            <span class='code'>min_enabled_level&#40;::NullLogger&#41; &#61; AboveMaxLevel</span>
           </td>
         </tr>
         <tr id='L103'>
@@ -1055,7 +1055,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>shouldlog&#40;::NullLogger, args...&#41; &#61; false</span>
           </td>
         </tr>
         <tr id='L104'>
@@ -1065,7 +1065,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; prevind&#40;x, CartesianIndex&#40;1, 1&#41;&#41; # invalid result</span>
+            <span class='code'>handle_message&#40;::NullLogger, args...; kwargs...&#41; &#61;</span>
           </td>
         </tr>
         <tr id='L105'>
@@ -1075,7 +1075,7 @@
           <td>
             
             
-            <span class='code'>CartesianIndex&#40;2, 0&#41;</span>
+            <span class='code'>    &#40;@nospecialize; error&#40;&quot;Null logger handle_message&#40;&#41; should not be called&quot;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L106'>
@@ -1085,7 +1085,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L107'>
@@ -1095,7 +1095,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L108'>
@@ -1105,7 +1105,7 @@
           <td>
             
             
-            <span class='code'>function prevind end</span>
+            <span class='code'>#-------------------------------------------------------------------------------</span>
           </td>
         </tr>
         <tr id='L109'>
@@ -1115,7 +1115,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># Standard log levels</span>
           </td>
         </tr>
         <tr id='L110'>
@@ -1135,7 +1135,7 @@
           <td>
             
             
-            <span class='code'>    nextind&#40;A, i&#41;</span>
+            <span class='code'>    LogLevel&#40;level&#41;</span>
           </td>
         </tr>
         <tr id='L112'>
@@ -1155,7 +1155,7 @@
           <td>
             
             
-            <span class='code'>Return the index after &#96;i&#96; in &#96;A&#96;. The returned index is often equivalent to</span>
+            <span class='code'>Severity/verbosity of a log record.</span>
           </td>
         </tr>
         <tr id='L114'>
@@ -1165,7 +1165,7 @@
           <td>
             
             
-            <span class='code'>&#96;i &#43; 1&#96; for an integer &#96;i&#96;. This function can be useful for generic code.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L115'>
@@ -1175,7 +1175,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>The log level provides a key against which potential log records may be</span>
           </td>
         </tr>
         <tr id='L116'>
@@ -1185,7 +1185,7 @@
           <td>
             
             
-            <span class='code'>&#33;&#33;&#33; warning</span>
+            <span class='code'>filtered, before any other work is done to construct the log record data</span>
           </td>
         </tr>
         <tr id='L117'>
@@ -1195,7 +1195,7 @@
           <td>
             
             
-            <span class='code'>    The returned index might be out of bounds. Consider using</span>
+            <span class='code'>structure itself.</span>
           </td>
         </tr>
         <tr id='L118'>
@@ -1205,7 +1205,7 @@
           <td>
             
             
-            <span class='code'>    &#91;&#96;checkbounds&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L119'>
@@ -1215,7 +1215,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># Examples</span>
           </td>
         </tr>
         <tr id='L120'>
@@ -1225,7 +1225,7 @@
           <td>
             
             
-            <span class='code'>See also: &#91;&#96;prevind&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'>&#96;&#96;&#96;julia-repl</span>
           </td>
         </tr>
         <tr id='L121'>
@@ -1235,7 +1235,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>julia&gt; Logging.LogLevel&#40;0&#41; &#61;&#61; Logging.Info</span>
           </td>
         </tr>
         <tr id='L122'>
@@ -1245,7 +1245,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>true</span>
           </td>
         </tr>
         <tr id='L123'>
@@ -1255,7 +1255,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>&#96;&#96;&#96;</span>
           </td>
         </tr>
         <tr id='L124'>
@@ -1265,7 +1265,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; x &#61; &#91;1 2; 3 4&#93;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L125'>
@@ -1275,7 +1275,7 @@
           <td>
             
             
-            <span class='code'>2×2 Matrix&#123;Int64&#125;:</span>
+            <span class='code'>struct LogLevel</span>
           </td>
         </tr>
         <tr id='L126'>
@@ -1285,7 +1285,7 @@
           <td>
             
             
-            <span class='code'> 1  2</span>
+            <span class='code'>    level::Int32</span>
           </td>
         </tr>
         <tr id='L127'>
@@ -1295,7 +1295,7 @@
           <td>
             
             
-            <span class='code'> 3  4</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L128'>
@@ -1315,7 +1315,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; nextind&#40;x, 1&#41; # valid result</span>
+            <span class='code'>LogLevel&#40;level::LogLevel&#41; &#61; level</span>
           </td>
         </tr>
         <tr id='L130'>
@@ -1325,7 +1325,7 @@
           <td>
             
             
-            <span class='code'>2</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L131'>
@@ -1335,7 +1335,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>isless&#40;a::LogLevel, b::LogLevel&#41; &#61; isless&#40;a.level, b.level&#41;</span>
           </td>
         </tr>
         <tr id='L132'>
@@ -1345,7 +1345,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; nextind&#40;x, 4&#41; # invalid result</span>
+            <span class='code'>&#43;&#40;level::LogLevel, inc::Integer&#41; &#61; LogLevel&#40;level.level&#43;inc&#41;</span>
           </td>
         </tr>
         <tr id='L133'>
@@ -1355,7 +1355,7 @@
           <td>
             
             
-            <span class='code'>5</span>
+            <span class='code'>-&#40;level::LogLevel, inc::Integer&#41; &#61; LogLevel&#40;level.level-inc&#41;</span>
           </td>
         </tr>
         <tr id='L134'>
@@ -1365,7 +1365,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>convert&#40;::Type&#123;LogLevel&#125;, level::Integer&#41; &#61; LogLevel&#40;level&#41;</span>
           </td>
         </tr>
         <tr id='L135'>
@@ -1375,7 +1375,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; nextind&#40;x, CartesianIndex&#40;1, 1&#41;&#41; # valid result</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L136'>
@@ -1385,7 +1385,7 @@
           <td>
             
             
-            <span class='code'>CartesianIndex&#40;2, 1&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L137'>
@@ -1395,7 +1395,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    BelowMinLevel</span>
           </td>
         </tr>
         <tr id='L138'>
@@ -1405,7 +1405,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; nextind&#40;x, CartesianIndex&#40;2, 2&#41;&#41; # invalid result</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L139'>
@@ -1415,7 +1415,7 @@
           <td>
             
             
-            <span class='code'>CartesianIndex&#40;1, 3&#41;</span>
+            <span class='code'>Alias for &#91;&#96;LogLevel&#40;-1_000_001&#41;&#96;&#93;&#40;@ref LogLevel&#41;.</span>
           </td>
         </tr>
         <tr id='L140'>
@@ -1425,7 +1425,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L141'>
@@ -1435,7 +1435,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>const BelowMinLevel &#61; LogLevel&#40;-1000001&#41;</span>
           </td>
         </tr>
         <tr id='L142'>
@@ -1445,7 +1445,7 @@
           <td>
             
             
-            <span class='code'>function nextind end</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L143'>
@@ -1455,7 +1455,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    Debug</span>
           </td>
         </tr>
         <tr id='L144'>
@@ -1465,7 +1465,7 @@
           <td>
             
             
-            <span class='code'>prevind&#40;@nospecialize&#40;t::Tuple&#41;, i::Integer&#41; &#61; Int&#40;i&#41;-1</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L145'>
@@ -1475,7 +1475,7 @@
           <td>
             
             
-            <span class='code'>nextind&#40;@nospecialize&#40;t::Tuple&#41;, i::Integer&#41; &#61; Int&#40;i&#41;&#43;1</span>
+            <span class='code'>Alias for &#91;&#96;LogLevel&#40;-1000&#41;&#96;&#93;&#40;@ref LogLevel&#41;.</span>
           </td>
         </tr>
         <tr id='L146'>
@@ -1485,7 +1485,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L147'>
@@ -1495,7 +1495,7 @@
           <td>
             
             
-            <span class='code'>function keys&#40;t::Tuple, t2::Tuple...&#41;</span>
+            <span class='code'>const Debug         &#61; LogLevel&#40;   -1000&#41;</span>
           </td>
         </tr>
         <tr id='L148'>
@@ -1505,7 +1505,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L149'>
@@ -1515,7 +1515,7 @@
           <td>
             
             
-            <span class='code'>    OneTo&#40;_maxlength&#40;t, t2...&#41;&#41;</span>
+            <span class='code'>    Info</span>
           </td>
         </tr>
         <tr id='L150'>
@@ -1525,7 +1525,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L151'>
@@ -1535,7 +1535,7 @@
           <td>
             
             
-            <span class='code'>_maxlength&#40;t::Tuple&#41; &#61; length&#40;t&#41;</span>
+            <span class='code'>Alias for &#91;&#96;LogLevel&#40;0&#41;&#96;&#93;&#40;@ref LogLevel&#41;.</span>
           </td>
         </tr>
         <tr id='L152'>
@@ -1545,7 +1545,7 @@
           <td>
             
             
-            <span class='code'>function _maxlength&#40;t::Tuple, t2::Tuple, t3::Tuple...&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L153'>
@@ -1555,7 +1555,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'>const Info          &#61; LogLevel&#40;       0&#41;</span>
           </td>
         </tr>
         <tr id='L154'>
@@ -1565,7 +1565,7 @@
           <td>
             
             
-            <span class='code'>    max&#40;length&#40;t&#41;, _maxlength&#40;t2, t3...&#41;&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L155'>
@@ -1575,7 +1575,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    Warn</span>
           </td>
         </tr>
         <tr id='L156'>
@@ -1595,7 +1595,7 @@
           <td>
             
             
-            <span class='code'># this allows partial evaluation of bounded sequences of next&#40;&#41; calls on tuples,</span>
+            <span class='code'>Alias for &#91;&#96;LogLevel&#40;1000&#41;&#96;&#93;&#40;@ref LogLevel&#41;.</span>
           </td>
         </tr>
         <tr id='L158'>
@@ -1605,7 +1605,7 @@
           <td>
             
             
-            <span class='code'># while reducing to plain next&#40;&#41; for arbitrary iterables.</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L159'>
@@ -1615,7 +1615,7 @@
           <td>
             
             
-            <span class='code'>indexed_iterate&#40;t::Tuple, i::Int, state&#61;1&#41; &#61; &#40;@inline; &#40;getfield&#40;t, i&#41;, i&#43;1&#41;&#41;</span>
+            <span class='code'>const Warn          &#61; LogLevel&#40;    1000&#41;</span>
           </td>
         </tr>
         <tr id='L160'>
@@ -1625,7 +1625,7 @@
           <td>
             
             
-            <span class='code'>indexed_iterate&#40;a::Array, i::Int, state&#61;1&#41; &#61; &#40;@inline; &#40;a&#91;i&#93;, i&#43;1&#41;&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L161'>
@@ -1635,7 +1635,7 @@
           <td>
             
             
-            <span class='code'>function indexed_iterate&#40;I, i&#41;</span>
+            <span class='code'>    Error</span>
           </td>
         </tr>
         <tr id='L162'>
@@ -1645,7 +1645,7 @@
           <td>
             
             
-            <span class='code'>    x &#61; iterate&#40;I&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L163'>
@@ -1655,7 +1655,7 @@
           <td>
             
             
-            <span class='code'>    x &#61;&#61;&#61; nothing &amp;&amp; throw&#40;BoundsError&#40;I, i&#41;&#41;</span>
+            <span class='code'>Alias for &#91;&#96;LogLevel&#40;2000&#41;&#96;&#93;&#40;@ref LogLevel&#41;.</span>
           </td>
         </tr>
         <tr id='L164'>
@@ -1665,7 +1665,7 @@
           <td>
             
             
-            <span class='code'>    x</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L165'>
@@ -1675,7 +1675,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>const Error         &#61; LogLevel&#40;    2000&#41;</span>
           </td>
         </tr>
         <tr id='L166'>
@@ -1685,7 +1685,7 @@
           <td>
             
             
-            <span class='code'>function indexed_iterate&#40;I, i, state&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L167'>
@@ -1695,7 +1695,7 @@
           <td>
             
             
-            <span class='code'>    x &#61; iterate&#40;I, state&#41;</span>
+            <span class='code'>    AboveMaxLevel</span>
           </td>
         </tr>
         <tr id='L168'>
@@ -1705,7 +1705,7 @@
           <td>
             
             
-            <span class='code'>    x &#61;&#61;&#61; nothing &amp;&amp; throw&#40;BoundsError&#40;I, i&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L169'>
@@ -1715,7 +1715,7 @@
           <td>
             
             
-            <span class='code'>    x</span>
+            <span class='code'>Alias for &#91;&#96;LogLevel&#40;1_000_001&#41;&#96;&#93;&#40;@ref LogLevel&#41;.</span>
           </td>
         </tr>
         <tr id='L170'>
@@ -1725,7 +1725,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L171'>
@@ -1735,7 +1735,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>const AboveMaxLevel &#61; LogLevel&#40; 1000001&#41;</span>
           </td>
         </tr>
         <tr id='L172'>
@@ -1745,7 +1745,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L173'>
@@ -1755,7 +1755,7 @@
           <td>
             
             
-            <span class='code'>    Base.rest&#40;collection&#91;, itr_state&#93;&#41;</span>
+            <span class='code'># Global log limiting mechanism for super fast but inflexible global log limiting.</span>
           </td>
         </tr>
         <tr id='L174'>
@@ -1765,7 +1765,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>const _min_enabled_level &#61; Ref&#123;LogLevel&#125;&#40;Debug&#41;</span>
           </td>
         </tr>
         <tr id='L175'>
@@ -1775,7 +1775,7 @@
           <td>
             
             
-            <span class='code'>Generic function for taking the tail of &#96;collection&#96;, starting from a specific iteration</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L176'>
@@ -1785,7 +1785,7 @@
           <td>
             
             
-            <span class='code'>state &#96;itr_state&#96;. Return a &#96;Tuple&#96;, if &#96;collection&#96; itself is a &#96;Tuple&#96;, a subtype of</span>
+            <span class='code'>function show&#40;io::IO, level::LogLevel&#41;</span>
           </td>
         </tr>
         <tr id='L177'>
@@ -1795,7 +1795,7 @@
           <td>
             
             
-            <span class='code'>&#96;AbstractVector&#96;, if &#96;collection&#96; is an &#96;AbstractArray&#96;, a subtype of &#96;AbstractString&#96;</span>
+            <span class='code'>    if     level &#61;&#61; BelowMinLevel  print&#40;io, &quot;BelowMinLevel&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L178'>
@@ -1805,7 +1805,7 @@
           <td>
             
             
-            <span class='code'>if &#96;collection&#96; is an &#96;AbstractString&#96;, and an arbitrary iterator, falling back to</span>
+            <span class='code'>    elseif level &#61;&#61; Debug          print&#40;io, &quot;Debug&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L179'>
@@ -1815,7 +1815,7 @@
           <td>
             
             
-            <span class='code'>&#96;Iterators.rest&#40;collection&#91;, itr_state&#93;&#41;&#96;, otherwise.</span>
+            <span class='code'>    elseif level &#61;&#61; Info           print&#40;io, &quot;Info&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L180'>
@@ -1825,7 +1825,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    elseif level &#61;&#61; Warn           print&#40;io, &quot;Warn&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L181'>
@@ -1835,7 +1835,7 @@
           <td>
             
             
-            <span class='code'>Can be overloaded for user-defined collection types to customize the behavior of &#91;slurping</span>
+            <span class='code'>    elseif level &#61;&#61; Error          print&#40;io, &quot;Error&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L182'>
@@ -1845,7 +1845,7 @@
           <td>
             
             
-            <span class='code'>in assignments&#93;&#40;@ref destructuring-assignment&#41; in final position, like &#96;a, b... &#61; collection&#96;.</span>
+            <span class='code'>    elseif level &#61;&#61; AboveMaxLevel  print&#40;io, &quot;AboveMaxLevel&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L183'>
@@ -1855,7 +1855,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    else                           print&#40;io, &quot;LogLevel&#40;&#36;&#40;level.level&#41;&#41;&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L184'>
@@ -1865,7 +1865,7 @@
           <td>
             
             
-            <span class='code'>&#33;&#33;&#33; compat &quot;Julia 1.6&quot;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L185'>
@@ -1875,7 +1875,7 @@
           <td>
             
             
-            <span class='code'>    &#96;Base.rest&#96; requires at least Julia 1.6.</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L186'>
@@ -1895,7 +1895,7 @@
           <td>
             
             
-            <span class='code'>See also: &#91;&#96;first&#96;&#93;&#40;@ref first&#41;, &#91;&#96;Iterators.rest&#96;&#93;&#40;@ref&#41;, &#91;&#96;Base.split_rest&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L188'>
@@ -1905,7 +1905,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>#-------------------------------------------------------------------------------</span>
           </td>
         </tr>
         <tr id='L189'>
@@ -1915,7 +1915,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'># Logging macros</span>
           </td>
         </tr>
         <tr id='L190'>
@@ -1925,7 +1925,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L191'>
@@ -1935,7 +1935,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; a &#61; &#91;1 2; 3 4&#93;</span>
+            <span class='code'>_logmsg_docs &#61; &quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L192'>
@@ -1945,7 +1945,7 @@
           <td>
             
             
-            <span class='code'>2×2 Matrix&#123;Int64&#125;:</span>
+            <span class='code'>    @debug message  &#91;key&#61;value | value ...&#93;</span>
           </td>
         </tr>
         <tr id='L193'>
@@ -1955,7 +1955,7 @@
           <td>
             
             
-            <span class='code'> 1  2</span>
+            <span class='code'>    @info  message  &#91;key&#61;value | value ...&#93;</span>
           </td>
         </tr>
         <tr id='L194'>
@@ -1965,7 +1965,7 @@
           <td>
             
             
-            <span class='code'> 3  4</span>
+            <span class='code'>    @warn  message  &#91;key&#61;value | value ...&#93;</span>
           </td>
         </tr>
         <tr id='L195'>
@@ -1975,7 +1975,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    @error message  &#91;key&#61;value | value ...&#93;</span>
           </td>
         </tr>
         <tr id='L196'>
@@ -1985,7 +1985,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; first, state &#61; iterate&#40;a&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L197'>
@@ -1995,7 +1995,7 @@
           <td>
             
             
-            <span class='code'>&#40;1, 2&#41;</span>
+            <span class='code'>    @logmsg level message &#91;key&#61;value | value ...&#93;</span>
           </td>
         </tr>
         <tr id='L198'>
@@ -2015,7 +2015,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; first, Base.rest&#40;a, state&#41;</span>
+            <span class='code'>Create a log record with an informational &#96;message&#96;.  For convenience, four</span>
           </td>
         </tr>
         <tr id='L200'>
@@ -2025,7 +2025,7 @@
           <td>
             
             
-            <span class='code'>&#40;1, &#91;3, 2, 4&#93;&#41;</span>
+            <span class='code'>logging macros &#96;@debug&#96;, &#96;@info&#96;, &#96;@warn&#96; and &#96;@error&#96; are defined which log at</span>
           </td>
         </tr>
         <tr id='L201'>
@@ -2035,7 +2035,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>the standard severity levels &#96;Debug&#96;, &#96;Info&#96;, &#96;Warn&#96; and &#96;Error&#96;.  &#96;@logmsg&#96;</span>
           </td>
         </tr>
         <tr id='L202'>
@@ -2045,7 +2045,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>allows &#96;level&#96; to be set programmatically to any &#96;LogLevel&#96; or custom log level</span>
           </td>
         </tr>
         <tr id='L203'>
@@ -2055,7 +2055,7 @@
           <td>
             
             
-            <span class='code'>function rest end</span>
+            <span class='code'>types.</span>
           </td>
         </tr>
         <tr id='L204'>
@@ -2065,7 +2065,7 @@
           <td>
             
             
-            <span class='code'>rest&#40;t::Tuple&#41; &#61; t</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L205'>
@@ -2075,7 +2075,7 @@
           <td>
             
             
-            <span class='code'>rest&#40;t::Tuple, i::Int&#41; &#61; ntuple&#40;x -&gt; getfield&#40;t, x&#43;i-1&#41;, length&#40;t&#41;-i&#43;1&#41;</span>
+            <span class='code'>&#96;message&#96; should be an expression which evaluates to a string which is a human</span>
           </td>
         </tr>
         <tr id='L206'>
@@ -2085,7 +2085,7 @@
           <td>
             
             
-            <span class='code'>rest&#40;a::Array, i::Int&#61;1&#41; &#61; a&#91;i:end&#93;</span>
+            <span class='code'>readable description of the log event.  By convention, this string will be</span>
           </td>
         </tr>
         <tr id='L207'>
@@ -2095,7 +2095,7 @@
           <td>
             
             
-            <span class='code'>rest&#40;a::Core.SimpleVector, i::Int&#61;1&#41; &#61; a&#91;i:end&#93;</span>
+            <span class='code'>formatted as markdown when presented.</span>
           </td>
         </tr>
         <tr id='L208'>
@@ -2105,7 +2105,7 @@
           <td>
             
             
-            <span class='code'>rest&#40;itr, state...&#41; &#61; Iterators.rest&#40;itr, state...&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L209'>
@@ -2115,7 +2115,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>The optional list of &#96;key&#61;value&#96; pairs supports arbitrary user defined</span>
           </td>
         </tr>
         <tr id='L210'>
@@ -2125,7 +2125,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>metadata which will be passed through to the logging backend as part of the</span>
           </td>
         </tr>
         <tr id='L211'>
@@ -2135,7 +2135,7 @@
           <td>
             
             
-            <span class='code'>    Base.split_rest&#40;collection, n::Int&#91;, itr_state&#93;&#41; -&gt; &#40;rest_but_n, last_n&#41;</span>
+            <span class='code'>log record.  If only a &#96;value&#96; expression is supplied, a key representing the</span>
           </td>
         </tr>
         <tr id='L212'>
@@ -2145,7 +2145,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>expression will be generated using &#91;&#96;Symbol&#96;&#93;&#40;@ref&#41;. For example, &#96;x&#96; becomes &#96;x&#61;x&#96;,</span>
           </td>
         </tr>
         <tr id='L213'>
@@ -2155,7 +2155,7 @@
           <td>
             
             
-            <span class='code'>Generic function for splitting the tail of &#96;collection&#96;, starting from a specific iteration</span>
+            <span class='code'>and &#96;foo&#40;10&#41;&#96; becomes &#96;Symbol&#40;&quot;foo&#40;10&#41;&quot;&#41;&#61;foo&#40;10&#41;&#96;.  For splatting a list of</span>
           </td>
         </tr>
         <tr id='L214'>
@@ -2165,7 +2165,7 @@
           <td>
             
             
-            <span class='code'>state &#96;itr_state&#96;. Returns a tuple of two new collections. The first one contains all</span>
+            <span class='code'>key value pairs, use the normal splatting syntax, &#96;@info &quot;blah&quot; kws...&#96;.</span>
           </td>
         </tr>
         <tr id='L215'>
@@ -2175,7 +2175,7 @@
           <td>
             
             
-            <span class='code'>elements of the tail but the &#96;n&#96; last ones, which make up the second collection.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L216'>
@@ -2185,7 +2185,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>There are some keys which allow automatically generated log data to be</span>
           </td>
         </tr>
         <tr id='L217'>
@@ -2195,7 +2195,7 @@
           <td>
             
             
-            <span class='code'>The type of the first collection generally follows that of &#91;&#96;Base.rest&#96;&#93;&#40;@ref&#41;, except that</span>
+            <span class='code'>overridden:</span>
           </td>
         </tr>
         <tr id='L218'>
@@ -2205,7 +2205,7 @@
           <td>
             
             
-            <span class='code'>the fallback case is not lazy, but is collected eagerly into a vector.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L219'>
@@ -2215,7 +2215,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>  * &#96;_module&#61;mod&#96; can be used to specify a different originating module from</span>
           </td>
         </tr>
         <tr id='L220'>
@@ -2225,7 +2225,7 @@
           <td>
             
             
-            <span class='code'>Can be overloaded for user-defined collection types to customize the behavior of &#91;slurping</span>
+            <span class='code'>    the source location of the message.</span>
           </td>
         </tr>
         <tr id='L221'>
@@ -2235,7 +2235,7 @@
           <td>
             
             
-            <span class='code'>in assignments&#93;&#40;@ref destructuring-assignment&#41; in non-final position, like &#96;a, b..., c &#61; collection&#96;.</span>
+            <span class='code'>  * &#96;_group&#61;symbol&#96; can be used to override the message group &#40;this is</span>
           </td>
         </tr>
         <tr id='L222'>
@@ -2245,7 +2245,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    normally derived from the base name of the source file&#41;.</span>
           </td>
         </tr>
         <tr id='L223'>
@@ -2255,7 +2255,7 @@
           <td>
             
             
-            <span class='code'>&#33;&#33;&#33; compat &quot;Julia 1.9&quot;</span>
+            <span class='code'>  * &#96;_id&#61;symbol&#96; can be used to override the automatically generated unique</span>
           </td>
         </tr>
         <tr id='L224'>
@@ -2265,7 +2265,7 @@
           <td>
             
             
-            <span class='code'>    &#96;Base.split_rest&#96; requires at least Julia 1.9.</span>
+            <span class='code'>    message identifier.  This is useful if you need to very closely associate</span>
           </td>
         </tr>
         <tr id='L225'>
@@ -2275,7 +2275,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    messages generated on different source lines.</span>
           </td>
         </tr>
         <tr id='L226'>
@@ -2285,7 +2285,7 @@
           <td>
             
             
-            <span class='code'>See also: &#91;&#96;Base.rest&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'>  * &#96;_file&#61;string&#96; and &#96;_line&#61;integer&#96; can be used to override the apparent</span>
           </td>
         </tr>
         <tr id='L227'>
@@ -2295,7 +2295,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    source location of a log message.</span>
           </td>
         </tr>
         <tr id='L228'>
@@ -2305,7 +2305,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L229'>
@@ -2315,7 +2315,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>There&#39;s also some key value pairs which have conventional meaning:</span>
           </td>
         </tr>
         <tr id='L230'>
@@ -2325,7 +2325,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; a &#61; &#91;1 2; 3 4&#93;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L231'>
@@ -2335,7 +2335,7 @@
           <td>
             
             
-            <span class='code'>2×2 Matrix&#123;Int64&#125;:</span>
+            <span class='code'>  * &#96;maxlog&#61;integer&#96; should be used as a hint to the backend that the message</span>
           </td>
         </tr>
         <tr id='L232'>
@@ -2345,7 +2345,7 @@
           <td>
             
             
-            <span class='code'> 1  2</span>
+            <span class='code'>    should be displayed no more than &#96;maxlog&#96; times.</span>
           </td>
         </tr>
         <tr id='L233'>
@@ -2355,7 +2355,7 @@
           <td>
             
             
-            <span class='code'> 3  4</span>
+            <span class='code'>  * &#96;exception&#61;ex&#96; should be used to transport an exception with a log message,</span>
           </td>
         </tr>
         <tr id='L234'>
@@ -2365,7 +2365,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    often used with &#96;@error&#96;. An associated backtrace &#96;bt&#96; may be attached</span>
           </td>
         </tr>
         <tr id='L235'>
@@ -2375,7 +2375,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; first, state &#61; iterate&#40;a&#41;</span>
+            <span class='code'>    using the tuple &#96;exception&#61;&#40;ex,bt&#41;&#96;.</span>
           </td>
         </tr>
         <tr id='L236'>
@@ -2385,7 +2385,7 @@
           <td>
             
             
-            <span class='code'>&#40;1, 2&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L237'>
@@ -2395,7 +2395,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># Examples</span>
           </td>
         </tr>
         <tr id='L238'>
@@ -2405,7 +2405,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; first, Base.split_rest&#40;a, 1, state&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L239'>
@@ -2415,7 +2415,7 @@
           <td>
             
             
-            <span class='code'>&#40;1, &#40;&#91;3, 2&#93;, &#91;4&#93;&#41;&#41;</span>
+            <span class='code'>&#96;&#96;&#96;julia</span>
           </td>
         </tr>
         <tr id='L240'>
@@ -2425,7 +2425,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>@debug &quot;Verbose debugging information.  Invisible by default&quot;</span>
           </td>
         </tr>
         <tr id='L241'>
@@ -2435,7 +2435,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>@info  &quot;An informational message&quot;</span>
           </td>
         </tr>
         <tr id='L242'>
@@ -2445,7 +2445,7 @@
           <td>
             
             
-            <span class='code'>function split_rest end</span>
+            <span class='code'>@warn  &quot;Something was odd.  You should pay attention&quot;</span>
           </td>
         </tr>
         <tr id='L243'>
@@ -2455,7 +2455,7 @@
           <td>
             
             
-            <span class='code'>function split_rest&#40;itr, n::Int, state...&#41;</span>
+            <span class='code'>@error &quot;A non fatal error occurred&quot;</span>
           </td>
         </tr>
         <tr id='L244'>
@@ -2465,7 +2465,7 @@
           <td>
             
             
-            <span class='code'>    if IteratorSize&#40;itr&#41; &#61;&#61; IsInfinite&#40;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L245'>
@@ -2475,7 +2475,7 @@
           <td>
             
             
-            <span class='code'>        throw&#40;ArgumentError&#40;&quot;Cannot split an infinite iterator in the middle.&quot;&#41;&#41;</span>
+            <span class='code'>x &#61; 10</span>
           </td>
         </tr>
         <tr id='L246'>
@@ -2485,7 +2485,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>@info &quot;Some variables attached to the message&quot; x a&#61;42.0</span>
           </td>
         </tr>
         <tr id='L247'>
@@ -2495,7 +2495,7 @@
           <td>
             
             
-            <span class='code'>    return _split_rest&#40;rest&#40;itr, state...&#41;, n&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L248'>
@@ -2505,7 +2505,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>@debug begin</span>
           </td>
         </tr>
         <tr id='L249'>
@@ -2515,7 +2515,7 @@
           <td>
             
             
-            <span class='code'>_split_rest&#40;itr, n::Int&#41; &#61; _split_rest&#40;collect&#40;itr&#41;, n&#41;</span>
+            <span class='code'>    sA &#61; sum&#40;A&#41;</span>
           </td>
         </tr>
         <tr id='L250'>
@@ -2525,7 +2525,7 @@
           <td>
             
             
-            <span class='code'>function _check_length_split_rest&#40;len, n&#41;</span>
+            <span class='code'>    &quot;sum&#40;A&#41; &#61; \&#36;sA is an expensive operation, evaluated only when &#96;shouldlog&#96; returns true&quot;</span>
           </td>
         </tr>
         <tr id='L251'>
@@ -2535,7 +2535,7 @@
           <td>
             
             
-            <span class='code'>    len &lt; n &amp;&amp; throw&#40;ArgumentError&#40;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L252'>
@@ -2545,7 +2545,7 @@
           <td>
             
             
-            <span class='code'>        &quot;The iterator only contains &#36;len elements, but at least &#36;n were requested.&quot;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L253'>
@@ -2555,7 +2555,7 @@
           <td>
             
             
-            <span class='code'>    &#41;&#41;</span>
+            <span class='code'>for i&#61;1:10000</span>
           </td>
         </tr>
         <tr id='L254'>
@@ -2565,7 +2565,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    @info &quot;With the default backend, you will only see &#40;i &#61; \&#36;i&#41; ten times&quot;  maxlog&#61;10</span>
           </td>
         </tr>
         <tr id='L255'>
@@ -2575,7 +2575,7 @@
           <td>
             
             
-            <span class='code'>function _split_rest&#40;a::Union&#123;AbstractArray, Core.SimpleVector&#125;, n::Int&#41;</span>
+            <span class='code'>    @debug &quot;Algorithm1&quot; i progress&#61;i/10000</span>
           </td>
         </tr>
         <tr id='L256'>
@@ -2585,7 +2585,7 @@
           <td>
             
             
-            <span class='code'>    _check_length_split_rest&#40;length&#40;a&#41;, n&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L257'>
@@ -2595,7 +2595,7 @@
           <td>
             
             
-            <span class='code'>    return a&#91;begin:end-n&#93;, a&#91;end-n&#43;1:end&#93;</span>
+            <span class='code'>&#96;&#96;&#96;</span>
           </td>
         </tr>
         <tr id='L258'>
@@ -2605,7 +2605,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L259'>
@@ -2625,7 +2625,7 @@
           <td>
             
             
-            <span class='code'>@eval split_rest&#40;t::Tuple, n::Int, i&#61;1&#41; &#61; &#40;&#36;&#40;Expr&#40;:meta, :aggressive_constprop&#41;&#41;; &#40;t&#91;i:end-n&#93;, t&#91;end-n&#43;1:end&#93;&#41;&#41;</span>
+            <span class='code'># Get &#40;module,filepath,line&#41; for the location of the caller of a macro.</span>
           </td>
         </tr>
         <tr id='L261'>
@@ -2635,7 +2635,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># Designed to be used from within the body of a macro.</span>
           </td>
         </tr>
         <tr id='L262'>
@@ -2645,7 +2645,7 @@
           <td>
             
             
-            <span class='code'># Use dispatch to avoid a branch in first</span>
+            <span class='code'>macro _sourceinfo&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L263'>
@@ -2655,7 +2655,7 @@
           <td>
             
             
-            <span class='code'>first&#40;::Tuple&#123;&#125;&#41; &#61; throw&#40;ArgumentError&#40;&quot;tuple must be non-empty&quot;&#41;&#41;</span>
+            <span class='code'>    esc&#40;quote</span>
           </td>
         </tr>
         <tr id='L264'>
@@ -2665,7 +2665,7 @@
           <td>
             
             
-            <span class='code'>first&#40;t::Tuple&#41; &#61; t&#91;1&#93;</span>
+            <span class='code'>        &#40;__module__,</span>
           </td>
         </tr>
         <tr id='L265'>
@@ -2675,7 +2675,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>         __source__.file &#61;&#61;&#61; nothing ? &quot;?&quot; : String&#40;__source__.file::Symbol&#41;,</span>
           </td>
         </tr>
         <tr id='L266'>
@@ -2685,7 +2685,7 @@
           <td>
             
             
-            <span class='code'># eltype</span>
+            <span class='code'>         __source__.line&#41;</span>
           </td>
         </tr>
         <tr id='L267'>
@@ -2695,7 +2695,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end&#41;</span>
           </td>
         </tr>
         <tr id='L268'>
@@ -2705,7 +2705,7 @@
           <td>
             
             
-            <span class='code'>eltype&#40;::Type&#123;Tuple&#123;&#125;&#125;&#41; &#61; Bottom</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L269'>
@@ -2715,7 +2715,7 @@
           <td>
             
             
-            <span class='code'># the &lt;: here makes the runtime a bit more complicated &#40;needing to check isdefined&#41;, but really helps inference</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L270'>
@@ -2725,7 +2725,7 @@
           <td>
             
             
-            <span class='code'>eltype&#40;t::Type&#123;&lt;:Tuple&#123;Vararg&#123;E&#125;&#125;&#125;&#41; where &#123;E&#125; &#61; @isdefined&#40;E&#41; ? &#40;E isa Type ? E : Union&#123;&#125;&#41; : _compute_eltype&#40;t&#41;</span>
+            <span class='code'>macro logmsg&#40;level, exs...&#41; logmsg_code&#40;&#40;@_sourceinfo&#41;..., esc&#40;level&#41;, exs...&#41; end</span>
           </td>
         </tr>
         <tr id='L271'>
@@ -2735,7 +2735,7 @@
           <td>
             
             
-            <span class='code'>eltype&#40;t::Type&#123;&lt;:Tuple&#125;&#41; &#61; _compute_eltype&#40;t&#41;</span>
+            <span class='code'>macro debug&#40;exs...&#41; logmsg_code&#40;&#40;@_sourceinfo&#41;..., :Debug, exs...&#41; end</span>
           </td>
         </tr>
         <tr id='L272'>
@@ -2745,7 +2745,7 @@
           <td>
             
             
-            <span class='code'>function _compute_eltype&#40;@nospecialize t&#41;</span>
+            <span class='code'>macro  info&#40;exs...&#41; logmsg_code&#40;&#40;@_sourceinfo&#41;..., :Info,  exs...&#41; end</span>
           </td>
         </tr>
         <tr id='L273'>
@@ -2755,7 +2755,7 @@
           <td>
             
             
-            <span class='code'>    @_total_meta</span>
+            <span class='code'>macro  warn&#40;exs...&#41; logmsg_code&#40;&#40;@_sourceinfo&#41;..., :Warn,  exs...&#41; end</span>
           </td>
         </tr>
         <tr id='L274'>
@@ -2765,7 +2765,7 @@
           <td>
             
             
-            <span class='code'>    has_free_typevars&#40;t&#41; &amp;&amp; return Any</span>
+            <span class='code'>macro error&#40;exs...&#41; logmsg_code&#40;&#40;@_sourceinfo&#41;..., :Error, exs...&#41; end</span>
           </td>
         </tr>
         <tr id='L275'>
@@ -2775,7 +2775,7 @@
           <td>
             
             
-            <span class='code'>    t´ &#61; unwrap_unionall&#40;t&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L276'>
@@ -2785,7 +2785,7 @@
           <td>
             
             
-            <span class='code'>    # Given t &#61; Tuple&#123;Vararg&#123;S&#125;&#125; where S&lt;:Real, the various</span>
+            <span class='code'># Logging macros share documentation</span>
           </td>
         </tr>
         <tr id='L277'>
@@ -2795,7 +2795,7 @@
           <td>
             
             
-            <span class='code'>    # unwrapping/wrapping/va-handling here will return Real</span>
+            <span class='code'>@eval @doc &#36;_logmsg_docs :&#40;@logmsg&#41;</span>
           </td>
         </tr>
         <tr id='L278'>
@@ -2805,7 +2805,7 @@
           <td>
             
             
-            <span class='code'>    if t´ isa Union</span>
+            <span class='code'>@eval @doc &#36;_logmsg_docs :&#40;@debug&#41;</span>
           </td>
         </tr>
         <tr id='L279'>
@@ -2815,7 +2815,7 @@
           <td>
             
             
-            <span class='code'>        return promote_typejoin&#40;_compute_eltype&#40;rewrap_unionall&#40;t´.a, t&#41;&#41;,</span>
+            <span class='code'>@eval @doc &#36;_logmsg_docs :&#40;@info&#41;</span>
           </td>
         </tr>
         <tr id='L280'>
@@ -2825,7 +2825,7 @@
           <td>
             
             
-            <span class='code'>                                _compute_eltype&#40;rewrap_unionall&#40;t´.b, t&#41;&#41;&#41;</span>
+            <span class='code'>@eval @doc &#36;_logmsg_docs :&#40;@warn&#41;</span>
           </td>
         </tr>
         <tr id='L281'>
@@ -2835,7 +2835,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>@eval @doc &#36;_logmsg_docs :&#40;@error&#41;</span>
           </td>
         </tr>
         <tr id='L282'>
@@ -2845,7 +2845,7 @@
           <td>
             
             
-            <span class='code'>    p &#61; &#40;t´::DataType&#41;.parameters</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L283'>
@@ -2855,7 +2855,7 @@
           <td>
             
             
-            <span class='code'>    length&#40;p&#41; &#61;&#61; 0 &amp;&amp; return Union&#123;&#125;</span>
+            <span class='code'>_log_record_ids &#61; Set&#123;Symbol&#125;&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L284'>
@@ -2865,7 +2865,7 @@
           <td>
             
             
-            <span class='code'>    elt &#61; rewrap_unionall&#40;unwrapva&#40;p&#91;1&#93;&#41;, t&#41;</span>
+            <span class='code'># Generate a unique, stable, short, somewhat human readable identifier for a</span>
           </td>
         </tr>
         <tr id='L285'>
@@ -2875,7 +2875,7 @@
           <td>
             
             
-            <span class='code'>    elt isa Type || return Union&#123;&#125; # Tuple&#123;2&#125; is legal as a Type, but the eltype is Union&#123;&#125; since it is uninhabited</span>
+            <span class='code'># logging *statement*. The idea here is to have a key against which log events</span>
           </td>
         </tr>
         <tr id='L286'>
@@ -2885,7 +2885,7 @@
           <td>
             
             
-            <span class='code'>    r &#61; elt</span>
+            <span class='code'># can be filtered and otherwise manipulated. The key should uniquely identify</span>
           </td>
         </tr>
         <tr id='L287'>
@@ -2895,7 +2895,7 @@
           <td>
             
             
-            <span class='code'>    for i in 2:length&#40;p&#41;</span>
+            <span class='code'># the source location in the originating module, but ideally should be stable</span>
           </td>
         </tr>
         <tr id='L288'>
@@ -2905,7 +2905,7 @@
           <td>
             
             
-            <span class='code'>        r &#61;&#61;&#61; Any &amp;&amp; return r # if we&#39;ve already reached Any, it can&#39;t widen any more</span>
+            <span class='code'># across versions of the originating module, provided the log generating</span>
           </td>
         </tr>
         <tr id='L289'>
@@ -2915,7 +2915,7 @@
           <td>
             
             
-            <span class='code'>        elt &#61; rewrap_unionall&#40;unwrapva&#40;p&#91;i&#93;&#41;, t&#41;</span>
+            <span class='code'># statement itself doesn&#39;t change.</span>
           </td>
         </tr>
         <tr id='L290'>
@@ -2925,7 +2925,7 @@
           <td>
             
             
-            <span class='code'>        elt isa Type || return Union&#123;&#125; # Tuple&#123;2&#125; is legal as a Type, but the eltype is Union&#123;&#125; since it is uninhabited</span>
+            <span class='code'>function log_record_id&#40;_module, level, message, log_kws&#41;</span>
           </td>
         </tr>
         <tr id='L291'>
@@ -2935,7 +2935,7 @@
           <td>
             
             
-            <span class='code'>        r &#61; promote_typejoin&#40;elt, r&#41;</span>
+            <span class='code'>    @nospecialize</span>
           </td>
         </tr>
         <tr id='L292'>
@@ -2945,7 +2945,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>    modname &#61; _module &#61;&#61;&#61; nothing ?  &quot;&quot; : join&#40;fullname&#40;_module&#41;, &quot;_&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L293'>
@@ -2955,7 +2955,7 @@
           <td>
             
             
-            <span class='code'>    return r</span>
+            <span class='code'>    # Use an arbitrarily chosen eight hex digits here. TODO: Figure out how to</span>
           </td>
         </tr>
         <tr id='L294'>
@@ -2965,7 +2965,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    # make the id exactly the same on 32 and 64 bit systems.</span>
           </td>
         </tr>
         <tr id='L295'>
@@ -2975,7 +2975,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    h &#61; UInt32&#40;hash&#40;string&#40;modname, level, message, log_kws&#41;::String&#41; &amp; 0xFFFFFFFF&#41;</span>
           </td>
         </tr>
         <tr id='L296'>
@@ -2985,7 +2985,7 @@
           <td>
             
             
-            <span class='code'># We&#39;d like to be able to infer eltype&#40;::Tuple&#41;, which needs to be able to</span>
+            <span class='code'>    while true</span>
           </td>
         </tr>
         <tr id='L297'>
@@ -2995,7 +2995,7 @@
           <td>
             
             
-            <span class='code'># look at these four methods:</span>
+            <span class='code'>        id &#61; Symbol&#40;modname, &#39;_&#39;, string&#40;h, base &#61; 16, pad &#61; 8&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L298'>
@@ -3005,7 +3005,7 @@
           <td>
             
             
-            <span class='code'>#</span>
+            <span class='code'>        # _log_record_ids is a registry of log record ids for use during</span>
           </td>
         </tr>
         <tr id='L299'>
@@ -3015,7 +3015,7 @@
           <td>
             
             
-            <span class='code'># julia&gt; methods&#40;Base.eltype, Tuple&#123;Type&#123;&lt;:Tuple&#125;&#125;&#41;</span>
+            <span class='code'>        # compilation, to ensure uniqueness of ids.  Note that this state will</span>
           </td>
         </tr>
         <tr id='L300'>
@@ -3025,7 +3025,7 @@
           <td>
             
             
-            <span class='code'># 4 methods for generic function &quot;eltype&quot; from Base:</span>
+            <span class='code'>        # only persist during module compilation so it will be empty when a</span>
           </td>
         </tr>
         <tr id='L301'>
@@ -3035,7 +3035,7 @@
           <td>
             
             
-            <span class='code'># &#91;1&#93; eltype&#40;::Type&#123;Union&#123;&#125;&#125;&#41;</span>
+            <span class='code'>        # precompiled module is loaded.</span>
           </td>
         </tr>
         <tr id='L302'>
@@ -3045,7 +3045,7 @@
           <td>
             
             
-            <span class='code'>#  @ abstractarray.jl:234</span>
+            <span class='code'>        if &#33;&#40;id in _log_record_ids&#41;</span>
           </td>
         </tr>
         <tr id='L303'>
@@ -3055,7 +3055,7 @@
           <td>
             
             
-            <span class='code'># &#91;2&#93; eltype&#40;::Type&#123;Tuple&#123;&#125;&#125;&#41;</span>
+            <span class='code'>            push&#33;&#40;_log_record_ids, id&#41;</span>
           </td>
         </tr>
         <tr id='L304'>
@@ -3065,7 +3065,7 @@
           <td>
             
             
-            <span class='code'>#  @ tuple.jl:199</span>
+            <span class='code'>            return id</span>
           </td>
         </tr>
         <tr id='L305'>
@@ -3075,7 +3075,7 @@
           <td>
             
             
-            <span class='code'># &#91;3&#93; eltype&#40;t::Type&#123;&lt;:Tuple&#123;Vararg&#123;E&#125;&#125;&#125;&#41; where E</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L306'>
@@ -3085,7 +3085,7 @@
           <td>
             
             
-            <span class='code'>#  @ tuple.jl:200</span>
+            <span class='code'>        h &#43;&#61; 1</span>
           </td>
         </tr>
         <tr id='L307'>
@@ -3095,7 +3095,7 @@
           <td>
             
             
-            <span class='code'># &#91;4&#93; eltype&#40;t::Type&#123;&lt;:Tuple&#125;&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L308'>
@@ -3105,7 +3105,7 @@
           <td>
             
             
-            <span class='code'>#  @ tuple.jl:209</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L309'>
@@ -3115,7 +3115,7 @@
           <td>
             
             
-            <span class='code'>typeof&#40;function eltype end&#41;.name.max_methods &#61; UInt8&#40;4&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L310'>
@@ -3125,7 +3125,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>default_group&#40;file&#41; &#61; Symbol&#40;splitext&#40;basename&#40;file&#41;&#41;&#91;1&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L311'>
@@ -3135,7 +3135,7 @@
           <td>
             
             
-            <span class='code'># key/val types</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L312'>
@@ -3145,7 +3145,7 @@
           <td>
             
             
-            <span class='code'>keytype&#40;@nospecialize t::Tuple&#41; &#61; keytype&#40;typeof&#40;t&#41;&#41;</span>
+            <span class='code'>function issimple&#40;@nospecialize val&#41;</span>
           </td>
         </tr>
         <tr id='L313'>
@@ -3155,7 +3155,7 @@
           <td>
             
             
-            <span class='code'>keytype&#40;@nospecialize T::Type&#123;&lt;:Tuple&#125;&#41; &#61; Int</span>
+            <span class='code'>    val isa String &amp;&amp; return true</span>
           </td>
         </tr>
         <tr id='L314'>
@@ -3165,7 +3165,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    val isa Symbol &amp;&amp; return true</span>
           </td>
         </tr>
         <tr id='L315'>
@@ -3175,7 +3175,7 @@
           <td>
             
             
-            <span class='code'>valtype&#40;@nospecialize t::Tuple&#41; &#61; valtype&#40;typeof&#40;t&#41;&#41;</span>
+            <span class='code'>    val isa QuoteNode &amp;&amp; return true</span>
           </td>
         </tr>
         <tr id='L316'>
@@ -3185,7 +3185,7 @@
           <td>
             
             
-            <span class='code'>valtype&#40;@nospecialize T::Type&#123;&lt;:Tuple&#125;&#41; &#61; eltype&#40;T&#41;</span>
+            <span class='code'>    val isa Number &amp;&amp; return true</span>
           </td>
         </tr>
         <tr id='L317'>
@@ -3195,7 +3195,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    val isa Char &amp;&amp; return true</span>
           </td>
         </tr>
         <tr id='L318'>
@@ -3205,7 +3205,7 @@
           <td>
             
             
-            <span class='code'># version of tail that doesn&#39;t throw on empty tuples &#40;used in array indexing&#41;</span>
+            <span class='code'>    if val isa Expr</span>
           </td>
         </tr>
         <tr id='L319'>
@@ -3215,7 +3215,7 @@
           <td>
             
             
-            <span class='code'>safe_tail&#40;t::Tuple&#41; &#61; tail&#40;t&#41;</span>
+            <span class='code'>        val.head &#61;&#61;&#61; :quote &amp;&amp; issimple&#40;val.args&#91;1&#93;&#41; &amp;&amp; return true</span>
           </td>
         </tr>
         <tr id='L320'>
@@ -3225,7 +3225,7 @@
           <td>
             
             
-            <span class='code'>safe_tail&#40;t::Tuple&#123;&#125;&#41; &#61; &#40;&#41;</span>
+            <span class='code'>        val.head &#61;&#61;&#61; :inert &amp;&amp; return true</span>
           </td>
         </tr>
         <tr id='L321'>
@@ -3235,7 +3235,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L322'>
@@ -3245,7 +3245,7 @@
           <td>
             
             
-            <span class='code'># front &#40;the converse of tail: it skips the last entry&#41;</span>
+            <span class='code'>    return false</span>
           </td>
         </tr>
         <tr id='L323'>
@@ -3255,7 +3255,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L324'>
@@ -3265,7 +3265,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>function issimplekw&#40;@nospecialize val&#41;</span>
           </td>
         </tr>
         <tr id='L325'>
@@ -3275,7 +3275,7 @@
           <td>
             
             
-            <span class='code'>    front&#40;x::Tuple&#41;::Tuple</span>
+            <span class='code'>    if val isa Expr</span>
           </td>
         </tr>
         <tr id='L326'>
@@ -3285,7 +3285,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        if val.head &#61;&#61;&#61; :kw</span>
           </td>
         </tr>
         <tr id='L327'>
@@ -3295,7 +3295,7 @@
           <td>
             
             
-            <span class='code'>Return a &#96;Tuple&#96; consisting of all but the last component of &#96;x&#96;.</span>
+            <span class='code'>            val &#61; val.args&#91;2&#93;</span>
           </td>
         </tr>
         <tr id='L328'>
@@ -3305,7 +3305,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>            if val isa Expr &amp;&amp; val.head &#61;&#61;&#61; :escape</span>
           </td>
         </tr>
         <tr id='L329'>
@@ -3315,7 +3315,7 @@
           <td>
             
             
-            <span class='code'>See also: &#91;&#96;first&#96;&#93;&#40;@ref&#41;, &#91;&#96;tail&#96;&#93;&#40;@ref Base.tail&#41;.</span>
+            <span class='code'>                issimple&#40;val.args&#91;1&#93;&#41; &amp;&amp; return true</span>
           </td>
         </tr>
         <tr id='L330'>
@@ -3325,7 +3325,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L331'>
@@ -3335,7 +3335,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L332'>
@@ -3345,7 +3345,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L333'>
@@ -3355,7 +3355,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; Base.front&#40;&#40;1,2,3&#41;&#41;</span>
+            <span class='code'>    return false</span>
           </td>
         </tr>
         <tr id='L334'>
@@ -3365,7 +3365,7 @@
           <td>
             
             
-            <span class='code'>&#40;1, 2&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L335'>
@@ -3385,7 +3385,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; Base.front&#40;&#40;&#41;&#41;</span>
+            <span class='code'># helper function to get the current logger, if enabled for the specified message type</span>
           </td>
         </tr>
         <tr id='L337'>
@@ -3395,7 +3395,7 @@
           <td>
             
             
-            <span class='code'>ERROR: ArgumentError: Cannot call front on an empty tuple.</span>
+            <span class='code'>@noinline Base.@constprop :none function current_logger_for_env&#40;std_level::LogLevel, group, _module&#41;</span>
           </td>
         </tr>
         <tr id='L338'>
@@ -3405,7 +3405,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>    logstate &#61; @inline current_logstate&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L339'>
@@ -3415,7 +3415,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    if std_level &gt;&#61; logstate.min_enabled_level || env_override_minlevel&#40;group, _module&#41;</span>
           </td>
         </tr>
         <tr id='L340'>
@@ -3425,7 +3425,7 @@
           <td>
             
             
-            <span class='code'>function front&#40;t::Tuple&#41;</span>
+            <span class='code'>        return logstate.logger</span>
           </td>
         </tr>
         <tr id='L341'>
@@ -3435,7 +3435,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L342'>
@@ -3445,7 +3445,7 @@
           <td>
             
             
-            <span class='code'>    _front&#40;t...&#41;</span>
+            <span class='code'>    return nothing</span>
           </td>
         </tr>
         <tr id='L343'>
@@ -3465,7 +3465,7 @@
           <td>
             
             
-            <span class='code'>_front&#40;&#41; &#61; throw&#40;ArgumentError&#40;&quot;Cannot call front on an empty tuple.&quot;&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L345'>
@@ -3475,7 +3475,7 @@
           <td>
             
             
-            <span class='code'>_front&#40;v&#41; &#61; &#40;&#41;</span>
+            <span class='code'># Generate code for logging macros</span>
           </td>
         </tr>
         <tr id='L346'>
@@ -3485,7 +3485,7 @@
           <td>
             
             
-            <span class='code'>function _front&#40;v, t...&#41;</span>
+            <span class='code'>function logmsg_code&#40;_module, file, line, level, message, exs...&#41;</span>
           </td>
         </tr>
         <tr id='L347'>
@@ -3495,7 +3495,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'>    @nospecialize</span>
           </td>
         </tr>
         <tr id='L348'>
@@ -3505,7 +3505,7 @@
           <td>
             
             
-            <span class='code'>    &#40;v, _front&#40;t...&#41;...&#41;</span>
+            <span class='code'>    log_data &#61; process_logmsg_exs&#40;_module, file, line, level, message, exs...&#41;</span>
           </td>
         </tr>
         <tr id='L349'>
@@ -3515,7 +3515,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    if &#33;isa&#40;message, Symbol&#41; &amp;&amp; issimple&#40;message&#41; &amp;&amp; isempty&#40;log_data.kwargs&#41;</span>
           </td>
         </tr>
         <tr id='L350'>
@@ -3525,7 +3525,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        logrecord &#61; quote</span>
           </td>
         </tr>
         <tr id='L351'>
@@ -3535,7 +3535,7 @@
           <td>
             
             
-            <span class='code'>## mapping ##</span>
+            <span class='code'>            msg &#61; &#36;&#40;message&#41;</span>
           </td>
         </tr>
         <tr id='L352'>
@@ -3545,7 +3545,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>            kwargs &#61; &#40;;&#41;</span>
           </td>
         </tr>
         <tr id='L353'>
@@ -3555,7 +3555,7 @@
           <td>
             
             
-            <span class='code'># 1 argument function</span>
+            <span class='code'>            true</span>
           </td>
         </tr>
         <tr id='L354'>
@@ -3565,31 +3565,17 @@
           <td>
             
             
-            <span class='code'>map&#40;f, t::Tuple&#123;&#125;&#41;              &#61; &#40;&#41;</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L355'>
           <td class='lineno'>355</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>17 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'></td>
           <td>
-            <div class='call-sites'>
-              17 &#40;0 &#37;&#41;
-              samples spent in map
-              <br />
-              
-              17 &#40;100 &#37;&#41; &#40;incl.&#41;
-              when called from axes
-              <a href='abstractarray.jl-19cb862b60b8167236b95dc9fd58efafbb7fc02a.html#L98'>line 98</a>
-              <br />
-            </div>
-            <div class='callees'>
-              17 &#40;100 &#37;&#41;
-              samples spent calling
-              <a href='range.jl-e386870aae0c4a6a0b51785dff06b3fb68b7ed36.html#L472'>unchecked_oneto</a>
-              <br />
-            </div>
-            <span class='code'>map&#40;f, t::Tuple&#123;Any,&#125;&#41;          &#61; &#40;@inline; &#40;f&#40;t&#91;1&#93;&#41;,&#41;&#41;</span>
+            
+            
+            <span class='code'>    elseif issimple&#40;message&#41; &amp;&amp; all&#40;issimplekw, log_data.kwargs&#41;</span>
           </td>
         </tr>
         <tr id='L356'>
@@ -3599,7 +3585,7 @@
           <td>
             
             
-            <span class='code'>map&#40;f, t::Tuple&#123;Any, Any&#125;&#41;      &#61; &#40;@inline; &#40;f&#40;t&#91;1&#93;&#41;, f&#40;t&#91;2&#93;&#41;&#41;&#41;</span>
+            <span class='code'>        # if message and kwargs are just values and variables, we can avoid try/catch</span>
           </td>
         </tr>
         <tr id='L357'>
@@ -3609,7 +3595,7 @@
           <td>
             
             
-            <span class='code'>map&#40;f, t::Tuple&#123;Any, Any, Any&#125;&#41; &#61; &#40;@inline; &#40;f&#40;t&#91;1&#93;&#41;, f&#40;t&#91;2&#93;&#41;, f&#40;t&#91;3&#93;&#41;&#41;&#41;</span>
+            <span class='code'>        # complexity by adding the code for testing the UndefVarError by hand</span>
           </td>
         </tr>
         <tr id='L358'>
@@ -3619,7 +3605,7 @@
           <td>
             
             
-            <span class='code'>map&#40;f, t::Tuple&#41;                &#61; &#40;@inline; &#40;f&#40;t&#91;1&#93;&#41;, map&#40;f,tail&#40;t&#41;&#41;...&#41;&#41;</span>
+            <span class='code'>        checkerrors &#61; nothing</span>
           </td>
         </tr>
         <tr id='L359'>
@@ -3629,7 +3615,7 @@
           <td>
             
             
-            <span class='code'># stop inlining after some number of arguments to avoid code blowup</span>
+            <span class='code'>        for kwarg in reverse&#40;log_data.kwargs&#41;</span>
           </td>
         </tr>
         <tr id='L360'>
@@ -3639,7 +3625,7 @@
           <td>
             
             
-            <span class='code'>const Any32&#123;N&#125; &#61; Tuple&#123;Any,Any,Any,Any,Any,Any,Any,Any,</span>
+            <span class='code'>            if isa&#40;kwarg.args&#91;2&#93;.args&#91;1&#93;, Symbol&#41;</span>
           </td>
         </tr>
         <tr id='L361'>
@@ -3649,7 +3635,7 @@
           <td>
             
             
-            <span class='code'>                       Any,Any,Any,Any,Any,Any,Any,Any,</span>
+            <span class='code'>                checkerrors &#61; Expr&#40;:if, Expr&#40;:isdefined, kwarg.args&#91;2&#93;&#41;, checkerrors, Expr&#40;:call, Expr&#40;:core, :UndefVarError&#41;, QuoteNode&#40;kwarg.args&#91;2&#93;.args&#91;1&#93;&#41;, QuoteNode&#40;:local&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L362'>
@@ -3659,7 +3645,7 @@
           <td>
             
             
-            <span class='code'>                       Any,Any,Any,Any,Any,Any,Any,Any,</span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L363'>
@@ -3669,7 +3655,7 @@
           <td>
             
             
-            <span class='code'>                       Any,Any,Any,Any,Any,Any,Any,Any,</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L364'>
@@ -3679,7 +3665,7 @@
           <td>
             
             
-            <span class='code'>                       Vararg&#123;Any,N&#125;&#125;</span>
+            <span class='code'>        if isa&#40;message, Symbol&#41;</span>
           </td>
         </tr>
         <tr id='L365'>
@@ -3689,7 +3675,7 @@
           <td>
             
             
-            <span class='code'>const All32&#123;T,N&#125; &#61; Tuple&#123;T,T,T,T,T,T,T,T,</span>
+            <span class='code'>            message &#61; esc&#40;message&#41;</span>
           </td>
         </tr>
         <tr id='L366'>
@@ -3699,7 +3685,7 @@
           <td>
             
             
-            <span class='code'>                         T,T,T,T,T,T,T,T,</span>
+            <span class='code'>            checkerrors &#61; Expr&#40;:if, Expr&#40;:isdefined, message&#41;, checkerrors, Expr&#40;:call, Expr&#40;:core, :UndefVarError&#41;, QuoteNode&#40;message.args&#91;1&#93;&#41;, QuoteNode&#40;:local&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L367'>
@@ -3709,7 +3695,7 @@
           <td>
             
             
-            <span class='code'>                         T,T,T,T,T,T,T,T,</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L368'>
@@ -3719,7 +3705,7 @@
           <td>
             
             
-            <span class='code'>                         T,T,T,T,T,T,T,T,</span>
+            <span class='code'>        logrecord &#61; quote</span>
           </td>
         </tr>
         <tr id='L369'>
@@ -3729,7 +3715,7 @@
           <td>
             
             
-            <span class='code'>                         Vararg&#123;T,N&#125;&#125;</span>
+            <span class='code'>            let err &#61; &#36;checkerrors</span>
           </td>
         </tr>
         <tr id='L370'>
@@ -3739,7 +3725,7 @@
           <td>
             
             
-            <span class='code'>function map&#40;f, t::Any32&#41;</span>
+            <span class='code'>                if err &#61;&#61;&#61; nothing</span>
           </td>
         </tr>
         <tr id='L371'>
@@ -3749,7 +3735,7 @@
           <td>
             
             
-            <span class='code'>    n &#61; length&#40;t&#41;</span>
+            <span class='code'>                    msg &#61; &#36;&#40;message&#41;</span>
           </td>
         </tr>
         <tr id='L372'>
@@ -3759,7 +3745,7 @@
           <td>
             
             
-            <span class='code'>    A &#61; Vector&#123;Any&#125;&#40;undef, n&#41;</span>
+            <span class='code'>                    kwargs &#61; &#40;;&#36;&#40;log_data.kwargs...&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L373'>
@@ -3769,7 +3755,7 @@
           <td>
             
             
-            <span class='code'>    for i&#61;1:n</span>
+            <span class='code'>                    true</span>
           </td>
         </tr>
         <tr id='L374'>
@@ -3779,7 +3765,7 @@
           <td>
             
             
-            <span class='code'>        A&#91;i&#93; &#61; f&#40;t&#91;i&#93;&#41;</span>
+            <span class='code'>                else</span>
           </td>
         </tr>
         <tr id='L375'>
@@ -3789,7 +3775,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>                    @invokelatest logging_error&#40;logger, level, _module, group, id, file, line, err, false&#41;</span>
           </td>
         </tr>
         <tr id='L376'>
@@ -3799,7 +3785,7 @@
           <td>
             
             
-            <span class='code'>    &#40;A...,&#41;</span>
+            <span class='code'>                    false</span>
           </td>
         </tr>
         <tr id='L377'>
@@ -3809,7 +3795,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>                end</span>
           </td>
         </tr>
         <tr id='L378'>
@@ -3819,7 +3805,7 @@
           <td>
             
             
-            <span class='code'># 2 argument function</span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L379'>
@@ -3829,7 +3815,7 @@
           <td>
             
             
-            <span class='code'>map&#40;f, t::Tuple&#123;&#125;,        s::Tuple&#123;&#125;&#41;        &#61; &#40;&#41;</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L380'>
@@ -3839,7 +3825,7 @@
           <td>
             
             
-            <span class='code'>map&#40;f, t::Tuple,          s::Tuple&#123;&#125;&#41;        &#61; &#40;&#41;</span>
+            <span class='code'>    else</span>
           </td>
         </tr>
         <tr id='L381'>
@@ -3849,7 +3835,7 @@
           <td>
             
             
-            <span class='code'>map&#40;f, t::Tuple&#123;&#125;,        s::Tuple&#41;          &#61; &#40;&#41;</span>
+            <span class='code'>        logrecord &#61; quote</span>
           </td>
         </tr>
         <tr id='L382'>
@@ -3859,7 +3845,7 @@
           <td>
             
             
-            <span class='code'>map&#40;f, t::Tuple&#123;Any,&#125;,    s::Tuple&#123;Any,&#125;&#41;    &#61; &#40;@inline; &#40;f&#40;t&#91;1&#93;,s&#91;1&#93;&#41;,&#41;&#41;</span>
+            <span class='code'>            try</span>
           </td>
         </tr>
         <tr id='L383'>
@@ -3869,7 +3855,7 @@
           <td>
             
             
-            <span class='code'>map&#40;f, t::Tuple&#123;Any,Any&#125;, s::Tuple&#123;Any,Any&#125;&#41; &#61; &#40;@inline; &#40;f&#40;t&#91;1&#93;,s&#91;1&#93;&#41;, f&#40;t&#91;2&#93;,s&#91;2&#93;&#41;&#41;&#41;</span>
+            <span class='code'>                msg &#61; &#36;&#40;esc&#40;message&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L384'>
@@ -3879,7 +3865,7 @@
           <td>
             
             
-            <span class='code'>function map&#40;f, t::Tuple, s::Tuple&#41;</span>
+            <span class='code'>                kwargs &#61; &#40;;&#36;&#40;log_data.kwargs...&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L385'>
@@ -3889,7 +3875,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'>                true</span>
           </td>
         </tr>
         <tr id='L386'>
@@ -3899,7 +3885,7 @@
           <td>
             
             
-            <span class='code'>    &#40;f&#40;t&#91;1&#93;,s&#91;1&#93;&#41;, map&#40;f, tail&#40;t&#41;, tail&#40;s&#41;&#41;...&#41;</span>
+            <span class='code'>            catch err</span>
           </td>
         </tr>
         <tr id='L387'>
@@ -3909,7 +3895,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>                @invokelatest logging_error&#40;logger, level, _module, group, id, file, line, err, true&#41;</span>
           </td>
         </tr>
         <tr id='L388'>
@@ -3919,7 +3905,7 @@
           <td>
             
             
-            <span class='code'>function map&#40;f, t::Any32, s::Any32&#41;</span>
+            <span class='code'>                false</span>
           </td>
         </tr>
         <tr id='L389'>
@@ -3929,7 +3915,7 @@
           <td>
             
             
-            <span class='code'>    n &#61; min&#40;length&#40;t&#41;, length&#40;s&#41;&#41;</span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L390'>
@@ -3939,7 +3925,7 @@
           <td>
             
             
-            <span class='code'>    A &#61; Vector&#123;Any&#125;&#40;undef, n&#41;</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L391'>
@@ -3949,7 +3935,7 @@
           <td>
             
             
-            <span class='code'>    for i &#61; 1:n</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L392'>
@@ -3959,7 +3945,7 @@
           <td>
             
             
-            <span class='code'>        A&#91;i&#93; &#61; f&#40;t&#91;i&#93;, s&#91;i&#93;&#41;</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L393'>
@@ -3969,7 +3955,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>        let</span>
           </td>
         </tr>
         <tr id='L394'>
@@ -3979,7 +3965,7 @@
           <td>
             
             
-            <span class='code'>    &#40;A...,&#41;</span>
+            <span class='code'>            level &#61; &#36;level</span>
           </td>
         </tr>
         <tr id='L395'>
@@ -3989,7 +3975,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>            # simplify std_level code emitted, if we know it is one of our global constants</span>
           </td>
         </tr>
         <tr id='L396'>
@@ -3999,7 +3985,7 @@
           <td>
             
             
-            <span class='code'># n argument function</span>
+            <span class='code'>            std_level &#61; &#36;&#40;level isa Symbol ? :level : :&#40;level isa &#36;LogLevel ? level : convert&#40;&#36;LogLevel, level&#41;::&#36;LogLevel&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L397'>
@@ -4009,7 +3995,7 @@
           <td>
             
             
-            <span class='code'>heads&#40;ts::Tuple...&#41; &#61; map&#40;t -&gt; t&#91;1&#93;, ts&#41;</span>
+            <span class='code'>            if std_level &gt;&#61; &#36;&#40;_min_enabled_level&#41;&#91;&#93;</span>
           </td>
         </tr>
         <tr id='L398'>
@@ -4019,7 +4005,7 @@
           <td>
             
             
-            <span class='code'>tails&#40;ts::Tuple...&#41; &#61; map&#40;tail, ts&#41;</span>
+            <span class='code'>                group &#61; &#36;&#40;log_data._group&#41;</span>
           </td>
         </tr>
         <tr id='L399'>
@@ -4029,7 +4015,7 @@
           <td>
             
             
-            <span class='code'>map&#40;f, ::Tuple&#123;&#125;, ::Tuple&#123;&#125;...&#41; &#61; &#40;&#41;</span>
+            <span class='code'>                _module &#61; &#36;&#40;log_data._module&#41;</span>
           </td>
         </tr>
         <tr id='L400'>
@@ -4039,7 +4025,7 @@
           <td>
             
             
-            <span class='code'>anyempty&#40;x::Tuple&#123;&#125;, xs...&#41; &#61; true</span>
+            <span class='code'>                logger &#61; &#36;&#40;current_logger_for_env&#41;&#40;std_level, group, _module&#41;</span>
           </td>
         </tr>
         <tr id='L401'>
@@ -4049,7 +4035,7 @@
           <td>
             
             
-            <span class='code'>anyempty&#40;x::Tuple, xs...&#41; &#61; anyempty&#40;xs...&#41;</span>
+            <span class='code'>                if &#33;&#40;logger &#61;&#61;&#61; nothing&#41;</span>
           </td>
         </tr>
         <tr id='L402'>
@@ -4059,7 +4045,7 @@
           <td>
             
             
-            <span class='code'>anyempty&#40;&#41; &#61; false</span>
+            <span class='code'>                    id &#61; &#36;&#40;log_data._id&#41;</span>
           </td>
         </tr>
         <tr id='L403'>
@@ -4069,7 +4055,7 @@
           <td>
             
             
-            <span class='code'>function map&#40;f, t1::Tuple, t2::Tuple, ts::Tuple...&#41;</span>
+            <span class='code'>                    # Second chance at an early bail-out &#40;before computing the message&#41;,</span>
           </td>
         </tr>
         <tr id='L404'>
@@ -4079,7 +4065,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'>                    # based on arbitrary logger-specific logic.</span>
           </td>
         </tr>
         <tr id='L405'>
@@ -4089,7 +4075,7 @@
           <td>
             
             
-            <span class='code'>    anyempty&#40;t1, t2, ts...&#41; &amp;&amp; return &#40;&#41;</span>
+            <span class='code'>                    if invokelatest&#40;&#36;shouldlog, logger, level, _module, group, id&#41;</span>
           </td>
         </tr>
         <tr id='L406'>
@@ -4099,7 +4085,7 @@
           <td>
             
             
-            <span class='code'>    &#40;f&#40;heads&#40;t1, t2, ts...&#41;...&#41;, map&#40;f, tails&#40;t1, t2, ts...&#41;...&#41;...&#41;</span>
+            <span class='code'>                        file &#61; &#36;&#40;log_data._file&#41;</span>
           </td>
         </tr>
         <tr id='L407'>
@@ -4109,7 +4095,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>                        if file isa String</span>
           </td>
         </tr>
         <tr id='L408'>
@@ -4119,7 +4105,7 @@
           <td>
             
             
-            <span class='code'>function map&#40;f, t1::Any32, t2::Any32, ts::Any32...&#41;</span>
+            <span class='code'>                            file &#61; Base.fixup_stdlib_path&#40;file&#41;</span>
           </td>
         </tr>
         <tr id='L409'>
@@ -4129,7 +4115,7 @@
           <td>
             
             
-            <span class='code'>    n &#61; min&#40;length&#40;t1&#41;, length&#40;t2&#41;, minimum&#40;length, ts&#41;&#41;</span>
+            <span class='code'>                        end</span>
           </td>
         </tr>
         <tr id='L410'>
@@ -4139,7 +4125,7 @@
           <td>
             
             
-            <span class='code'>    A &#61; Vector&#123;Any&#125;&#40;undef, n&#41;</span>
+            <span class='code'>                        line &#61; &#36;&#40;log_data._line&#41;</span>
           </td>
         </tr>
         <tr id='L411'>
@@ -4149,7 +4135,7 @@
           <td>
             
             
-            <span class='code'>    for i &#61; 1:n</span>
+            <span class='code'>                        local msg, kwargs</span>
           </td>
         </tr>
         <tr id='L412'>
@@ -4159,7 +4145,7 @@
           <td>
             
             
-            <span class='code'>        A&#91;i&#93; &#61; f&#40;t1&#91;i&#93;, t2&#91;i&#93;, map&#40;t -&gt; t&#91;i&#93;, ts&#41;...&#41;</span>
+            <span class='code'>                        &#36;&#40;logrecord&#41; &amp;&amp; invokelatest&#40;&#36;handle_message,</span>
           </td>
         </tr>
         <tr id='L413'>
@@ -4169,7 +4155,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>                            logger, level, msg, _module, group, id, file, line;</span>
           </td>
         </tr>
         <tr id='L414'>
@@ -4179,7 +4165,7 @@
           <td>
             
             
-            <span class='code'>    &#40;A...,&#41;</span>
+            <span class='code'>                            kwargs...&#41;</span>
           </td>
         </tr>
         <tr id='L415'>
@@ -4189,7 +4175,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>                    end</span>
           </td>
         </tr>
         <tr id='L416'>
@@ -4199,7 +4185,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>                end</span>
           </td>
         </tr>
         <tr id='L417'>
@@ -4209,7 +4195,7 @@
           <td>
             
             
-            <span class='code'># type-stable padding</span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L418'>
@@ -4219,7 +4205,7 @@
           <td>
             
             
-            <span class='code'>fill_to_length&#40;t::NTuple&#123;N,Any&#125;, val, ::Val&#123;N&#125;&#41; where &#123;N&#125; &#61; t</span>
+            <span class='code'>            nothing</span>
           </td>
         </tr>
         <tr id='L419'>
@@ -4229,7 +4215,7 @@
           <td>
             
             
-            <span class='code'>fill_to_length&#40;t::Tuple&#123;&#125;, val, ::Val&#123;1&#125;&#41; &#61; &#40;val,&#41;</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L420'>
@@ -4239,7 +4225,7 @@
           <td>
             
             
-            <span class='code'>fill_to_length&#40;t::Tuple&#123;Any&#125;, val, ::Val&#123;2&#125;&#41; &#61; &#40;t..., val&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L421'>
@@ -4249,7 +4235,7 @@
           <td>
             
             
-            <span class='code'>fill_to_length&#40;t::Tuple&#123;&#125;, val, ::Val&#123;2&#125;&#41; &#61; &#40;val, val&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L422'>
@@ -4259,7 +4245,7 @@
           <td>
             
             
-            <span class='code'>#function fill_to_length&#40;t::Tuple, val, ::Val&#123;N&#125;&#41; where &#123;N&#125;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L423'>
@@ -4269,7 +4255,7 @@
           <td>
             
             
-            <span class='code'>#    @inline</span>
+            <span class='code'>function process_logmsg_exs&#40;_orig_module, _file, _line, level, message, exs...&#41;</span>
           </td>
         </tr>
         <tr id='L424'>
@@ -4279,7 +4265,7 @@
           <td>
             
             
-            <span class='code'>#    return &#40;t..., ntuple&#40;i -&gt; val, N - length&#40;t&#41;&#41;...&#41;</span>
+            <span class='code'>    @nospecialize</span>
           </td>
         </tr>
         <tr id='L425'>
@@ -4289,7 +4275,7 @@
           <td>
             
             
-            <span class='code'>#end</span>
+            <span class='code'>    local _group, _id</span>
           </td>
         </tr>
         <tr id='L426'>
@@ -4299,7 +4285,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    _module &#61; _orig_module</span>
           </td>
         </tr>
         <tr id='L427'>
@@ -4309,7 +4295,7 @@
           <td>
             
             
-            <span class='code'># constructing from an iterator</span>
+            <span class='code'>    kwargs &#61; Any&#91;&#93;</span>
           </td>
         </tr>
         <tr id='L428'>
@@ -4319,7 +4305,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    for ex in exs</span>
           </td>
         </tr>
         <tr id='L429'>
@@ -4329,7 +4315,7 @@
           <td>
             
             
-            <span class='code'># only define these in Base, to avoid overwriting the constructors</span>
+            <span class='code'>        if ex isa Expr &amp;&amp; ex.head &#61;&#61;&#61; :&#40;&#61;&#41;</span>
           </td>
         </tr>
         <tr id='L430'>
@@ -4339,7 +4325,7 @@
           <td>
             
             
-            <span class='code'># NOTE: this means this constructor must be avoided in Core.Compiler&#33;</span>
+            <span class='code'>            k, v &#61; ex.args</span>
           </td>
         </tr>
         <tr id='L431'>
@@ -4349,7 +4335,7 @@
           <td>
             
             
-            <span class='code'>if nameof&#40;@__MODULE__&#41; &#61;&#61;&#61; :Base</span>
+            <span class='code'>            if &#33;&#40;k isa Symbol&#41;</span>
           </td>
         </tr>
         <tr id='L432'>
@@ -4359,7 +4345,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>                k &#61; Symbol&#40;k&#41;</span>
           </td>
         </tr>
         <tr id='L433'>
@@ -4369,7 +4355,7 @@
           <td>
             
             
-            <span class='code'>function tuple_type_tail&#40;T::Type&#41;</span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L434'>
@@ -4379,7 +4365,7 @@
           <td>
             
             
-            <span class='code'>    @_foldable_meta # TODO: this method is wrong &#40;and not :foldable&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L435'>
@@ -4389,7 +4375,7 @@
           <td>
             
             
-            <span class='code'>    if isa&#40;T, UnionAll&#41;</span>
+            <span class='code'>            # Recognize several special keyword arguments</span>
           </td>
         </tr>
         <tr id='L436'>
@@ -4399,7 +4385,7 @@
           <td>
             
             
-            <span class='code'>        return UnionAll&#40;T.var, tuple_type_tail&#40;T.body&#41;&#41;</span>
+            <span class='code'>            if k &#61;&#61;&#61; :_group</span>
           </td>
         </tr>
         <tr id='L437'>
@@ -4409,7 +4395,7 @@
           <td>
             
             
-            <span class='code'>    elseif isa&#40;T, Union&#41;</span>
+            <span class='code'>                _group &#61; esc&#40;v&#41;</span>
           </td>
         </tr>
         <tr id='L438'>
@@ -4419,7 +4405,7 @@
           <td>
             
             
-            <span class='code'>        return Union&#123;tuple_type_tail&#40;T.a&#41;, tuple_type_tail&#40;T.b&#41;&#125;</span>
+            <span class='code'>            elseif k &#61;&#61;&#61; :_id</span>
           </td>
         </tr>
         <tr id='L439'>
@@ -4429,7 +4415,7 @@
           <td>
             
             
-            <span class='code'>    else</span>
+            <span class='code'>                _id &#61; esc&#40;v&#41;</span>
           </td>
         </tr>
         <tr id='L440'>
@@ -4439,7 +4425,7 @@
           <td>
             
             
-            <span class='code'>        T.name &#61;&#61;&#61; Tuple.name || throw&#40;MethodError&#40;tuple_type_tail, &#40;T,&#41;&#41;&#41;</span>
+            <span class='code'>            elseif k &#61;&#61;&#61; :_module</span>
           </td>
         </tr>
         <tr id='L441'>
@@ -4449,7 +4435,7 @@
           <td>
             
             
-            <span class='code'>        if isvatuple&#40;T&#41; &amp;&amp; length&#40;T.parameters&#41; &#61;&#61; 1</span>
+            <span class='code'>                _module &#61; esc&#40;v&#41;</span>
           </td>
         </tr>
         <tr id='L442'>
@@ -4459,7 +4445,7 @@
           <td>
             
             
-            <span class='code'>            va &#61; unwrap_unionall&#40;T.parameters&#91;1&#93;&#41;::Core.TypeofVararg</span>
+            <span class='code'>            elseif k &#61;&#61;&#61; :_file</span>
           </td>
         </tr>
         <tr id='L443'>
@@ -4469,7 +4455,7 @@
           <td>
             
             
-            <span class='code'>            &#40;isdefined&#40;va, :N&#41; &amp;&amp; isa&#40;va.N, Int&#41;&#41; || return T</span>
+            <span class='code'>                _file &#61; esc&#40;v&#41;</span>
           </td>
         </tr>
         <tr id='L444'>
@@ -4479,7 +4465,7 @@
           <td>
             
             
-            <span class='code'>            return Tuple&#123;Vararg&#123;va.T, va.N-1&#125;&#125;</span>
+            <span class='code'>            elseif k &#61;&#61;&#61; :_line</span>
           </td>
         </tr>
         <tr id='L445'>
@@ -4489,7 +4475,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>                _line &#61; esc&#40;v&#41;</span>
           </td>
         </tr>
         <tr id='L446'>
@@ -4499,7 +4485,7 @@
           <td>
             
             
-            <span class='code'>        return Tuple&#123;argtail&#40;T.parameters...&#41;...&#125;</span>
+            <span class='code'>            else</span>
           </td>
         </tr>
         <tr id='L447'>
@@ -4509,7 +4495,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>                # Copy across key value pairs for structured log records</span>
           </td>
         </tr>
         <tr id='L448'>
@@ -4519,7 +4505,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>                push&#33;&#40;kwargs, Expr&#40;:kw, k, esc&#40;v&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L449'>
@@ -4529,7 +4515,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L450'>
@@ -4539,7 +4525,7 @@
           <td>
             
             
-            <span class='code'>&#40;::Type&#123;T&#125;&#41;&#40;x::Tuple&#41; where &#123;T&lt;:Tuple&#125; &#61; x isa T ? x : convert&#40;T, x&#41;  # still use &#96;convert&#96; for tuples</span>
+            <span class='code'>        elseif ex isa Expr &amp;&amp; ex.head &#61;&#61;&#61; :... # Keyword splatting</span>
           </td>
         </tr>
         <tr id='L451'>
@@ -4549,7 +4535,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>            push&#33;&#40;kwargs, esc&#40;ex&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L452'>
@@ -4559,7 +4545,7 @@
           <td>
             
             
-            <span class='code'>Tuple&#40;x::Ref&#41; &#61; tuple&#40;getindex&#40;x&#41;&#41;  # faster than iterator for one element</span>
+            <span class='code'>        else # Positional arguments - will be converted to key value pairs automatically.</span>
           </td>
         </tr>
         <tr id='L453'>
@@ -4569,7 +4555,7 @@
           <td>
             
             
-            <span class='code'>Tuple&#40;x::Array&#123;T,0&#125;&#41; where &#123;T&#125; &#61; tuple&#40;getindex&#40;x&#41;&#41;</span>
+            <span class='code'>            push&#33;&#40;kwargs, Expr&#40;:kw, Symbol&#40;ex&#41;, esc&#40;ex&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L454'>
@@ -4579,7 +4565,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L455'>
@@ -4589,7 +4575,7 @@
           <td>
             
             
-            <span class='code'>&#40;::Type&#123;T&#125;&#41;&#40;itr&#41; where &#123;T&lt;:Tuple&#125; &#61; _totuple&#40;T, itr&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L456'>
@@ -4609,7 +4595,7 @@
           <td>
             
             
-            <span class='code'>_totuple&#40;::Type&#123;Tuple&#123;&#125;&#125;, itr, s...&#41; &#61; &#40;&#41;</span>
+            <span class='code'>    if &#33;@isdefined&#40;_group&#41;</span>
           </td>
         </tr>
         <tr id='L458'>
@@ -4619,7 +4605,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        _group &#61; default_group_code&#40;_file&#41;</span>
           </td>
         </tr>
         <tr id='L459'>
@@ -4629,7 +4615,7 @@
           <td>
             
             
-            <span class='code'>function _totuple_err&#40;@nospecialize T&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L460'>
@@ -4639,7 +4625,7 @@
           <td>
             
             
-            <span class='code'>    @noinline</span>
+            <span class='code'>    if &#33;@isdefined&#40;_id&#41;</span>
           </td>
         </tr>
         <tr id='L461'>
@@ -4649,7 +4635,7 @@
           <td>
             
             
-            <span class='code'>    throw&#40;ArgumentError&#40;LazyString&#40;&quot;too few elements for tuple type &quot;, T&#41;&#41;&#41;</span>
+            <span class='code'>        _id &#61; Expr&#40;:quote, log_record_id&#40;_orig_module, level, message, exs&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L462'>
@@ -4659,7 +4645,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L463'>
@@ -4669,7 +4655,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    return &#40;;_module, _group, _id, _file, _line, kwargs&#41;</span>
           </td>
         </tr>
         <tr id='L464'>
@@ -4679,7 +4665,7 @@
           <td>
             
             
-            <span class='code'>function _totuple&#40;::Type&#123;T&#125;, itr, s::Vararg&#123;Any,N&#125;&#41; where &#123;T,N&#125;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L465'>
@@ -4689,7 +4675,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L466'>
@@ -4699,7 +4685,7 @@
           <td>
             
             
-            <span class='code'>    y &#61; iterate&#40;itr, s...&#41;</span>
+            <span class='code'>function default_group_code&#40;file&#41;</span>
           </td>
         </tr>
         <tr id='L467'>
@@ -4709,7 +4695,7 @@
           <td>
             
             
-            <span class='code'>    y &#61;&#61;&#61; nothing &amp;&amp; _totuple_err&#40;T&#41;</span>
+            <span class='code'>    @nospecialize</span>
           </td>
         </tr>
         <tr id='L468'>
@@ -4719,7 +4705,7 @@
           <td>
             
             
-            <span class='code'>    T1 &#61; fieldtype&#40;T, 1&#41;</span>
+            <span class='code'>    if file isa String &amp;&amp; isdefined&#40;Base, :basename&#41;</span>
           </td>
         </tr>
         <tr id='L469'>
@@ -4729,7 +4715,7 @@
           <td>
             
             
-            <span class='code'>    y1 &#61; y&#91;1&#93;</span>
+            <span class='code'>        QuoteNode&#40;default_group&#40;file&#41;&#41;  # precompute if we can</span>
           </td>
         </tr>
         <tr id='L470'>
@@ -4739,7 +4725,7 @@
           <td>
             
             
-            <span class='code'>    t1 &#61; y1 isa T1 ? y1 : convert&#40;T1, y1&#41;::T1</span>
+            <span class='code'>    else</span>
           </td>
         </tr>
         <tr id='L471'>
@@ -4749,7 +4735,7 @@
           <td>
             
             
-            <span class='code'>    # inference may give up in recursive calls, so annotate here to force accurate return type to be propagated</span>
+            <span class='code'>        ref &#61; Ref&#123;Symbol&#125;&#40;&#41;  # memoized run-time execution</span>
           </td>
         </tr>
         <tr id='L472'>
@@ -4759,7 +4745,7 @@
           <td>
             
             
-            <span class='code'>    rT &#61; tuple_type_tail&#40;T&#41;</span>
+            <span class='code'>        :&#40;isassigned&#40;&#36;ref&#41; ? &#36;ref&#91;&#93; : &#36;ref&#91;&#93; &#61; default_group&#40;something&#40;&#36;file, &quot;&quot;&#41;&#41;::Symbol&#41;</span>
           </td>
         </tr>
         <tr id='L473'>
@@ -4769,7 +4755,7 @@
           <td>
             
             
-            <span class='code'>    ts &#61; _totuple&#40;rT, itr, y&#91;2&#93;&#41;::rT</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L474'>
@@ -4779,7 +4765,7 @@
           <td>
             
             
-            <span class='code'>    return &#40;t1, ts...&#41;::T</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L475'>
@@ -4789,7 +4775,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L476'>
@@ -4809,7 +4795,7 @@
           <td>
             
             
-            <span class='code'># use iterative algorithm for long tuples</span>
+            <span class='code'># Report an error in log message creation</span>
           </td>
         </tr>
         <tr id='L478'>
@@ -4819,7 +4805,7 @@
           <td>
             
             
-            <span class='code'>function _totuple&#40;T::Type&#123;All32&#123;E,N&#125;&#125;, itr&#41; where &#123;E,N&#125;</span>
+            <span class='code'>@noinline function logging_error&#40;logger, level, _module, group, id,</span>
           </td>
         </tr>
         <tr id='L479'>
@@ -4829,7 +4815,7 @@
           <td>
             
             
-            <span class='code'>    len &#61; N&#43;32</span>
+            <span class='code'>                                 filepath, line, @nospecialize&#40;err&#41;, real::Bool&#41;</span>
           </td>
         </tr>
         <tr id='L480'>
@@ -4839,7 +4825,7 @@
           <td>
             
             
-            <span class='code'>    elts &#61; collect&#40;E, Iterators.take&#40;itr,len&#41;&#41;</span>
+            <span class='code'>    @nospecialize</span>
           </td>
         </tr>
         <tr id='L481'>
@@ -4849,7 +4835,7 @@
           <td>
             
             
-            <span class='code'>    if length&#40;elts&#41; &#33;&#61; len</span>
+            <span class='code'>    if &#33;_invoked_catch_exceptions&#40;logger&#41;</span>
           </td>
         </tr>
         <tr id='L482'>
@@ -4859,7 +4845,7 @@
           <td>
             
             
-            <span class='code'>        _totuple_err&#40;T&#41;</span>
+            <span class='code'>        real ? rethrow&#40;err&#41; : throw&#40;err&#41;</span>
           </td>
         </tr>
         <tr id='L483'>
@@ -4879,7 +4865,7 @@
           <td>
             
             
-            <span class='code'>    &#40;elts...,&#41;</span>
+            <span class='code'>    msg &#61; try</span>
           </td>
         </tr>
         <tr id='L485'>
@@ -4889,7 +4875,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>              &quot;Exception while generating log record in module &#36;_module at &#36;filepath:&#36;line&quot;</span>
           </td>
         </tr>
         <tr id='L486'>
@@ -4899,7 +4885,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>          catch ex</span>
           </td>
         </tr>
         <tr id='L487'>
@@ -4909,7 +4895,7 @@
           <td>
             
             
-            <span class='code'>_totuple&#40;::Type&#123;Tuple&#123;Vararg&#123;E&#125;&#125;&#125;, itr, s...&#41; where &#123;E&#125; &#61; &#40;collect&#40;E, Iterators.rest&#40;itr,s...&#41;&#41;...,&#41;</span>
+            <span class='code'>              LazyString&#40;&quot;Exception handling log message: &quot;, ex&#41;</span>
           </td>
         </tr>
         <tr id='L488'>
@@ -4919,7 +4905,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>          end</span>
           </td>
         </tr>
         <tr id='L489'>
@@ -4929,7 +4915,7 @@
           <td>
             
             
-            <span class='code'>_totuple&#40;::Type&#123;Tuple&#125;, itr, s...&#41; &#61; &#40;collect&#40;Iterators.rest&#40;itr,s...&#41;&#41;...,&#41;</span>
+            <span class='code'>    bt &#61; real ? catch_backtrace&#40;&#41; : backtrace&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L490'>
@@ -4939,7 +4925,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    handle_message&#40;</span>
           </td>
         </tr>
         <tr id='L491'>
@@ -4949,7 +4935,7 @@
           <td>
             
             
-            <span class='code'># for types that &#96;apply&#96; knows about, just splatting is faster than collecting first</span>
+            <span class='code'>        logger, Error, msg, _module, :logevent_error, id, filepath, line;</span>
           </td>
         </tr>
         <tr id='L492'>
@@ -4959,7 +4945,7 @@
           <td>
             
             
-            <span class='code'>_totuple&#40;::Type&#123;Tuple&#125;, itr::Array&#41; &#61; &#40;itr...,&#41;</span>
+            <span class='code'>        exception&#61;&#40;err,bt&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L493'>
@@ -4969,7 +4955,7 @@
           <td>
             
             
-            <span class='code'>_totuple&#40;::Type&#123;Tuple&#125;, itr::SimpleVector&#41; &#61; &#40;itr...,&#41;</span>
+            <span class='code'>    nothing</span>
           </td>
         </tr>
         <tr id='L494'>
@@ -4979,7 +4965,7 @@
           <td>
             
             
-            <span class='code'>_totuple&#40;::Type&#123;Tuple&#125;, itr::NamedTuple&#41; &#61; &#40;itr...,&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L495'>
@@ -4989,7 +4975,7 @@
           <td>
             
             
-            <span class='code'>_totuple&#40;::Type&#123;Tuple&#125;, p::Pair&#41; &#61; &#40;p.first, p.second&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L496'>
@@ -4999,7 +4985,7 @@
           <td>
             
             
-            <span class='code'>_totuple&#40;::Type&#123;Tuple&#125;, x::Number&#41; &#61; &#40;x,&#41; # to make Tuple&#40;x&#41; inferable</span>
+            <span class='code'># Log a message. Called from the julia C code; kwargs is in the format</span>
           </td>
         </tr>
         <tr id='L497'>
@@ -5009,7 +4995,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># Any&#91;key1,val1, ...&#93; for simplicity in construction on the C side.</span>
           </td>
         </tr>
         <tr id='L498'>
@@ -5019,7 +5005,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>function logmsg_shim&#40;level, message, _module, group, id, file, line, kwargs&#41;</span>
           </td>
         </tr>
         <tr id='L499'>
@@ -5029,7 +5015,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    @nospecialize</span>
           </td>
         </tr>
         <tr id='L500'>
@@ -5039,7 +5025,7 @@
           <td>
             
             
-            <span class='code'>## find ##</span>
+            <span class='code'>    real_kws &#61; Any&#91;&#40;kwargs&#91;i&#93;, kwargs&#91;i&#43;1&#93;&#41; for i in 1:2:length&#40;kwargs&#41;&#93;</span>
           </td>
         </tr>
         <tr id='L501'>
@@ -5049,7 +5035,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    @logmsg&#40;convert&#40;LogLevel, level&#41;, message,</span>
           </td>
         </tr>
         <tr id='L502'>
@@ -5059,7 +5045,7 @@
           <td>
             
             
-            <span class='code'>_findfirst_rec&#40;f, i::Int, ::Tuple&#123;&#125;&#41; &#61; nothing</span>
+            <span class='code'>            _module&#61;_module, _id&#61;id, _group&#61;group,</span>
           </td>
         </tr>
         <tr id='L503'>
@@ -5069,7 +5055,7 @@
           <td>
             
             
-            <span class='code'>_findfirst_rec&#40;f, i::Int, t::Tuple&#41; &#61; &#40;@inline; f&#40;first&#40;t&#41;&#41; ? i : _findfirst_rec&#40;f, i&#43;1, tail&#40;t&#41;&#41;&#41;</span>
+            <span class='code'>            _file&#61;String&#40;file&#41;, _line&#61;line, real_kws...&#41;</span>
           </td>
         </tr>
         <tr id='L504'>
@@ -5079,7 +5065,7 @@
           <td>
             
             
-            <span class='code'>function _findfirst_loop&#40;f::Function, t&#41;</span>
+            <span class='code'>    nothing</span>
           </td>
         </tr>
         <tr id='L505'>
@@ -5089,7 +5075,7 @@
           <td>
             
             
-            <span class='code'>    for i in 1:length&#40;t&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L506'>
@@ -5099,7 +5085,7 @@
           <td>
             
             
-            <span class='code'>        f&#40;t&#91;i&#93;&#41; &amp;&amp; return i</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L507'>
@@ -5109,7 +5095,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'># LogState - a cache of data extracted from the logger, plus the logger itself.</span>
           </td>
         </tr>
         <tr id='L508'>
@@ -5119,7 +5105,7 @@
           <td>
             
             
-            <span class='code'>    return nothing</span>
+            <span class='code'>struct LogState</span>
           </td>
         </tr>
         <tr id='L509'>
@@ -5129,7 +5115,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    min_enabled_level::LogLevel</span>
           </td>
         </tr>
         <tr id='L510'>
@@ -5139,7 +5125,7 @@
           <td>
             
             
-            <span class='code'>findfirst&#40;f::Function, t::Tuple&#41; &#61; length&#40;t&#41; &lt; 32 ? _findfirst_rec&#40;f, 1, t&#41; : _findfirst_loop&#40;f, t&#41;</span>
+            <span class='code'>    logger::AbstractLogger</span>
           </td>
         </tr>
         <tr id='L511'>
@@ -5149,7 +5135,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L512'>
@@ -5159,7 +5145,7 @@
           <td>
             
             
-            <span class='code'>findlast&#40;f::Function, t::Tuple&#41; &#61; length&#40;t&#41; &lt; 32 ? _findlast_rec&#40;f, t&#41; : _findlast_loop&#40;f, t&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L513'>
@@ -5169,7 +5155,7 @@
           <td>
             
             
-            <span class='code'>function _findlast_rec&#40;f::Function, x::Tuple&#41;</span>
+            <span class='code'>LogState&#40;logger&#41; &#61; LogState&#40;LogLevel&#40;_invoked_min_enabled_level&#40;logger&#41;&#41;, logger&#41;</span>
           </td>
         </tr>
         <tr id='L514'>
@@ -5179,7 +5165,7 @@
           <td>
             
             
-            <span class='code'>    r &#61; findfirst&#40;f, reverse&#40;x&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L515'>
@@ -5189,7 +5175,7 @@
           <td>
             
             
-            <span class='code'>    return isnothing&#40;r&#41; ? r : length&#40;x&#41; - r &#43; 1</span>
+            <span class='code'>const CURRENT_LOGSTATE &#61; ScopedValue&#123;LogState&#125;&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L516'>
@@ -5199,7 +5185,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L517'>
@@ -5209,7 +5195,7 @@
           <td>
             
             
-            <span class='code'>function _findlast_loop&#40;f::Function, t&#41;</span>
+            <span class='code'>function current_logstate&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L518'>
@@ -5219,7 +5205,7 @@
           <td>
             
             
-            <span class='code'>    for i in reverse&#40;1:length&#40;t&#41;&#41;</span>
+            <span class='code'>    maybe &#61; @inline Base.ScopedValues.get&#40;CURRENT_LOGSTATE&#41;</span>
           </td>
         </tr>
         <tr id='L519'>
@@ -5229,7 +5215,7 @@
           <td>
             
             
-            <span class='code'>        f&#40;t&#91;i&#93;&#41; &amp;&amp; return i</span>
+            <span class='code'>    return something&#40;maybe, _global_logstate&#41;::LogState</span>
           </td>
         </tr>
         <tr id='L520'>
@@ -5239,7 +5225,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L521'>
@@ -5249,17 +5235,31 @@
           <td>
             
             
-            <span class='code'>    return nothing</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L522'>
           <td class='lineno'>522</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>237 &#40;100 &#37;&#41;</td>
           <td>
-            
-            
-            <span class='code'>end</span>
+            <div class='call-sites'>
+              237 &#40;100 &#37;&#41;
+              samples spent in with_logstate
+              <br />
+              
+              237 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from with_logger
+              <a href='logging.jl-9268cab4baaf7c7c9c1a1758e80b89a326a13be1.html#L632'>line 632</a>
+              <br />
+            </div>
+            <div class='callees'>
+              237 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='repl.jl-66f8efb37f6904395ecf7f76671d4481205eec3e.html#L192'>#112</a>
+              <br />
+            </div>
+            <span class='code'>with_logstate&#40;f::Function, logstate&#41; &#61; @with&#40;CURRENT_LOGSTATE &#61;&gt; logstate, f&#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L523'>
@@ -5279,7 +5279,7 @@
           <td>
             
             
-            <span class='code'>## filter ##</span>
+            <span class='code'>#-------------------------------------------------------------------------------</span>
           </td>
         </tr>
         <tr id='L525'>
@@ -5289,7 +5289,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># Control of the current logger and early log filtering</span>
           </td>
         </tr>
         <tr id='L526'>
@@ -5299,7 +5299,7 @@
           <td>
             
             
-            <span class='code'>filter_rec&#40;f, xs::Tuple&#41; &#61; afoldl&#40;&#40;ys, x&#41; -&gt; f&#40;x&#41; ? &#40;ys..., x&#41; : ys, &#40;&#41;, xs...&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L527'>
@@ -5309,7 +5309,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L528'>
@@ -5319,7 +5319,7 @@
           <td>
             
             
-            <span class='code'># use Array for long tuples</span>
+            <span class='code'>    disable_logging&#40;level&#41;</span>
           </td>
         </tr>
         <tr id='L529'>
@@ -5329,7 +5329,7 @@
           <td>
             
             
-            <span class='code'>filter&#40;f, t::Tuple&#41; &#61; length&#40;t&#41; &lt; 32 ? filter_rec&#40;f, t&#41; : Tuple&#40;filter&#40;f, collect&#40;t&#41;&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L530'>
@@ -5339,7 +5339,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>Disable all log messages at log levels equal to or less than &#96;level&#96;.  This is</span>
           </td>
         </tr>
         <tr id='L531'>
@@ -5349,7 +5349,7 @@
           <td>
             
             
-            <span class='code'>## comparison ##</span>
+            <span class='code'>a *global* setting, intended to make debug logging extremely cheap when</span>
           </td>
         </tr>
         <tr id='L532'>
@@ -5359,7 +5359,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>disabled.</span>
           </td>
         </tr>
         <tr id='L533'>
@@ -5369,7 +5369,7 @@
           <td>
             
             
-            <span class='code'>isequal&#40;t1::Tuple, t2::Tuple&#41; &#61; length&#40;t1&#41; &#61;&#61; length&#40;t2&#41; &amp;&amp; _isequal&#40;t1, t2&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L534'>
@@ -5379,7 +5379,7 @@
           <td>
             
             
-            <span class='code'>_isequal&#40;::Tuple&#123;&#125;, ::Tuple&#123;&#125;&#41; &#61; true</span>
+            <span class='code'># Examples</span>
           </td>
         </tr>
         <tr id='L535'>
@@ -5389,7 +5389,7 @@
           <td>
             
             
-            <span class='code'>function _isequal&#40;t1::Tuple&#123;Any,Vararg&#123;Any&#125;&#125;, t2::Tuple&#123;Any,Vararg&#123;Any&#125;&#125;&#41;</span>
+            <span class='code'>&#96;&#96;&#96;julia</span>
           </td>
         </tr>
         <tr id='L536'>
@@ -5399,7 +5399,7 @@
           <td>
             
             
-            <span class='code'>    return isequal&#40;t1&#91;1&#93;, t2&#91;1&#93;&#41; &amp;&amp; _isequal&#40;tail&#40;t1&#41;, tail&#40;t2&#41;&#41;</span>
+            <span class='code'>Logging.disable_logging&#40;Logging.Info&#41; # Disable debug and info</span>
           </td>
         </tr>
         <tr id='L537'>
@@ -5409,7 +5409,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>&#96;&#96;&#96;</span>
           </td>
         </tr>
         <tr id='L538'>
@@ -5419,7 +5419,7 @@
           <td>
             
             
-            <span class='code'>function _isequal&#40;t1::Any32, t2::Any32&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L539'>
@@ -5429,7 +5429,7 @@
           <td>
             
             
-            <span class='code'>    for i &#61; 1:length&#40;t1&#41;</span>
+            <span class='code'>function disable_logging&#40;level::LogLevel&#41;</span>
           </td>
         </tr>
         <tr id='L540'>
@@ -5439,7 +5439,7 @@
           <td>
             
             
-            <span class='code'>        if &#33;isequal&#40;t1&#91;i&#93;, t2&#91;i&#93;&#41;</span>
+            <span class='code'>    _min_enabled_level&#91;&#93; &#61; level &#43; 1</span>
           </td>
         </tr>
         <tr id='L541'>
@@ -5449,7 +5449,7 @@
           <td>
             
             
-            <span class='code'>            return false</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L542'>
@@ -5459,7 +5459,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L543'>
@@ -5469,7 +5469,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>let _debug_groups_include::Vector&#123;Symbol&#125; &#61; Symbol&#91;&#93;,</span>
           </td>
         </tr>
         <tr id='L544'>
@@ -5479,7 +5479,7 @@
           <td>
             
             
-            <span class='code'>    return true</span>
+            <span class='code'>    _debug_groups_exclude::Vector&#123;Symbol&#125; &#61; Symbol&#91;&#93;,</span>
           </td>
         </tr>
         <tr id='L545'>
@@ -5489,7 +5489,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    _debug_str::String &#61; &quot;&quot;</span>
           </td>
         </tr>
         <tr id='L546'>
@@ -5499,7 +5499,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>global Base.@constprop :none function env_override_minlevel&#40;group, _module&#41;</span>
           </td>
         </tr>
         <tr id='L547'>
@@ -5509,7 +5509,7 @@
           <td>
             
             
-            <span class='code'>&#61;&#61;&#40;t1::Tuple, t2::Tuple&#41; &#61; &#40;length&#40;t1&#41; &#61;&#61; length&#40;t2&#41;&#41; &amp;&amp; _eq&#40;t1, t2&#41;</span>
+            <span class='code'>    debug &#61; get&#40;ENV, &quot;JULIA_DEBUG&quot;, &quot;&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L548'>
@@ -5519,7 +5519,7 @@
           <td>
             
             
-            <span class='code'>_eq&#40;t1::Tuple&#123;&#125;, t2::Tuple&#123;&#125;&#41; &#61; true</span>
+            <span class='code'>    if &#33;&#40;debug &#61;&#61;&#61; _debug_str&#41;</span>
           </td>
         </tr>
         <tr id='L549'>
@@ -5529,7 +5529,7 @@
           <td>
             
             
-            <span class='code'>_eq_missing&#40;t1::Tuple&#123;&#125;, t2::Tuple&#123;&#125;&#41; &#61; missing</span>
+            <span class='code'>        _debug_str &#61; debug</span>
           </td>
         </tr>
         <tr id='L550'>
@@ -5539,7 +5539,7 @@
           <td>
             
             
-            <span class='code'>function _eq&#40;t1::Tuple, t2::Tuple&#41;</span>
+            <span class='code'>        empty&#33;&#40;_debug_groups_include&#41;</span>
           </td>
         </tr>
         <tr id='L551'>
@@ -5549,7 +5549,7 @@
           <td>
             
             
-            <span class='code'>    eq &#61; t1&#91;1&#93; &#61;&#61; t2&#91;1&#93;</span>
+            <span class='code'>        empty&#33;&#40;_debug_groups_exclude&#41;</span>
           </td>
         </tr>
         <tr id='L552'>
@@ -5559,7 +5559,7 @@
           <td>
             
             
-            <span class='code'>    if eq &#61;&#61;&#61; false</span>
+            <span class='code'>        for g in split&#40;debug, &#39;,&#39;&#41;</span>
           </td>
         </tr>
         <tr id='L553'>
@@ -5569,7 +5569,7 @@
           <td>
             
             
-            <span class='code'>        return false</span>
+            <span class='code'>            if &#33;isempty&#40;g&#41;</span>
           </td>
         </tr>
         <tr id='L554'>
@@ -5579,7 +5579,7 @@
           <td>
             
             
-            <span class='code'>    elseif ismissing&#40;eq&#41;</span>
+            <span class='code'>                if startswith&#40;g, &quot;&#33;&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L555'>
@@ -5589,7 +5589,7 @@
           <td>
             
             
-            <span class='code'>        return _eq_missing&#40;tail&#40;t1&#41;, tail&#40;t2&#41;&#41;</span>
+            <span class='code'>                    if &#33;isempty&#40;g&#91;2:end&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L556'>
@@ -5599,7 +5599,7 @@
           <td>
             
             
-            <span class='code'>    else</span>
+            <span class='code'>                        push&#33;&#40;_debug_groups_exclude, Symbol&#40;g&#91;2:end&#93;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L557'>
@@ -5609,7 +5609,7 @@
           <td>
             
             
-            <span class='code'>        return _eq&#40;tail&#40;t1&#41;, tail&#40;t2&#41;&#41;</span>
+            <span class='code'>                    end</span>
           </td>
         </tr>
         <tr id='L558'>
@@ -5619,7 +5619,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>                else</span>
           </td>
         </tr>
         <tr id='L559'>
@@ -5629,7 +5629,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>                    push&#33;&#40;_debug_groups_include, Symbol&#40;g&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L560'>
@@ -5639,7 +5639,7 @@
           <td>
             
             
-            <span class='code'>function _eq_missing&#40;t1::Tuple, t2::Tuple&#41;</span>
+            <span class='code'>                end</span>
           </td>
         </tr>
         <tr id='L561'>
@@ -5649,7 +5649,7 @@
           <td>
             
             
-            <span class='code'>    eq &#61; t1&#91;1&#93; &#61;&#61; t2&#91;1&#93;</span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L562'>
@@ -5659,7 +5659,7 @@
           <td>
             
             
-            <span class='code'>    if eq &#61;&#61;&#61; false</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L563'>
@@ -5669,7 +5669,7 @@
           <td>
             
             
-            <span class='code'>        return false</span>
+            <span class='code'>        unique&#33;&#40;_debug_groups_include&#41;</span>
           </td>
         </tr>
         <tr id='L564'>
@@ -5679,7 +5679,7 @@
           <td>
             
             
-            <span class='code'>    else</span>
+            <span class='code'>        unique&#33;&#40;_debug_groups_exclude&#41;</span>
           </td>
         </tr>
         <tr id='L565'>
@@ -5689,7 +5689,7 @@
           <td>
             
             
-            <span class='code'>        return _eq_missing&#40;tail&#40;t1&#41;, tail&#40;t2&#41;&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L566'>
@@ -5699,7 +5699,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L567'>
@@ -5709,7 +5709,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    if &#33;&#40;:all in _debug_groups_exclude&#41; &amp;&amp; &#40;:all in _debug_groups_include || &#33;isempty&#40;_debug_groups_exclude&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L568'>
@@ -5719,7 +5719,7 @@
           <td>
             
             
-            <span class='code'>function _eq&#40;t1::Any32, t2::Any32&#41;</span>
+            <span class='code'>        if isempty&#40;_debug_groups_exclude&#41;</span>
           </td>
         </tr>
         <tr id='L569'>
@@ -5729,7 +5729,7 @@
           <td>
             
             
-            <span class='code'>    anymissing &#61; false</span>
+            <span class='code'>            return true</span>
           </td>
         </tr>
         <tr id='L570'>
@@ -5739,7 +5739,7 @@
           <td>
             
             
-            <span class='code'>    for i &#61; 1:length&#40;t1&#41;</span>
+            <span class='code'>        elseif isa&#40;group, Symbol&#41; &amp;&amp; group in _debug_groups_exclude</span>
           </td>
         </tr>
         <tr id='L571'>
@@ -5749,7 +5749,7 @@
           <td>
             
             
-            <span class='code'>        eq &#61; &#40;t1&#91;i&#93; &#61;&#61; t2&#91;i&#93;&#41;</span>
+            <span class='code'>            return false</span>
           </td>
         </tr>
         <tr id='L572'>
@@ -5759,7 +5759,7 @@
           <td>
             
             
-            <span class='code'>        if ismissing&#40;eq&#41;</span>
+            <span class='code'>        elseif isa&#40;_module, Module&#41; &amp;&amp; &#40;nameof&#40;_module&#41; in _debug_groups_exclude || nameof&#40;Base.moduleroot&#40;_module&#41;&#41; in _debug_groups_exclude&#41;</span>
           </td>
         </tr>
         <tr id='L573'>
@@ -5769,7 +5769,7 @@
           <td>
             
             
-            <span class='code'>            anymissing &#61; true</span>
+            <span class='code'>            return false</span>
           </td>
         </tr>
         <tr id='L574'>
@@ -5779,7 +5779,7 @@
           <td>
             
             
-            <span class='code'>        elseif &#33;eq</span>
+            <span class='code'>        else</span>
           </td>
         </tr>
         <tr id='L575'>
@@ -5789,7 +5789,7 @@
           <td>
             
             
-            <span class='code'>           return false</span>
+            <span class='code'>            return true</span>
           </td>
         </tr>
         <tr id='L576'>
@@ -5799,7 +5799,7 @@
           <td>
             
             
-            <span class='code'>       end</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L577'>
@@ -5809,7 +5809,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>    else</span>
           </td>
         </tr>
         <tr id='L578'>
@@ -5819,7 +5819,7 @@
           <td>
             
             
-            <span class='code'>    return anymissing ? missing : true</span>
+            <span class='code'>        if isempty&#40;_debug_groups_include&#41;</span>
           </td>
         </tr>
         <tr id='L579'>
@@ -5829,7 +5829,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>            return false</span>
           </td>
         </tr>
         <tr id='L580'>
@@ -5839,7 +5839,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        elseif isa&#40;group, Symbol&#41; &amp;&amp; group in _debug_groups_include</span>
           </td>
         </tr>
         <tr id='L581'>
@@ -5849,7 +5849,7 @@
           <td>
             
             
-            <span class='code'>const tuplehash_seed &#61; UInt &#61;&#61;&#61; UInt64 ? 0x77cfa1eef01bca90 : 0xf01bca90</span>
+            <span class='code'>            return true</span>
           </td>
         </tr>
         <tr id='L582'>
@@ -5859,7 +5859,7 @@
           <td>
             
             
-            <span class='code'>hash&#40;::Tuple&#123;&#125;, h::UInt&#41; &#61; h &#43; tuplehash_seed</span>
+            <span class='code'>        elseif isa&#40;_module, Module&#41; &amp;&amp; &#40;nameof&#40;_module&#41; in _debug_groups_include || nameof&#40;Base.moduleroot&#40;_module&#41;&#41; in _debug_groups_include&#41;</span>
           </td>
         </tr>
         <tr id='L583'>
@@ -5869,7 +5869,7 @@
           <td>
             
             
-            <span class='code'>hash&#40;t::Tuple, h::UInt&#41; &#61; hash&#40;t&#91;1&#93;, hash&#40;tail&#40;t&#41;, h&#41;&#41;</span>
+            <span class='code'>            return true</span>
           </td>
         </tr>
         <tr id='L584'>
@@ -5879,7 +5879,7 @@
           <td>
             
             
-            <span class='code'>function hash&#40;t::Any32, h::UInt&#41;</span>
+            <span class='code'>        else</span>
           </td>
         </tr>
         <tr id='L585'>
@@ -5889,7 +5889,7 @@
           <td>
             
             
-            <span class='code'>    out &#61; h &#43; tuplehash_seed</span>
+            <span class='code'>            return false</span>
           </td>
         </tr>
         <tr id='L586'>
@@ -5899,7 +5899,7 @@
           <td>
             
             
-            <span class='code'>    for i &#61; length&#40;t&#41;:-1:1</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L587'>
@@ -5909,7 +5909,7 @@
           <td>
             
             
-            <span class='code'>        out &#61; hash&#40;t&#91;i&#93;, out&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L588'>
@@ -5919,7 +5919,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>    return false</span>
           </td>
         </tr>
         <tr id='L589'>
@@ -5929,7 +5929,7 @@
           <td>
             
             
-            <span class='code'>    return out</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L590'>
@@ -5959,7 +5959,7 @@
           <td>
             
             
-            <span class='code'>&lt;&#40;::Tuple&#123;&#125;, ::Tuple&#123;&#125;&#41; &#61; false</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L593'>
@@ -5969,7 +5969,7 @@
           <td>
             
             
-            <span class='code'>&lt;&#40;::Tuple&#123;&#125;, ::Tuple&#41; &#61; true</span>
+            <span class='code'>global _global_logstate::LogState</span>
           </td>
         </tr>
         <tr id='L594'>
@@ -5979,7 +5979,7 @@
           <td>
             
             
-            <span class='code'>&lt;&#40;::Tuple, ::Tuple&#123;&#125;&#41; &#61; false</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L595'>
@@ -5989,7 +5989,7 @@
           <td>
             
             
-            <span class='code'>function &lt;&#40;t1::Tuple, t2::Tuple&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L596'>
@@ -5999,7 +5999,7 @@
           <td>
             
             
-            <span class='code'>    a, b &#61; t1&#91;1&#93;, t2&#91;1&#93;</span>
+            <span class='code'>    global_logger&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L597'>
@@ -6009,7 +6009,7 @@
           <td>
             
             
-            <span class='code'>    eq &#61; &#40;a &#61;&#61; b&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L598'>
@@ -6019,7 +6019,7 @@
           <td>
             
             
-            <span class='code'>    if ismissing&#40;eq&#41;</span>
+            <span class='code'>Return the global logger, used to receive messages when no specific logger</span>
           </td>
         </tr>
         <tr id='L599'>
@@ -6029,7 +6029,7 @@
           <td>
             
             
-            <span class='code'>        return missing</span>
+            <span class='code'>exists for the current task.</span>
           </td>
         </tr>
         <tr id='L600'>
@@ -6039,7 +6039,7 @@
           <td>
             
             
-            <span class='code'>    elseif &#33;eq</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L601'>
@@ -6049,7 +6049,7 @@
           <td>
             
             
-            <span class='code'>        return a &lt; b</span>
+            <span class='code'>    global_logger&#40;logger&#41;</span>
           </td>
         </tr>
         <tr id='L602'>
@@ -6059,7 +6059,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L603'>
@@ -6069,7 +6069,7 @@
           <td>
             
             
-            <span class='code'>    return tail&#40;t1&#41; &lt; tail&#40;t2&#41;</span>
+            <span class='code'>Set the global logger to &#96;logger&#96;, and return the previous global logger.</span>
           </td>
         </tr>
         <tr id='L604'>
@@ -6079,7 +6079,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L605'>
@@ -6089,7 +6089,7 @@
           <td>
             
             
-            <span class='code'>function &lt;&#40;t1::Any32, t2::Any32&#41;</span>
+            <span class='code'>global_logger&#40;&#41; &#61; _global_logstate.logger</span>
           </td>
         </tr>
         <tr id='L606'>
@@ -6099,7 +6099,7 @@
           <td>
             
             
-            <span class='code'>    n1, n2 &#61; length&#40;t1&#41;, length&#40;t2&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L607'>
@@ -6109,7 +6109,7 @@
           <td>
             
             
-            <span class='code'>    for i &#61; 1:min&#40;n1, n2&#41;</span>
+            <span class='code'>function global_logger&#40;logger::AbstractLogger&#41;</span>
           </td>
         </tr>
         <tr id='L608'>
@@ -6119,7 +6119,7 @@
           <td>
             
             
-            <span class='code'>        a, b &#61; t1&#91;i&#93;, t2&#91;i&#93;</span>
+            <span class='code'>    prev &#61; _global_logstate.logger</span>
           </td>
         </tr>
         <tr id='L609'>
@@ -6129,7 +6129,7 @@
           <td>
             
             
-            <span class='code'>        eq &#61; &#40;a &#61;&#61; b&#41;</span>
+            <span class='code'>    global _global_logstate &#61; LogState&#40;logger&#41;</span>
           </td>
         </tr>
         <tr id='L610'>
@@ -6139,7 +6139,7 @@
           <td>
             
             
-            <span class='code'>        if ismissing&#40;eq&#41;</span>
+            <span class='code'>    prev</span>
           </td>
         </tr>
         <tr id='L611'>
@@ -6149,7 +6149,7 @@
           <td>
             
             
-            <span class='code'>            return missing</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L612'>
@@ -6159,7 +6159,7 @@
           <td>
             
             
-            <span class='code'>        elseif &#33;eq</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L613'>
@@ -6169,7 +6169,7 @@
           <td>
             
             
-            <span class='code'>           return a &lt; b</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L614'>
@@ -6179,7 +6179,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>    with_logger&#40;function, logger&#41;</span>
           </td>
         </tr>
         <tr id='L615'>
@@ -6189,7 +6189,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L616'>
@@ -6199,7 +6199,7 @@
           <td>
             
             
-            <span class='code'>    return n1 &lt; n2</span>
+            <span class='code'>Execute &#96;function&#96;, directing all log messages to &#96;logger&#96;.</span>
           </td>
         </tr>
         <tr id='L617'>
@@ -6209,7 +6209,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L618'>
@@ -6219,7 +6219,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># Examples</span>
           </td>
         </tr>
         <tr id='L619'>
@@ -6229,7 +6229,7 @@
           <td>
             
             
-            <span class='code'>isless&#40;::Tuple&#123;&#125;, ::Tuple&#123;&#125;&#41; &#61; false</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L620'>
@@ -6239,7 +6239,7 @@
           <td>
             
             
-            <span class='code'>isless&#40;::Tuple&#123;&#125;, ::Tuple&#41; &#61; true</span>
+            <span class='code'>&#96;&#96;&#96;julia</span>
           </td>
         </tr>
         <tr id='L621'>
@@ -6249,7 +6249,7 @@
           <td>
             
             
-            <span class='code'>isless&#40;::Tuple, ::Tuple&#123;&#125;&#41; &#61; false</span>
+            <span class='code'>function test&#40;x&#41;</span>
           </td>
         </tr>
         <tr id='L622'>
@@ -6259,7 +6259,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    @info &quot;x &#61; \&#36;x&quot;</span>
           </td>
         </tr>
         <tr id='L623'>
@@ -6269,7 +6269,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L624'>
@@ -6279,7 +6279,7 @@
           <td>
             
             
-            <span class='code'>    isless&#40;t1::Tuple, t2::Tuple&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L625'>
@@ -6289,7 +6289,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>with_logger&#40;logger&#41; do</span>
           </td>
         </tr>
         <tr id='L626'>
@@ -6299,7 +6299,7 @@
           <td>
             
             
-            <span class='code'>Return &#96;true&#96; when &#96;t1&#96; is less than &#96;t2&#96; in lexicographic order.</span>
+            <span class='code'>    test&#40;1&#41;</span>
           </td>
         </tr>
         <tr id='L627'>
@@ -6309,7 +6309,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    test&#40;&#91;1,2&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L628'>
@@ -6319,7 +6319,7 @@
           <td>
             
             
-            <span class='code'>function isless&#40;t1::Tuple, t2::Tuple&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L629'>
@@ -6329,7 +6329,7 @@
           <td>
             
             
-            <span class='code'>    a, b &#61; t1&#91;1&#93;, t2&#91;1&#93;</span>
+            <span class='code'>&#96;&#96;&#96;</span>
           </td>
         </tr>
         <tr id='L630'>
@@ -6339,7 +6339,7 @@
           <td>
             
             
-            <span class='code'>    isless&#40;a, b&#41; || &#40;isequal&#40;a, b&#41; &amp;&amp; isless&#40;tail&#40;t1&#41;, tail&#40;t2&#41;&#41;&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L631'>
@@ -6349,17 +6349,31 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>function with_logger&#40;@nospecialize&#40;f::Function&#41;, logger::AbstractLogger&#41;</span>
           </td>
         </tr>
         <tr id='L632'>
           <td class='lineno'>632</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>237 &#40;100 &#37;&#41;</td>
           <td>
-            
-            
-            <span class='code'>function isless&#40;t1::Any32, t2::Any32&#41;</span>
+            <div class='call-sites'>
+              237 &#40;100 &#37;&#41;
+              samples spent in with_logger
+              <br />
+              
+              237 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from #111
+              <a href='repl.jl-66f8efb37f6904395ecf7f76671d4481205eec3e.html#L193'>line 193</a>
+              <br />
+            </div>
+            <div class='callees'>
+              237 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='logging.jl-9268cab4baaf7c7c9c1a1758e80b89a326a13be1.html#L522'>with_logstate</a>
+              <br />
+            </div>
+            <span class='code'>    with_logstate&#40;f, LogState&#40;logger&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L633'>
@@ -6369,7 +6383,7 @@
           <td>
             
             
-            <span class='code'>    n1, n2 &#61; length&#40;t1&#41;, length&#40;t2&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L634'>
@@ -6379,7 +6393,7 @@
           <td>
             
             
-            <span class='code'>    for i &#61; 1:min&#40;n1, n2&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L635'>
@@ -6389,7 +6403,7 @@
           <td>
             
             
-            <span class='code'>        a, b &#61; t1&#91;i&#93;, t2&#91;i&#93;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L636'>
@@ -6399,7 +6413,7 @@
           <td>
             
             
-            <span class='code'>        if &#33;isequal&#40;a, b&#41;</span>
+            <span class='code'>    current_logger&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L637'>
@@ -6409,7 +6423,7 @@
           <td>
             
             
-            <span class='code'>            return isless&#40;a, b&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L638'>
@@ -6419,7 +6433,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>Return the logger for the current task, or the global logger if none is</span>
           </td>
         </tr>
         <tr id='L639'>
@@ -6429,7 +6443,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>attached to the task.</span>
           </td>
         </tr>
         <tr id='L640'>
@@ -6439,7 +6453,7 @@
           <td>
             
             
-            <span class='code'>    return n1 &lt; n2</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L641'>
@@ -6449,7 +6463,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>current_logger&#40;&#41; &#61; current_logstate&#40;&#41;.logger</span>
           </td>
         </tr>
         <tr id='L642'>
@@ -6469,7 +6483,7 @@
           <td>
             
             
-            <span class='code'>## functions ##</span>
+            <span class='code'>const closed_stream &#61; IOBuffer&#40;UInt8&#91;&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L644'>
@@ -6479,7 +6493,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>close&#40;closed_stream&#41;</span>
           </td>
         </tr>
         <tr id='L645'>
@@ -6489,7 +6503,7 @@
           <td>
             
             
-            <span class='code'>isempty&#40;x::Tuple&#123;&#125;&#41; &#61; true</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L646'>
@@ -6499,7 +6513,7 @@
           <td>
             
             
-            <span class='code'>isempty&#40;@nospecialize x::Tuple&#41; &#61; false</span>
+            <span class='code'>#-------------------------------------------------------------------------------</span>
           </td>
         </tr>
         <tr id='L647'>
@@ -6509,7 +6523,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># SimpleLogger</span>
           </td>
         </tr>
         <tr id='L648'>
@@ -6519,7 +6533,7 @@
           <td>
             
             
-            <span class='code'>revargs&#40;&#41; &#61; &#40;&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L649'>
@@ -6529,7 +6543,7 @@
           <td>
             
             
-            <span class='code'>revargs&#40;x, r...&#41; &#61; &#40;revargs&#40;r...&#41;..., x&#41;</span>
+            <span class='code'>    SimpleLogger&#40;&#91;stream,&#93; min_level&#61;Info&#41;</span>
           </td>
         </tr>
         <tr id='L650'>
@@ -6549,7 +6563,7 @@
           <td>
             
             
-            <span class='code'>reverse&#40;t::Tuple&#41; &#61; revargs&#40;t...&#41;</span>
+            <span class='code'>Simplistic logger for logging all messages with level greater than or equal to</span>
           </td>
         </tr>
         <tr id='L652'>
@@ -6559,7 +6573,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>&#96;min_level&#96; to &#96;stream&#96;. If stream is closed then messages with log level</span>
           </td>
         </tr>
         <tr id='L653'>
@@ -6569,7 +6583,7 @@
           <td>
             
             
-            <span class='code'>## specialized reduction ##</span>
+            <span class='code'>greater or equal to &#96;Warn&#96; will be logged to &#96;stderr&#96; and below to &#96;stdout&#96;.</span>
           </td>
         </tr>
         <tr id='L654'>
@@ -6579,7 +6593,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L655'>
@@ -6589,7 +6603,7 @@
           <td>
             
             
-            <span class='code'>prod&#40;x::Tuple&#123;&#125;&#41; &#61; 1</span>
+            <span class='code'>struct SimpleLogger &lt;: AbstractLogger</span>
           </td>
         </tr>
         <tr id='L656'>
@@ -6599,7 +6613,7 @@
           <td>
             
             
-            <span class='code'># This is consistent with the regular prod because there is no need for size promotion</span>
+            <span class='code'>    stream::IO</span>
           </td>
         </tr>
         <tr id='L657'>
@@ -6609,7 +6623,7 @@
           <td>
             
             
-            <span class='code'># if all elements in the tuple are of system size.</span>
+            <span class='code'>    min_level::LogLevel</span>
           </td>
         </tr>
         <tr id='L658'>
@@ -6619,7 +6633,7 @@
           <td>
             
             
-            <span class='code'># It is defined here separately in order to support bootstrap, because it&#39;s needed earlier</span>
+            <span class='code'>    message_limits::Dict&#123;Any,Int&#125;</span>
           </td>
         </tr>
         <tr id='L659'>
@@ -6629,7 +6643,7 @@
           <td>
             
             
-            <span class='code'># than the general prod definition is available.</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L660'>
@@ -6639,7 +6653,7 @@
           <td>
             
             
-            <span class='code'>prod&#40;x::Tuple&#123;Int, Vararg&#123;Int&#125;&#125;&#41; &#61; *&#40;x...&#41;</span>
+            <span class='code'>SimpleLogger&#40;stream::IO, level&#61;Info&#41; &#61; SimpleLogger&#40;stream, level, Dict&#123;Any,Int&#125;&#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L661'>
@@ -6649,7 +6663,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>SimpleLogger&#40;level&#61;Info&#41; &#61; SimpleLogger&#40;closed_stream, level&#41;</span>
           </td>
         </tr>
         <tr id='L662'>
@@ -6659,7 +6673,7 @@
           <td>
             
             
-            <span class='code'>all&#40;x::Tuple&#123;&#125;&#41; &#61; true</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L663'>
@@ -6669,7 +6683,7 @@
           <td>
             
             
-            <span class='code'>all&#40;x::Tuple&#123;Bool&#125;&#41; &#61; x&#91;1&#93;</span>
+            <span class='code'>shouldlog&#40;logger::SimpleLogger, level, _module, group, id&#41; &#61;</span>
           </td>
         </tr>
         <tr id='L664'>
@@ -6679,7 +6693,7 @@
           <td>
             
             
-            <span class='code'>all&#40;x::Tuple&#123;Bool, Bool&#125;&#41; &#61; x&#91;1&#93;&amp;x&#91;2&#93;</span>
+            <span class='code'>    get&#40;logger.message_limits, id, 1&#41; &gt; 0</span>
           </td>
         </tr>
         <tr id='L665'>
@@ -6689,7 +6703,7 @@
           <td>
             
             
-            <span class='code'>all&#40;x::Tuple&#123;Bool, Bool, Bool&#125;&#41; &#61; x&#91;1&#93;&amp;x&#91;2&#93;&amp;x&#91;3&#93;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L666'>
@@ -6699,7 +6713,7 @@
           <td>
             
             
-            <span class='code'># use generic reductions for the rest</span>
+            <span class='code'>min_enabled_level&#40;logger::SimpleLogger&#41; &#61; logger.min_level</span>
           </td>
         </tr>
         <tr id='L667'>
@@ -6719,7 +6733,7 @@
           <td>
             
             
-            <span class='code'>any&#40;x::Tuple&#123;&#125;&#41; &#61; false</span>
+            <span class='code'>catch_exceptions&#40;logger::SimpleLogger&#41; &#61; false</span>
           </td>
         </tr>
         <tr id='L669'>
@@ -6729,7 +6743,7 @@
           <td>
             
             
-            <span class='code'>any&#40;x::Tuple&#123;Bool&#125;&#41; &#61; x&#91;1&#93;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L670'>
@@ -6739,7 +6753,7 @@
           <td>
             
             
-            <span class='code'>any&#40;x::Tuple&#123;Bool, Bool&#125;&#41; &#61; x&#91;1&#93;|x&#91;2&#93;</span>
+            <span class='code'>function handle_message&#40;logger::SimpleLogger, level::LogLevel, message, _module, group, id,</span>
           </td>
         </tr>
         <tr id='L671'>
@@ -6749,7 +6763,7 @@
           <td>
             
             
-            <span class='code'>any&#40;x::Tuple&#123;Bool, Bool, Bool&#125;&#41; &#61; x&#91;1&#93;|x&#91;2&#93;|x&#91;3&#93;</span>
+            <span class='code'>                        filepath, line; kwargs...&#41;</span>
           </td>
         </tr>
         <tr id='L672'>
@@ -6759,7 +6773,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    @nospecialize</span>
           </td>
         </tr>
         <tr id='L673'>
@@ -6769,7 +6783,7 @@
           <td>
             
             
-            <span class='code'># a version of &#96;in&#96; esp. for NamedTuple, to make it pure, and not compiled for each tuple length</span>
+            <span class='code'>    maxlog &#61; get&#40;kwargs, :maxlog, nothing&#41;</span>
           </td>
         </tr>
         <tr id='L674'>
@@ -6779,7 +6793,7 @@
           <td>
             
             
-            <span class='code'>function sym_in&#40;x::Symbol, itr::Tuple&#123;Vararg&#123;Symbol&#125;&#125;&#41;</span>
+            <span class='code'>    if maxlog isa Core.BuiltinInts</span>
           </td>
         </tr>
         <tr id='L675'>
@@ -6789,7 +6803,7 @@
           <td>
             
             
-            <span class='code'>    @noinline</span>
+            <span class='code'>        remaining &#61; get&#33;&#40;logger.message_limits, id, Int&#40;maxlog&#41;::Int&#41;</span>
           </td>
         </tr>
         <tr id='L676'>
@@ -6799,7 +6813,7 @@
           <td>
             
             
-            <span class='code'>    @_total_meta</span>
+            <span class='code'>        logger.message_limits&#91;id&#93; &#61; remaining - 1</span>
           </td>
         </tr>
         <tr id='L677'>
@@ -6809,7 +6823,7 @@
           <td>
             
             
-            <span class='code'>    for y in itr</span>
+            <span class='code'>        remaining &gt; 0 || return</span>
           </td>
         </tr>
         <tr id='L678'>
@@ -6819,7 +6833,7 @@
           <td>
             
             
-            <span class='code'>        y &#61;&#61;&#61; x &amp;&amp; return true</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L679'>
@@ -6829,7 +6843,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>    buf &#61; IOBuffer&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L680'>
@@ -6839,7 +6853,7 @@
           <td>
             
             
-            <span class='code'>    return false</span>
+            <span class='code'>    stream::IO &#61; logger.stream</span>
           </td>
         </tr>
         <tr id='L681'>
@@ -6849,7 +6863,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    if &#33;&#40;isopen&#40;stream&#41;::Bool&#41;</span>
           </td>
         </tr>
         <tr id='L682'>
@@ -6859,7 +6873,7 @@
           <td>
             
             
-            <span class='code'>in&#40;x::Symbol, itr::Tuple&#123;Vararg&#123;Symbol&#125;&#125;&#41; &#61; sym_in&#40;x, itr&#41;</span>
+            <span class='code'>        stream &#61; stderr</span>
           </td>
         </tr>
         <tr id='L683'>
@@ -6869,7 +6883,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L684'>
@@ -6879,7 +6893,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    iob &#61; IOContext&#40;buf, stream&#41;</span>
           </td>
         </tr>
         <tr id='L685'>
@@ -6889,7 +6903,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    levelstr &#61; level &#61;&#61; Warn ? &quot;Warning&quot; : string&#40;level&#41;</span>
           </td>
         </tr>
         <tr id='L686'>
@@ -6899,7 +6913,7 @@
           <td>
             
             
-            <span class='code'>    empty&#40;x::Tuple&#41;</span>
+            <span class='code'>    msglines &#61; eachsplit&#40;chomp&#40;convert&#40;String, string&#40;message&#41;&#41;::String&#41;, &#39;\n&#39;&#41;</span>
           </td>
         </tr>
         <tr id='L687'>
@@ -6909,7 +6923,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    msg1, rest &#61; Iterators.peel&#40;msglines&#41;</span>
           </td>
         </tr>
         <tr id='L688'>
@@ -6919,7 +6933,7 @@
           <td>
             
             
-            <span class='code'>Return an empty tuple, &#96;&#40;&#41;&#96;.</span>
+            <span class='code'>    println&#40;iob, &quot;┌ &quot;, levelstr, &quot;: &quot;, msg1&#41;</span>
           </td>
         </tr>
         <tr id='L689'>
@@ -6929,7 +6943,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    for msg in rest</span>
           </td>
         </tr>
         <tr id='L690'>
@@ -6939,7 +6953,7 @@
           <td>
             
             
-            <span class='code'>empty&#40;@nospecialize x::Tuple&#41; &#61; &#40;&#41;</span>
+            <span class='code'>        println&#40;iob, &quot;│ &quot;, msg&#41;</span>
           </td>
         </tr>
         <tr id='L691'>
@@ -6949,7 +6963,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L692'>
@@ -6959,7 +6973,7 @@
           <td>
             
             
-            <span class='code'>foreach&#40;f, itr::Tuple&#41; &#61; foldl&#40;&#40;_, x&#41; -&gt; &#40;f&#40;x&#41;; nothing&#41;, itr, init&#61;nothing&#41;</span>
+            <span class='code'>    for &#40;key, val&#41; in kwargs</span>
           </td>
         </tr>
         <tr id='L693'>
@@ -6969,7 +6983,127 @@
           <td>
             
             
-            <span class='code'>foreach&#40;f, itr::Tuple, itrs::Tuple...&#41; &#61; foldl&#40;&#40;_, xs&#41; -&gt; &#40;f&#40;xs...&#41;; nothing&#41;, zip&#40;itr, itrs...&#41;, init&#61;nothing&#41;</span>
+            <span class='code'>        key &#61;&#61;&#61; :maxlog &amp;&amp; continue</span>
+          </td>
+        </tr>
+        <tr id='L694'>
+          <td class='lineno'>694</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        println&#40;iob, &quot;│   &quot;, key, &quot; &#61; &quot;, val&#41;</span>
+          </td>
+        </tr>
+        <tr id='L695'>
+          <td class='lineno'>695</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L696'>
+          <td class='lineno'>696</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    println&#40;iob, &quot;└ @ &quot;, _module, &quot; &quot;, filepath, &quot;:&quot;, line&#41;</span>
+          </td>
+        </tr>
+        <tr id='L697'>
+          <td class='lineno'>697</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    write&#40;stream, take&#33;&#40;buf&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L698'>
+          <td class='lineno'>698</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    nothing</span>
+          </td>
+        </tr>
+        <tr id='L699'>
+          <td class='lineno'>699</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L700'>
+          <td class='lineno'>700</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L701'>
+          <td class='lineno'>701</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_global_logstate &#61; LogState&#40;SimpleLogger&#40;&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L702'>
+          <td class='lineno'>702</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L703'>
+          <td class='lineno'>703</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>include&#40;&quot;logging/ConsoleLogger.jl&quot;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L704'>
+          <td class='lineno'>704</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L705'>
+          <td class='lineno'>705</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end # CoreLogging</span>
           </td>
         </tr>
       </tbody>

@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'></meta>
     <link rel='stylesheet' type='text/css' href='statprofiler.css'></link>
-    <title>StatProfilerHTML - ../../../../../usr/share/julia/base/pointer.jl</title>
+    <title>StatProfilerHTML - ../../../../../usr/share/julia/base/fastmath.jl</title>
   </head>
   <body>
     <div class='report-header'>
@@ -14,7 +14,7 @@
         StatProfilerHTML.jl report
       </div>
       <div class='generated-on'>
-        Generated on Sun, 17 Aug 2025 12:41:30
+        Generated on Mon, 18 Aug 2025 17:36:15
       </div>
     </div>
     <table>
@@ -55,7 +55,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'># Support for @fastmath</span>
           </td>
         </tr>
         <tr id='L4'>
@@ -65,7 +65,7 @@
           <td>
             
             
-            <span class='code'>    Ptr&#123;T&#125;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L5'>
@@ -75,7 +75,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># This module provides versions of math functions that may violate</span>
           </td>
         </tr>
         <tr id='L6'>
@@ -85,7 +85,7 @@
           <td>
             
             
-            <span class='code'>A memory address referring to data of type &#96;T&#96;.  However, there is no guarantee that the</span>
+            <span class='code'># strict IEEE semantics.</span>
           </td>
         </tr>
         <tr id='L7'>
@@ -95,7 +95,7 @@
           <td>
             
             
-            <span class='code'>memory is actually valid, or that it actually represents data of the specified type.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L8'>
@@ -105,7 +105,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'># This allows the following transformations. For more information see</span>
           </td>
         </tr>
         <tr id='L9'>
@@ -115,7 +115,7 @@
           <td>
             
             
-            <span class='code'>Ptr</span>
+            <span class='code'># https://llvm.org/docs/LangRef.html#fast-math-flags:</span>
           </td>
         </tr>
         <tr id='L10'>
@@ -125,7 +125,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># nnan: No NaNs - Allow optimizations to assume the arguments and</span>
           </td>
         </tr>
         <tr id='L11'>
@@ -135,7 +135,7 @@
           <td>
             
             
-            <span class='code'>## converting pointers to an appropriate unsigned ##</span>
+            <span class='code'>#       result are not NaN. Such optimizations are required to retain</span>
           </td>
         </tr>
         <tr id='L12'>
@@ -145,7 +145,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>#       defined behavior over NaNs, but the value of the result is</span>
           </td>
         </tr>
         <tr id='L13'>
@@ -155,7 +155,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>#       undefined.</span>
           </td>
         </tr>
         <tr id='L14'>
@@ -165,7 +165,7 @@
           <td>
             
             
-            <span class='code'>    C_NULL</span>
+            <span class='code'># ninf: No Infs - Allow optimizations to assume the arguments and</span>
           </td>
         </tr>
         <tr id='L15'>
@@ -175,7 +175,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>#       result are not &#43;/-Inf. Such optimizations are required to</span>
           </td>
         </tr>
         <tr id='L16'>
@@ -185,7 +185,7 @@
           <td>
             
             
-            <span class='code'>The C null pointer constant, sometimes used when calling external code.</span>
+            <span class='code'>#       retain defined behavior over &#43;/-Inf, but the value of the</span>
           </td>
         </tr>
         <tr id='L17'>
@@ -195,7 +195,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>#       result is undefined.</span>
           </td>
         </tr>
         <tr id='L18'>
@@ -205,7 +205,7 @@
           <td>
             
             
-            <span class='code'>const C_NULL &#61; bitcast&#40;Ptr&#123;Cvoid&#125;, 0&#41;</span>
+            <span class='code'># nsz:  No Signed Zeros - Allow optimizations to treat the sign of a</span>
           </td>
         </tr>
         <tr id='L19'>
@@ -215,7 +215,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>#       zero argument or result as insignificant.</span>
           </td>
         </tr>
         <tr id='L20'>
@@ -225,7 +225,7 @@
           <td>
             
             
-            <span class='code'># TODO: deprecate these conversions. C doesn&#39;t even allow them.</span>
+            <span class='code'># arcp: Allow Reciprocal - Allow optimizations to use the reciprocal</span>
           </td>
         </tr>
         <tr id='L21'>
@@ -235,7 +235,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>#       of an argument rather than perform division.</span>
           </td>
         </tr>
         <tr id='L22'>
@@ -245,7 +245,7 @@
           <td>
             
             
-            <span class='code'># pointer to integer</span>
+            <span class='code'># fast: Fast - Allow algebraically equivalent transformations that may</span>
           </td>
         </tr>
         <tr id='L23'>
@@ -255,7 +255,7 @@
           <td>
             
             
-            <span class='code'>convert&#40;::Type&#123;T&#125;, x::Ptr&#41; where &#123;T&lt;:Integer&#125; &#61; T&#40;UInt&#40;x&#41;&#41;::T</span>
+            <span class='code'>#       dramatically change results in floating point &#40;e.g.</span>
           </td>
         </tr>
         <tr id='L24'>
@@ -265,7 +265,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>#       reassociate&#41;. This flag implies all the others.</span>
           </td>
         </tr>
         <tr id='L25'>
@@ -275,7 +275,7 @@
           <td>
             
             
-            <span class='code'># integer to pointer</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L26'>
@@ -285,7 +285,7 @@
           <td>
             
             
-            <span class='code'>convert&#40;::Type&#123;Ptr&#123;T&#125;&#125;, x::Union&#123;Int,UInt&#125;&#41; where &#123;T&#125; &#61; Ptr&#123;T&#125;&#40;x&#41;</span>
+            <span class='code'>module FastMath</span>
           </td>
         </tr>
         <tr id='L27'>
@@ -305,7 +305,7 @@
           <td>
             
             
-            <span class='code'># pointer to pointer</span>
+            <span class='code'>export @fastmath</span>
           </td>
         </tr>
         <tr id='L29'>
@@ -315,26 +315,17 @@
           <td>
             
             
-            <span class='code'>convert&#40;::Type&#123;Ptr&#123;T&#125;&#125;, p::Ptr&#123;T&#125;&#41; where &#123;T&#125; &#61; p</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L30'>
           <td class='lineno'>30</td>
-          <td class='tracecount excl'>20 &#40;0 &#37;&#41;</td>
-          <td class='tracecount incl'>20 &#40;0 &#37;&#41;</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
           <td>
-            <div class='call-sites'>
-              20 &#40;0 &#37;&#41;
-              samples spent in convert
-              <br />
-              20 &#40;100 &#37;&#41; &#40;ex.&#41;,
-              20 &#40;100 &#37;&#41; &#40;incl.&#41;
-              when called from unsafe_convert
-              <a href='pointer.jl-2e4e7663b135210119dae8f1c3cb7f402dcb2120.html#L75'>line 75</a>
-              <br />
-            </div>
             
-            <span class='code'>convert&#40;::Type&#123;Ptr&#123;T&#125;&#125;, p::Ptr&#41; where &#123;T&#125; &#61; bitcast&#40;Ptr&#123;T&#125;, p&#41;::Ptr&#123;T&#125;</span>
+            
+            <span class='code'>import Core.Intrinsics: sqrt_llvm_fast, neg_float_fast,</span>
           </td>
         </tr>
         <tr id='L31'>
@@ -344,7 +335,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    add_float_fast, sub_float_fast, mul_float_fast, div_float_fast,</span>
           </td>
         </tr>
         <tr id='L32'>
@@ -354,7 +345,7 @@
           <td>
             
             
-            <span class='code'># object to pointer &#40;when used with ccall&#41;</span>
+            <span class='code'>    eq_float_fast, ne_float_fast, lt_float_fast, le_float_fast</span>
           </td>
         </tr>
         <tr id='L33'>
@@ -374,7 +365,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>const fast_op &#61;</span>
           </td>
         </tr>
         <tr id='L35'>
@@ -384,7 +375,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_convert&#40;T, x&#41;</span>
+            <span class='code'>    Dict&#40;# basic arithmetic</span>
           </td>
         </tr>
         <tr id='L36'>
@@ -394,7 +385,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>         :&#43; &#61;&gt; :add_fast,</span>
           </td>
         </tr>
         <tr id='L37'>
@@ -404,7 +395,7 @@
           <td>
             
             
-            <span class='code'>Convert &#96;x&#96; to a C argument of type &#96;T&#96;</span>
+            <span class='code'>         :- &#61;&gt; :sub_fast,</span>
           </td>
         </tr>
         <tr id='L38'>
@@ -414,7 +405,7 @@
           <td>
             
             
-            <span class='code'>where the input &#96;x&#96; must be the return value of &#96;cconvert&#40;T, ...&#41;&#96;.</span>
+            <span class='code'>         :* &#61;&gt; :mul_fast,</span>
           </td>
         </tr>
         <tr id='L39'>
@@ -424,7 +415,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>         :/ &#61;&gt; :div_fast,</span>
           </td>
         </tr>
         <tr id='L40'>
@@ -434,7 +425,7 @@
           <td>
             
             
-            <span class='code'>In cases where &#91;&#96;convert&#96;&#93;&#40;@ref&#41; would need to take a Julia object</span>
+            <span class='code'>         :&#40;&#61;&#61;&#41; &#61;&gt; :eq_fast,</span>
           </td>
         </tr>
         <tr id='L41'>
@@ -444,7 +435,7 @@
           <td>
             
             
-            <span class='code'>and turn it into a &#96;Ptr&#96;, this function should be used to define and perform</span>
+            <span class='code'>         :&#33;&#61; &#61;&gt; :ne_fast,</span>
           </td>
         </tr>
         <tr id='L42'>
@@ -454,7 +445,7 @@
           <td>
             
             
-            <span class='code'>that conversion.</span>
+            <span class='code'>         :&lt; &#61;&gt; :lt_fast,</span>
           </td>
         </tr>
         <tr id='L43'>
@@ -464,7 +455,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>         :&lt;&#61; &#61;&gt; :le_fast,</span>
           </td>
         </tr>
         <tr id='L44'>
@@ -474,7 +465,7 @@
           <td>
             
             
-            <span class='code'>Be careful to ensure that a Julia reference to &#96;x&#96; exists as long as the result of this</span>
+            <span class='code'>         :&gt; &#61;&gt; :gt_fast,</span>
           </td>
         </tr>
         <tr id='L45'>
@@ -484,7 +475,7 @@
           <td>
             
             
-            <span class='code'>function will be used. Accordingly, the argument &#96;x&#96; to this function should never be an</span>
+            <span class='code'>         :&gt;&#61; &#61;&gt; :ge_fast,</span>
           </td>
         </tr>
         <tr id='L46'>
@@ -494,7 +485,7 @@
           <td>
             
             
-            <span class='code'>expression, only a variable name or field reference. For example, &#96;x&#61;a.b.c&#96; is acceptable,</span>
+            <span class='code'>         :abs &#61;&gt; :abs_fast,</span>
           </td>
         </tr>
         <tr id='L47'>
@@ -504,7 +495,7 @@
           <td>
             
             
-            <span class='code'>but &#96;x&#61;&#91;a,b,c&#93;&#96; is not.</span>
+            <span class='code'>         :abs2 &#61;&gt; :abs2_fast,</span>
           </td>
         </tr>
         <tr id='L48'>
@@ -514,7 +505,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>         :cmp &#61;&gt; :cmp_fast,</span>
           </td>
         </tr>
         <tr id='L49'>
@@ -524,7 +515,7 @@
           <td>
             
             
-            <span class='code'>The &#96;unsafe&#96; prefix on this function indicates that using the result of this function after</span>
+            <span class='code'>         :conj &#61;&gt; :conj_fast,</span>
           </td>
         </tr>
         <tr id='L50'>
@@ -534,7 +525,7 @@
           <td>
             
             
-            <span class='code'>the &#96;x&#96; argument to this function is no longer accessible to the program may cause undefined</span>
+            <span class='code'>         :inv &#61;&gt; :inv_fast,</span>
           </td>
         </tr>
         <tr id='L51'>
@@ -544,7 +535,7 @@
           <td>
             
             
-            <span class='code'>behavior, including program corruption or segfaults, at any later time.</span>
+            <span class='code'>         :rem &#61;&gt; :rem_fast,</span>
           </td>
         </tr>
         <tr id='L52'>
@@ -554,7 +545,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>         :sign &#61;&gt; :sign_fast,</span>
           </td>
         </tr>
         <tr id='L53'>
@@ -564,7 +555,7 @@
           <td>
             
             
-            <span class='code'>See also &#91;&#96;cconvert&#96;&#93;&#40;@ref&#41;</span>
+            <span class='code'>         :isfinite &#61;&gt; :isfinite_fast,</span>
           </td>
         </tr>
         <tr id='L54'>
@@ -574,7 +565,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>         :isinf &#61;&gt; :isinf_fast,</span>
           </td>
         </tr>
         <tr id='L55'>
@@ -584,7 +575,7 @@
           <td>
             
             
-            <span class='code'>function unsafe_convert end</span>
+            <span class='code'>         :isnan &#61;&gt; :isnan_fast,</span>
           </td>
         </tr>
         <tr id='L56'>
@@ -594,7 +585,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>         :issubnormal &#61;&gt; :issubnormal_fast,</span>
           </td>
         </tr>
         <tr id='L57'>
@@ -604,7 +595,7 @@
           <td>
             
             
-            <span class='code'># convert strings to String etc. to pass as pointers</span>
+            <span class='code'>         # math functions</span>
           </td>
         </tr>
         <tr id='L58'>
@@ -614,7 +605,7 @@
           <td>
             
             
-            <span class='code'>cconvert&#40;::Type&#123;Ptr&#123;UInt8&#125;&#125;, s::AbstractString&#41; &#61; String&#40;s&#41;</span>
+            <span class='code'>         :^ &#61;&gt; :pow_fast,</span>
           </td>
         </tr>
         <tr id='L59'>
@@ -624,7 +615,7 @@
           <td>
             
             
-            <span class='code'>cconvert&#40;::Type&#123;Ptr&#123;Int8&#125;&#125;, s::AbstractString&#41; &#61; String&#40;s&#41;</span>
+            <span class='code'>         :acos &#61;&gt; :acos_fast,</span>
           </td>
         </tr>
         <tr id='L60'>
@@ -634,7 +625,7 @@
           <td>
             
             
-            <span class='code'>unsafe_convert&#40;::Type&#123;Ptr&#123;UInt8&#125;&#125;, x::Symbol&#41; &#61; ccall&#40;:jl_symbol_name, Ptr&#123;UInt8&#125;, &#40;Any,&#41;, x&#41;</span>
+            <span class='code'>         :acosh &#61;&gt; :acosh_fast,</span>
           </td>
         </tr>
         <tr id='L61'>
@@ -644,7 +635,7 @@
           <td>
             
             
-            <span class='code'>unsafe_convert&#40;::Type&#123;Ptr&#123;Int8&#125;&#125;, x::Symbol&#41; &#61; ccall&#40;:jl_symbol_name, Ptr&#123;Int8&#125;, &#40;Any,&#41;, x&#41;</span>
+            <span class='code'>         :angle &#61;&gt; :angle_fast,</span>
           </td>
         </tr>
         <tr id='L62'>
@@ -654,7 +645,7 @@
           <td>
             
             
-            <span class='code'>unsafe_convert&#40;::Type&#123;Ptr&#123;UInt8&#125;&#125;, s::String&#41; &#61; ccall&#40;:jl_string_ptr, Ptr&#123;UInt8&#125;, &#40;Any,&#41;, s&#41;</span>
+            <span class='code'>         :asin &#61;&gt; :asin_fast,</span>
           </td>
         </tr>
         <tr id='L63'>
@@ -664,7 +655,7 @@
           <td>
             
             
-            <span class='code'>unsafe_convert&#40;::Type&#123;Ptr&#123;Int8&#125;&#125;, s::String&#41; &#61; ccall&#40;:jl_string_ptr, Ptr&#123;Int8&#125;, &#40;Any,&#41;, s&#41;</span>
+            <span class='code'>         :asinh &#61;&gt; :asinh_fast,</span>
           </td>
         </tr>
         <tr id='L64'>
@@ -674,7 +665,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>         :atan &#61;&gt; :atan_fast,</span>
           </td>
         </tr>
         <tr id='L65'>
@@ -684,7 +675,7 @@
           <td>
             
             
-            <span class='code'>cconvert&#40;::Type&#123;&lt;:Ptr&#125;, a::Array&#41; &#61; getfield&#40;a, :ref&#41;</span>
+            <span class='code'>         :atanh &#61;&gt; :atanh_fast,</span>
           </td>
         </tr>
         <tr id='L66'>
@@ -694,7 +685,7 @@
           <td>
             
             
-            <span class='code'>unsafe_convert&#40;::Type&#123;Ptr&#123;S&#125;&#125;, a::AbstractArray&#123;T&#125;&#41; where &#123;S,T&#125; &#61; convert&#40;Ptr&#123;S&#125;, unsafe_convert&#40;Ptr&#123;T&#125;, a&#41;&#41;</span>
+            <span class='code'>         :cbrt &#61;&gt; :cbrt_fast,</span>
           </td>
         </tr>
         <tr id='L67'>
@@ -704,7 +695,7 @@
           <td>
             
             
-            <span class='code'>unsafe_convert&#40;::Type&#123;Ptr&#123;T&#125;&#125;, a::Array&#123;T&#125;&#41; where &#123;T&#125; &#61; unsafe_convert&#40;Ptr&#123;T&#125;, a.ref&#41;</span>
+            <span class='code'>         :cis &#61;&gt; :cis_fast,</span>
           </td>
         </tr>
         <tr id='L68'>
@@ -714,7 +705,7 @@
           <td>
             
             
-            <span class='code'>unsafe_convert&#40;::Type&#123;Ptr&#123;T&#125;&#125;, a::AbstractArray&#123;T&#125;&#41; where &#123;T&#125; &#61; error&#40;&quot;conversion to pointer not defined for &#36;&#40;typeof&#40;a&#41;&#41;&quot;&#41;</span>
+            <span class='code'>         :cos &#61;&gt; :cos_fast,</span>
           </td>
         </tr>
         <tr id='L69'>
@@ -724,7 +715,7 @@
           <td>
             
             
-            <span class='code'># TODO: add this deprecation to give a better error:</span>
+            <span class='code'>         :cosh &#61;&gt; :cosh_fast,</span>
           </td>
         </tr>
         <tr id='L70'>
@@ -734,7 +725,7 @@
           <td>
             
             
-            <span class='code'># cconvert&#40;::Type&#123;&lt;:Ptr&#125;, a::AbstractArray&#41; &#61; error&#40;&quot;conversion to pointer not defined for &#36;&#40;typeof&#40;a&#41;&#41;&quot;&#41;</span>
+            <span class='code'>         :exp10 &#61;&gt; :exp10_fast,</span>
           </td>
         </tr>
         <tr id='L71'>
@@ -744,7 +735,7 @@
           <td>
             
             
-            <span class='code'># unsafe_convert&#40;::Type&#123;Ptr&#123;T&#125;&#125;, a::AbstractArray&#123;T&#125;&#41; where &#123;T&#125; &#61; error&#40;&quot;missing call to cconvert for call to unsafe_convert for AbstractArray&quot;&#41;</span>
+            <span class='code'>         :exp2 &#61;&gt; :exp2_fast,</span>
           </td>
         </tr>
         <tr id='L72'>
@@ -754,7 +745,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>         :exp &#61;&gt; :exp_fast,</span>
           </td>
         </tr>
         <tr id='L73'>
@@ -764,7 +755,7 @@
           <td>
             
             
-            <span class='code'>cconvert&#40;::Type&#123;&lt;:Ptr&#125;, a::GenericMemory&#41; &#61; a</span>
+            <span class='code'>         :expm1 &#61;&gt; :expm1_fast,</span>
           </td>
         </tr>
         <tr id='L74'>
@@ -774,31 +765,17 @@
           <td>
             
             
-            <span class='code'>unsafe_convert&#40;::Type&#123;Ptr&#123;Cvoid&#125;&#125;, a::GenericMemory&#123;T&#125;&#41; where &#123;T&#125; &#61; getfield&#40;a, :ptr&#41;</span>
+            <span class='code'>         :hypot &#61;&gt; :hypot_fast,</span>
           </td>
         </tr>
         <tr id='L75'>
           <td class='lineno'>75</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>20 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'></td>
           <td>
-            <div class='call-sites'>
-              20 &#40;0 &#37;&#41;
-              samples spent in unsafe_convert
-              <br />
-              
-              20 &#40;100 &#37;&#41; &#40;incl.&#41;
-              when called from pointer
-              <a href='abstractarray.jl-19cb862b60b8167236b95dc9fd58efafbb7fc02a.html#L1232'>line 1232</a>
-              <br />
-            </div>
-            <div class='callees'>
-              20 &#40;100 &#37;&#41;
-              samples spent calling
-              <a href='pointer.jl-2e4e7663b135210119dae8f1c3cb7f402dcb2120.html#L30'>convert</a>
-              <br />
-            </div>
-            <span class='code'>unsafe_convert&#40;::Type&#123;Ptr&#123;T&#125;&#125;, a::GenericMemory&#41; where &#123;T&#125; &#61; convert&#40;Ptr&#123;T&#125;, getfield&#40;a, :ptr&#41;&#41;</span>
+            
+            
+            <span class='code'>         :log10 &#61;&gt; :log10_fast,</span>
           </td>
         </tr>
         <tr id='L76'>
@@ -808,7 +785,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>         :log1p &#61;&gt; :log1p_fast,</span>
           </td>
         </tr>
         <tr id='L77'>
@@ -818,7 +795,7 @@
           <td>
             
             
-            <span class='code'>function unsafe_convert&#40;::Type&#123;Ptr&#123;Cvoid&#125;&#125;, a::GenericMemoryRef&#123;&lt;:Any,T,Core.CPU&#125;&#41; where &#123;T&#125;</span>
+            <span class='code'>         :log2 &#61;&gt; :log2_fast,</span>
           </td>
         </tr>
         <tr id='L78'>
@@ -828,7 +805,7 @@
           <td>
             
             
-            <span class='code'>    mem &#61; getfield&#40;a, :mem&#41;</span>
+            <span class='code'>         :log &#61;&gt; :log_fast,</span>
           </td>
         </tr>
         <tr id='L79'>
@@ -838,7 +815,7 @@
           <td>
             
             
-            <span class='code'>    offset &#61; getfield&#40;a, :ptr_or_offset&#41;</span>
+            <span class='code'>         :max &#61;&gt; :max_fast,</span>
           </td>
         </tr>
         <tr id='L80'>
@@ -848,7 +825,7 @@
           <td>
             
             
-            <span class='code'>    MemT &#61; typeof&#40;mem&#41;</span>
+            <span class='code'>         :min &#61;&gt; :min_fast,</span>
           </td>
         </tr>
         <tr id='L81'>
@@ -858,7 +835,7 @@
           <td>
             
             
-            <span class='code'>    arrayelem &#61; datatype_arrayelem&#40;MemT&#41;</span>
+            <span class='code'>         :minmax &#61;&gt; :minmax_fast,</span>
           </td>
         </tr>
         <tr id='L82'>
@@ -868,7 +845,7 @@
           <td>
             
             
-            <span class='code'>    elsz &#61; datatype_layoutsize&#40;MemT&#41;</span>
+            <span class='code'>         :sin &#61;&gt; :sin_fast,</span>
           </td>
         </tr>
         <tr id='L83'>
@@ -878,7 +855,7 @@
           <td>
             
             
-            <span class='code'>    isboxed &#61; 1; isunion &#61; 2</span>
+            <span class='code'>         :sincos &#61;&gt; :sincos_fast,</span>
           </td>
         </tr>
         <tr id='L84'>
@@ -888,7 +865,7 @@
           <td>
             
             
-            <span class='code'>    if arrayelem &#61;&#61; isunion || elsz &#61;&#61; 0</span>
+            <span class='code'>         :sinh &#61;&gt; :sinh_fast,</span>
           </td>
         </tr>
         <tr id='L85'>
@@ -898,7 +875,7 @@
           <td>
             
             
-            <span class='code'>        offset &#61; UInt&#40;offset&#41; * elsz</span>
+            <span class='code'>         :sqrt &#61;&gt; :sqrt_fast,</span>
           </td>
         </tr>
         <tr id='L86'>
@@ -908,7 +885,7 @@
           <td>
             
             
-            <span class='code'>        offset &#43;&#61; unsafe_convert&#40;Ptr&#123;Cvoid&#125;, mem&#41;</span>
+            <span class='code'>         :tan &#61;&gt; :tan_fast,</span>
           </td>
         </tr>
         <tr id='L87'>
@@ -918,7 +895,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>         :tanh &#61;&gt; :tanh_fast,</span>
           </td>
         </tr>
         <tr id='L88'>
@@ -928,7 +905,7 @@
           <td>
             
             
-            <span class='code'>    return offset</span>
+            <span class='code'>         # reductions</span>
           </td>
         </tr>
         <tr id='L89'>
@@ -938,7 +915,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>         :maximum &#61;&gt; :maximum_fast,</span>
           </td>
         </tr>
         <tr id='L90'>
@@ -948,7 +925,7 @@
           <td>
             
             
-            <span class='code'>unsafe_convert&#40;::Type&#123;Ptr&#123;T&#125;&#125;, a::GenericMemoryRef&#41; where &#123;T&#125; &#61; convert&#40;Ptr&#123;T&#125;, unsafe_convert&#40;Ptr&#123;Cvoid&#125;, a&#41;&#41;</span>
+            <span class='code'>         :minimum &#61;&gt; :minimum_fast,</span>
           </td>
         </tr>
         <tr id='L91'>
@@ -958,7 +935,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>         :maximum&#33; &#61;&gt; :maximum&#33;_fast,</span>
           </td>
         </tr>
         <tr id='L92'>
@@ -968,7 +945,7 @@
           <td>
             
             
-            <span class='code'># unsafe pointer to array conversions</span>
+            <span class='code'>         :minimum&#33; &#61;&gt; :minimum&#33;_fast&#41;</span>
           </td>
         </tr>
         <tr id='L93'>
@@ -978,7 +955,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L94'>
@@ -988,7 +965,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_wrap&#40;Array, pointer::Ptr&#123;T&#125;, dims; own &#61; false&#41;</span>
+            <span class='code'>const rewrite_op &#61;</span>
           </td>
         </tr>
         <tr id='L95'>
@@ -998,7 +975,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    Dict&#40;:&#43;&#61; &#61;&gt; :&#43;,</span>
           </td>
         </tr>
         <tr id='L96'>
@@ -1008,7 +985,7 @@
           <td>
             
             
-            <span class='code'>Wrap a Julia &#96;Array&#96; object around the data at the address given by &#96;pointer&#96;,</span>
+            <span class='code'>         :-&#61; &#61;&gt; :-,</span>
           </td>
         </tr>
         <tr id='L97'>
@@ -1018,7 +995,7 @@
           <td>
             
             
-            <span class='code'>without making a copy.  The pointer element type &#96;T&#96; determines the array</span>
+            <span class='code'>         :*&#61; &#61;&gt; :*,</span>
           </td>
         </tr>
         <tr id='L98'>
@@ -1028,7 +1005,7 @@
           <td>
             
             
-            <span class='code'>element type. &#96;dims&#96; is either an integer &#40;for a 1d array&#41; or a tuple of the array dimensions.</span>
+            <span class='code'>         :/&#61; &#61;&gt; :/,</span>
           </td>
         </tr>
         <tr id='L99'>
@@ -1038,7 +1015,7 @@
           <td>
             
             
-            <span class='code'>&#96;own&#96; optionally specifies whether Julia should take ownership of the memory,</span>
+            <span class='code'>         :^&#61; &#61;&gt; :^&#41;</span>
           </td>
         </tr>
         <tr id='L100'>
@@ -1048,7 +1025,7 @@
           <td>
             
             
-            <span class='code'>calling &#96;free&#96; on the pointer when the array is no longer referenced.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L101'>
@@ -1058,7 +1035,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>function make_fastmath&#40;expr::Expr&#41;</span>
           </td>
         </tr>
         <tr id='L102'>
@@ -1068,7 +1045,7 @@
           <td>
             
             
-            <span class='code'>This function is labeled &quot;unsafe&quot; because it will crash if &#96;pointer&#96; is not</span>
+            <span class='code'>    if expr.head &#61;&#61;&#61; :quote</span>
           </td>
         </tr>
         <tr id='L103'>
@@ -1078,7 +1055,7 @@
           <td>
             
             
-            <span class='code'>a valid memory address to data of the requested length. Unlike &#91;&#96;unsafe_load&#96;&#93;&#40;@ref&#41;</span>
+            <span class='code'>        return expr</span>
           </td>
         </tr>
         <tr id='L104'>
@@ -1088,7 +1065,7 @@
           <td>
             
             
-            <span class='code'>and &#91;&#96;unsafe_store&#33;&#96;&#93;&#40;@ref&#41;, the programmer is responsible also for ensuring that the</span>
+            <span class='code'>    elseif expr.head &#61;&#61;&#61; :call &amp;&amp; expr.args&#91;1&#93; &#61;&#61;&#61; :^ &amp;&amp; expr.args&#91;3&#93; isa Integer</span>
           </td>
         </tr>
         <tr id='L105'>
@@ -1098,7 +1075,7 @@
           <td>
             
             
-            <span class='code'>underlying data is not accessed through two arrays of different element type, similar</span>
+            <span class='code'>        # mimic Julia&#39;s literal_pow lowering of literal integer powers</span>
           </td>
         </tr>
         <tr id='L106'>
@@ -1108,7 +1085,7 @@
           <td>
             
             
-            <span class='code'>to the strict aliasing rule in C.</span>
+            <span class='code'>        return Expr&#40;:call, :&#40;Base.FastMath.pow_fast&#41;, make_fastmath&#40;expr.args&#91;2&#93;&#41;, Val&#123;expr.args&#91;3&#93;&#125;&#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L107'>
@@ -1118,7 +1095,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L108'>
@@ -1128,7 +1105,7 @@
           <td>
             
             
-            <span class='code'>function unsafe_wrap&#40;::Union&#123;Type&#123;Array&#125;,Type&#123;Array&#123;T&#125;&#125;,Type&#123;Array&#123;T,N&#125;&#125;&#125;,</span>
+            <span class='code'>    op &#61; get&#40;rewrite_op, expr.head, :nothing&#41;</span>
           </td>
         </tr>
         <tr id='L109'>
@@ -1138,7 +1115,7 @@
           <td>
             
             
-            <span class='code'>                     p::Ptr&#123;T&#125;, dims::NTuple&#123;N,Int&#125;; own::Bool &#61; false&#41; where &#123;T,N&#125;</span>
+            <span class='code'>    if op &#33;&#61;&#61; :nothing</span>
           </td>
         </tr>
         <tr id='L110'>
@@ -1148,7 +1125,7 @@
           <td>
             
             
-            <span class='code'>    ccall&#40;:jl_ptr_to_array, Array&#123;T,N&#125;, &#40;Any, Ptr&#123;Cvoid&#125;, Any, Int32&#41;,</span>
+            <span class='code'>        var &#61; expr.args&#91;1&#93;</span>
           </td>
         </tr>
         <tr id='L111'>
@@ -1158,7 +1135,7 @@
           <td>
             
             
-            <span class='code'>          Array&#123;T,N&#125;, p, dims, own&#41;</span>
+            <span class='code'>        rhs &#61; expr.args&#91;2&#93;</span>
           </td>
         </tr>
         <tr id='L112'>
@@ -1168,7 +1145,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>        if isa&#40;var, Symbol&#41;</span>
           </td>
         </tr>
         <tr id='L113'>
@@ -1178,7 +1155,7 @@
           <td>
             
             
-            <span class='code'>function unsafe_wrap&#40;::Union&#123;Type&#123;Array&#125;,Type&#123;Array&#123;T&#125;&#125;,Type&#123;Array&#123;T,1&#125;&#125;&#125;,</span>
+            <span class='code'>            # simple assignment</span>
           </td>
         </tr>
         <tr id='L114'>
@@ -1188,7 +1165,7 @@
           <td>
             
             
-            <span class='code'>                     p::Ptr&#123;T&#125;, d::Integer; own::Bool &#61; false&#41; where &#123;T&#125;</span>
+            <span class='code'>            expr &#61; :&#40;&#36;var &#61; &#36;op&#40;&#36;var, &#36;rhs&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L115'>
@@ -1198,7 +1175,7 @@
           <td>
             
             
-            <span class='code'>    ccall&#40;:jl_ptr_to_array_1d, Array&#123;T,1&#125;,</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L116'>
@@ -1208,7 +1185,7 @@
           <td>
             
             
-            <span class='code'>          &#40;Any, Ptr&#123;Cvoid&#125;, Csize_t, Cint&#41;, Array&#123;T,1&#125;, p, d, own&#41;</span>
+            <span class='code'>        # It is hard to optimize array&#91;i &#43;&#61; 1&#93; &#43;&#61; 1</span>
           </td>
         </tr>
         <tr id='L117'>
@@ -1218,7 +1195,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>        # and array&#91;end&#93; &#43;&#61; 1 without bugs. &#40;#47241&#41;</span>
           </td>
         </tr>
         <tr id='L118'>
@@ -1228,7 +1205,7 @@
           <td>
             
             
-            <span class='code'>function unsafe_wrap&#40;::Union&#123;Type&#123;GenericMemory&#123;kind,&lt;:Any,Core.CPU&#125;&#125;,Type&#123;GenericMemory&#123;kind,T,Core.CPU&#125;&#125;&#125;,</span>
+            <span class='code'>        # We settle for not optimizing the op&#61; call.</span>
           </td>
         </tr>
         <tr id='L119'>
@@ -1238,7 +1215,7 @@
           <td>
             
             
-            <span class='code'>                     p::Ptr&#123;T&#125;, dims::Tuple&#123;Int&#125;; own::Bool &#61; false&#41; where &#123;kind,T&#125;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L120'>
@@ -1248,7 +1225,7 @@
           <td>
             
             
-            <span class='code'>    ccall&#40;:jl_ptr_to_genericmemory, Ref&#123;GenericMemory&#123;kind,T,Core.CPU&#125;&#125;,</span>
+            <span class='code'>    Base.exprarray&#40;make_fastmath&#40;expr.head&#41;, Base.mapany&#40;make_fastmath, expr.args&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L121'>
@@ -1258,7 +1235,7 @@
           <td>
             
             
-            <span class='code'>          &#40;Any, Ptr&#123;Cvoid&#125;, Csize_t, Cint&#41;, GenericMemory&#123;kind,T,Core.CPU&#125;, p, dim&#91;1&#93;, own&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L122'>
@@ -1268,7 +1245,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>function make_fastmath&#40;symb::Symbol&#41;</span>
           </td>
         </tr>
         <tr id='L123'>
@@ -1278,7 +1255,7 @@
           <td>
             
             
-            <span class='code'>function unsafe_wrap&#40;::Union&#123;Type&#123;GenericMemory&#123;kind,&lt;:Any,Core.CPU&#125;&#125;,Type&#123;GenericMemory&#123;kind,T,Core.CPU&#125;&#125;&#125;,</span>
+            <span class='code'>    fast_symb &#61; get&#40;fast_op, symb, :nothing&#41;</span>
           </td>
         </tr>
         <tr id='L124'>
@@ -1288,7 +1265,7 @@
           <td>
             
             
-            <span class='code'>                     p::Ptr&#123;T&#125;, d::Integer; own::Bool &#61; false&#41; where &#123;kind,T&#125;</span>
+            <span class='code'>    if fast_symb &#61;&#61;&#61; :nothing</span>
           </td>
         </tr>
         <tr id='L125'>
@@ -1298,7 +1275,7 @@
           <td>
             
             
-            <span class='code'>    ccall&#40;:jl_ptr_to_genericmemory, Ref&#123;GenericMemory&#123;kind,T,Core.CPU&#125;&#125;,</span>
+            <span class='code'>        return symb</span>
           </td>
         </tr>
         <tr id='L126'>
@@ -1308,7 +1285,7 @@
           <td>
             
             
-            <span class='code'>          &#40;Any, Ptr&#123;Cvoid&#125;, Csize_t, Cint&#41;, GenericMemory&#123;kind,T,Core.CPU&#125;, p, d, own&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L127'>
@@ -1318,7 +1295,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    :&#40;Base.FastMath.&#36;fast_symb&#41;</span>
           </td>
         </tr>
         <tr id='L128'>
@@ -1328,7 +1305,7 @@
           <td>
             
             
-            <span class='code'>unsafe_wrap&#40;Atype::Union&#123;Type&#123;Array&#125;,Type&#123;Array&#123;T&#125;&#125;,Type&#123;Array&#123;T,N&#125;&#125;,Type&#123;GenericMemory&#123;kind,&lt;:Any,Core.CPU&#125;&#125;,Type&#123;GenericMemory&#123;kind,T,Core.CPU&#125;&#125;&#125; where &#123;kind&#125;,</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L129'>
@@ -1338,7 +1315,7 @@
           <td>
             
             
-            <span class='code'>            p::Ptr&#123;T&#125;, dims::NTuple&#123;N,&lt;:Integer&#125;; own::Bool &#61; false&#41; where &#123;T,N&#125; &#61;</span>
+            <span class='code'>make_fastmath&#40;expr&#41; &#61; expr</span>
           </td>
         </tr>
         <tr id='L130'>
@@ -1348,7 +1325,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_wrap&#40;Atype, p, convert&#40;Tuple&#123;Vararg&#123;Int&#125;&#125;, dims&#41;, own &#61; own&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L131'>
@@ -1358,7 +1335,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L132'>
@@ -1368,7 +1345,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    @fastmath expr</span>
           </td>
         </tr>
         <tr id='L133'>
@@ -1378,7 +1355,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L134'>
@@ -1388,7 +1365,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_load&#40;p::Ptr&#123;T&#125;, i::Integer&#61;1&#41;</span>
+            <span class='code'>Execute a transformed version of the expression, which calls functions that</span>
           </td>
         </tr>
         <tr id='L135'>
@@ -1398,7 +1375,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_load&#40;p::Ptr&#123;T&#125;, order::Symbol&#41;</span>
+            <span class='code'>may violate strict IEEE semantics. This allows the fastest possible operation,</span>
           </td>
         </tr>
         <tr id='L136'>
@@ -1408,7 +1385,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_load&#40;p::Ptr&#123;T&#125;, i::Integer, order::Symbol&#41;</span>
+            <span class='code'>but results are undefined -- be careful when doing this, as it may change numerical</span>
           </td>
         </tr>
         <tr id='L137'>
@@ -1418,7 +1395,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>results.</span>
           </td>
         </tr>
         <tr id='L138'>
@@ -1428,7 +1405,7 @@
           <td>
             
             
-            <span class='code'>Load a value of type &#96;T&#96; from the address of the &#96;i&#96;th element &#40;1-indexed&#41; starting at &#96;p&#96;.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L139'>
@@ -1438,7 +1415,7 @@
           <td>
             
             
-            <span class='code'>This is equivalent to the C expression &#96;p&#91;i-1&#93;&#96;. Optionally, an atomic memory ordering can</span>
+            <span class='code'>This sets the &#91;LLVM Fast-Math flags&#93;&#40;https://llvm.org/docs/LangRef.html#fast-math-flags&#41;,</span>
           </td>
         </tr>
         <tr id='L140'>
@@ -1448,7 +1425,7 @@
           <td>
             
             
-            <span class='code'>be provided.</span>
+            <span class='code'>and corresponds to the &#96;-ffast-math&#96; option in clang. See &#91;the notes on performance</span>
           </td>
         </tr>
         <tr id='L141'>
@@ -1458,7 +1435,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>annotations&#93;&#40;@ref man-performance-annotations&#41; for more details.</span>
           </td>
         </tr>
         <tr id='L142'>
@@ -1468,7 +1445,7 @@
           <td>
             
             
-            <span class='code'>The &#96;unsafe&#96; prefix on this function indicates that no validation is performed on the</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L143'>
@@ -1478,7 +1455,7 @@
           <td>
             
             
-            <span class='code'>pointer &#96;p&#96; to ensure that it is valid. Like C, the programmer is responsible for ensuring</span>
+            <span class='code'># Examples</span>
           </td>
         </tr>
         <tr id='L144'>
@@ -1488,7 +1465,7 @@
           <td>
             
             
-            <span class='code'>that referenced memory is not freed or garbage collected while invoking this function.</span>
+            <span class='code'>&#96;&#96;&#96;jldoctest</span>
           </td>
         </tr>
         <tr id='L145'>
@@ -1498,7 +1475,7 @@
           <td>
             
             
-            <span class='code'>Incorrect usage may segfault your program or return garbage answers. Unlike C, dereferencing</span>
+            <span class='code'>julia&gt; @fastmath 1&#43;2</span>
           </td>
         </tr>
         <tr id='L146'>
@@ -1508,7 +1485,7 @@
           <td>
             
             
-            <span class='code'>memory region allocated as different type may be valid provided that the types are compatible.</span>
+            <span class='code'>3</span>
           </td>
         </tr>
         <tr id='L147'>
@@ -1528,7 +1505,7 @@
           <td>
             
             
-            <span class='code'>&#33;&#33;&#33; compat &quot;Julia 1.10&quot;</span>
+            <span class='code'>julia&gt; @fastmath&#40;sin&#40;3&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L149'>
@@ -1538,7 +1515,7 @@
           <td>
             
             
-            <span class='code'>     The &#96;order&#96; argument is available as of Julia 1.10.</span>
+            <span class='code'>0.1411200080598672</span>
           </td>
         </tr>
         <tr id='L150'>
@@ -1548,7 +1525,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>&#96;&#96;&#96;</span>
           </td>
         </tr>
         <tr id='L151'>
@@ -1558,7 +1535,7 @@
           <td>
             
             
-            <span class='code'>See also: &#91;&#96;atomic&#96;&#93;&#40;@ref&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L152'>
@@ -1568,7 +1545,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>macro fastmath&#40;expr&#41;</span>
           </td>
         </tr>
         <tr id='L153'>
@@ -1578,7 +1555,7 @@
           <td>
             
             
-            <span class='code'>unsafe_load&#40;p::Ptr, i::Integer&#61;1&#41; &#61; pointerref&#40;p, Int&#40;i&#41;, 1&#41;</span>
+            <span class='code'>    make_fastmath&#40;esc&#40;expr&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L154'>
@@ -1588,7 +1565,7 @@
           <td>
             
             
-            <span class='code'>unsafe_load&#40;p::Ptr, order::Symbol&#41; &#61; atomic_pointerref&#40;p, order&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L155'>
@@ -1598,7 +1575,7 @@
           <td>
             
             
-            <span class='code'>function unsafe_load&#40;p::Ptr, i::Integer, order::Symbol&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L156'>
@@ -1608,7 +1585,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_load&#40;p &#43; &#40;elsize&#40;typeof&#40;p&#41;&#41; * &#40;Int&#40;i&#41; - 1&#41;&#41;, order&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L157'>
@@ -1618,7 +1595,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'># Basic arithmetic</span>
           </td>
         </tr>
         <tr id='L158'>
@@ -1638,7 +1615,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>const FloatTypes &#61; Union&#123;Float16,Float32,Float64&#125;</span>
           </td>
         </tr>
         <tr id='L160'>
@@ -1648,7 +1625,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_store&#33;&#40;p::Ptr&#123;T&#125;, x, i::Integer&#61;1&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L161'>
@@ -1658,7 +1635,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_store&#33;&#40;p::Ptr&#123;T&#125;, x, order::Symbol&#41;</span>
+            <span class='code'>sub_fast&#40;x::FloatTypes&#41; &#61; neg_float_fast&#40;x&#41;</span>
           </td>
         </tr>
         <tr id='L162'>
@@ -1668,7 +1645,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_store&#33;&#40;p::Ptr&#123;T&#125;, x, i::Integer, order::Symbol&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L163'>
@@ -1678,7 +1655,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>add_fast&#40;x::T, y::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61; add_float_fast&#40;x, y&#41;</span>
           </td>
         </tr>
         <tr id='L164'>
@@ -1688,17 +1665,26 @@
           <td>
             
             
-            <span class='code'>Store a value of type &#96;T&#96; to the address of the &#96;i&#96;th element &#40;1-indexed&#41; starting at &#96;p&#96;.</span>
+            <span class='code'>sub_fast&#40;x::T, y::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61; sub_float_fast&#40;x, y&#41;</span>
           </td>
         </tr>
         <tr id='L165'>
           <td class='lineno'>165</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>14 &#40;6 &#37;&#41;</td>
+          <td class='tracecount incl'>14 &#40;6 &#37;&#41;</td>
           <td>
+            <div class='call-sites'>
+              14 &#40;6 &#37;&#41;
+              samples spent in mul_fast
+              <br />
+              14 &#40;100 &#37;&#41; &#40;ex.&#41;,
+              14 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from mul_fast
+              <a href='fastmath.jl-74148b78d58ce9205877cfc4386c9a0b5c4aee14.html#L170'>line 170</a>
+              <br />
+            </div>
             
-            
-            <span class='code'>This is equivalent to the C expression &#96;p&#91;i-1&#93; &#61; x&#96;. Optionally, an atomic memory ordering</span>
+            <span class='code'>mul_fast&#40;x::T, y::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61; mul_float_fast&#40;x, y&#41;</span>
           </td>
         </tr>
         <tr id='L166'>
@@ -1708,7 +1694,7 @@
           <td>
             
             
-            <span class='code'>can be provided.</span>
+            <span class='code'>div_fast&#40;x::T, y::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61; div_float_fast&#40;x, y&#41;</span>
           </td>
         </tr>
         <tr id='L167'>
@@ -1728,7 +1714,7 @@
           <td>
             
             
-            <span class='code'>The &#96;unsafe&#96; prefix on this function indicates that no validation is performed on the</span>
+            <span class='code'>add_fast&#40;x::T, y::T, zs::T...&#41; where &#123;T&lt;:FloatTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L169'>
@@ -1738,17 +1724,31 @@
           <td>
             
             
-            <span class='code'>pointer &#96;p&#96; to ensure that it is valid. Like C, the programmer is responsible for ensuring</span>
+            <span class='code'>    add_fast&#40;add_fast&#40;x, y&#41;, zs...&#41;</span>
           </td>
         </tr>
         <tr id='L170'>
           <td class='lineno'>170</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>14 &#40;6 &#37;&#41;</td>
           <td>
-            
-            
-            <span class='code'>that referenced memory is not freed or garbage collected while invoking this function.</span>
+            <div class='call-sites'>
+              14 &#40;6 &#37;&#41;
+              samples spent in mul_fast
+              <br />
+              
+              14 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from spherical_to_cartesian
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L262'>line 262</a>
+              <br />
+            </div>
+            <div class='callees'>
+              14 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='fastmath.jl-74148b78d58ce9205877cfc4386c9a0b5c4aee14.html#L165'>mul_fast</a>
+              <br />
+            </div>
+            <span class='code'>mul_fast&#40;x::T, y::T, zs::T...&#41; where &#123;T&lt;:FloatTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L171'>
@@ -1758,7 +1758,7 @@
           <td>
             
             
-            <span class='code'>Incorrect usage may segfault your program. Unlike C, storing memory region allocated as</span>
+            <span class='code'>    mul_fast&#40;mul_fast&#40;x, y&#41;, zs...&#41;</span>
           </td>
         </tr>
         <tr id='L172'>
@@ -1768,7 +1768,7 @@
           <td>
             
             
-            <span class='code'>different type may be valid provided that that the types are compatible.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L173'>
@@ -1778,7 +1778,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@fastmath begin</span>
           </td>
         </tr>
         <tr id='L174'>
@@ -1788,7 +1788,7 @@
           <td>
             
             
-            <span class='code'>&#33;&#33;&#33; compat &quot;Julia 1.10&quot;</span>
+            <span class='code'>    cmp_fast&#40;x::T, y::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61; ifelse&#40;x&#61;&#61;y, 0, ifelse&#40;x&lt;y, -1, &#43;1&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L175'>
@@ -1798,7 +1798,7 @@
           <td>
             
             
-            <span class='code'>     The &#96;order&#96; argument is available as of Julia 1.10.</span>
+            <span class='code'>    log_fast&#40;b::T, x::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61; log_fast&#40;x&#41;/log_fast&#40;b&#41;</span>
           </td>
         </tr>
         <tr id='L176'>
@@ -1808,7 +1808,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L177'>
@@ -1818,7 +1818,7 @@
           <td>
             
             
-            <span class='code'>See also: &#91;&#96;atomic&#96;&#93;&#40;@ref&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L178'>
@@ -1828,7 +1828,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>eq_fast&#40;x::T, y::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61; eq_float_fast&#40;x, y&#41;</span>
           </td>
         </tr>
         <tr id='L179'>
@@ -1838,7 +1838,7 @@
           <td>
             
             
-            <span class='code'>unsafe_store&#33;&#40;p::Ptr&#123;Any&#125;, @nospecialize&#40;x&#41;, i::Integer&#61;1&#41; &#61; pointerset&#40;p, x, Int&#40;i&#41;, 1&#41;</span>
+            <span class='code'>ne_fast&#40;x::T, y::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61; ne_float_fast&#40;x, y&#41;</span>
           </td>
         </tr>
         <tr id='L180'>
@@ -1848,7 +1848,7 @@
           <td>
             
             
-            <span class='code'>unsafe_store&#33;&#40;p::Ptr&#123;T&#125;, x, i::Integer&#61;1&#41; where &#123;T&#125; &#61; pointerset&#40;p, convert&#40;T,x&#41;, Int&#40;i&#41;, 1&#41;</span>
+            <span class='code'>lt_fast&#40;x::T, y::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61; lt_float_fast&#40;x, y&#41;</span>
           </td>
         </tr>
         <tr id='L181'>
@@ -1858,7 +1858,7 @@
           <td>
             
             
-            <span class='code'>unsafe_store&#33;&#40;p::Ptr&#123;T&#125;, x, order::Symbol&#41; where &#123;T&#125; &#61; atomic_pointerset&#40;p, x isa T ? x : convert&#40;T,x&#41;, order&#41;</span>
+            <span class='code'>le_fast&#40;x::T, y::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61; le_float_fast&#40;x, y&#41;</span>
           </td>
         </tr>
         <tr id='L182'>
@@ -1868,7 +1868,7 @@
           <td>
             
             
-            <span class='code'>function unsafe_store&#33;&#40;p::Ptr, x, i::Integer, order::Symbol&#41;</span>
+            <span class='code'>gt_fast&#40;x, y&#41; &#61; lt_fast&#40;y, x&#41;</span>
           </td>
         </tr>
         <tr id='L183'>
@@ -1878,7 +1878,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_store&#33;&#40;p &#43; &#40;elsize&#40;typeof&#40;p&#41;&#41; * &#40;Int&#40;i&#41; - 1&#41;&#41;, x, order&#41;</span>
+            <span class='code'>ge_fast&#40;x, y&#41; &#61; le_fast&#40;y, x&#41;</span>
           </td>
         </tr>
         <tr id='L184'>
@@ -1888,7 +1888,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L185'>
@@ -1898,7 +1898,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>isinf_fast&#40;x&#41; &#61; false</span>
           </td>
         </tr>
         <tr id='L186'>
@@ -1908,7 +1908,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>isfinite_fast&#40;x&#41; &#61; true</span>
           </td>
         </tr>
         <tr id='L187'>
@@ -1918,7 +1918,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_modify&#33;&#40;p::Ptr&#123;T&#125;, op, x, &#91;order::Symbol&#93;&#41; -&gt; Pair</span>
+            <span class='code'>isnan_fast&#40;x&#41; &#61; false</span>
           </td>
         </tr>
         <tr id='L188'>
@@ -1928,7 +1928,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>issubnormal_fast&#40;x&#41; &#61; false</span>
           </td>
         </tr>
         <tr id='L189'>
@@ -1938,7 +1938,7 @@
           <td>
             
             
-            <span class='code'>These atomically perform the operations to get and set a memory address after applying</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L190'>
@@ -1948,7 +1948,7 @@
           <td>
             
             
-            <span class='code'>the function &#96;op&#96;. If supported by the hardware &#40;for example, atomic increment&#41;, this may be</span>
+            <span class='code'># complex numbers</span>
           </td>
         </tr>
         <tr id='L191'>
@@ -1958,7 +1958,7 @@
           <td>
             
             
-            <span class='code'>optimized to the appropriate hardware instruction, otherwise its execution will be</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L192'>
@@ -1968,7 +1968,7 @@
           <td>
             
             
-            <span class='code'>similar to:</span>
+            <span class='code'>ComplexTypes &#61; Union&#123;ComplexF32, ComplexF64&#125;</span>
           </td>
         </tr>
         <tr id='L193'>
@@ -1988,7 +1988,7 @@
           <td>
             
             
-            <span class='code'>    y &#61; unsafe_load&#40;p&#41;</span>
+            <span class='code'>@fastmath begin</span>
           </td>
         </tr>
         <tr id='L195'>
@@ -1998,7 +1998,7 @@
           <td>
             
             
-            <span class='code'>    z &#61; op&#40;y, x&#41;</span>
+            <span class='code'>    abs_fast&#40;x::ComplexTypes&#41; &#61; hypot&#40;real&#40;x&#41;, imag&#40;x&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L196'>
@@ -2008,7 +2008,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_store&#33;&#40;p, z&#41;</span>
+            <span class='code'>    abs2_fast&#40;x::ComplexTypes&#41; &#61; real&#40;x&#41;*real&#40;x&#41; &#43; imag&#40;x&#41;*imag&#40;x&#41;</span>
           </td>
         </tr>
         <tr id='L197'>
@@ -2018,7 +2018,7 @@
           <td>
             
             
-            <span class='code'>    return y &#61;&gt; z</span>
+            <span class='code'>    conj_fast&#40;x::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61; T&#40;real&#40;x&#41;, -imag&#40;x&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L198'>
@@ -2028,7 +2028,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    inv_fast&#40;x::ComplexTypes&#41; &#61; conj&#40;x&#41; / abs2&#40;x&#41;</span>
           </td>
         </tr>
         <tr id='L199'>
@@ -2038,7 +2038,7 @@
           <td>
             
             
-            <span class='code'>The &#96;unsafe&#96; prefix on this function indicates that no validation is performed on the</span>
+            <span class='code'>    sign_fast&#40;x::ComplexTypes&#41; &#61; x &#61;&#61; 0 ? float&#40;zero&#40;x&#41;&#41; : x/abs&#40;x&#41;</span>
           </td>
         </tr>
         <tr id='L200'>
@@ -2048,7 +2048,7 @@
           <td>
             
             
-            <span class='code'>pointer &#96;p&#96; to ensure that it is valid. Like C, the programmer is responsible for ensuring</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L201'>
@@ -2058,7 +2058,7 @@
           <td>
             
             
-            <span class='code'>that referenced memory is not freed or garbage collected while invoking this function.</span>
+            <span class='code'>    add_fast&#40;x::T, y::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L202'>
@@ -2068,7 +2068,7 @@
           <td>
             
             
-            <span class='code'>Incorrect usage may segfault your program.</span>
+            <span class='code'>        T&#40;real&#40;x&#41;&#43;real&#40;y&#41;, imag&#40;x&#41;&#43;imag&#40;y&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L203'>
@@ -2078,7 +2078,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    add_fast&#40;x::Complex&#123;T&#125;, b::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L204'>
@@ -2088,7 +2088,7 @@
           <td>
             
             
-            <span class='code'>&#33;&#33;&#33; compat &quot;Julia 1.10&quot;</span>
+            <span class='code'>        Complex&#123;T&#125;&#40;real&#40;x&#41;&#43;b, imag&#40;x&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L205'>
@@ -2098,7 +2098,7 @@
           <td>
             
             
-            <span class='code'>     This function requires at least Julia 1.10.</span>
+            <span class='code'>    add_fast&#40;a::T, y::Complex&#123;T&#125;&#41; where &#123;T&lt;:FloatTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L206'>
@@ -2108,7 +2108,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        Complex&#123;T&#125;&#40;a&#43;real&#40;y&#41;, imag&#40;y&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L207'>
@@ -2118,7 +2118,7 @@
           <td>
             
             
-            <span class='code'>See also: &#91;&#96;modifyproperty&#33;&#96;&#93;&#40;@ref Base.modifyproperty&#33;&#41;, &#91;&#96;atomic&#96;&#93;&#40;@ref&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L208'>
@@ -2128,7 +2128,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    sub_fast&#40;x::T, y::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L209'>
@@ -2138,7 +2138,7 @@
           <td>
             
             
-            <span class='code'>function unsafe_modify&#33;&#40;p::Ptr, op, x, order::Symbol&#61;:not_atomic&#41;</span>
+            <span class='code'>        T&#40;real&#40;x&#41;-real&#40;y&#41;, imag&#40;x&#41;-imag&#40;y&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L210'>
@@ -2148,7 +2148,7 @@
           <td>
             
             
-            <span class='code'>    return atomic_pointermodify&#40;p, op, x, order&#41;</span>
+            <span class='code'>    sub_fast&#40;x::Complex&#123;T&#125;, b::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L211'>
@@ -2158,7 +2158,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>        Complex&#123;T&#125;&#40;real&#40;x&#41;-b, imag&#40;x&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L212'>
@@ -2168,7 +2168,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    sub_fast&#40;a::T, y::Complex&#123;T&#125;&#41; where &#123;T&lt;:FloatTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L213'>
@@ -2178,7 +2178,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>        Complex&#123;T&#125;&#40;a-real&#40;y&#41;, -imag&#40;y&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L214'>
@@ -2188,7 +2188,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_replace&#33;&#40;p::Ptr&#123;T&#125;, expected, desired,</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L215'>
@@ -2198,7 +2198,7 @@
           <td>
             
             
-            <span class='code'>                   &#91;success_order::Symbol&#91;, fail_order::Symbol&#61;success_order&#93;&#93;&#41; -&gt; &#40;; old, success::Bool&#41;</span>
+            <span class='code'>    mul_fast&#40;x::T, y::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L216'>
@@ -2208,7 +2208,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        T&#40;real&#40;x&#41;*real&#40;y&#41; - imag&#40;x&#41;*imag&#40;y&#41;,</span>
           </td>
         </tr>
         <tr id='L217'>
@@ -2218,7 +2218,7 @@
           <td>
             
             
-            <span class='code'>These atomically perform the operations to get and conditionally set a memory address to</span>
+            <span class='code'>          real&#40;x&#41;*imag&#40;y&#41; &#43; imag&#40;x&#41;*real&#40;y&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L218'>
@@ -2228,7 +2228,7 @@
           <td>
             
             
-            <span class='code'>a given value. If supported by the hardware, this may be optimized to the appropriate</span>
+            <span class='code'>    mul_fast&#40;x::Complex&#123;T&#125;, b::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L219'>
@@ -2238,7 +2238,7 @@
           <td>
             
             
-            <span class='code'>hardware instruction, otherwise its execution will be similar to:</span>
+            <span class='code'>        Complex&#123;T&#125;&#40;real&#40;x&#41;*b, imag&#40;x&#41;*b&#41;</span>
           </td>
         </tr>
         <tr id='L220'>
@@ -2248,7 +2248,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    mul_fast&#40;a::T, y::Complex&#123;T&#125;&#41; where &#123;T&lt;:FloatTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L221'>
@@ -2258,7 +2258,7 @@
           <td>
             
             
-            <span class='code'>    y &#61; unsafe_load&#40;p, fail_order&#41;</span>
+            <span class='code'>        Complex&#123;T&#125;&#40;a*real&#40;y&#41;, a*imag&#40;y&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L222'>
@@ -2268,7 +2268,7 @@
           <td>
             
             
-            <span class='code'>    ok &#61; y &#61;&#61;&#61; expected</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L223'>
@@ -2278,7 +2278,7 @@
           <td>
             
             
-            <span class='code'>    if ok</span>
+            <span class='code'>    @inline div_fast&#40;x::T, y::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L224'>
@@ -2288,7 +2288,7 @@
           <td>
             
             
-            <span class='code'>        unsafe_store&#33;&#40;p, desired, success_order&#41;</span>
+            <span class='code'>        T&#40;real&#40;x&#41;*real&#40;y&#41; &#43; imag&#40;x&#41;*imag&#40;y&#41;,</span>
           </td>
         </tr>
         <tr id='L225'>
@@ -2298,7 +2298,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>          imag&#40;x&#41;*real&#40;y&#41; - real&#40;x&#41;*imag&#40;y&#41;&#41; / abs2&#40;y&#41;</span>
           </td>
         </tr>
         <tr id='L226'>
@@ -2308,7 +2308,7 @@
           <td>
             
             
-            <span class='code'>    return &#40;; old &#61; y, success &#61; ok&#41;</span>
+            <span class='code'>    div_fast&#40;x::Complex&#123;T&#125;, b::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L227'>
@@ -2318,7 +2318,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        Complex&#123;T&#125;&#40;real&#40;x&#41;/b, imag&#40;x&#41;/b&#41;</span>
           </td>
         </tr>
         <tr id='L228'>
@@ -2328,7 +2328,7 @@
           <td>
             
             
-            <span class='code'>The &#96;unsafe&#96; prefix on this function indicates that no validation is performed on the</span>
+            <span class='code'>    div_fast&#40;a::T, y::Complex&#123;T&#125;&#41; where &#123;T&lt;:FloatTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L229'>
@@ -2338,7 +2338,7 @@
           <td>
             
             
-            <span class='code'>pointer &#96;p&#96; to ensure that it is valid. Like C, the programmer is responsible for ensuring</span>
+            <span class='code'>        Complex&#123;T&#125;&#40;a*real&#40;y&#41;, -a*imag&#40;y&#41;&#41; / abs2&#40;y&#41;</span>
           </td>
         </tr>
         <tr id='L230'>
@@ -2348,7 +2348,7 @@
           <td>
             
             
-            <span class='code'>that referenced memory is not freed or garbage collected while invoking this function.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L231'>
@@ -2358,7 +2358,7 @@
           <td>
             
             
-            <span class='code'>Incorrect usage may segfault your program.</span>
+            <span class='code'>    eq_fast&#40;x::T, y::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L232'>
@@ -2368,7 +2368,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        &#40;real&#40;x&#41;&#61;&#61;real&#40;y&#41;&#41; &amp; &#40;imag&#40;x&#41;&#61;&#61;imag&#40;y&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L233'>
@@ -2378,7 +2378,7 @@
           <td>
             
             
-            <span class='code'>&#33;&#33;&#33; compat &quot;Julia 1.10&quot;</span>
+            <span class='code'>    eq_fast&#40;x::Complex&#123;T&#125;, b::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L234'>
@@ -2388,7 +2388,7 @@
           <td>
             
             
-            <span class='code'>     This function requires at least Julia 1.10.</span>
+            <span class='code'>        &#40;real&#40;x&#41;&#61;&#61;b&#41; &amp; &#40;imag&#40;x&#41;&#61;&#61;T&#40;0&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L235'>
@@ -2398,7 +2398,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    eq_fast&#40;a::T, y::Complex&#123;T&#125;&#41; where &#123;T&lt;:FloatTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L236'>
@@ -2408,7 +2408,7 @@
           <td>
             
             
-            <span class='code'>See also: &#91;&#96;replaceproperty&#33;&#96;&#93;&#40;@ref Base.replaceproperty&#33;&#41;, &#91;&#96;atomic&#96;&#93;&#40;@ref&#41;</span>
+            <span class='code'>        &#40;a&#61;&#61;real&#40;y&#41;&#41; &amp; &#40;T&#40;0&#41;&#61;&#61;imag&#40;y&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L237'>
@@ -2418,7 +2418,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L238'>
@@ -2428,7 +2428,7 @@
           <td>
             
             
-            <span class='code'>function unsafe_replace&#33;&#40;p::Ptr&#123;T&#125;, expected, desired, success_order::Symbol&#61;:not_atomic, fail_order::Symbol&#61;success_order&#41; where &#123;T&#125;</span>
+            <span class='code'>    ne_fast&#40;x::T, y::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61; &#33;&#40;x&#61;&#61;y&#41;</span>
           </td>
         </tr>
         <tr id='L239'>
@@ -2438,7 +2438,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L240'>
@@ -2448,7 +2448,7 @@
           <td>
             
             
-            <span class='code'>    xT &#61; desired isa T ? desired : convert&#40;T, desired&#41;</span>
+            <span class='code'>    # Note: we use the same comparison for min, max, and minmax, so</span>
           </td>
         </tr>
         <tr id='L241'>
@@ -2458,7 +2458,7 @@
           <td>
             
             
-            <span class='code'>    return atomic_pointerreplace&#40;p, expected, xT, success_order, fail_order&#41;</span>
+            <span class='code'>    # that the compiler can convert between them</span>
           </td>
         </tr>
         <tr id='L242'>
@@ -2468,7 +2468,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    max_fast&#40;x::T, y::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61; ifelse&#40;y &gt; x, y, x&#41;</span>
           </td>
         </tr>
         <tr id='L243'>
@@ -2478,7 +2478,7 @@
           <td>
             
             
-            <span class='code'>function unsafe_replace&#33;&#40;p::Ptr&#123;Any&#125;, @nospecialize&#40;expected&#41;, @nospecialize&#40;desired&#41;, success_order::Symbol&#61;:not_atomic, fail_order::Symbol&#61;success_order&#41;</span>
+            <span class='code'>    min_fast&#40;x::T, y::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61; ifelse&#40;y &gt; x, x, y&#41;</span>
           </td>
         </tr>
         <tr id='L244'>
@@ -2488,7 +2488,7 @@
           <td>
             
             
-            <span class='code'>    return atomic_pointerreplace&#40;p, expected, desired, success_order, fail_order&#41;</span>
+            <span class='code'>    minmax_fast&#40;x::T, y::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61; ifelse&#40;y &gt; x, &#40;x,y&#41;, &#40;y,x&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L245'>
@@ -2498,7 +2498,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L246'>
@@ -2508,7 +2508,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    max_fast&#40;x::T, y::T, z::T...&#41; where &#123;T&lt;:FloatTypes&#125; &#61; max_fast&#40;max_fast&#40;x, y&#41;, z...&#41;</span>
           </td>
         </tr>
         <tr id='L247'>
@@ -2518,7 +2518,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    min_fast&#40;x::T, y::T, z::T...&#41; where &#123;T&lt;:FloatTypes&#125; &#61; min_fast&#40;min_fast&#40;x, y&#41;, z...&#41;</span>
           </td>
         </tr>
         <tr id='L248'>
@@ -2528,7 +2528,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_swap&#33;&#40;p::Ptr&#123;T&#125;, x, &#91;order::Symbol&#93;&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L249'>
@@ -2548,7 +2548,7 @@
           <td>
             
             
-            <span class='code'>These atomically perform the operations to simultaneously get and set a memory address.</span>
+            <span class='code'># fall-back implementations and type promotion</span>
           </td>
         </tr>
         <tr id='L251'>
@@ -2558,7 +2558,7 @@
           <td>
             
             
-            <span class='code'>If supported by the hardware, this may be optimized to the appropriate hardware</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L252'>
@@ -2568,7 +2568,7 @@
           <td>
             
             
-            <span class='code'>instruction, otherwise its execution will be similar to:</span>
+            <span class='code'>for op in &#40;:abs, :abs2, :conj, :inv, :sign&#41;</span>
           </td>
         </tr>
         <tr id='L253'>
@@ -2578,7 +2578,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    op_fast &#61; fast_op&#91;op&#93;</span>
           </td>
         </tr>
         <tr id='L254'>
@@ -2588,7 +2588,7 @@
           <td>
             
             
-            <span class='code'>    y &#61; unsafe_load&#40;p&#41;</span>
+            <span class='code'>    @eval begin</span>
           </td>
         </tr>
         <tr id='L255'>
@@ -2598,7 +2598,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_store&#33;&#40;p, x&#41;</span>
+            <span class='code'>        # fall-back implementation for non-numeric types</span>
           </td>
         </tr>
         <tr id='L256'>
@@ -2608,7 +2608,7 @@
           <td>
             
             
-            <span class='code'>    return y</span>
+            <span class='code'>        &#36;op_fast&#40;xs...&#41; &#61; &#36;op&#40;xs...&#41;</span>
           </td>
         </tr>
         <tr id='L257'>
@@ -2618,7 +2618,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L258'>
@@ -2628,7 +2628,7 @@
           <td>
             
             
-            <span class='code'>The &#96;unsafe&#96; prefix on this function indicates that no validation is performed on the</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L259'>
@@ -2638,7 +2638,7 @@
           <td>
             
             
-            <span class='code'>pointer &#96;p&#96; to ensure that it is valid. Like C, the programmer is responsible for ensuring</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L260'>
@@ -2648,7 +2648,7 @@
           <td>
             
             
-            <span class='code'>that referenced memory is not freed or garbage collected while invoking this function.</span>
+            <span class='code'>for op in &#40;:&#43;, :-, :*, :/, :&#40;&#61;&#61;&#41;, :&#33;&#61;, :&lt;, :&lt;&#61;, :cmp, :rem, :min, :max, :minmax&#41;</span>
           </td>
         </tr>
         <tr id='L261'>
@@ -2658,7 +2658,7 @@
           <td>
             
             
-            <span class='code'>Incorrect usage may segfault your program.</span>
+            <span class='code'>    op_fast &#61; fast_op&#91;op&#93;</span>
           </td>
         </tr>
         <tr id='L262'>
@@ -2668,7 +2668,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    @eval begin</span>
           </td>
         </tr>
         <tr id='L263'>
@@ -2678,7 +2678,7 @@
           <td>
             
             
-            <span class='code'>&#33;&#33;&#33; compat &quot;Julia 1.10&quot;</span>
+            <span class='code'>        # fall-back implementation for non-numeric types</span>
           </td>
         </tr>
         <tr id='L264'>
@@ -2688,7 +2688,7 @@
           <td>
             
             
-            <span class='code'>     This function requires at least Julia 1.10.</span>
+            <span class='code'>        &#36;op_fast&#40;xs...&#41; &#61; &#36;op&#40;xs...&#41;</span>
           </td>
         </tr>
         <tr id='L265'>
@@ -2698,7 +2698,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        # type promotion</span>
           </td>
         </tr>
         <tr id='L266'>
@@ -2708,7 +2708,7 @@
           <td>
             
             
-            <span class='code'>See also: &#91;&#96;swapproperty&#33;&#96;&#93;&#40;@ref Base.swapproperty&#33;&#41;, &#91;&#96;atomic&#96;&#93;&#40;@ref&#41;</span>
+            <span class='code'>        &#36;op_fast&#40;x::Number, y::Number, zs::Number...&#41; &#61;</span>
           </td>
         </tr>
         <tr id='L267'>
@@ -2718,7 +2718,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>            &#36;op_fast&#40;promote&#40;x,y,zs...&#41;...&#41;</span>
           </td>
         </tr>
         <tr id='L268'>
@@ -2728,7 +2728,7 @@
           <td>
             
             
-            <span class='code'>function unsafe_swap&#33;&#40;p::Ptr&#123;Any&#125;, x, order::Symbol&#61;:not_atomic&#41;</span>
+            <span class='code'>        # fall-back implementation that applies after promotion</span>
           </td>
         </tr>
         <tr id='L269'>
@@ -2738,7 +2738,7 @@
           <td>
             
             
-            <span class='code'>    return atomic_pointerswap&#40;p, x, order&#41;</span>
+            <span class='code'>        &#36;op_fast&#40;x::T,ys::T...&#41; where &#123;T&lt;:Number&#125; &#61; &#36;op&#40;x,ys...&#41;</span>
           </td>
         </tr>
         <tr id='L270'>
@@ -2748,7 +2748,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L271'>
@@ -2758,7 +2758,7 @@
           <td>
             
             
-            <span class='code'>function unsafe_swap&#33;&#40;p::Ptr&#123;T&#125;, x, order::Symbol&#61;:not_atomic&#41; where &#123;T&#125;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L272'>
@@ -2768,7 +2768,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L273'>
@@ -2778,7 +2778,7 @@
           <td>
             
             
-            <span class='code'>    xT &#61; x isa T ? x : convert&#40;T, x&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L274'>
@@ -2788,7 +2788,7 @@
           <td>
             
             
-            <span class='code'>    return atomic_pointerswap&#40;p, xT, order&#41;</span>
+            <span class='code'># Math functions</span>
           </td>
         </tr>
         <tr id='L275'>
@@ -2798,7 +2798,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>exp2_fast&#40;x::Union&#123;Float32,Float64&#125;&#41;  &#61; Base.Math.exp2_fast&#40;x&#41;</span>
           </td>
         </tr>
         <tr id='L276'>
@@ -2808,7 +2808,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>exp_fast&#40;x::Union&#123;Float32,Float64&#125;&#41;   &#61; Base.Math.exp_fast&#40;x&#41;</span>
           </td>
         </tr>
         <tr id='L277'>
@@ -2818,7 +2818,7 @@
           <td>
             
             
-            <span class='code'># convert a raw Ptr to an object reference, and vice-versa</span>
+            <span class='code'>exp10_fast&#40;x::Union&#123;Float32,Float64&#125;&#41; &#61; Base.Math.exp10_fast&#40;x&#41;</span>
           </td>
         </tr>
         <tr id='L278'>
@@ -2828,7 +2828,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L279'>
@@ -2838,7 +2838,7 @@
           <td>
             
             
-            <span class='code'>    unsafe_pointer_to_objref&#40;p::Ptr&#41;</span>
+            <span class='code'># builtins</span>
           </td>
         </tr>
         <tr id='L280'>
@@ -2858,7 +2858,7 @@
           <td>
             
             
-            <span class='code'>Convert a &#96;Ptr&#96; to an object reference. Assumes the pointer refers to a valid heap-allocated</span>
+            <span class='code'>pow_fast&#40;x::Float32, y::Integer&#41; &#61; ccall&#40;&quot;llvm.powi.f32.i32&quot;, llvmcall, Float32, &#40;Float32, Int32&#41;, x, y&#41;</span>
           </td>
         </tr>
         <tr id='L282'>
@@ -2868,7 +2868,7 @@
           <td>
             
             
-            <span class='code'>Julia object. If this is not the case, undefined behavior results, hence this function is</span>
+            <span class='code'>pow_fast&#40;x::Float64, y::Integer&#41; &#61; ccall&#40;&quot;llvm.powi.f64.i32&quot;, llvmcall, Float64, &#40;Float64, Int32&#41;, x, y&#41;</span>
           </td>
         </tr>
         <tr id='L283'>
@@ -2878,7 +2878,7 @@
           <td>
             
             
-            <span class='code'>considered &quot;unsafe&quot; and should be used with care.</span>
+            <span class='code'>pow_fast&#40;x::FloatTypes, ::Val&#123;p&#125;&#41; where &#123;p&#125; &#61; pow_fast&#40;x, p&#41; # inlines already via llvm.powi</span>
           </td>
         </tr>
         <tr id='L284'>
@@ -2888,7 +2888,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@inline pow_fast&#40;x, v::Val&#41; &#61; Base.literal_pow&#40;^, x, v&#41;</span>
           </td>
         </tr>
         <tr id='L285'>
@@ -2898,7 +2898,7 @@
           <td>
             
             
-            <span class='code'>See also &#91;&#96;pointer_from_objref&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L286'>
@@ -2908,7 +2908,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>sqrt_fast&#40;x::FloatTypes&#41; &#61; sqrt_llvm_fast&#40;x&#41;</span>
           </td>
         </tr>
         <tr id='L287'>
@@ -2918,7 +2918,7 @@
           <td>
             
             
-            <span class='code'>unsafe_pointer_to_objref&#40;x::Ptr&#41; &#61; ccall&#40;:jl_value_ptr, Any, &#40;Ptr&#123;Cvoid&#125;,&#41;, x&#41;</span>
+            <span class='code'>sincos_fast&#40;v::FloatTypes&#41; &#61; sincos&#40;v&#41;</span>
           </td>
         </tr>
         <tr id='L288'>
@@ -2938,7 +2938,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>@inline function sincos_fast&#40;v::Float16&#41;</span>
           </td>
         </tr>
         <tr id='L290'>
@@ -2948,7 +2948,7 @@
           <td>
             
             
-            <span class='code'>    pointer_from_objref&#40;x&#41;</span>
+            <span class='code'>    s, c &#61; sincos_fast&#40;Float32&#40;v&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L291'>
@@ -2958,7 +2958,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    return Float16&#40;s&#41;, Float16&#40;c&#41;</span>
           </td>
         </tr>
         <tr id='L292'>
@@ -2968,7 +2968,7 @@
           <td>
             
             
-            <span class='code'>Get the memory address of a Julia object as a &#96;Ptr&#96;. The existence of the resulting &#96;Ptr&#96;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L293'>
@@ -2978,7 +2978,7 @@
           <td>
             
             
-            <span class='code'>will not protect the object from garbage collection, so you must ensure that the object</span>
+            <span class='code'>sincos_fast&#40;v::AbstractFloat&#41; &#61; &#40;sin_fast&#40;v&#41;, cos_fast&#40;v&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L294'>
@@ -2988,7 +2988,7 @@
           <td>
             
             
-            <span class='code'>remains referenced for the whole time that the &#96;Ptr&#96; will be used.</span>
+            <span class='code'>sincos_fast&#40;v::Real&#41; &#61; sincos_fast&#40;float&#40;v&#41;::AbstractFloat&#41;</span>
           </td>
         </tr>
         <tr id='L295'>
@@ -2998,7 +2998,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>sincos_fast&#40;v&#41; &#61; &#40;sin_fast&#40;v&#41;, cos_fast&#40;v&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L296'>
@@ -3008,7 +3008,7 @@
           <td>
             
             
-            <span class='code'>This function may not be called on immutable objects, since they do not have</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L297'>
@@ -3018,7 +3018,7 @@
           <td>
             
             
-            <span class='code'>stable memory addresses.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L298'>
@@ -3028,7 +3028,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>function rem_fast&#40;x::T, y::T&#41; where &#123;T&lt;:FloatTypes&#125;</span>
           </td>
         </tr>
         <tr id='L299'>
@@ -3038,7 +3038,7 @@
           <td>
             
             
-            <span class='code'>See also &#91;&#96;unsafe_pointer_to_objref&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'>    return @fastmath copysign&#40;Base.rem_internal&#40;abs&#40;x&#41;, abs&#40;y&#41;&#41;, x&#41;</span>
           </td>
         </tr>
         <tr id='L300'>
@@ -3048,7 +3048,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L301'>
@@ -3058,7 +3058,7 @@
           <td>
             
             
-            <span class='code'>function pointer_from_objref&#40;@nospecialize&#40;x&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L302'>
@@ -3068,7 +3068,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'>@fastmath begin</span>
           </td>
         </tr>
         <tr id='L303'>
@@ -3078,7 +3078,7 @@
           <td>
             
             
-            <span class='code'>    ismutable&#40;x&#41; || error&#40;&quot;pointer_from_objref cannot be used on immutable objects&quot;&#41;</span>
+            <span class='code'>    hypot_fast&#40;x::T, y::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61; sqrt&#40;x*x &#43; y*y&#41;</span>
           </td>
         </tr>
         <tr id='L304'>
@@ -3088,7 +3088,7 @@
           <td>
             
             
-            <span class='code'>    ccall&#40;:jl_value_ptr, Ptr&#123;Cvoid&#125;, &#40;Any,&#41;, x&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L305'>
@@ -3098,7 +3098,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    # complex numbers</span>
           </td>
         </tr>
         <tr id='L306'>
@@ -3118,7 +3118,7 @@
           <td>
             
             
-            <span class='code'>## limited pointer arithmetic &amp; comparison ##</span>
+            <span class='code'>    function cis_fast&#40;x::T&#41; where &#123;T&lt;:FloatTypes&#125;</span>
           </td>
         </tr>
         <tr id='L308'>
@@ -3128,7 +3128,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        s, c &#61; sincos_fast&#40;x&#41;</span>
           </td>
         </tr>
         <tr id='L309'>
@@ -3138,7 +3138,7 @@
           <td>
             
             
-            <span class='code'>isequal&#40;x::Ptr, y::Ptr&#41; &#61; &#40;x &#61;&#61;&#61; y&#41;</span>
+            <span class='code'>        Complex&#123;T&#125;&#40;c, s&#41;</span>
           </td>
         </tr>
         <tr id='L310'>
@@ -3148,7 +3148,7 @@
           <td>
             
             
-            <span class='code'>isless&#40;x::Ptr&#123;T&#125;, y::Ptr&#123;T&#125;&#41; where &#123;T&#125; &#61; x &lt; y</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L311'>
@@ -3168,7 +3168,7 @@
           <td>
             
             
-            <span class='code'>&#61;&#61;&#40;x::Ptr, y::Ptr&#41; &#61; UInt&#40;x&#41; &#61;&#61; UInt&#40;y&#41;</span>
+            <span class='code'>    # See &lt;https://en.cppreference.com/w/cpp/numeric/complex&gt;</span>
           </td>
         </tr>
         <tr id='L313'>
@@ -3178,7 +3178,7 @@
           <td>
             
             
-            <span class='code'>&lt;&#40;x::Ptr,  y::Ptr&#41; &#61; UInt&#40;x&#41; &lt; UInt&#40;y&#41;</span>
+            <span class='code'>    pow_fast&#40;x::T, y::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61; exp&#40;y*log&#40;x&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L314'>
@@ -3188,7 +3188,7 @@
           <td>
             
             
-            <span class='code'>-&#40;x::Ptr,  y::Ptr&#41; &#61; UInt&#40;x&#41; - UInt&#40;y&#41;</span>
+            <span class='code'>    pow_fast&#40;x::T, y::Complex&#123;T&#125;&#41; where &#123;T&lt;:FloatTypes&#125; &#61; exp&#40;y*log&#40;x&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L315'>
@@ -3198,7 +3198,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    pow_fast&#40;x::Complex&#123;T&#125;, y::T&#41; where &#123;T&lt;:FloatTypes&#125; &#61; exp&#40;y*log&#40;x&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L316'>
@@ -3208,7 +3208,7 @@
           <td>
             
             
-            <span class='code'>&#43;&#40;x::Ptr, y::Integer&#41; &#61; oftype&#40;x, add_ptr&#40;UInt&#40;x&#41;, &#40;y &#37; UInt&#41; &#37; UInt&#41;&#41;</span>
+            <span class='code'>    acos_fast&#40;x::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L317'>
@@ -3218,7 +3218,7 @@
           <td>
             
             
-            <span class='code'>-&#40;x::Ptr, y::Integer&#41; &#61; oftype&#40;x, sub_ptr&#40;UInt&#40;x&#41;, &#40;y &#37; UInt&#41; &#37; UInt&#41;&#41;</span>
+            <span class='code'>        convert&#40;T,π&#41;/2 &#43; im*log&#40;im*x &#43; sqrt&#40;1-x*x&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L318'>
@@ -3228,7 +3228,7 @@
           <td>
             
             
-            <span class='code'>&#43;&#40;x::Integer, y::Ptr&#41; &#61; y &#43; x</span>
+            <span class='code'>    acosh_fast&#40;x::ComplexTypes&#41; &#61; log&#40;x &#43; sqrt&#40;x&#43;1&#41; * sqrt&#40;x-1&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L319'>
@@ -3238,7 +3238,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    angle_fast&#40;x::ComplexTypes&#41; &#61; atan&#40;imag&#40;x&#41;, real&#40;x&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L320'>
@@ -3248,7 +3248,7 @@
           <td>
             
             
-            <span class='code'>unsigned&#40;x::Ptr&#41; &#61; UInt&#40;x&#41;</span>
+            <span class='code'>    asin_fast&#40;x::ComplexTypes&#41; &#61; -im*asinh&#40;im*x&#41;</span>
           </td>
         </tr>
         <tr id='L321'>
@@ -3258,7 +3258,748 @@
           <td>
             
             
-            <span class='code'>signed&#40;x::Ptr&#41; &#61; Int&#40;x&#41;</span>
+            <span class='code'>    asinh_fast&#40;x::ComplexTypes&#41; &#61; log&#40;x &#43; sqrt&#40;1&#43;x*x&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L322'>
+          <td class='lineno'>322</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    atan_fast&#40;x::ComplexTypes&#41; &#61; -im*atanh&#40;im*x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L323'>
+          <td class='lineno'>323</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    atanh_fast&#40;x::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61; convert&#40;T,1&#41;/2*&#40;log&#40;1&#43;x&#41; - log&#40;1-x&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L324'>
+          <td class='lineno'>324</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    cis_fast&#40;x::ComplexTypes&#41; &#61; exp&#40;-imag&#40;x&#41;&#41; * cis&#40;real&#40;x&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L325'>
+          <td class='lineno'>325</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    cos_fast&#40;x::ComplexTypes&#41; &#61; cosh&#40;im*x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L326'>
+          <td class='lineno'>326</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    cosh_fast&#40;x::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61; convert&#40;T,1&#41;/2*&#40;exp&#40;x&#41; &#43; exp&#40;-x&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L327'>
+          <td class='lineno'>327</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    exp10_fast&#40;x::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61;</span>
+          </td>
+        </tr>
+        <tr id='L328'>
+          <td class='lineno'>328</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        exp10&#40;real&#40;x&#41;&#41; * cis&#40;imag&#40;x&#41;*log&#40;convert&#40;T,10&#41;&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L329'>
+          <td class='lineno'>329</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    exp2_fast&#40;x::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61;</span>
+          </td>
+        </tr>
+        <tr id='L330'>
+          <td class='lineno'>330</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        exp2&#40;real&#40;x&#41;&#41; * cis&#40;imag&#40;x&#41;*log&#40;convert&#40;T,2&#41;&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L331'>
+          <td class='lineno'>331</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    exp_fast&#40;x::ComplexTypes&#41; &#61; exp&#40;real&#40;x&#41;&#41; * cis&#40;imag&#40;x&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L332'>
+          <td class='lineno'>332</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    expm1_fast&#40;x::ComplexTypes&#41; &#61; exp&#40;x&#41;-1</span>
+          </td>
+        </tr>
+        <tr id='L333'>
+          <td class='lineno'>333</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    log10_fast&#40;x::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61; log&#40;x&#41; / log&#40;convert&#40;T,10&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L334'>
+          <td class='lineno'>334</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    log1p_fast&#40;x::ComplexTypes&#41; &#61; log&#40;1&#43;x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L335'>
+          <td class='lineno'>335</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    log2_fast&#40;x::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61; log&#40;x&#41; / log&#40;convert&#40;T,2&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L336'>
+          <td class='lineno'>336</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    log_fast&#40;x::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61; T&#40;log&#40;abs2&#40;x&#41;&#41;/2, angle&#40;x&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L337'>
+          <td class='lineno'>337</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    log_fast&#40;b::T, x::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61; T&#40;log&#40;x&#41;/log&#40;b&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L338'>
+          <td class='lineno'>338</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    sin_fast&#40;x::ComplexTypes&#41; &#61; -im*sinh&#40;im*x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L339'>
+          <td class='lineno'>339</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    sinh_fast&#40;x::T&#41; where &#123;T&lt;:ComplexTypes&#125; &#61; convert&#40;T,1&#41;/2*&#40;exp&#40;x&#41; - exp&#40;-x&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L340'>
+          <td class='lineno'>340</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    sqrt_fast&#40;x::ComplexTypes&#41; &#61; sqrt&#40;abs&#40;x&#41;&#41; * cis&#40;angle&#40;x&#41;/2&#41;</span>
+          </td>
+        </tr>
+        <tr id='L341'>
+          <td class='lineno'>341</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    tan_fast&#40;x::ComplexTypes&#41; &#61; -im*tanh&#40;im*x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L342'>
+          <td class='lineno'>342</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    tanh_fast&#40;x::ComplexTypes&#41; &#61; &#40;a&#61;exp&#40;x&#41;; b&#61;exp&#40;-x&#41;; &#40;a-b&#41;/&#40;a&#43;b&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L343'>
+          <td class='lineno'>343</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L344'>
+          <td class='lineno'>344</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L345'>
+          <td class='lineno'>345</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># fall-back implementations and type promotion</span>
+          </td>
+        </tr>
+        <tr id='L346'>
+          <td class='lineno'>346</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L347'>
+          <td class='lineno'>347</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>for f in &#40;:acos, :acosh, :angle, :asin, :asinh, :atan, :atanh, :cbrt,</span>
+          </td>
+        </tr>
+        <tr id='L348'>
+          <td class='lineno'>348</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>          :cis, :cos, :cosh, :exp10, :exp2, :exp, :expm1,</span>
+          </td>
+        </tr>
+        <tr id='L349'>
+          <td class='lineno'>349</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>          :log10, :log1p, :log2, :log, :sin, :sinh, :sqrt, :tan,</span>
+          </td>
+        </tr>
+        <tr id='L350'>
+          <td class='lineno'>350</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>          :tanh&#41;</span>
+          </td>
+        </tr>
+        <tr id='L351'>
+          <td class='lineno'>351</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    f_fast &#61; fast_op&#91;f&#93;</span>
+          </td>
+        </tr>
+        <tr id='L352'>
+          <td class='lineno'>352</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    @eval begin</span>
+          </td>
+        </tr>
+        <tr id='L353'>
+          <td class='lineno'>353</td>
+          <td class='tracecount excl'>10 &#40;4 &#37;&#41;</td>
+          <td class='tracecount incl'>127 &#40;54 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              127 &#40;54 &#37;&#41;
+              samples spent in cos_fast
+              <br />
+              6 &#40;5 &#37;&#41; &#40;ex.&#41;,
+              92 &#40;72 &#37;&#41; &#40;incl.&#41;
+              when called from spherical_to_cartesian
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L262'>line 262</a>
+              <br />
+              4 &#40;3 &#37;&#41; &#40;ex.&#41;,
+              35 &#40;28 &#37;&#41; &#40;incl.&#41;
+              when called from spherical_to_cartesian
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L261'>line 261</a>
+              <br />
+            </div>
+            <div class='callees'>
+              59 &#40;50 &#37;&#41;
+              samples spent calling
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L98'>cos</a>
+              <br />
+              55 &#40;47 &#37;&#41;
+              samples spent calling
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L29'>sin</a>
+              <br />
+              2 &#40;2 &#37;&#41;
+              samples spent calling
+              <a href='float.jl-7170cf60e6d4e9b40a7dcd98416202990131c908.html#L98'>cos</a>
+              <br />
+              1 &#40;1 &#37;&#41;
+              samples spent calling
+              <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L98'>cos</a>
+              <br />
+            </div>
+            <span class='code'>        &#36;f_fast&#40;x&#41; &#61; &#36;f&#40;x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L354'>
+          <td class='lineno'>354</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L355'>
+          <td class='lineno'>355</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L356'>
+          <td class='lineno'>356</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L357'>
+          <td class='lineno'>357</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>for f in &#40;:^, :atan, :hypot, :log&#41;</span>
+          </td>
+        </tr>
+        <tr id='L358'>
+          <td class='lineno'>358</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    f_fast &#61; fast_op&#91;f&#93;</span>
+          </td>
+        </tr>
+        <tr id='L359'>
+          <td class='lineno'>359</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    @eval begin</span>
+          </td>
+        </tr>
+        <tr id='L360'>
+          <td class='lineno'>360</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        # fall-back implementation for non-numeric types</span>
+          </td>
+        </tr>
+        <tr id='L361'>
+          <td class='lineno'>361</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        &#36;f_fast&#40;x, y&#41; &#61; &#36;f&#40;x, y&#41;</span>
+          </td>
+        </tr>
+        <tr id='L362'>
+          <td class='lineno'>362</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        # type promotion</span>
+          </td>
+        </tr>
+        <tr id='L363'>
+          <td class='lineno'>363</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        &#36;f_fast&#40;x::Number, y::Number&#41; &#61; &#36;f_fast&#40;promote&#40;x, y&#41;...&#41;</span>
+          </td>
+        </tr>
+        <tr id='L364'>
+          <td class='lineno'>364</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        # fall-back implementation that applies after promotion</span>
+          </td>
+        </tr>
+        <tr id='L365'>
+          <td class='lineno'>365</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        &#36;f_fast&#40;x::T, y::T&#41; where &#123;T&lt;:Number&#125; &#61; &#36;f&#40;x, y&#41;</span>
+          </td>
+        </tr>
+        <tr id='L366'>
+          <td class='lineno'>366</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L367'>
+          <td class='lineno'>367</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L368'>
+          <td class='lineno'>368</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L369'>
+          <td class='lineno'>369</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># Reductions</span>
+          </td>
+        </tr>
+        <tr id='L370'>
+          <td class='lineno'>370</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L371'>
+          <td class='lineno'>371</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>maximum_fast&#40;a; kw...&#41; &#61; Base.reduce&#40;max_fast, a; kw...&#41;</span>
+          </td>
+        </tr>
+        <tr id='L372'>
+          <td class='lineno'>372</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>minimum_fast&#40;a; kw...&#41; &#61; Base.reduce&#40;min_fast, a; kw...&#41;</span>
+          </td>
+        </tr>
+        <tr id='L373'>
+          <td class='lineno'>373</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L374'>
+          <td class='lineno'>374</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>maximum_fast&#40;f, a; kw...&#41; &#61; Base.mapreduce&#40;f, max_fast, a; kw...&#41;</span>
+          </td>
+        </tr>
+        <tr id='L375'>
+          <td class='lineno'>375</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>minimum_fast&#40;f, a; kw...&#41; &#61; Base.mapreduce&#40;f, min_fast, a; kw...&#41;</span>
+          </td>
+        </tr>
+        <tr id='L376'>
+          <td class='lineno'>376</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L377'>
+          <td class='lineno'>377</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>Base.reducedim_init&#40;f, ::typeof&#40;max_fast&#41;, A::AbstractArray, region&#41; &#61;</span>
+          </td>
+        </tr>
+        <tr id='L378'>
+          <td class='lineno'>378</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    Base.reducedim_init&#40;f, max, A::AbstractArray, region&#41;</span>
+          </td>
+        </tr>
+        <tr id='L379'>
+          <td class='lineno'>379</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>Base.reducedim_init&#40;f, ::typeof&#40;min_fast&#41;, A::AbstractArray, region&#41; &#61;</span>
+          </td>
+        </tr>
+        <tr id='L380'>
+          <td class='lineno'>380</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    Base.reducedim_init&#40;f, min, A::AbstractArray, region&#41;</span>
+          </td>
+        </tr>
+        <tr id='L381'>
+          <td class='lineno'>381</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L382'>
+          <td class='lineno'>382</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>maximum&#33;_fast&#40;r::AbstractArray, A::AbstractArray; kw...&#41; &#61;</span>
+          </td>
+        </tr>
+        <tr id='L383'>
+          <td class='lineno'>383</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    maximum&#33;_fast&#40;identity, r, A; kw...&#41;</span>
+          </td>
+        </tr>
+        <tr id='L384'>
+          <td class='lineno'>384</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>minimum&#33;_fast&#40;r::AbstractArray, A::AbstractArray; kw...&#41; &#61;</span>
+          </td>
+        </tr>
+        <tr id='L385'>
+          <td class='lineno'>385</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    minimum&#33;_fast&#40;identity, r, A; kw...&#41;</span>
+          </td>
+        </tr>
+        <tr id='L386'>
+          <td class='lineno'>386</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L387'>
+          <td class='lineno'>387</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>maximum&#33;_fast&#40;f::Function, r::AbstractArray, A::AbstractArray; init::Bool&#61;true&#41; &#61;</span>
+          </td>
+        </tr>
+        <tr id='L388'>
+          <td class='lineno'>388</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    Base.mapreducedim&#33;&#40;f, max_fast, Base.initarray&#33;&#40;r, f, max, init, A&#41;, A&#41;</span>
+          </td>
+        </tr>
+        <tr id='L389'>
+          <td class='lineno'>389</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>minimum&#33;_fast&#40;f::Function, r::AbstractArray, A::AbstractArray; init::Bool&#61;true&#41; &#61;</span>
+          </td>
+        </tr>
+        <tr id='L390'>
+          <td class='lineno'>390</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    Base.mapreducedim&#33;&#40;f, min_fast, Base.initarray&#33;&#40;r, f, min, init, A&#41;, A&#41;</span>
+          </td>
+        </tr>
+        <tr id='L391'>
+          <td class='lineno'>391</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L392'>
+          <td class='lineno'>392</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
           </td>
         </tr>
       </tbody>

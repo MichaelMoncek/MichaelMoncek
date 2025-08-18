@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'></meta>
     <link rel='stylesheet' type='text/css' href='statprofiler.css'></link>
-    <title>StatProfilerHTML - ../../../../../usr/share/julia/base/client.jl</title>
+    <title>StatProfilerHTML - ../../../../../usr/share/julia/base/threadingconstructs.jl</title>
   </head>
   <body>
     <div class='report-header'>
@@ -14,7 +14,7 @@
         StatProfilerHTML.jl report
       </div>
       <div class='generated-on'>
-        Generated on Sun, 17 Aug 2025 12:41:30
+        Generated on Mon, 18 Aug 2025 17:07:45
       </div>
     </div>
     <table>
@@ -55,7 +55,7 @@
           <td>
             
             
-            <span class='code'>## client.jl - frontend handling command line options, environment setup,</span>
+            <span class='code'>export threadid, nthreads, @threads, @spawn,</span>
           </td>
         </tr>
         <tr id='L4'>
@@ -65,7 +65,7 @@
           <td>
             
             
-            <span class='code'>##             and REPL</span>
+            <span class='code'>       threadpool, nthreadpools</span>
           </td>
         </tr>
         <tr id='L5'>
@@ -85,7 +85,7 @@
           <td>
             
             
-            <span class='code'>have_color &#61; nothing</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L7'>
@@ -95,7 +95,7 @@
           <td>
             
             
-            <span class='code'>have_truecolor &#61; nothing</span>
+            <span class='code'>    Threads.threadid&#40;&#41; -&gt; Int</span>
           </td>
         </tr>
         <tr id='L8'>
@@ -105,7 +105,7 @@
           <td>
             
             
-            <span class='code'>const default_color_warn &#61; :yellow</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L9'>
@@ -115,7 +115,7 @@
           <td>
             
             
-            <span class='code'>const default_color_error &#61; :light_red</span>
+            <span class='code'>Get the ID number of the current thread of execution. The master thread has</span>
           </td>
         </tr>
         <tr id='L10'>
@@ -125,7 +125,7 @@
           <td>
             
             
-            <span class='code'>const default_color_info &#61; :cyan</span>
+            <span class='code'>ID &#96;1&#96;.</span>
           </td>
         </tr>
         <tr id='L11'>
@@ -135,7 +135,7 @@
           <td>
             
             
-            <span class='code'>const default_color_debug &#61; :blue</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L12'>
@@ -145,7 +145,7 @@
           <td>
             
             
-            <span class='code'>const default_color_input &#61; :normal</span>
+            <span class='code'># Examples</span>
           </td>
         </tr>
         <tr id='L13'>
@@ -155,7 +155,7 @@
           <td>
             
             
-            <span class='code'>const default_color_answer &#61; :normal</span>
+            <span class='code'>&#96;&#96;&#96;julia-repl</span>
           </td>
         </tr>
         <tr id='L14'>
@@ -165,7 +165,7 @@
           <td>
             
             
-            <span class='code'>const color_normal &#61; text_colors&#91;:normal&#93;</span>
+            <span class='code'>julia&gt; Threads.threadid&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L15'>
@@ -175,7 +175,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>1</span>
           </td>
         </tr>
         <tr id='L16'>
@@ -185,7 +185,7 @@
           <td>
             
             
-            <span class='code'>function repl_color&#40;key, default&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L17'>
@@ -195,7 +195,7 @@
           <td>
             
             
-            <span class='code'>    env_str &#61; get&#40;ENV, key, &quot;&quot;&#41;</span>
+            <span class='code'>julia&gt; Threads.@threads for i in 1:4</span>
           </td>
         </tr>
         <tr id='L18'>
@@ -205,7 +205,7 @@
           <td>
             
             
-            <span class='code'>    c &#61; tryparse&#40;Int, env_str&#41;</span>
+            <span class='code'>          println&#40;Threads.threadid&#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L19'>
@@ -215,7 +215,7 @@
           <td>
             
             
-            <span class='code'>    c_conv &#61; something&#40;c, Symbol&#40;env_str&#41;&#41;</span>
+            <span class='code'>       end</span>
           </td>
         </tr>
         <tr id='L20'>
@@ -225,7 +225,7 @@
           <td>
             
             
-            <span class='code'>    haskey&#40;text_colors, c_conv&#41; ? c_conv : default</span>
+            <span class='code'>4</span>
           </td>
         </tr>
         <tr id='L21'>
@@ -235,7 +235,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>2</span>
           </td>
         </tr>
         <tr id='L22'>
@@ -245,7 +245,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>5</span>
           </td>
         </tr>
         <tr id='L23'>
@@ -255,7 +255,7 @@
           <td>
             
             
-            <span class='code'>error_color&#40;&#41; &#61; repl_color&#40;&quot;JULIA_ERROR_COLOR&quot;, default_color_error&#41;</span>
+            <span class='code'>4</span>
           </td>
         </tr>
         <tr id='L24'>
@@ -265,7 +265,7 @@
           <td>
             
             
-            <span class='code'>warn_color&#40;&#41;  &#61; repl_color&#40;&quot;JULIA_WARN_COLOR&quot; , default_color_warn&#41;</span>
+            <span class='code'>&#96;&#96;&#96;</span>
           </td>
         </tr>
         <tr id='L25'>
@@ -275,7 +275,7 @@
           <td>
             
             
-            <span class='code'>info_color&#40;&#41;  &#61; repl_color&#40;&quot;JULIA_INFO_COLOR&quot; , default_color_info&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L26'>
@@ -285,7 +285,7 @@
           <td>
             
             
-            <span class='code'>debug_color&#40;&#41;  &#61; repl_color&#40;&quot;JULIA_DEBUG_COLOR&quot; , default_color_debug&#41;</span>
+            <span class='code'>&#33;&#33;&#33; note</span>
           </td>
         </tr>
         <tr id='L27'>
@@ -295,7 +295,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    The thread that a task runs on may change if the task yields, which is known as &#91;&#96;Task Migration&#96;&#93;&#40;@ref man-task-migration&#41;.</span>
           </td>
         </tr>
         <tr id='L28'>
@@ -305,7 +305,7 @@
           <td>
             
             
-            <span class='code'>input_color&#40;&#41;  &#61; text_colors&#91;repl_color&#40;&quot;JULIA_INPUT_COLOR&quot;, default_color_input&#41;&#93;</span>
+            <span class='code'>    For this reason in most cases it is not safe to use &#96;threadid&#40;&#41;&#96; to index into, say, a vector of buffer or stateful objects.</span>
           </td>
         </tr>
         <tr id='L29'>
@@ -315,7 +315,7 @@
           <td>
             
             
-            <span class='code'>answer_color&#40;&#41; &#61; text_colors&#91;repl_color&#40;&quot;JULIA_ANSWER_COLOR&quot;, default_color_answer&#41;&#93;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L30'>
@@ -325,7 +325,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L31'>
@@ -335,7 +335,7 @@
           <td>
             
             
-            <span class='code'>stackframe_lineinfo_color&#40;&#41; &#61; repl_color&#40;&quot;JULIA_STACKFRAME_LINEINFO_COLOR&quot;, :bold&#41;</span>
+            <span class='code'>threadid&#40;&#41; &#61; Int&#40;ccall&#40;:jl_threadid, Int16, &#40;&#41;&#41;&#43;1&#41;</span>
           </td>
         </tr>
         <tr id='L32'>
@@ -345,7 +345,7 @@
           <td>
             
             
-            <span class='code'>stackframe_function_color&#40;&#41; &#61; repl_color&#40;&quot;JULIA_STACKFRAME_FUNCTION_COLOR&quot;, :bold&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L33'>
@@ -355,7 +355,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># lower bound on the largest threadid&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L34'>
@@ -365,7 +365,7 @@
           <td>
             
             
-            <span class='code'>function repl_cmd&#40;cmd, out&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L35'>
@@ -375,7 +375,7 @@
           <td>
             
             
-            <span class='code'>    shell &#61; shell_split&#40;get&#40;ENV, &quot;JULIA_SHELL&quot;, get&#40;ENV, &quot;SHELL&quot;, &quot;/bin/sh&quot;&#41;&#41;&#41;</span>
+            <span class='code'>    Threads.maxthreadid&#40;&#41; -&gt; Int</span>
           </td>
         </tr>
         <tr id='L36'>
@@ -385,7 +385,7 @@
           <td>
             
             
-            <span class='code'>    shell_name &#61; Base.basename&#40;shell&#91;1&#93;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L37'>
@@ -395,7 +395,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>Get a lower bound on the number of threads &#40;across all thread pools&#41; available</span>
           </td>
         </tr>
         <tr id='L38'>
@@ -405,7 +405,7 @@
           <td>
             
             
-            <span class='code'>    # Immediately expand all arguments, so that typing e.g. ~/bin/foo works.</span>
+            <span class='code'>to the Julia process, with atomic-acquire semantics. The result will always be</span>
           </td>
         </tr>
         <tr id='L39'>
@@ -415,7 +415,7 @@
           <td>
             
             
-            <span class='code'>    cmd.exec .&#61; expanduser.&#40;cmd.exec&#41;</span>
+            <span class='code'>greater than or equal to &#91;&#96;threadid&#40;&#41;&#96;&#93;&#40;@ref&#41; as well as &#96;threadid&#40;task&#41;&#96; for</span>
           </td>
         </tr>
         <tr id='L40'>
@@ -425,7 +425,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>any task you were able to observe before calling &#96;maxthreadid&#96;.</span>
           </td>
         </tr>
         <tr id='L41'>
@@ -435,7 +435,7 @@
           <td>
             
             
-            <span class='code'>    if isempty&#40;cmd.exec&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L42'>
@@ -445,7 +445,7 @@
           <td>
             
             
-            <span class='code'>        throw&#40;ArgumentError&#40;&quot;no cmd to execute&quot;&#41;&#41;</span>
+            <span class='code'>maxthreadid&#40;&#41; &#61; Int&#40;Core.Intrinsics.atomic_pointerref&#40;cglobal&#40;:jl_n_threads, Cint&#41;, :acquire&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L43'>
@@ -455,7 +455,7 @@
           <td>
             
             
-            <span class='code'>    elseif cmd.exec&#91;1&#93; &#61;&#61; &quot;cd&quot;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L44'>
@@ -465,7 +465,7 @@
           <td>
             
             
-            <span class='code'>        new_oldpwd &#61; pwd&#40;&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L45'>
@@ -475,7 +475,7 @@
           <td>
             
             
-            <span class='code'>        if length&#40;cmd.exec&#41; &gt; 2</span>
+            <span class='code'>    Threads.nthreads&#40;:default | :interactive&#41; -&gt; Int</span>
           </td>
         </tr>
         <tr id='L46'>
@@ -485,7 +485,7 @@
           <td>
             
             
-            <span class='code'>            throw&#40;ArgumentError&#40;&quot;cd method only takes one argument&quot;&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L47'>
@@ -495,7 +495,7 @@
           <td>
             
             
-            <span class='code'>        elseif length&#40;cmd.exec&#41; &#61;&#61; 2</span>
+            <span class='code'>Get the current number of threads within the specified thread pool. The threads in &#96;:interactive&#96;</span>
           </td>
         </tr>
         <tr id='L48'>
@@ -505,7 +505,7 @@
           <td>
             
             
-            <span class='code'>            dir &#61; cmd.exec&#91;2&#93;</span>
+            <span class='code'>have id numbers &#96;1:nthreads&#40;:interactive&#41;&#96;, and the threads in &#96;:default&#96; have id numbers in</span>
           </td>
         </tr>
         <tr id='L49'>
@@ -515,7 +515,7 @@
           <td>
             
             
-            <span class='code'>            if dir &#61;&#61; &quot;-&quot;</span>
+            <span class='code'>&#96;nthreads&#40;:interactive&#41; .&#43; &#40;1:nthreads&#40;:default&#41;&#41;&#96;.</span>
           </td>
         </tr>
         <tr id='L50'>
@@ -525,7 +525,7 @@
           <td>
             
             
-            <span class='code'>                if &#33;haskey&#40;ENV, &quot;OLDPWD&quot;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L51'>
@@ -535,7 +535,7 @@
           <td>
             
             
-            <span class='code'>                    error&#40;&quot;cd: OLDPWD not set&quot;&#41;</span>
+            <span class='code'>See also &#96;BLAS.get_num_threads&#96; and &#96;BLAS.set_num_threads&#96; in the &#91;&#96;LinearAlgebra&#96;&#93;&#40;@ref</span>
           </td>
         </tr>
         <tr id='L52'>
@@ -545,7 +545,7 @@
           <td>
             
             
-            <span class='code'>                end</span>
+            <span class='code'>man-linalg&#41; standard library, and &#96;nprocs&#40;&#41;&#96; in the &#91;&#96;Distributed&#96;&#93;&#40;@ref man-distributed&#41;</span>
           </td>
         </tr>
         <tr id='L53'>
@@ -555,7 +555,7 @@
           <td>
             
             
-            <span class='code'>                dir &#61; ENV&#91;&quot;OLDPWD&quot;&#93;</span>
+            <span class='code'>standard library and &#91;&#96;Threads.maxthreadid&#40;&#41;&#96;&#93;&#40;@ref&#41;.</span>
           </td>
         </tr>
         <tr id='L54'>
@@ -565,7 +565,7 @@
           <td>
             
             
-            <span class='code'>            end</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L55'>
@@ -575,7 +575,7 @@
           <td>
             
             
-            <span class='code'>            cd&#40;dir&#41;</span>
+            <span class='code'>nthreads&#40;pool::Symbol&#41; &#61; threadpoolsize&#40;pool&#41;</span>
           </td>
         </tr>
         <tr id='L56'>
@@ -585,7 +585,7 @@
           <td>
             
             
-            <span class='code'>        else</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L57'>
@@ -595,7 +595,7 @@
           <td>
             
             
-            <span class='code'>            cd&#40;&#41;</span>
+            <span class='code'>function _nthreads_in_pool&#40;tpid::Int8&#41;</span>
           </td>
         </tr>
         <tr id='L58'>
@@ -605,7 +605,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>    p &#61; unsafe_load&#40;cglobal&#40;:jl_n_threads_per_pool, Ptr&#123;Cint&#125;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L59'>
@@ -615,7 +615,7 @@
           <td>
             
             
-            <span class='code'>        ENV&#91;&quot;OLDPWD&quot;&#93; &#61; new_oldpwd</span>
+            <span class='code'>    return Int&#40;unsafe_load&#40;p, tpid &#43; 1&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L60'>
@@ -625,7 +625,7 @@
           <td>
             
             
-            <span class='code'>        println&#40;out, pwd&#40;&#41;&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L61'>
@@ -635,7 +635,7 @@
           <td>
             
             
-            <span class='code'>    else</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L62'>
@@ -645,7 +645,7 @@
           <td>
             
             
-            <span class='code'>        @static if &#33;Sys.iswindows&#40;&#41;</span>
+            <span class='code'>function _tpid_to_sym&#40;tpid::Int8&#41;</span>
           </td>
         </tr>
         <tr id='L63'>
@@ -655,7 +655,7 @@
           <td>
             
             
-            <span class='code'>            if shell_name &#61;&#61; &quot;fish&quot;</span>
+            <span class='code'>    if tpid &#61;&#61; 0</span>
           </td>
         </tr>
         <tr id='L64'>
@@ -665,7 +665,7 @@
           <td>
             
             
-            <span class='code'>                shell_escape_cmd &#61; &quot;begin; &#36;&#40;shell_escape_posixly&#40;cmd&#41;&#41;; and true; end&quot;</span>
+            <span class='code'>        return :interactive</span>
           </td>
         </tr>
         <tr id='L65'>
@@ -675,7 +675,7 @@
           <td>
             
             
-            <span class='code'>            else</span>
+            <span class='code'>    elseif tpid &#61;&#61; 1</span>
           </td>
         </tr>
         <tr id='L66'>
@@ -685,7 +685,7 @@
           <td>
             
             
-            <span class='code'>                shell_escape_cmd &#61; &quot;&#40;&#36;&#40;shell_escape_posixly&#40;cmd&#41;&#41;&#41; &amp;&amp; true&quot;</span>
+            <span class='code'>        return :default</span>
           </td>
         </tr>
         <tr id='L67'>
@@ -695,7 +695,7 @@
           <td>
             
             
-            <span class='code'>            end</span>
+            <span class='code'>    elseif tpid &#61;&#61; -1</span>
           </td>
         </tr>
         <tr id='L68'>
@@ -705,7 +705,7 @@
           <td>
             
             
-            <span class='code'>            cmd &#61; &#96;&#36;shell -c &#36;shell_escape_cmd&#96;</span>
+            <span class='code'>        return :foreign</span>
           </td>
         </tr>
         <tr id='L69'>
@@ -715,7 +715,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>    else</span>
           </td>
         </tr>
         <tr id='L70'>
@@ -725,7 +725,7 @@
           <td>
             
             
-            <span class='code'>        try</span>
+            <span class='code'>        throw&#40;ArgumentError&#40;LazyString&#40;&quot;Unrecognized threadpool id &quot;, tpid&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L71'>
@@ -735,7 +735,7 @@
           <td>
             
             
-            <span class='code'>            run&#40;ignorestatus&#40;cmd&#41;&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L72'>
@@ -745,7 +745,7 @@
           <td>
             
             
-            <span class='code'>        catch</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L73'>
@@ -755,7 +755,7 @@
           <td>
             
             
-            <span class='code'>            # Windows doesn&#39;t shell out right now &#40;complex issue&#41;, so Julia tries to run the program itself</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L74'>
@@ -765,7 +765,7 @@
           <td>
             
             
-            <span class='code'>            # Julia throws an exception if it can&#39;t find the program, but the stack trace isn&#39;t useful</span>
+            <span class='code'>function _sym_to_tpid&#40;tp::Symbol&#41;</span>
           </td>
         </tr>
         <tr id='L75'>
@@ -775,7 +775,7 @@
           <td>
             
             
-            <span class='code'>            lasterr &#61; current_exceptions&#40;&#41;</span>
+            <span class='code'>    if tp &#61;&#61;&#61; :interactive</span>
           </td>
         </tr>
         <tr id='L76'>
@@ -785,7 +785,7 @@
           <td>
             
             
-            <span class='code'>            lasterr &#61; ExceptionStack&#40;&#91;&#40;exception &#61; e&#91;1&#93;, backtrace &#61; &#91;&#93; &#41; for e in lasterr&#93;&#41;</span>
+            <span class='code'>        return Int8&#40;0&#41;</span>
           </td>
         </tr>
         <tr id='L77'>
@@ -795,7 +795,7 @@
           <td>
             
             
-            <span class='code'>            invokelatest&#40;display_error, lasterr&#41;</span>
+            <span class='code'>    elseif tp &#61;&#61;&#61; :default</span>
           </td>
         </tr>
         <tr id='L78'>
@@ -805,7 +805,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>        return Int8&#40;1&#41;</span>
           </td>
         </tr>
         <tr id='L79'>
@@ -815,7 +815,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>    elseif tp &#61;&#61; :foreign</span>
           </td>
         </tr>
         <tr id='L80'>
@@ -825,7 +825,7 @@
           <td>
             
             
-            <span class='code'>    nothing</span>
+            <span class='code'>        return Int8&#40;-1&#41;</span>
           </td>
         </tr>
         <tr id='L81'>
@@ -835,7 +835,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    else</span>
           </td>
         </tr>
         <tr id='L82'>
@@ -845,7 +845,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        throw&#40;ArgumentError&#40;LazyString&#40;&quot;Unrecognized threadpool name &#96;&quot;, tp, &quot;&#96;&quot;&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L83'>
@@ -855,7 +855,7 @@
           <td>
             
             
-            <span class='code'># deprecated function--preserved for DocTests.jl</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L84'>
@@ -865,7 +865,7 @@
           <td>
             
             
-            <span class='code'>function ip_matches_func&#40;ip, func::Symbol&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L85'>
@@ -875,7 +875,7 @@
           <td>
             
             
-            <span class='code'>    for fr in StackTraces.lookup&#40;ip&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L86'>
@@ -885,7 +885,7 @@
           <td>
             
             
-            <span class='code'>        if fr &#61;&#61;&#61; StackTraces.UNKNOWN || fr.from_c</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L87'>
@@ -895,7 +895,7 @@
           <td>
             
             
-            <span class='code'>            return false</span>
+            <span class='code'>    Threads.threadpool&#40;tid &#61; threadid&#40;&#41;&#41; -&gt; Symbol</span>
           </td>
         </tr>
         <tr id='L88'>
@@ -905,7 +905,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L89'>
@@ -915,7 +915,7 @@
           <td>
             
             
-            <span class='code'>        fr.func &#61;&#61;&#61; func &amp;&amp; return true</span>
+            <span class='code'>Returns the specified thread&#39;s threadpool; either &#96;:default&#96;, &#96;:interactive&#96;, or &#96;:foreign&#96;.</span>
           </td>
         </tr>
         <tr id='L90'>
@@ -925,7 +925,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L91'>
@@ -935,7 +935,7 @@
           <td>
             
             
-            <span class='code'>    return false</span>
+            <span class='code'>function threadpool&#40;tid &#61; threadid&#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L92'>
@@ -945,7 +945,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    tpid &#61; ccall&#40;:jl_threadpoolid, Int8, &#40;Int16,&#41;, tid-1&#41;</span>
           </td>
         </tr>
         <tr id='L93'>
@@ -955,7 +955,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    return _tpid_to_sym&#40;tpid&#41;</span>
           </td>
         </tr>
         <tr id='L94'>
@@ -965,7 +965,7 @@
           <td>
             
             
-            <span class='code'>function scrub_repl_backtrace&#40;bt&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L95'>
@@ -975,7 +975,7 @@
           <td>
             
             
-            <span class='code'>    if bt &#33;&#61;&#61; nothing &amp;&amp; &#33;&#40;bt isa Vector&#123;Any&#125;&#41; # ignore our sentinel value types</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L96'>
@@ -985,7 +985,7 @@
           <td>
             
             
-            <span class='code'>        bt &#61; bt isa Vector&#123;StackFrame&#125; ? copy&#40;bt&#41; : stacktrace&#40;bt&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L97'>
@@ -995,7 +995,7 @@
           <td>
             
             
-            <span class='code'>        # remove REPL-related frames from interactive printing</span>
+            <span class='code'>    Threads.nthreadpools&#40;&#41; -&gt; Int</span>
           </td>
         </tr>
         <tr id='L98'>
@@ -1005,7 +1005,7 @@
           <td>
             
             
-            <span class='code'>        eval_ind &#61; findlast&#40;frame -&gt; &#33;frame.from_c &amp;&amp; frame.func &#61;&#61;&#61; :eval, bt&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L99'>
@@ -1015,7 +1015,7 @@
           <td>
             
             
-            <span class='code'>        eval_ind &#61;&#61;&#61; nothing || deleteat&#33;&#40;bt, eval_ind:length&#40;bt&#41;&#41;</span>
+            <span class='code'>Returns the number of threadpools currently configured.</span>
           </td>
         </tr>
         <tr id='L100'>
@@ -1025,7 +1025,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L101'>
@@ -1035,7 +1035,7 @@
           <td>
             
             
-            <span class='code'>    return bt</span>
+            <span class='code'>nthreadpools&#40;&#41; &#61; Int&#40;unsafe_load&#40;cglobal&#40;:jl_n_threadpools, Cint&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L102'>
@@ -1045,7 +1045,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L103'>
@@ -1055,7 +1055,7 @@
           <td>
             
             
-            <span class='code'>scrub_repl_backtrace&#40;stack::ExceptionStack&#41; &#61;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L104'>
@@ -1065,7 +1065,7 @@
           <td>
             
             
-            <span class='code'>    ExceptionStack&#40;Any&#91;&#40;;x.exception, backtrace &#61; scrub_repl_backtrace&#40;x.backtrace&#41;&#41; for x in stack&#93;&#41;</span>
+            <span class='code'>    Threads.threadpoolsize&#40;pool::Symbol &#61; :default&#41; -&gt; Int</span>
           </td>
         </tr>
         <tr id='L105'>
@@ -1085,7 +1085,7 @@
           <td>
             
             
-            <span class='code'>istrivialerror&#40;stack::ExceptionStack&#41; &#61;</span>
+            <span class='code'>Get the number of threads available to the default thread pool &#40;or to the</span>
           </td>
         </tr>
         <tr id='L107'>
@@ -1095,7 +1095,7 @@
           <td>
             
             
-            <span class='code'>    length&#40;stack&#41; &#61;&#61; 1 &amp;&amp; length&#40;stack&#91;1&#93;.backtrace&#41; ≤ 1 &amp;&amp; &#33;isa&#40;stack&#91;1&#93;.exception, MethodError&#41;</span>
+            <span class='code'>specified thread pool&#41;.</span>
           </td>
         </tr>
         <tr id='L108'>
@@ -1105,7 +1105,7 @@
           <td>
             
             
-            <span class='code'>    # frame 1 &#61; top level; assumes already went through scrub_repl_backtrace; MethodError see #50803</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L109'>
@@ -1115,7 +1115,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>See also: &#96;BLAS.get_num_threads&#96; and &#96;BLAS.set_num_threads&#96; in the</span>
           </td>
         </tr>
         <tr id='L110'>
@@ -1125,7 +1125,7 @@
           <td>
             
             
-            <span class='code'>function display_error&#40;io::IO, stack::ExceptionStack&#41;</span>
+            <span class='code'>&#91;&#96;LinearAlgebra&#96;&#93;&#40;@ref man-linalg&#41; standard library, and &#96;nprocs&#40;&#41;&#96; in the</span>
           </td>
         </tr>
         <tr id='L111'>
@@ -1135,7 +1135,7 @@
           <td>
             
             
-            <span class='code'>    printstyled&#40;io, &quot;ERROR: &quot;; bold&#61;true, color&#61;Base.error_color&#40;&#41;&#41;</span>
+            <span class='code'>&#91;&#96;Distributed&#96;&#93;&#40;@ref man-distributed&#41; standard library.</span>
           </td>
         </tr>
         <tr id='L112'>
@@ -1145,7 +1145,7 @@
           <td>
             
             
-            <span class='code'>    show_exception_stack&#40;IOContext&#40;io, :limit &#61;&gt; true&#41;, stack&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L113'>
@@ -1155,7 +1155,7 @@
           <td>
             
             
-            <span class='code'>    println&#40;io&#41;</span>
+            <span class='code'>function threadpoolsize&#40;pool::Symbol &#61; :default&#41;</span>
           </td>
         </tr>
         <tr id='L114'>
@@ -1165,7 +1165,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    if pool &#61;&#61;&#61; :default || pool &#61;&#61;&#61; :interactive</span>
           </td>
         </tr>
         <tr id='L115'>
@@ -1175,7 +1175,7 @@
           <td>
             
             
-            <span class='code'>display_error&#40;stack::ExceptionStack&#41; &#61; display_error&#40;stderr, stack&#41;</span>
+            <span class='code'>        tpid &#61; _sym_to_tpid&#40;pool&#41;</span>
           </td>
         </tr>
         <tr id='L116'>
@@ -1185,7 +1185,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    elseif pool &#61;&#61; :foreign</span>
           </td>
         </tr>
         <tr id='L117'>
@@ -1195,7 +1195,7 @@
           <td>
             
             
-            <span class='code'># these forms are depended on by packages outside Julia</span>
+            <span class='code'>        error&#40;&quot;Threadpool size of &#96;:foreign&#96; is indeterminant&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L118'>
@@ -1205,7 +1205,7 @@
           <td>
             
             
-            <span class='code'>function display_error&#40;io::IO, er, bt&#41;</span>
+            <span class='code'>    else</span>
           </td>
         </tr>
         <tr id='L119'>
@@ -1215,7 +1215,7 @@
           <td>
             
             
-            <span class='code'>    printstyled&#40;io, &quot;ERROR: &quot;; bold&#61;true, color&#61;Base.error_color&#40;&#41;&#41;</span>
+            <span class='code'>        error&#40;&quot;invalid threadpool specified&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L120'>
@@ -1225,7 +1225,7 @@
           <td>
             
             
-            <span class='code'>    showerror&#40;IOContext&#40;io, :limit &#61;&gt; true&#41;, er, bt, backtrace &#61; bt&#33;&#61;&#61;nothing&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L121'>
@@ -1235,7 +1235,7 @@
           <td>
             
             
-            <span class='code'>    println&#40;io&#41;</span>
+            <span class='code'>    return _nthreads_in_pool&#40;tpid&#41;</span>
           </td>
         </tr>
         <tr id='L122'>
@@ -1255,7 +1255,7 @@
           <td>
             
             
-            <span class='code'>display_error&#40;er, bt&#61;nothing&#41; &#61; display_error&#40;stderr, er, bt&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L124'>
@@ -1265,7 +1265,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L125'>
@@ -1275,7 +1275,7 @@
           <td>
             
             
-            <span class='code'>function eval_user_input&#40;errio, @nospecialize&#40;ast&#41;, show_value::Bool&#41;</span>
+            <span class='code'>    threadpooltids&#40;pool::Symbol&#41;</span>
           </td>
         </tr>
         <tr id='L126'>
@@ -1285,7 +1285,7 @@
           <td>
             
             
-            <span class='code'>    errcount &#61; 0</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L127'>
@@ -1295,7 +1295,7 @@
           <td>
             
             
-            <span class='code'>    lasterr &#61; nothing</span>
+            <span class='code'>Returns a vector of IDs of threads in the given pool.</span>
           </td>
         </tr>
         <tr id='L128'>
@@ -1305,7 +1305,7 @@
           <td>
             
             
-            <span class='code'>    have_color &#61; get&#40;stdout, :color, false&#41;::Bool</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L129'>
@@ -1315,7 +1315,7 @@
           <td>
             
             
-            <span class='code'>    while true</span>
+            <span class='code'>function threadpooltids&#40;pool::Symbol&#41;</span>
           </td>
         </tr>
         <tr id='L130'>
@@ -1325,7 +1325,7 @@
           <td>
             
             
-            <span class='code'>        try</span>
+            <span class='code'>    ni &#61; _nthreads_in_pool&#40;Int8&#40;0&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L131'>
@@ -1335,7 +1335,7 @@
           <td>
             
             
-            <span class='code'>            if have_color</span>
+            <span class='code'>    if pool &#61;&#61;&#61; :interactive</span>
           </td>
         </tr>
         <tr id='L132'>
@@ -1345,7 +1345,7 @@
           <td>
             
             
-            <span class='code'>                print&#40;color_normal&#41;</span>
+            <span class='code'>        return collect&#40;1:ni&#41;</span>
           </td>
         </tr>
         <tr id='L133'>
@@ -1355,7 +1355,7 @@
           <td>
             
             
-            <span class='code'>            end</span>
+            <span class='code'>    elseif pool &#61;&#61;&#61; :default</span>
           </td>
         </tr>
         <tr id='L134'>
@@ -1365,7 +1365,7 @@
           <td>
             
             
-            <span class='code'>            if lasterr &#33;&#61;&#61; nothing</span>
+            <span class='code'>        return collect&#40;ni&#43;1:ni&#43;_nthreads_in_pool&#40;Int8&#40;1&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L135'>
@@ -1375,7 +1375,7 @@
           <td>
             
             
-            <span class='code'>                lasterr &#61; scrub_repl_backtrace&#40;lasterr&#41;</span>
+            <span class='code'>    else</span>
           </td>
         </tr>
         <tr id='L136'>
@@ -1385,7 +1385,7 @@
           <td>
             
             
-            <span class='code'>                istrivialerror&#40;lasterr&#41; || setglobal&#33;&#40;Base.MainInclude, :err, lasterr&#41;</span>
+            <span class='code'>        error&#40;&quot;invalid threadpool specified&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L137'>
@@ -1395,7 +1395,7 @@
           <td>
             
             
-            <span class='code'>                invokelatest&#40;display_error, errio, lasterr&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L138'>
@@ -1405,7 +1405,7 @@
           <td>
             
             
-            <span class='code'>                errcount &#61; 0</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L139'>
@@ -1415,7 +1415,7 @@
           <td>
             
             
-            <span class='code'>                lasterr &#61; nothing</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L140'>
@@ -1425,7 +1425,7 @@
           <td>
             
             
-            <span class='code'>            else</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L141'>
@@ -1435,7 +1435,7 @@
           <td>
             
             
-            <span class='code'>                ast &#61; Meta.lower&#40;Main, ast&#41;</span>
+            <span class='code'>    Threads.ngcthreads&#40;&#41; -&gt; Int</span>
           </td>
         </tr>
         <tr id='L142'>
@@ -1445,7 +1445,7 @@
           <td>
             
             
-            <span class='code'>                value &#61; Core.eval&#40;Main, ast&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L143'>
@@ -1455,7 +1455,7 @@
           <td>
             
             
-            <span class='code'>                setglobal&#33;&#40;Base.MainInclude, :ans, value&#41;</span>
+            <span class='code'>Returns the number of GC threads currently configured.</span>
           </td>
         </tr>
         <tr id='L144'>
@@ -1465,7 +1465,7 @@
           <td>
             
             
-            <span class='code'>                if &#33;&#40;value &#61;&#61;&#61; nothing&#41; &amp;&amp; show_value</span>
+            <span class='code'>This includes both mark threads and concurrent sweep threads.</span>
           </td>
         </tr>
         <tr id='L145'>
@@ -1475,7 +1475,7 @@
           <td>
             
             
-            <span class='code'>                    if have_color</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L146'>
@@ -1485,7 +1485,7 @@
           <td>
             
             
-            <span class='code'>                        print&#40;answer_color&#40;&#41;&#41;</span>
+            <span class='code'>ngcthreads&#40;&#41; &#61; Int&#40;unsafe_load&#40;cglobal&#40;:jl_n_gcthreads, Cint&#41;&#41;&#41; &#43; 1</span>
           </td>
         </tr>
         <tr id='L147'>
@@ -1495,7 +1495,7 @@
           <td>
             
             
-            <span class='code'>                    end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L148'>
@@ -1505,7 +1505,7 @@
           <td>
             
             
-            <span class='code'>                    try</span>
+            <span class='code'>function threading_run&#40;fun, static&#41;</span>
           </td>
         </tr>
         <tr id='L149'>
@@ -1515,7 +1515,7 @@
           <td>
             
             
-            <span class='code'>                        invokelatest&#40;display, value&#41;</span>
+            <span class='code'>    ccall&#40;:jl_enter_threaded_region, Cvoid, &#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L150'>
@@ -1525,7 +1525,7 @@
           <td>
             
             
-            <span class='code'>                    catch</span>
+            <span class='code'>    n &#61; threadpoolsize&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L151'>
@@ -1535,7 +1535,7 @@
           <td>
             
             
-            <span class='code'>                        @error &quot;Evaluation succeeded, but an error occurred while displaying the value&quot; typeof&#40;value&#41;</span>
+            <span class='code'>    tid_offset &#61; threadpoolsize&#40;:interactive&#41;</span>
           </td>
         </tr>
         <tr id='L152'>
@@ -1545,7 +1545,7 @@
           <td>
             
             
-            <span class='code'>                        rethrow&#40;&#41;</span>
+            <span class='code'>    tasks &#61; Vector&#123;Task&#125;&#40;undef, n&#41;</span>
           </td>
         </tr>
         <tr id='L153'>
@@ -1555,17 +1555,22 @@
           <td>
             
             
-            <span class='code'>                    end</span>
+            <span class='code'>    for i &#61; 1:n</span>
           </td>
         </tr>
         <tr id='L154'>
           <td class='lineno'>154</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>42 &#40;12 &#37;&#41;</td>
           <td>
             
-            
-            <span class='code'>                end</span>
+            <div class='callees'>
+              42 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='threadingconstructs.jl-be65946e359bb76596da77e48f0bf89571986361.html#L219'>#498#threadsfor_fun</a>
+              <br />
+            </div>
+            <span class='code'>        t &#61; Task&#40;&#40;&#41; -&gt; fun&#40;i&#41;&#41; # pass in tid</span>
           </td>
         </tr>
         <tr id='L155'>
@@ -1575,7 +1580,7 @@
           <td>
             
             
-            <span class='code'>            end</span>
+            <span class='code'>        t.sticky &#61; static</span>
           </td>
         </tr>
         <tr id='L156'>
@@ -1585,7 +1590,7 @@
           <td>
             
             
-            <span class='code'>            break</span>
+            <span class='code'>        if static</span>
           </td>
         </tr>
         <tr id='L157'>
@@ -1595,7 +1600,7 @@
           <td>
             
             
-            <span class='code'>        catch</span>
+            <span class='code'>            ccall&#40;:jl_set_task_tid, Cint, &#40;Any, Cint&#41;, t, tid_offset &#43; i-1&#41;</span>
           </td>
         </tr>
         <tr id='L158'>
@@ -1605,7 +1610,7 @@
           <td>
             
             
-            <span class='code'>            if errcount &gt; 0</span>
+            <span class='code'>        else</span>
           </td>
         </tr>
         <tr id='L159'>
@@ -1615,7 +1620,7 @@
           <td>
             
             
-            <span class='code'>                @error &quot;SYSTEM: display_error&#40;errio, lasterr&#41; caused an error&quot;</span>
+            <span class='code'>            # TODO: this should be the current pool &#40;except interactive&#41; if there</span>
           </td>
         </tr>
         <tr id='L160'>
@@ -1625,7 +1630,7 @@
           <td>
             
             
-            <span class='code'>            end</span>
+            <span class='code'>            # are ever more than two pools.</span>
           </td>
         </tr>
         <tr id='L161'>
@@ -1635,7 +1640,7 @@
           <td>
             
             
-            <span class='code'>            errcount &#43;&#61; 1</span>
+            <span class='code'>            @assert ccall&#40;:jl_set_task_threadpoolid, Cint, &#40;Any, Int8&#41;, t, _sym_to_tpid&#40;:default&#41;&#41; &#61;&#61; 1</span>
           </td>
         </tr>
         <tr id='L162'>
@@ -1645,7 +1650,7 @@
           <td>
             
             
-            <span class='code'>            lasterr &#61; scrub_repl_backtrace&#40;current_exceptions&#40;&#41;&#41;</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L163'>
@@ -1655,7 +1660,7 @@
           <td>
             
             
-            <span class='code'>            setglobal&#33;&#40;Base.MainInclude, :err, lasterr&#41;</span>
+            <span class='code'>        tasks&#91;i&#93; &#61; t</span>
           </td>
         </tr>
         <tr id='L164'>
@@ -1665,7 +1670,7 @@
           <td>
             
             
-            <span class='code'>            if errcount &gt; 2</span>
+            <span class='code'>        schedule&#40;t&#41;</span>
           </td>
         </tr>
         <tr id='L165'>
@@ -1675,7 +1680,7 @@
           <td>
             
             
-            <span class='code'>                @error &quot;It is likely that something important is broken, and Julia will not be able to continue normally&quot; errcount</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L166'>
@@ -1685,7 +1690,7 @@
           <td>
             
             
-            <span class='code'>                break</span>
+            <span class='code'>    for i &#61; 1:n</span>
           </td>
         </tr>
         <tr id='L167'>
@@ -1695,7 +1700,7 @@
           <td>
             
             
-            <span class='code'>            end</span>
+            <span class='code'>        Base._wait&#40;tasks&#91;i&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L168'>
@@ -1705,7 +1710,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L169'>
@@ -1715,7 +1720,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>    ccall&#40;:jl_exit_threaded_region, Cvoid, &#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L170'>
@@ -1725,7 +1730,7 @@
           <td>
             
             
-            <span class='code'>    isa&#40;stdin, TTY&#41; &amp;&amp; println&#40;&#41;</span>
+            <span class='code'>    failed_tasks &#61; filter&#33;&#40;istaskfailed, tasks&#41;</span>
           </td>
         </tr>
         <tr id='L171'>
@@ -1735,7 +1740,7 @@
           <td>
             
             
-            <span class='code'>    nothing</span>
+            <span class='code'>    if &#33;isempty&#40;failed_tasks&#41;</span>
           </td>
         </tr>
         <tr id='L172'>
@@ -1745,7 +1750,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>        throw&#40;CompositeException&#40;map&#40;TaskFailedException, failed_tasks&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L173'>
@@ -1755,7 +1760,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L174'>
@@ -1765,7 +1770,7 @@
           <td>
             
             
-            <span class='code'>function _parse_input_line_core&#40;s::String, filename::String&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L175'>
@@ -1775,7 +1780,7 @@
           <td>
             
             
-            <span class='code'>    ex &#61; Meta.parseall&#40;s, filename&#61;filename&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L176'>
@@ -1785,7 +1790,7 @@
           <td>
             
             
-            <span class='code'>    if ex isa Expr &amp;&amp; ex.head &#61;&#61;&#61; :toplevel</span>
+            <span class='code'>function _threadsfor&#40;iter, lbody, schedule&#41;</span>
           </td>
         </tr>
         <tr id='L177'>
@@ -1795,7 +1800,7 @@
           <td>
             
             
-            <span class='code'>        if isempty&#40;ex.args&#41;</span>
+            <span class='code'>    lidx &#61; iter.args&#91;1&#93;         # index</span>
           </td>
         </tr>
         <tr id='L178'>
@@ -1805,7 +1810,7 @@
           <td>
             
             
-            <span class='code'>            return nothing</span>
+            <span class='code'>    range &#61; iter.args&#91;2&#93;</span>
           </td>
         </tr>
         <tr id='L179'>
@@ -1815,7 +1820,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>    esc_range &#61; esc&#40;range&#41;</span>
           </td>
         </tr>
         <tr id='L180'>
@@ -1825,7 +1830,7 @@
           <td>
             
             
-            <span class='code'>        last &#61; ex.args&#91;end&#93;</span>
+            <span class='code'>    func &#61; if schedule &#61;&#61;&#61; :greedy</span>
           </td>
         </tr>
         <tr id='L181'>
@@ -1835,7 +1840,7 @@
           <td>
             
             
-            <span class='code'>        if last isa Expr &amp;&amp; &#40;last.head &#61;&#61;&#61; :error || last.head &#61;&#61;&#61; :incomplete&#41;</span>
+            <span class='code'>        greedy_func&#40;esc_range, lidx, lbody&#41;</span>
           </td>
         </tr>
         <tr id='L182'>
@@ -1845,7 +1850,7 @@
           <td>
             
             
-            <span class='code'>            # if a parse error happens in the middle of a multi-line input</span>
+            <span class='code'>    else</span>
           </td>
         </tr>
         <tr id='L183'>
@@ -1855,7 +1860,7 @@
           <td>
             
             
-            <span class='code'>            # return only the error, so that none of the input is evaluated.</span>
+            <span class='code'>        default_func&#40;esc_range, lidx, lbody&#41;</span>
           </td>
         </tr>
         <tr id='L184'>
@@ -1865,7 +1870,7 @@
           <td>
             
             
-            <span class='code'>            return last</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L185'>
@@ -1875,7 +1880,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>    quote</span>
           </td>
         </tr>
         <tr id='L186'>
@@ -1885,7 +1890,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>        local threadsfor_fun</span>
           </td>
         </tr>
         <tr id='L187'>
@@ -1895,7 +1900,7 @@
           <td>
             
             
-            <span class='code'>    return ex</span>
+            <span class='code'>        &#36;func</span>
           </td>
         </tr>
         <tr id='L188'>
@@ -1905,7 +1910,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>        if &#36;&#40;schedule &#61;&#61;&#61; :greedy || schedule &#61;&#61;&#61; :dynamic || schedule &#61;&#61;&#61; :default&#41;</span>
           </td>
         </tr>
         <tr id='L189'>
@@ -1915,7 +1920,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>            threading_run&#40;threadsfor_fun, false&#41;</span>
           </td>
         </tr>
         <tr id='L190'>
@@ -1925,7 +1930,7 @@
           <td>
             
             
-            <span class='code'>function parse_input_line&#40;s::String; filename::String&#61;&quot;none&quot;, depwarn&#61;true&#41;</span>
+            <span class='code'>        elseif ccall&#40;:jl_in_threaded_region, Cint, &#40;&#41;&#41; &#33;&#61; 0 # :static</span>
           </td>
         </tr>
         <tr id='L191'>
@@ -1935,7 +1940,7 @@
           <td>
             
             
-            <span class='code'>    # For now, assume all parser warnings are depwarns</span>
+            <span class='code'>            error&#40;&quot;&#96;@threads :static&#96; cannot be used concurrently or nested&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L192'>
@@ -1945,7 +1950,7 @@
           <td>
             
             
-            <span class='code'>    ex &#61; if depwarn</span>
+            <span class='code'>        else # :static</span>
           </td>
         </tr>
         <tr id='L193'>
@@ -1955,7 +1960,7 @@
           <td>
             
             
-            <span class='code'>        _parse_input_line_core&#40;s, filename&#41;</span>
+            <span class='code'>            threading_run&#40;threadsfor_fun, true&#41;</span>
           </td>
         </tr>
         <tr id='L194'>
@@ -1965,7 +1970,7 @@
           <td>
             
             
-            <span class='code'>    else</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L195'>
@@ -1975,7 +1980,7 @@
           <td>
             
             
-            <span class='code'>        with_logger&#40;NullLogger&#40;&#41;&#41; do</span>
+            <span class='code'>        nothing</span>
           </td>
         </tr>
         <tr id='L196'>
@@ -1985,7 +1990,7 @@
           <td>
             
             
-            <span class='code'>            _parse_input_line_core&#40;s, filename&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L197'>
@@ -1995,7 +2000,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L198'>
@@ -2005,7 +2010,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L199'>
@@ -2015,7 +2020,7 @@
           <td>
             
             
-            <span class='code'>    return ex</span>
+            <span class='code'>function greedy_func&#40;itr, lidx, lbody&#41;</span>
           </td>
         </tr>
         <tr id='L200'>
@@ -2025,7 +2030,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    quote</span>
           </td>
         </tr>
         <tr id='L201'>
@@ -2035,7 +2040,7 @@
           <td>
             
             
-            <span class='code'>parse_input_line&#40;s::AbstractString&#41; &#61; parse_input_line&#40;String&#40;s&#41;&#41;</span>
+            <span class='code'>        let c &#61; Channel&#123;eltype&#40;&#36;itr&#41;&#125;&#40;0,spawn&#61;true&#41; do ch</span>
           </td>
         </tr>
         <tr id='L202'>
@@ -2045,7 +2050,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>            for item in &#36;itr</span>
           </td>
         </tr>
         <tr id='L203'>
@@ -2055,7 +2060,7 @@
           <td>
             
             
-            <span class='code'># detect the reason which caused an :incomplete expression</span>
+            <span class='code'>                put&#33;&#40;ch, item&#41;</span>
           </td>
         </tr>
         <tr id='L204'>
@@ -2065,7 +2070,7 @@
           <td>
             
             
-            <span class='code'># from the error message</span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L205'>
@@ -2075,7 +2080,7 @@
           <td>
             
             
-            <span class='code'># NOTE: the error messages are defined in src/julia-parser.scm</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L206'>
@@ -2085,7 +2090,7 @@
           <td>
             
             
-            <span class='code'>function fl_incomplete_tag&#40;msg::AbstractString&#41;</span>
+            <span class='code'>        function threadsfor_fun&#40;tid&#41;</span>
           </td>
         </tr>
         <tr id='L207'>
@@ -2095,7 +2100,7 @@
           <td>
             
             
-            <span class='code'>    occursin&#40;&quot;string&quot;, msg&#41; &amp;&amp; return :string</span>
+            <span class='code'>            for item in c</span>
           </td>
         </tr>
         <tr id='L208'>
@@ -2105,7 +2110,7 @@
           <td>
             
             
-            <span class='code'>    occursin&#40;&quot;comment&quot;, msg&#41; &amp;&amp; return :comment</span>
+            <span class='code'>                local &#36;&#40;esc&#40;lidx&#41;&#41; &#61; item</span>
           </td>
         </tr>
         <tr id='L209'>
@@ -2115,7 +2120,7 @@
           <td>
             
             
-            <span class='code'>    occursin&#40;&quot;requires end&quot;, msg&#41; &amp;&amp; return :block</span>
+            <span class='code'>                &#36;&#40;esc&#40;lbody&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L210'>
@@ -2125,7 +2130,7 @@
           <td>
             
             
-            <span class='code'>    occursin&#40;&quot;\&quot;&#96;\&quot;&quot;, msg&#41; &amp;&amp; return :cmd</span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L211'>
@@ -2135,7 +2140,7 @@
           <td>
             
             
-            <span class='code'>    occursin&#40;&quot;character&quot;, msg&#41; &amp;&amp; return :char</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L212'>
@@ -2145,7 +2150,7 @@
           <td>
             
             
-            <span class='code'>    return :other</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L213'>
@@ -2155,7 +2160,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L214'>
@@ -2165,7 +2170,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L215'>
@@ -2175,7 +2180,7 @@
           <td>
             
             
-            <span class='code'>incomplete_tag&#40;ex&#41; &#61; :none</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L216'>
@@ -2185,7 +2190,7 @@
           <td>
             
             
-            <span class='code'>function incomplete_tag&#40;ex::Expr&#41;</span>
+            <span class='code'>function default_func&#40;itr, lidx, lbody&#41;</span>
           </td>
         </tr>
         <tr id='L217'>
@@ -2195,7 +2200,7 @@
           <td>
             
             
-            <span class='code'>    if ex.head &#33;&#61;&#61; :incomplete</span>
+            <span class='code'>    quote</span>
           </td>
         </tr>
         <tr id='L218'>
@@ -2205,17 +2210,36 @@
           <td>
             
             
-            <span class='code'>        return :none</span>
+            <span class='code'>        let range &#61; &#36;itr</span>
           </td>
         </tr>
         <tr id='L219'>
           <td class='lineno'>219</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>42 &#40;12 &#37;&#41;</td>
           <td>
-            
-            
-            <span class='code'>    elseif isempty&#40;ex.args&#41;</span>
+            <div class='call-sites'>
+              84 &#40;23 &#37;&#41;
+              samples spent in #498#threadsfor_fun
+              <br />
+              
+              42 &#40;50 &#37;&#41; &#40;incl.&#41;
+              when called from #498#threadsfor_fun
+              <a href='threadingconstructs.jl-be65946e359bb76596da77e48f0bf89571986361.html#L219'>line 219</a>
+              <br />
+              
+              42 &#40;50 &#37;&#41; &#40;incl.&#41;
+              when called from #1
+              <a href='threadingconstructs.jl-be65946e359bb76596da77e48f0bf89571986361.html#L154'>line 154</a>
+              <br />
+            </div>
+            <div class='callees'>
+              42 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='threadingconstructs.jl-be65946e359bb76596da77e48f0bf89571986361.html#L219'>#498#threadsfor_fun#95</a>
+              <br />
+            </div>
+            <span class='code'>        function threadsfor_fun&#40;tid &#61; 1; onethread &#61; false&#41;</span>
           </td>
         </tr>
         <tr id='L220'>
@@ -2225,7 +2249,7 @@
           <td>
             
             
-            <span class='code'>        return :other</span>
+            <span class='code'>            r &#61; range # Load into local variable</span>
           </td>
         </tr>
         <tr id='L221'>
@@ -2235,7 +2259,7 @@
           <td>
             
             
-            <span class='code'>    elseif ex.args&#91;1&#93; isa String</span>
+            <span class='code'>            lenr &#61; length&#40;r&#41;</span>
           </td>
         </tr>
         <tr id='L222'>
@@ -2245,7 +2269,7 @@
           <td>
             
             
-            <span class='code'>        return fl_incomplete_tag&#40;ex.args&#91;1&#93;&#41;</span>
+            <span class='code'>            # divide loop iterations among threads</span>
           </td>
         </tr>
         <tr id='L223'>
@@ -2255,7 +2279,7 @@
           <td>
             
             
-            <span class='code'>    else</span>
+            <span class='code'>            if onethread</span>
           </td>
         </tr>
         <tr id='L224'>
@@ -2265,7 +2289,7 @@
           <td>
             
             
-            <span class='code'>        return incomplete_tag&#40;ex.args&#91;1&#93;&#41;</span>
+            <span class='code'>                tid &#61; 1</span>
           </td>
         </tr>
         <tr id='L225'>
@@ -2275,7 +2299,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>                len, rem &#61; lenr, 0</span>
           </td>
         </tr>
         <tr id='L226'>
@@ -2285,7 +2309,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>            else</span>
           </td>
         </tr>
         <tr id='L227'>
@@ -2295,7 +2319,7 @@
           <td>
             
             
-            <span class='code'>incomplete_tag&#40;exc::Meta.ParseError&#41; &#61; incomplete_tag&#40;exc.detail&#41;</span>
+            <span class='code'>                len, rem &#61; divrem&#40;lenr, threadpoolsize&#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L228'>
@@ -2305,7 +2329,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L229'>
@@ -2315,7 +2339,7 @@
           <td>
             
             
-            <span class='code'>cmd_suppresses_program&#40;cmd&#41; &#61; cmd in &#40;&#39;e&#39;, &#39;E&#39;&#41;</span>
+            <span class='code'>            # not enough iterations for all the threads?</span>
           </td>
         </tr>
         <tr id='L230'>
@@ -2325,7 +2349,7 @@
           <td>
             
             
-            <span class='code'>function exec_options&#40;opts&#41;</span>
+            <span class='code'>            if len &#61;&#61; 0</span>
           </td>
         </tr>
         <tr id='L231'>
@@ -2335,7 +2359,7 @@
           <td>
             
             
-            <span class='code'>    startup               &#61; &#40;opts.startupfile &#33;&#61; 2&#41;</span>
+            <span class='code'>                if tid &gt; rem</span>
           </td>
         </tr>
         <tr id='L232'>
@@ -2345,7 +2369,7 @@
           <td>
             
             
-            <span class='code'>    global have_color     &#61; &#40;opts.color &#33;&#61; 0&#41; ? &#40;opts.color &#61;&#61; 1&#41; : nothing # --color&#61;on</span>
+            <span class='code'>                    return</span>
           </td>
         </tr>
         <tr id='L233'>
@@ -2355,7 +2379,7 @@
           <td>
             
             
-            <span class='code'>    global is_interactive &#61; &#40;opts.isinteractive &#33;&#61; 0&#41;</span>
+            <span class='code'>                end</span>
           </td>
         </tr>
         <tr id='L234'>
@@ -2365,7 +2389,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>                len, rem &#61; 1, 0</span>
           </td>
         </tr>
         <tr id='L235'>
@@ -2375,7 +2399,7 @@
           <td>
             
             
-            <span class='code'>    # pre-process command line argument list</span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L236'>
@@ -2385,7 +2409,7 @@
           <td>
             
             
-            <span class='code'>    arg_is_program &#61; &#33;isempty&#40;ARGS&#41;</span>
+            <span class='code'>            # compute this thread&#39;s iterations</span>
           </td>
         </tr>
         <tr id='L237'>
@@ -2395,7 +2419,7 @@
           <td>
             
             
-            <span class='code'>    repl &#61; &#33;arg_is_program</span>
+            <span class='code'>            f &#61; firstindex&#40;r&#41; &#43; &#40;&#40;tid-1&#41; * len&#41;</span>
           </td>
         </tr>
         <tr id='L238'>
@@ -2405,7 +2429,7 @@
           <td>
             
             
-            <span class='code'>    cmds &#61; unsafe_load_commands&#40;opts.commands&#41;</span>
+            <span class='code'>            l &#61; f &#43; len - 1</span>
           </td>
         </tr>
         <tr id='L239'>
@@ -2415,7 +2439,7 @@
           <td>
             
             
-            <span class='code'>    for &#40;cmd, arg&#41; in cmds</span>
+            <span class='code'>            # distribute remaining iterations evenly</span>
           </td>
         </tr>
         <tr id='L240'>
@@ -2425,7 +2449,7 @@
           <td>
             
             
-            <span class='code'>        if cmd_suppresses_program&#40;cmd&#41;</span>
+            <span class='code'>            if rem &gt; 0</span>
           </td>
         </tr>
         <tr id='L241'>
@@ -2435,7 +2459,7 @@
           <td>
             
             
-            <span class='code'>            arg_is_program &#61; false</span>
+            <span class='code'>                if tid &lt;&#61; rem</span>
           </td>
         </tr>
         <tr id='L242'>
@@ -2445,7 +2469,7 @@
           <td>
             
             
-            <span class='code'>            repl &#61; false</span>
+            <span class='code'>                    f &#61; f &#43; &#40;tid-1&#41;</span>
           </td>
         </tr>
         <tr id='L243'>
@@ -2455,7 +2479,7 @@
           <td>
             
             
-            <span class='code'>        elseif cmd &#61;&#61; &#39;L&#39;</span>
+            <span class='code'>                    l &#61; l &#43; tid</span>
           </td>
         </tr>
         <tr id='L244'>
@@ -2465,7 +2489,7 @@
           <td>
             
             
-            <span class='code'>            # nothing</span>
+            <span class='code'>                else</span>
           </td>
         </tr>
         <tr id='L245'>
@@ -2475,7 +2499,7 @@
           <td>
             
             
-            <span class='code'>        elseif cmd &#61;&#61; &#39;B&#39; # --bug-report</span>
+            <span class='code'>                    f &#61; f &#43; rem</span>
           </td>
         </tr>
         <tr id='L246'>
@@ -2485,7 +2509,7 @@
           <td>
             
             
-            <span class='code'>            # If we&#39;re doing a bug report, don&#39;t load anything else. We will</span>
+            <span class='code'>                    l &#61; l &#43; rem</span>
           </td>
         </tr>
         <tr id='L247'>
@@ -2495,7 +2519,7 @@
           <td>
             
             
-            <span class='code'>            # spawn a child in which to execute these options.</span>
+            <span class='code'>                end</span>
           </td>
         </tr>
         <tr id='L248'>
@@ -2505,7 +2529,7 @@
           <td>
             
             
-            <span class='code'>            let InteractiveUtils &#61; load_InteractiveUtils&#40;&#41;</span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L249'>
@@ -2515,7 +2539,7 @@
           <td>
             
             
-            <span class='code'>                invokelatest&#40;InteractiveUtils.report_bug, arg&#41;</span>
+            <span class='code'>            # run this thread&#39;s iterations</span>
           </td>
         </tr>
         <tr id='L250'>
@@ -2525,7 +2549,7 @@
           <td>
             
             
-            <span class='code'>            end</span>
+            <span class='code'>            for i &#61; f:l</span>
           </td>
         </tr>
         <tr id='L251'>
@@ -2535,17 +2559,22 @@
           <td>
             
             
-            <span class='code'>            return false</span>
+            <span class='code'>                local &#36;&#40;esc&#40;lidx&#41;&#41; &#61; @inbounds r&#91;i&#93;</span>
           </td>
         </tr>
         <tr id='L252'>
           <td class='lineno'>252</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>42 &#40;12 &#37;&#41;</td>
           <td>
             
-            
-            <span class='code'>        else</span>
+            <div class='callees'>
+              42 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L115'>macro expansion</a>
+              <br />
+            </div>
+            <span class='code'>                &#36;&#40;esc&#40;lbody&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L253'>
@@ -2555,7 +2584,7 @@
           <td>
             
             
-            <span class='code'>            @warn &quot;Unexpected command -&#36;cmd&#39;&#36;arg&#39;&quot;</span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L254'>
@@ -2575,7 +2604,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L256'>
@@ -2585,7 +2614,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L257'>
@@ -2595,7 +2624,7 @@
           <td>
             
             
-            <span class='code'>    # remove filename from ARGS</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L258'>
@@ -2605,7 +2634,7 @@
           <td>
             
             
-            <span class='code'>    global PROGRAM_FILE &#61; arg_is_program ? popfirst&#33;&#40;ARGS&#41; : &quot;&quot;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L259'>
@@ -2615,7 +2644,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L260'>
@@ -2625,7 +2654,7 @@
           <td>
             
             
-            <span class='code'>    # Load Distributed module only if any of the Distributed options have been specified.</span>
+            <span class='code'>    Threads.@threads &#91;schedule&#93; for ... end</span>
           </td>
         </tr>
         <tr id='L261'>
@@ -2635,7 +2664,7 @@
           <td>
             
             
-            <span class='code'>    distributed_mode &#61; &#40;opts.worker &#61;&#61; 1&#41; || &#40;opts.nprocs &gt; 0&#41; || &#40;opts.machine_file &#33;&#61; C_NULL&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L262'>
@@ -2645,7 +2674,7 @@
           <td>
             
             
-            <span class='code'>    if distributed_mode</span>
+            <span class='code'>A macro to execute a &#96;for&#96; loop in parallel. The iteration space is distributed to</span>
           </td>
         </tr>
         <tr id='L263'>
@@ -2655,7 +2684,7 @@
           <td>
             
             
-            <span class='code'>        let Distributed &#61; require&#40;PkgId&#40;UUID&#40;&#40;0x8ba89e20_285c_5b6f, 0x9357_94700520ee1b&#41;&#41;, &quot;Distributed&quot;&#41;&#41;</span>
+            <span class='code'>coarse-grained tasks. This policy can be specified by the &#96;schedule&#96; argument. The</span>
           </td>
         </tr>
         <tr id='L264'>
@@ -2665,7 +2694,7 @@
           <td>
             
             
-            <span class='code'>            Core.eval&#40;MainInclude, :&#40;const Distributed &#61; &#36;Distributed&#41;&#41;</span>
+            <span class='code'>execution of the loop waits for the evaluation of all iterations.</span>
           </td>
         </tr>
         <tr id='L265'>
@@ -2675,7 +2704,7 @@
           <td>
             
             
-            <span class='code'>            Core.eval&#40;Main, :&#40;using Base.MainInclude.Distributed&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L266'>
@@ -2685,7 +2714,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>See also: &#91;&#96;@spawn&#96;&#93;&#40;@ref Threads.@spawn&#41; and</span>
           </td>
         </tr>
         <tr id='L267'>
@@ -2695,7 +2724,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>&#96;pmap&#96; in &#91;&#96;Distributed&#96;&#93;&#40;@ref man-distributed&#41;.</span>
           </td>
         </tr>
         <tr id='L268'>
@@ -2705,7 +2734,7 @@
           <td>
             
             
-            <span class='code'>        invokelatest&#40;Main.Distributed.process_opts, opts&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L269'>
@@ -2715,7 +2744,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'># Extended help</span>
           </td>
         </tr>
         <tr id='L270'>
@@ -2735,7 +2764,7 @@
           <td>
             
             
-            <span class='code'>    interactiveinput &#61; &#40;repl || is_interactive::Bool&#41; &amp;&amp; isa&#40;stdin, TTY&#41;</span>
+            <span class='code'>## Semantics</span>
           </td>
         </tr>
         <tr id='L272'>
@@ -2745,7 +2774,7 @@
           <td>
             
             
-            <span class='code'>    is_interactive::Bool |&#61; interactiveinput</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L273'>
@@ -2755,7 +2784,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>Unless stronger guarantees are specified by the scheduling option, the loop executed by</span>
           </td>
         </tr>
         <tr id='L274'>
@@ -2765,7 +2794,7 @@
           <td>
             
             
-            <span class='code'>    # load terminfo in for styled printing</span>
+            <span class='code'>&#96;@threads&#96; macro have the following semantics.</span>
           </td>
         </tr>
         <tr id='L275'>
@@ -2775,7 +2804,7 @@
           <td>
             
             
-            <span class='code'>    term_env &#61; get&#40;ENV, &quot;TERM&quot;, @static Sys.iswindows&#40;&#41; ? &quot;&quot; : &quot;dumb&quot;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L276'>
@@ -2785,7 +2814,7 @@
           <td>
             
             
-            <span class='code'>    global current_terminfo &#61; load_terminfo&#40;term_env&#41;</span>
+            <span class='code'>The &#96;@threads&#96; macro executes the loop body in an unspecified order and potentially</span>
           </td>
         </tr>
         <tr id='L277'>
@@ -2795,7 +2824,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>concurrently. It does not specify the exact assignments of the tasks and the worker threads.</span>
           </td>
         </tr>
         <tr id='L278'>
@@ -2805,7 +2834,7 @@
           <td>
             
             
-            <span class='code'>    # load ~/.julia/config/startup.jl file</span>
+            <span class='code'>The assignments can be different for each execution. The loop body code &#40;including any code</span>
           </td>
         </tr>
         <tr id='L279'>
@@ -2815,7 +2844,7 @@
           <td>
             
             
-            <span class='code'>    if startup</span>
+            <span class='code'>transitively called from it&#41; must not make any assumptions about the distribution of</span>
           </td>
         </tr>
         <tr id='L280'>
@@ -2825,7 +2854,7 @@
           <td>
             
             
-            <span class='code'>        try</span>
+            <span class='code'>iterations to tasks or the worker thread in which they are executed. The loop body for each</span>
           </td>
         </tr>
         <tr id='L281'>
@@ -2835,7 +2864,7 @@
           <td>
             
             
-            <span class='code'>            load_julia_startup&#40;&#41;</span>
+            <span class='code'>iteration must be able to make forward progress independent of other iterations and be free</span>
           </td>
         </tr>
         <tr id='L282'>
@@ -2845,7 +2874,7 @@
           <td>
             
             
-            <span class='code'>        catch</span>
+            <span class='code'>from data races. As such, invalid synchronizations across iterations may deadlock while</span>
           </td>
         </tr>
         <tr id='L283'>
@@ -2855,7 +2884,7 @@
           <td>
             
             
-            <span class='code'>            invokelatest&#40;display_error, scrub_repl_backtrace&#40;current_exceptions&#40;&#41;&#41;&#41;</span>
+            <span class='code'>unsynchronized memory accesses may result in undefined behavior.</span>
           </td>
         </tr>
         <tr id='L284'>
@@ -2865,7 +2894,7 @@
           <td>
             
             
-            <span class='code'>            &#33;&#40;repl || is_interactive::Bool&#41; &amp;&amp; exit&#40;1&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L285'>
@@ -2875,7 +2904,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>For example, the above conditions imply that:</span>
           </td>
         </tr>
         <tr id='L286'>
@@ -2885,7 +2914,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L287'>
@@ -2895,7 +2924,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>- A lock taken in an iteration *must* be released within the same iteration.</span>
           </td>
         </tr>
         <tr id='L288'>
@@ -2905,7 +2934,7 @@
           <td>
             
             
-            <span class='code'>    # process cmds list</span>
+            <span class='code'>- Communicating between iterations using blocking primitives like &#96;Channel&#96;s is incorrect.</span>
           </td>
         </tr>
         <tr id='L289'>
@@ -2915,7 +2944,7 @@
           <td>
             
             
-            <span class='code'>    for &#40;cmd, arg&#41; in cmds</span>
+            <span class='code'>- Write only to locations not shared across iterations &#40;unless a lock or atomic operation is</span>
           </td>
         </tr>
         <tr id='L290'>
@@ -2925,7 +2954,7 @@
           <td>
             
             
-            <span class='code'>        if cmd &#61;&#61; &#39;e&#39;</span>
+            <span class='code'>  used&#41;.</span>
           </td>
         </tr>
         <tr id='L291'>
@@ -2935,7 +2964,7 @@
           <td>
             
             
-            <span class='code'>            Core.eval&#40;Main, parse_input_line&#40;arg&#41;&#41;</span>
+            <span class='code'>- Unless the &#96;:static&#96; schedule is used, the value of &#91;&#96;threadid&#40;&#41;&#96;&#93;&#40;@ref Threads.threadid&#41;</span>
           </td>
         </tr>
         <tr id='L292'>
@@ -2945,7 +2974,7 @@
           <td>
             
             
-            <span class='code'>        elseif cmd &#61;&#61; &#39;E&#39;</span>
+            <span class='code'>  may change even within a single iteration. See &#91;&#96;Task Migration&#96;&#93;&#40;@ref man-task-migration&#41;.</span>
           </td>
         </tr>
         <tr id='L293'>
@@ -2955,7 +2984,7 @@
           <td>
             
             
-            <span class='code'>            invokelatest&#40;show, Core.eval&#40;Main, parse_input_line&#40;arg&#41;&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L294'>
@@ -2965,7 +2994,7 @@
           <td>
             
             
-            <span class='code'>            println&#40;&#41;</span>
+            <span class='code'>## Schedulers</span>
           </td>
         </tr>
         <tr id='L295'>
@@ -2975,7 +3004,7 @@
           <td>
             
             
-            <span class='code'>        elseif cmd &#61;&#61; &#39;L&#39;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L296'>
@@ -2985,7 +3014,7 @@
           <td>
             
             
-            <span class='code'>            # load file immediately on all processors</span>
+            <span class='code'>Without the scheduler argument, the exact scheduling is unspecified and varies across Julia</span>
           </td>
         </tr>
         <tr id='L297'>
@@ -2995,7 +3024,7 @@
           <td>
             
             
-            <span class='code'>            if &#33;distributed_mode</span>
+            <span class='code'>releases. Currently, &#96;:dynamic&#96; is used when the scheduler is not specified.</span>
           </td>
         </tr>
         <tr id='L298'>
@@ -3005,7 +3034,7 @@
           <td>
             
             
-            <span class='code'>                include&#40;Main, arg&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L299'>
@@ -3015,7 +3044,7 @@
           <td>
             
             
-            <span class='code'>            else</span>
+            <span class='code'>&#33;&#33;&#33; compat &quot;Julia 1.5&quot;</span>
           </td>
         </tr>
         <tr id='L300'>
@@ -3025,7 +3054,7 @@
           <td>
             
             
-            <span class='code'>                # TODO: Move this logic to Distributed and use a callback</span>
+            <span class='code'>    The &#96;schedule&#96; argument is available as of Julia 1.5.</span>
           </td>
         </tr>
         <tr id='L301'>
@@ -3035,7 +3064,7 @@
           <td>
             
             
-            <span class='code'>                @sync for p in invokelatest&#40;Main.procs&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L302'>
@@ -3045,7 +3074,7 @@
           <td>
             
             
-            <span class='code'>                    @async invokelatest&#40;Main.remotecall_wait, include, p, Main, arg&#41;</span>
+            <span class='code'>### &#96;:dynamic&#96; &#40;default&#41;</span>
           </td>
         </tr>
         <tr id='L303'>
@@ -3055,7 +3084,7 @@
           <td>
             
             
-            <span class='code'>                end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L304'>
@@ -3065,7 +3094,7 @@
           <td>
             
             
-            <span class='code'>            end</span>
+            <span class='code'>&#96;:dynamic&#96; scheduler executes iterations dynamically to available worker threads. Current</span>
           </td>
         </tr>
         <tr id='L305'>
@@ -3075,7 +3104,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>implementation assumes that the workload for each iteration is uniform. However, this</span>
           </td>
         </tr>
         <tr id='L306'>
@@ -3085,7 +3114,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>assumption may be removed in the future.</span>
           </td>
         </tr>
         <tr id='L307'>
@@ -3105,7 +3134,7 @@
           <td>
             
             
-            <span class='code'>    # load file</span>
+            <span class='code'>This scheduling option is merely a hint to the underlying execution mechanism. However, a</span>
           </td>
         </tr>
         <tr id='L309'>
@@ -3115,7 +3144,7 @@
           <td>
             
             
-            <span class='code'>    if arg_is_program</span>
+            <span class='code'>few properties can be expected. The number of &#96;Task&#96;s used by &#96;:dynamic&#96; scheduler is</span>
           </td>
         </tr>
         <tr id='L310'>
@@ -3125,7 +3154,7 @@
           <td>
             
             
-            <span class='code'>        # program</span>
+            <span class='code'>bounded by a small constant multiple of the number of available worker threads</span>
           </td>
         </tr>
         <tr id='L311'>
@@ -3135,7 +3164,7 @@
           <td>
             
             
-            <span class='code'>        if &#33;is_interactive::Bool</span>
+            <span class='code'>&#40;&#91;&#96;Threads.threadpoolsize&#40;&#41;&#96;&#93;&#40;@ref&#41;&#41;. Each task processes contiguous regions of the</span>
           </td>
         </tr>
         <tr id='L312'>
@@ -3145,7 +3174,7 @@
           <td>
             
             
-            <span class='code'>            exit_on_sigint&#40;true&#41;</span>
+            <span class='code'>iteration space. Thus, &#96;@threads :dynamic for x in xs; f&#40;x&#41;; end&#96; is typically more</span>
           </td>
         </tr>
         <tr id='L313'>
@@ -3155,7 +3184,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>efficient than &#96;@sync for x in xs; @spawn f&#40;x&#41;; end&#96; if &#96;length&#40;xs&#41;&#96; is significantly</span>
           </td>
         </tr>
         <tr id='L314'>
@@ -3165,7 +3194,7 @@
           <td>
             
             
-            <span class='code'>        try</span>
+            <span class='code'>larger than the number of the worker threads and the run-time of &#96;f&#40;x&#41;&#96; is relatively</span>
           </td>
         </tr>
         <tr id='L315'>
@@ -3175,7 +3204,7 @@
           <td>
             
             
-            <span class='code'>            if PROGRAM_FILE &#61;&#61; &quot;-&quot;</span>
+            <span class='code'>smaller than the cost of spawning and synchronizing a task &#40;typically less than 10</span>
           </td>
         </tr>
         <tr id='L316'>
@@ -3185,7 +3214,7 @@
           <td>
             
             
-            <span class='code'>                include_string&#40;Main, read&#40;stdin, String&#41;, &quot;stdin&quot;&#41;</span>
+            <span class='code'>microseconds&#41;.</span>
           </td>
         </tr>
         <tr id='L317'>
@@ -3195,7 +3224,7 @@
           <td>
             
             
-            <span class='code'>            else</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L318'>
@@ -3205,7 +3234,7 @@
           <td>
             
             
-            <span class='code'>                include&#40;Main, PROGRAM_FILE&#41;</span>
+            <span class='code'>&#33;&#33;&#33; compat &quot;Julia 1.8&quot;</span>
           </td>
         </tr>
         <tr id='L319'>
@@ -3215,7 +3244,7 @@
           <td>
             
             
-            <span class='code'>            end</span>
+            <span class='code'>    The &#96;:dynamic&#96; option for the &#96;schedule&#96; argument is available and the default as of Julia 1.8.</span>
           </td>
         </tr>
         <tr id='L320'>
@@ -3225,7 +3254,7 @@
           <td>
             
             
-            <span class='code'>        catch</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L321'>
@@ -3235,7 +3264,7 @@
           <td>
             
             
-            <span class='code'>            invokelatest&#40;display_error, scrub_repl_backtrace&#40;current_exceptions&#40;&#41;&#41;&#41;</span>
+            <span class='code'>### &#96;:greedy&#96;</span>
           </td>
         </tr>
         <tr id='L322'>
@@ -3245,7 +3274,7 @@
           <td>
             
             
-            <span class='code'>            if &#33;is_interactive::Bool</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L323'>
@@ -3255,7 +3284,7 @@
           <td>
             
             
-            <span class='code'>                exit&#40;1&#41;</span>
+            <span class='code'>&#96;:greedy&#96; scheduler spawns up to &#91;&#96;Threads.threadpoolsize&#40;&#41;&#96;&#93;&#40;@ref&#41; tasks, each greedily working on</span>
           </td>
         </tr>
         <tr id='L324'>
@@ -3265,7 +3294,7 @@
           <td>
             
             
-            <span class='code'>            end</span>
+            <span class='code'>the given iterated values as they are produced. As soon as one task finishes its work, it takes</span>
           </td>
         </tr>
         <tr id='L325'>
@@ -3275,7 +3304,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>the next value from the iterator. Work done by any individual task is not necessarily on</span>
           </td>
         </tr>
         <tr id='L326'>
@@ -3285,7 +3314,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>contiguous values from the iterator. The given iterator may produce values forever, only the</span>
           </td>
         </tr>
         <tr id='L327'>
@@ -3295,7 +3324,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>iterator interface is required &#40;no indexing&#41;.</span>
           </td>
         </tr>
         <tr id='L328'>
@@ -3305,7 +3334,7 @@
           <td>
             
             
-            <span class='code'>    return repl</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L329'>
@@ -3315,7 +3344,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>This scheduling option is generally a good choice if the workload of individual iterations</span>
           </td>
         </tr>
         <tr id='L330'>
@@ -3325,7 +3354,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>is not uniform/has a large spread.</span>
           </td>
         </tr>
         <tr id='L331'>
@@ -3335,7 +3364,7 @@
           <td>
             
             
-            <span class='code'>function _global_julia_startup_file&#40;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L332'>
@@ -3345,7 +3374,7 @@
           <td>
             
             
-            <span class='code'>    # If the user built us with a specific Base.SYSCONFDIR, check that location first for a startup.jl file</span>
+            <span class='code'>&#33;&#33;&#33; compat &quot;Julia 1.11&quot;</span>
           </td>
         </tr>
         <tr id='L333'>
@@ -3355,7 +3384,7 @@
           <td>
             
             
-            <span class='code'>    # If it is not found, then continue on to the relative path based on Sys.BINDIR</span>
+            <span class='code'>    The &#96;:greedy&#96; option for the &#96;schedule&#96; argument is available as of Julia 1.11.</span>
           </td>
         </tr>
         <tr id='L334'>
@@ -3365,7 +3394,7 @@
           <td>
             
             
-            <span class='code'>    BINDIR &#61; Sys.BINDIR</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L335'>
@@ -3375,7 +3404,7 @@
           <td>
             
             
-            <span class='code'>    SYSCONFDIR &#61; Base.SYSCONFDIR</span>
+            <span class='code'>### &#96;:static&#96;</span>
           </td>
         </tr>
         <tr id='L336'>
@@ -3385,7 +3414,7 @@
           <td>
             
             
-            <span class='code'>    if &#33;isempty&#40;SYSCONFDIR&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L337'>
@@ -3395,7 +3424,7 @@
           <td>
             
             
-            <span class='code'>        p1 &#61; abspath&#40;BINDIR, SYSCONFDIR, &quot;julia&quot;, &quot;startup.jl&quot;&#41;</span>
+            <span class='code'>&#96;:static&#96; scheduler creates one task per thread and divides the iterations equally among</span>
           </td>
         </tr>
         <tr id='L338'>
@@ -3405,7 +3434,7 @@
           <td>
             
             
-            <span class='code'>        isfile&#40;p1&#41; &amp;&amp; return p1</span>
+            <span class='code'>them, assigning each task specifically to each thread. In particular, the value of</span>
           </td>
         </tr>
         <tr id='L339'>
@@ -3415,7 +3444,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>&#91;&#96;threadid&#40;&#41;&#96;&#93;&#40;@ref Threads.threadid&#41; is guaranteed to be constant within one iteration.</span>
           </td>
         </tr>
         <tr id='L340'>
@@ -3425,7 +3454,7 @@
           <td>
             
             
-            <span class='code'>    p2 &#61; abspath&#40;BINDIR, &quot;..&quot;, &quot;etc&quot;, &quot;julia&quot;, &quot;startup.jl&quot;&#41;</span>
+            <span class='code'>Specifying &#96;:static&#96; is an error if used from inside another &#96;@threads&#96; loop or from a</span>
           </td>
         </tr>
         <tr id='L341'>
@@ -3435,7 +3464,7 @@
           <td>
             
             
-            <span class='code'>    isfile&#40;p2&#41; &amp;&amp; return p2</span>
+            <span class='code'>thread other than 1.</span>
           </td>
         </tr>
         <tr id='L342'>
@@ -3445,7 +3474,7 @@
           <td>
             
             
-            <span class='code'>    return nothing</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L343'>
@@ -3455,7 +3484,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>&#33;&#33;&#33; note</span>
           </td>
         </tr>
         <tr id='L344'>
@@ -3465,7 +3494,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    &#96;:static&#96; scheduling exists for supporting transition of code written before Julia 1.3.</span>
           </td>
         </tr>
         <tr id='L345'>
@@ -3475,7 +3504,7 @@
           <td>
             
             
-            <span class='code'>function _local_julia_startup_file&#40;&#41;</span>
+            <span class='code'>    In newly written library functions, &#96;:static&#96; scheduling is discouraged because the</span>
           </td>
         </tr>
         <tr id='L346'>
@@ -3485,7 +3514,7 @@
           <td>
             
             
-            <span class='code'>    if &#33;isempty&#40;DEPOT_PATH&#41;</span>
+            <span class='code'>    functions using this option cannot be called from arbitrary worker threads.</span>
           </td>
         </tr>
         <tr id='L347'>
@@ -3495,7 +3524,7 @@
           <td>
             
             
-            <span class='code'>        path &#61; abspath&#40;DEPOT_PATH&#91;1&#93;, &quot;config&quot;, &quot;startup.jl&quot;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L348'>
@@ -3505,7 +3534,7 @@
           <td>
             
             
-            <span class='code'>        isfile&#40;path&#41; &amp;&amp; return path</span>
+            <span class='code'>## Examples</span>
           </td>
         </tr>
         <tr id='L349'>
@@ -3515,7 +3544,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L350'>
@@ -3525,7 +3554,7 @@
           <td>
             
             
-            <span class='code'>    return nothing</span>
+            <span class='code'>To illustrate of the different scheduling strategies, consider the following function</span>
           </td>
         </tr>
         <tr id='L351'>
@@ -3535,7 +3564,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>&#96;busywait&#96; containing a non-yielding timed loop that runs for a given number of seconds.</span>
           </td>
         </tr>
         <tr id='L352'>
@@ -3555,7 +3584,7 @@
           <td>
             
             
-            <span class='code'>function load_julia_startup&#40;&#41;</span>
+            <span class='code'>&#96;&#96;&#96;julia-repl</span>
           </td>
         </tr>
         <tr id='L354'>
@@ -3565,7 +3594,7 @@
           <td>
             
             
-            <span class='code'>    global_file &#61; _global_julia_startup_file&#40;&#41;</span>
+            <span class='code'>julia&gt; function busywait&#40;seconds&#41;</span>
           </td>
         </tr>
         <tr id='L355'>
@@ -3575,7 +3604,7 @@
           <td>
             
             
-            <span class='code'>    &#40;global_file &#33;&#61;&#61; nothing&#41; &amp;&amp; include&#40;Main, global_file&#41;</span>
+            <span class='code'>            tstart &#61; time_ns&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L356'>
@@ -3585,7 +3614,7 @@
           <td>
             
             
-            <span class='code'>    local_file &#61; _local_julia_startup_file&#40;&#41;</span>
+            <span class='code'>            while &#40;time_ns&#40;&#41; - tstart&#41; / 1e9 &lt; seconds</span>
           </td>
         </tr>
         <tr id='L357'>
@@ -3595,7 +3624,7 @@
           <td>
             
             
-            <span class='code'>    &#40;local_file &#33;&#61;&#61; nothing&#41; &amp;&amp; include&#40;Main, local_file&#41;</span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L358'>
@@ -3605,7 +3634,7 @@
           <td>
             
             
-            <span class='code'>    return nothing</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L359'>
@@ -3615,7 +3644,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L360'>
@@ -3625,7 +3654,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>julia&gt; @time begin</span>
           </td>
         </tr>
         <tr id='L361'>
@@ -3635,7 +3664,7 @@
           <td>
             
             
-            <span class='code'>const repl_hooks &#61; &#91;&#93;</span>
+            <span class='code'>            Threads.@spawn busywait&#40;5&#41;</span>
           </td>
         </tr>
         <tr id='L362'>
@@ -3645,7 +3674,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>            Threads.@threads :static for i in 1:Threads.threadpoolsize&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L363'>
@@ -3655,7 +3684,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>                busywait&#40;1&#41;</span>
           </td>
         </tr>
         <tr id='L364'>
@@ -3665,7 +3694,7 @@
           <td>
             
             
-            <span class='code'>    atreplinit&#40;f&#41;</span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L365'>
@@ -3675,7 +3704,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L366'>
@@ -3685,7 +3714,7 @@
           <td>
             
             
-            <span class='code'>Register a one-argument function to be called before the REPL interface is initialized in</span>
+            <span class='code'>6.003001 seconds &#40;16.33 k allocations: 899.255 KiB, 0.25&#37; compilation time&#41;</span>
           </td>
         </tr>
         <tr id='L367'>
@@ -3695,7 +3724,7 @@
           <td>
             
             
-            <span class='code'>interactive sessions; this is useful to customize the interface. The argument of &#96;f&#96; is the</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L368'>
@@ -3705,7 +3734,7 @@
           <td>
             
             
-            <span class='code'>REPL object. This function should be called from within the &#96;.julia/config/startup.jl&#96;</span>
+            <span class='code'>julia&gt; @time begin</span>
           </td>
         </tr>
         <tr id='L369'>
@@ -3715,7 +3744,7 @@
           <td>
             
             
-            <span class='code'>initialization file.</span>
+            <span class='code'>            Threads.@spawn busywait&#40;5&#41;</span>
           </td>
         </tr>
         <tr id='L370'>
@@ -3725,7 +3754,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>            Threads.@threads :dynamic for i in 1:Threads.threadpoolsize&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L371'>
@@ -3735,7 +3764,7 @@
           <td>
             
             
-            <span class='code'>atreplinit&#40;f::Function&#41; &#61; &#40;pushfirst&#33;&#40;repl_hooks, f&#41;; nothing&#41;</span>
+            <span class='code'>                busywait&#40;1&#41;</span>
           </td>
         </tr>
         <tr id='L372'>
@@ -3745,7 +3774,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L373'>
@@ -3755,7 +3784,7 @@
           <td>
             
             
-            <span class='code'>function __atreplinit&#40;repl&#41;</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L374'>
@@ -3765,7 +3794,7 @@
           <td>
             
             
-            <span class='code'>    for f in repl_hooks</span>
+            <span class='code'>2.012056 seconds &#40;16.05 k allocations: 883.919 KiB, 0.66&#37; compilation time&#41;</span>
           </td>
         </tr>
         <tr id='L375'>
@@ -3775,7 +3804,7 @@
           <td>
             
             
-            <span class='code'>        try</span>
+            <span class='code'>&#96;&#96;&#96;</span>
           </td>
         </tr>
         <tr id='L376'>
@@ -3785,7 +3814,7 @@
           <td>
             
             
-            <span class='code'>            f&#40;repl&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L377'>
@@ -3795,7 +3824,7 @@
           <td>
             
             
-            <span class='code'>        catch err</span>
+            <span class='code'>The &#96;:dynamic&#96; example takes 2 seconds since one of the non-occupied threads is able</span>
           </td>
         </tr>
         <tr id='L378'>
@@ -3805,7 +3834,7 @@
           <td>
             
             
-            <span class='code'>            showerror&#40;stderr, err&#41;</span>
+            <span class='code'>to run two of the 1-second iterations to complete the for loop.</span>
           </td>
         </tr>
         <tr id='L379'>
@@ -3815,7 +3844,7 @@
           <td>
             
             
-            <span class='code'>            println&#40;stderr&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L380'>
@@ -3825,7 +3854,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>macro threads&#40;args...&#41;</span>
           </td>
         </tr>
         <tr id='L381'>
@@ -3835,7 +3864,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>    na &#61; length&#40;args&#41;</span>
           </td>
         </tr>
         <tr id='L382'>
@@ -3845,7 +3874,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    if na &#61;&#61; 2</span>
           </td>
         </tr>
         <tr id='L383'>
@@ -3855,7 +3884,7 @@
           <td>
             
             
-            <span class='code'>_atreplinit&#40;repl&#41; &#61; invokelatest&#40;__atreplinit, repl&#41;</span>
+            <span class='code'>        sched, ex &#61; args</span>
           </td>
         </tr>
         <tr id='L384'>
@@ -3865,7 +3894,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        if sched isa QuoteNode</span>
           </td>
         </tr>
         <tr id='L385'>
@@ -3875,7 +3904,7 @@
           <td>
             
             
-            <span class='code'>function load_InteractiveUtils&#40;mod::Module&#61;Main&#41;</span>
+            <span class='code'>            sched &#61; sched.value</span>
           </td>
         </tr>
         <tr id='L386'>
@@ -3885,7 +3914,7 @@
           <td>
             
             
-            <span class='code'>    # load interactive-only libraries</span>
+            <span class='code'>        elseif sched isa Symbol</span>
           </td>
         </tr>
         <tr id='L387'>
@@ -3895,7 +3924,7 @@
           <td>
             
             
-            <span class='code'>    if &#33;isdefined&#40;MainInclude, :InteractiveUtils&#41;</span>
+            <span class='code'>            # for now only allow quoted symbols</span>
           </td>
         </tr>
         <tr id='L388'>
@@ -3905,7 +3934,7 @@
           <td>
             
             
-            <span class='code'>        try</span>
+            <span class='code'>            sched &#61; nothing</span>
           </td>
         </tr>
         <tr id='L389'>
@@ -3915,7 +3944,7 @@
           <td>
             
             
-            <span class='code'>            # TODO: we have to use require_stdlib here because it is a dependency of REPL, but we would sort of prefer not to</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L390'>
@@ -3925,7 +3954,7 @@
           <td>
             
             
-            <span class='code'>            let InteractiveUtils &#61; require_stdlib&#40;PkgId&#40;UUID&#40;0xb77e0a4c_d291_57a0_90e8_8db25a27a240&#41;, &quot;InteractiveUtils&quot;&#41;&#41;</span>
+            <span class='code'>        if sched &#33;&#61;&#61; :static &amp;&amp; sched &#33;&#61;&#61; :dynamic &amp;&amp; sched &#33;&#61;&#61; :greedy</span>
           </td>
         </tr>
         <tr id='L391'>
@@ -3935,7 +3964,7 @@
           <td>
             
             
-            <span class='code'>                Core.eval&#40;MainInclude, :&#40;const InteractiveUtils &#61; &#36;InteractiveUtils&#41;&#41;</span>
+            <span class='code'>            throw&#40;ArgumentError&#40;&quot;unsupported schedule argument in @threads&quot;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L392'>
@@ -3945,7 +3974,7 @@
           <td>
             
             
-            <span class='code'>            end</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L393'>
@@ -3955,7 +3984,7 @@
           <td>
             
             
-            <span class='code'>        catch ex</span>
+            <span class='code'>    elseif na &#61;&#61; 1</span>
           </td>
         </tr>
         <tr id='L394'>
@@ -3965,7 +3994,7 @@
           <td>
             
             
-            <span class='code'>            @warn &quot;Failed to import InteractiveUtils into module &#36;mod&quot; exception&#61;&#40;ex, catch_backtrace&#40;&#41;&#41;</span>
+            <span class='code'>        sched &#61; :default</span>
           </td>
         </tr>
         <tr id='L395'>
@@ -3975,7 +4004,7 @@
           <td>
             
             
-            <span class='code'>            return nothing</span>
+            <span class='code'>        ex &#61; args&#91;1&#93;</span>
           </td>
         </tr>
         <tr id='L396'>
@@ -3985,7 +4014,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>    else</span>
           </td>
         </tr>
         <tr id='L397'>
@@ -3995,7 +4024,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>        throw&#40;ArgumentError&#40;&quot;wrong number of arguments in @threads&quot;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L398'>
@@ -4005,7 +4034,7 @@
           <td>
             
             
-            <span class='code'>    Core.eval&#40;mod, :&#40;using Base.MainInclude.InteractiveUtils&#41;&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L399'>
@@ -4015,7 +4044,7 @@
           <td>
             
             
-            <span class='code'>    return MainInclude.InteractiveUtils</span>
+            <span class='code'>    if &#33;&#40;isa&#40;ex, Expr&#41; &amp;&amp; ex.head &#61;&#61;&#61; :for&#41;</span>
           </td>
         </tr>
         <tr id='L400'>
@@ -4025,7 +4054,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>        throw&#40;ArgumentError&#40;&quot;@threads requires a &#96;for&#96; loop expression&quot;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L401'>
@@ -4035,7 +4064,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L402'>
@@ -4045,7 +4074,7 @@
           <td>
             
             
-            <span class='code'>function load_REPL&#40;&#41;</span>
+            <span class='code'>    if &#33;&#40;ex.args&#91;1&#93; isa Expr &amp;&amp; ex.args&#91;1&#93;.head &#61;&#61;&#61; :&#40;&#61;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L403'>
@@ -4055,7 +4084,7 @@
           <td>
             
             
-            <span class='code'>    # load interactive-only libraries</span>
+            <span class='code'>        throw&#40;ArgumentError&#40;&quot;nested outer loops are not currently supported by @threads&quot;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L404'>
@@ -4065,7 +4094,7 @@
           <td>
             
             
-            <span class='code'>    try</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L405'>
@@ -4075,7 +4104,7 @@
           <td>
             
             
-            <span class='code'>        return Base.require_stdlib&#40;PkgId&#40;UUID&#40;0x3fa0cd96_eef1_5676_8a61_b3b8758bbffb&#41;, &quot;REPL&quot;&#41;&#41;</span>
+            <span class='code'>    return _threadsfor&#40;ex.args&#91;1&#93;, ex.args&#91;2&#93;, sched&#41;</span>
           </td>
         </tr>
         <tr id='L406'>
@@ -4085,7 +4114,7 @@
           <td>
             
             
-            <span class='code'>    catch ex</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L407'>
@@ -4095,7 +4124,7 @@
           <td>
             
             
-            <span class='code'>        @warn &quot;Failed to import REPL&quot; exception&#61;&#40;ex, catch_backtrace&#40;&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L408'>
@@ -4105,7 +4134,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>function _spawn_set_thrpool&#40;t::Task, tp::Symbol&#41;</span>
           </td>
         </tr>
         <tr id='L409'>
@@ -4115,7 +4144,7 @@
           <td>
             
             
-            <span class='code'>    return nothing</span>
+            <span class='code'>    tpid &#61; _sym_to_tpid&#40;tp&#41;</span>
           </td>
         </tr>
         <tr id='L410'>
@@ -4125,7 +4154,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    if tpid &#61;&#61; -1 || _nthreads_in_pool&#40;tpid&#41; &#61;&#61; 0</span>
           </td>
         </tr>
         <tr id='L411'>
@@ -4135,7 +4164,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        tpid &#61; _sym_to_tpid&#40;:default&#41;</span>
           </td>
         </tr>
         <tr id='L412'>
@@ -4145,7 +4174,7 @@
           <td>
             
             
-            <span class='code'>global active_repl</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L413'>
@@ -4155,7 +4184,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    @assert ccall&#40;:jl_set_task_threadpoolid, Cint, &#40;Any, Int8&#41;, t, tpid&#41; &#61;&#61; 1</span>
           </td>
         </tr>
         <tr id='L414'>
@@ -4165,7 +4194,7 @@
           <td>
             
             
-            <span class='code'># run the requested sort of evaluation loop on stdio</span>
+            <span class='code'>    nothing</span>
           </td>
         </tr>
         <tr id='L415'>
@@ -4175,7 +4204,7 @@
           <td>
             
             
-            <span class='code'>function run_main_repl&#40;interactive::Bool, quiet::Bool, banner::Symbol, history_file::Bool, color_set::Bool&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L416'>
@@ -4185,7 +4214,7 @@
           <td>
             
             
-            <span class='code'>    fallback_repl &#61; parse&#40;Bool, get&#40;ENV, &quot;JULIA_FALLBACK_REPL&quot;, &quot;false&quot;&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L417'>
@@ -4195,7 +4224,7 @@
           <td>
             
             
-            <span class='code'>    if &#33;fallback_repl &amp;&amp; interactive</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L418'>
@@ -4205,7 +4234,7 @@
           <td>
             
             
-            <span class='code'>        load_InteractiveUtils&#40;&#41;</span>
+            <span class='code'>    Threads.@spawn &#91;:default|:interactive&#93; expr</span>
           </td>
         </tr>
         <tr id='L419'>
@@ -4215,7 +4244,7 @@
           <td>
             
             
-            <span class='code'>        if &#33;isassigned&#40;REPL_MODULE_REF&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L420'>
@@ -4225,7 +4254,7 @@
           <td>
             
             
-            <span class='code'>            load_REPL&#40;&#41;</span>
+            <span class='code'>Create a &#91;&#96;Task&#96;&#93;&#40;@ref&#41; and &#91;&#96;schedule&#96;&#93;&#40;@ref&#41; it to run on any available</span>
           </td>
         </tr>
         <tr id='L421'>
@@ -4235,7 +4264,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>thread in the specified threadpool &#40;&#96;:default&#96; if unspecified&#41;. The task is</span>
           </td>
         </tr>
         <tr id='L422'>
@@ -4245,7 +4274,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>allocated to a thread once one becomes available. To wait for the task to</span>
           </td>
         </tr>
         <tr id='L423'>
@@ -4255,7 +4284,7 @@
           <td>
             
             
-            <span class='code'>    # TODO cleanup REPL_MODULE_REF</span>
+            <span class='code'>finish, call &#91;&#96;wait&#96;&#93;&#40;@ref&#41; on the result of this macro, or call</span>
           </td>
         </tr>
         <tr id='L424'>
@@ -4265,7 +4294,7 @@
           <td>
             
             
-            <span class='code'>    if &#33;fallback_repl &amp;&amp; interactive &amp;&amp; isassigned&#40;REPL_MODULE_REF&#41;</span>
+            <span class='code'>&#91;&#96;fetch&#96;&#93;&#40;@ref&#41; to wait and then obtain its return value.</span>
           </td>
         </tr>
         <tr id='L425'>
@@ -4275,7 +4304,7 @@
           <td>
             
             
-            <span class='code'>        invokelatest&#40;REPL_MODULE_REF&#91;&#93;&#41; do REPL</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L426'>
@@ -4285,7 +4314,7 @@
           <td>
             
             
-            <span class='code'>            term_env &#61; get&#40;ENV, &quot;TERM&quot;, @static Sys.iswindows&#40;&#41; ? &quot;&quot; : &quot;dumb&quot;&#41;</span>
+            <span class='code'>Values can be interpolated into &#96;@spawn&#96; via &#96;\&#36;&#96;, which copies the value</span>
           </td>
         </tr>
         <tr id='L427'>
@@ -4295,7 +4324,7 @@
           <td>
             
             
-            <span class='code'>            term &#61; REPL.Terminals.TTYTerminal&#40;term_env, stdin, stdout, stderr&#41;</span>
+            <span class='code'>directly into the constructed underlying closure. This allows you to insert</span>
           </td>
         </tr>
         <tr id='L428'>
@@ -4305,7 +4334,7 @@
           <td>
             
             
-            <span class='code'>            banner &#61;&#61; :no || REPL.banner&#40;term, short&#61;banner&#61;&#61;:short&#41;</span>
+            <span class='code'>the _value_ of a variable, isolating the asynchronous code from changes to</span>
           </td>
         </tr>
         <tr id='L429'>
@@ -4315,7 +4344,7 @@
           <td>
             
             
-            <span class='code'>            if term.term_type &#61;&#61; &quot;dumb&quot;</span>
+            <span class='code'>the variable&#39;s value in the current task.</span>
           </td>
         </tr>
         <tr id='L430'>
@@ -4325,7 +4354,7 @@
           <td>
             
             
-            <span class='code'>                repl &#61; REPL.BasicREPL&#40;term&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L431'>
@@ -4335,7 +4364,7 @@
           <td>
             
             
-            <span class='code'>                quiet || @warn &quot;Terminal not fully functional&quot;</span>
+            <span class='code'>&#33;&#33;&#33; note</span>
           </td>
         </tr>
         <tr id='L432'>
@@ -4345,7 +4374,7 @@
           <td>
             
             
-            <span class='code'>            else</span>
+            <span class='code'>    The thread that the task runs on may change if the task yields, therefore &#96;threadid&#40;&#41;&#96; should not</span>
           </td>
         </tr>
         <tr id='L433'>
@@ -4355,7 +4384,7 @@
           <td>
             
             
-            <span class='code'>                repl &#61; REPL.LineEditREPL&#40;term, get&#40;stdout, :color, false&#41;, true&#41;</span>
+            <span class='code'>    be treated as constant for a task. See &#91;&#96;Task Migration&#96;&#93;&#40;@ref man-task-migration&#41;, and the broader</span>
           </td>
         </tr>
         <tr id='L434'>
@@ -4365,7 +4394,7 @@
           <td>
             
             
-            <span class='code'>                repl.history_file &#61; history_file</span>
+            <span class='code'>    &#91;multi-threading&#93;&#40;@ref man-multithreading&#41; manual for further important caveats.</span>
           </td>
         </tr>
         <tr id='L435'>
@@ -4375,7 +4404,7 @@
           <td>
             
             
-            <span class='code'>            end</span>
+            <span class='code'>    See also the chapter on &#91;threadpools&#93;&#40;@ref man-threadpools&#41;.</span>
           </td>
         </tr>
         <tr id='L436'>
@@ -4385,7 +4414,7 @@
           <td>
             
             
-            <span class='code'>            global active_repl &#61; repl</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L437'>
@@ -4395,7 +4424,7 @@
           <td>
             
             
-            <span class='code'>            # Make sure any displays pushed in .julia/config/startup.jl ends up above the</span>
+            <span class='code'>&#33;&#33;&#33; compat &quot;Julia 1.3&quot;</span>
           </td>
         </tr>
         <tr id='L438'>
@@ -4405,7 +4434,7 @@
           <td>
             
             
-            <span class='code'>            # REPLDisplay</span>
+            <span class='code'>    This macro is available as of Julia 1.3.</span>
           </td>
         </tr>
         <tr id='L439'>
@@ -4415,7 +4444,7 @@
           <td>
             
             
-            <span class='code'>            pushdisplay&#40;REPL.REPLDisplay&#40;repl&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L440'>
@@ -4425,22 +4454,17 @@
           <td>
             
             
-            <span class='code'>            _atreplinit&#40;repl&#41;</span>
+            <span class='code'>&#33;&#33;&#33; compat &quot;Julia 1.4&quot;</span>
           </td>
         </tr>
         <tr id='L441'>
           <td class='lineno'>441</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>21879 &#40;100 &#37;&#41;</td>
+          <td class='tracecount incl'></td>
           <td>
             
-            <div class='callees'>
-              21879 &#40;100 &#37;&#41;
-              samples spent calling
-              <a href='REPL.jl-dc7806d850b3f852e74d6c4b443129982cb64a16.html#L450'>run_repl</a>
-              <br />
-            </div>
-            <span class='code'>            REPL.run_repl&#40;repl, backend-&gt;&#40;global active_repl_backend &#61; backend&#41;&#41;</span>
+            
+            <span class='code'>    Interpolating values via &#96;\&#36;&#96; is available as of Julia 1.4.</span>
           </td>
         </tr>
         <tr id='L442'>
@@ -4450,7 +4474,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L443'>
@@ -4460,7 +4484,7 @@
           <td>
             
             
-            <span class='code'>    else</span>
+            <span class='code'>&#33;&#33;&#33; compat &quot;Julia 1.9&quot;</span>
           </td>
         </tr>
         <tr id='L444'>
@@ -4470,7 +4494,7 @@
           <td>
             
             
-            <span class='code'>        # otherwise provide a simple fallback</span>
+            <span class='code'>    A threadpool may be specified as of Julia 1.9.</span>
           </td>
         </tr>
         <tr id='L445'>
@@ -4480,7 +4504,7 @@
           <td>
             
             
-            <span class='code'>        if &#33;fallback_repl &amp;&amp; interactive &amp;&amp; &#33;quiet</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L446'>
@@ -4490,7 +4514,7 @@
           <td>
             
             
-            <span class='code'>            @warn &quot;REPL provider not available: using basic fallback&quot; LOAD_PATH&#61;join&#40;Base.LOAD_PATH, Sys.iswindows&#40;&#41; ? &#39;;&#39; : &#39;:&#39;&#41;</span>
+            <span class='code'># Examples</span>
           </td>
         </tr>
         <tr id='L447'>
@@ -4500,7 +4524,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>&#96;&#96;&#96;julia-repl</span>
           </td>
         </tr>
         <tr id='L448'>
@@ -4510,7 +4534,7 @@
           <td>
             
             
-            <span class='code'>        let input &#61; stdin</span>
+            <span class='code'>julia&gt; t&#40;&#41; &#61; println&#40;&quot;Hello from &quot;, Threads.threadid&#40;&#41;&#41;;</span>
           </td>
         </tr>
         <tr id='L449'>
@@ -4520,7 +4544,7 @@
           <td>
             
             
-            <span class='code'>            if isa&#40;input, File&#41; || isa&#40;input, IOStream&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L450'>
@@ -4530,7 +4554,7 @@
           <td>
             
             
-            <span class='code'>                # for files, we can slurp in the whole thing at once</span>
+            <span class='code'>julia&gt; tasks &#61; fetch.&#40;&#91;Threads.@spawn t&#40;&#41; for i in 1:4&#93;&#41;;</span>
           </td>
         </tr>
         <tr id='L451'>
@@ -4540,7 +4564,7 @@
           <td>
             
             
-            <span class='code'>                ex &#61; parse_input_line&#40;read&#40;input, String&#41;&#41;</span>
+            <span class='code'>Hello from 1</span>
           </td>
         </tr>
         <tr id='L452'>
@@ -4550,7 +4574,7 @@
           <td>
             
             
-            <span class='code'>                if Meta.isexpr&#40;ex, :toplevel&#41;</span>
+            <span class='code'>Hello from 1</span>
           </td>
         </tr>
         <tr id='L453'>
@@ -4560,7 +4584,7 @@
           <td>
             
             
-            <span class='code'>                    # if we get back a list of statements, eval them sequentially</span>
+            <span class='code'>Hello from 3</span>
           </td>
         </tr>
         <tr id='L454'>
@@ -4570,7 +4594,7 @@
           <td>
             
             
-            <span class='code'>                    # as if we had parsed them sequentially</span>
+            <span class='code'>Hello from 4</span>
           </td>
         </tr>
         <tr id='L455'>
@@ -4580,7 +4604,7 @@
           <td>
             
             
-            <span class='code'>                    for stmt in ex.args</span>
+            <span class='code'>&#96;&#96;&#96;</span>
           </td>
         </tr>
         <tr id='L456'>
@@ -4590,7 +4614,7 @@
           <td>
             
             
-            <span class='code'>                        eval_user_input&#40;stderr, stmt, true&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L457'>
@@ -4600,7 +4624,7 @@
           <td>
             
             
-            <span class='code'>                    end</span>
+            <span class='code'>macro spawn&#40;args...&#41;</span>
           </td>
         </tr>
         <tr id='L458'>
@@ -4610,7 +4634,7 @@
           <td>
             
             
-            <span class='code'>                    body &#61; ex.args</span>
+            <span class='code'>    tp &#61; QuoteNode&#40;:default&#41;</span>
           </td>
         </tr>
         <tr id='L459'>
@@ -4620,7 +4644,7 @@
           <td>
             
             
-            <span class='code'>                else</span>
+            <span class='code'>    na &#61; length&#40;args&#41;</span>
           </td>
         </tr>
         <tr id='L460'>
@@ -4630,7 +4654,7 @@
           <td>
             
             
-            <span class='code'>                    eval_user_input&#40;stderr, ex, true&#41;</span>
+            <span class='code'>    if na &#61;&#61; 2</span>
           </td>
         </tr>
         <tr id='L461'>
@@ -4640,7 +4664,7 @@
           <td>
             
             
-            <span class='code'>                end</span>
+            <span class='code'>        ttype, ex &#61; args</span>
           </td>
         </tr>
         <tr id='L462'>
@@ -4650,7 +4674,7 @@
           <td>
             
             
-            <span class='code'>            else</span>
+            <span class='code'>        if ttype isa QuoteNode</span>
           </td>
         </tr>
         <tr id='L463'>
@@ -4660,7 +4684,7 @@
           <td>
             
             
-            <span class='code'>                while &#33;eof&#40;input&#41;</span>
+            <span class='code'>            ttype &#61; ttype.value</span>
           </td>
         </tr>
         <tr id='L464'>
@@ -4670,7 +4694,7 @@
           <td>
             
             
-            <span class='code'>                    if interactive</span>
+            <span class='code'>            if ttype &#33;&#61;&#61; :interactive &amp;&amp; ttype &#33;&#61;&#61; :default</span>
           </td>
         </tr>
         <tr id='L465'>
@@ -4680,7 +4704,7 @@
           <td>
             
             
-            <span class='code'>                        print&#40;&quot;julia&gt; &quot;&#41;</span>
+            <span class='code'>                throw&#40;ArgumentError&#40;LazyString&#40;&quot;unsupported threadpool in @spawn: &quot;, ttype&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L466'>
@@ -4690,7 +4714,7 @@
           <td>
             
             
-            <span class='code'>                        flush&#40;stdout&#41;</span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L467'>
@@ -4700,7 +4724,7 @@
           <td>
             
             
-            <span class='code'>                    end</span>
+            <span class='code'>            tp &#61; QuoteNode&#40;ttype&#41;</span>
           </td>
         </tr>
         <tr id='L468'>
@@ -4710,7 +4734,7 @@
           <td>
             
             
-            <span class='code'>                    try</span>
+            <span class='code'>        else</span>
           </td>
         </tr>
         <tr id='L469'>
@@ -4720,7 +4744,7 @@
           <td>
             
             
-            <span class='code'>                        line &#61; &quot;&quot;</span>
+            <span class='code'>            tp &#61; ttype</span>
           </td>
         </tr>
         <tr id='L470'>
@@ -4730,7 +4754,7 @@
           <td>
             
             
-            <span class='code'>                        ex &#61; nothing</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L471'>
@@ -4740,7 +4764,7 @@
           <td>
             
             
-            <span class='code'>                        while &#33;eof&#40;input&#41;</span>
+            <span class='code'>    elseif na &#61;&#61; 1</span>
           </td>
         </tr>
         <tr id='L472'>
@@ -4750,7 +4774,7 @@
           <td>
             
             
-            <span class='code'>                            line *&#61; readline&#40;input, keep&#61;true&#41;</span>
+            <span class='code'>        ex &#61; args&#91;1&#93;</span>
           </td>
         </tr>
         <tr id='L473'>
@@ -4760,7 +4784,7 @@
           <td>
             
             
-            <span class='code'>                            ex &#61; parse_input_line&#40;line&#41;</span>
+            <span class='code'>    else</span>
           </td>
         </tr>
         <tr id='L474'>
@@ -4770,7 +4794,7 @@
           <td>
             
             
-            <span class='code'>                            if &#33;&#40;isa&#40;ex, Expr&#41; &amp;&amp; ex.head &#61;&#61;&#61; :incomplete&#41;</span>
+            <span class='code'>        throw&#40;ArgumentError&#40;&quot;wrong number of arguments in @spawn&quot;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L475'>
@@ -4780,7 +4804,7 @@
           <td>
             
             
-            <span class='code'>                                break</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L476'>
@@ -4790,7 +4814,7 @@
           <td>
             
             
-            <span class='code'>                            end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L477'>
@@ -4800,7 +4824,7 @@
           <td>
             
             
-            <span class='code'>                        end</span>
+            <span class='code'>    letargs &#61; Base._lift_one_interp&#33;&#40;ex&#41;</span>
           </td>
         </tr>
         <tr id='L478'>
@@ -4810,7 +4834,7 @@
           <td>
             
             
-            <span class='code'>                        eval_user_input&#40;stderr, ex, true&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L479'>
@@ -4820,7 +4844,7 @@
           <td>
             
             
-            <span class='code'>                    catch err</span>
+            <span class='code'>    thunk &#61; Base.replace_linenums&#33;&#40;:&#40;&#40;&#41;-&gt;&#40;&#36;&#40;esc&#40;ex&#41;&#41;&#41;&#41;, __source__&#41;</span>
           </td>
         </tr>
         <tr id='L480'>
@@ -4830,7 +4854,7 @@
           <td>
             
             
-            <span class='code'>                        isa&#40;err, InterruptException&#41; ? print&#40;&quot;\n\n&quot;&#41; : rethrow&#40;&#41;</span>
+            <span class='code'>    var &#61; esc&#40;Base.sync_varname&#41;</span>
           </td>
         </tr>
         <tr id='L481'>
@@ -4840,7 +4864,7 @@
           <td>
             
             
-            <span class='code'>                    end</span>
+            <span class='code'>    quote</span>
           </td>
         </tr>
         <tr id='L482'>
@@ -4850,7 +4874,7 @@
           <td>
             
             
-            <span class='code'>                end</span>
+            <span class='code'>        let &#36;&#40;letargs...&#41;</span>
           </td>
         </tr>
         <tr id='L483'>
@@ -4860,7 +4884,7 @@
           <td>
             
             
-            <span class='code'>            end</span>
+            <span class='code'>            local task &#61; Task&#40;&#36;thunk&#41;</span>
           </td>
         </tr>
         <tr id='L484'>
@@ -4870,7 +4894,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>            task.sticky &#61; false</span>
           </td>
         </tr>
         <tr id='L485'>
@@ -4880,7 +4904,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>            _spawn_set_thrpool&#40;task, &#36;&#40;esc&#40;tp&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L486'>
@@ -4890,7 +4914,7 @@
           <td>
             
             
-            <span class='code'>    nothing</span>
+            <span class='code'>            if &#36;&#40;Expr&#40;:islocal, var&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L487'>
@@ -4900,7 +4924,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>                put&#33;&#40;&#36;var, task&#41;</span>
           </td>
         </tr>
         <tr id='L488'>
@@ -4910,7 +4934,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L489'>
@@ -4920,7 +4944,7 @@
           <td>
             
             
-            <span class='code'># MainInclude exists to weakly add certain identifiers to Main</span>
+            <span class='code'>            schedule&#40;task&#41;</span>
           </td>
         </tr>
         <tr id='L490'>
@@ -4930,7 +4954,7 @@
           <td>
             
             
-            <span class='code'>baremodule MainInclude</span>
+            <span class='code'>            task</span>
           </td>
         </tr>
         <tr id='L491'>
@@ -4940,7 +4964,7 @@
           <td>
             
             
-            <span class='code'>using ..Base</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L492'>
@@ -4950,7 +4974,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L493'>
@@ -4960,7 +4984,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L494'>
@@ -4970,7 +4994,7 @@
           <td>
             
             
-            <span class='code'>    ans</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L495'>
@@ -4980,7 +5004,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># This is a stub that can be overloaded for downstream structures like &#96;Channel&#96;</span>
           </td>
         </tr>
         <tr id='L496'>
@@ -4990,7 +5014,7 @@
           <td>
             
             
-            <span class='code'>A variable referring to the last computed value, automatically imported to the interactive prompt.</span>
+            <span class='code'>function foreach end</span>
           </td>
         </tr>
         <tr id='L497'>
@@ -5000,7 +5024,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L498'>
@@ -5010,7 +5034,7 @@
           <td>
             
             
-            <span class='code'>global ans &#61; nothing</span>
+            <span class='code'># Scheduling traits that can be employed for downstream overloads</span>
           </td>
         </tr>
         <tr id='L499'>
@@ -5020,7 +5044,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>abstract type AbstractSchedule end</span>
           </td>
         </tr>
         <tr id='L500'>
@@ -5030,7 +5054,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>struct StaticSchedule &lt;: AbstractSchedule end</span>
           </td>
         </tr>
         <tr id='L501'>
@@ -5040,1307 +5064,7 @@
           <td>
             
             
-            <span class='code'>    err</span>
-          </td>
-        </tr>
-        <tr id='L502'>
-          <td class='lineno'>502</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L503'>
-          <td class='lineno'>503</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>A variable referring to the last thrown errors, automatically imported to the interactive prompt.</span>
-          </td>
-        </tr>
-        <tr id='L504'>
-          <td class='lineno'>504</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>The thrown errors are collected in a stack of exceptions.</span>
-          </td>
-        </tr>
-        <tr id='L505'>
-          <td class='lineno'>505</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&quot;&quot;&quot;</span>
-          </td>
-        </tr>
-        <tr id='L506'>
-          <td class='lineno'>506</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>global err &#61; nothing</span>
-          </td>
-        </tr>
-        <tr id='L507'>
-          <td class='lineno'>507</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L508'>
-          <td class='lineno'>508</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'># weakly exposes ans and err variables to Main</span>
-          </td>
-        </tr>
-        <tr id='L509'>
-          <td class='lineno'>509</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>export ans, err</span>
-          </td>
-        </tr>
-        <tr id='L510'>
-          <td class='lineno'>510</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>end</span>
-          </td>
-        </tr>
-        <tr id='L511'>
-          <td class='lineno'>511</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L512'>
-          <td class='lineno'>512</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>function should_use_main_entrypoint&#40;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L513'>
-          <td class='lineno'>513</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    isdefined&#40;Main, :main&#41; || return false</span>
-          </td>
-        </tr>
-        <tr id='L514'>
-          <td class='lineno'>514</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    M_binding_owner &#61; Base.binding_module&#40;Main, :main&#41;</span>
-          </td>
-        </tr>
-        <tr id='L515'>
-          <td class='lineno'>515</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    &#40;isdefined&#40;M_binding_owner, Symbol&#40;&quot;#__main_is_entrypoint__#&quot;&#41;&#41; &amp;&amp; M_binding_owner.var&quot;#__main_is_entrypoint__#&quot;&#41; || return false</span>
-          </td>
-        </tr>
-        <tr id='L516'>
-          <td class='lineno'>516</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    return true</span>
-          </td>
-        </tr>
-        <tr id='L517'>
-          <td class='lineno'>517</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>end</span>
-          </td>
-        </tr>
-        <tr id='L518'>
-          <td class='lineno'>518</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L519'>
-          <td class='lineno'>519</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>function _start&#40;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L520'>
-          <td class='lineno'>520</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    empty&#33;&#40;ARGS&#41;</span>
-          </td>
-        </tr>
-        <tr id='L521'>
-          <td class='lineno'>521</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    append&#33;&#40;ARGS, Core.ARGS&#41;</span>
-          </td>
-        </tr>
-        <tr id='L522'>
-          <td class='lineno'>522</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    # clear any postoutput hooks that were saved in the sysimage</span>
-          </td>
-        </tr>
-        <tr id='L523'>
-          <td class='lineno'>523</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    empty&#33;&#40;Base.postoutput_hooks&#41;</span>
-          </td>
-        </tr>
-        <tr id='L524'>
-          <td class='lineno'>524</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    local ret &#61; 0</span>
-          </td>
-        </tr>
-        <tr id='L525'>
-          <td class='lineno'>525</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    try</span>
-          </td>
-        </tr>
-        <tr id='L526'>
-          <td class='lineno'>526</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>        repl_was_requested &#61; exec_options&#40;JLOptions&#40;&#41;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L527'>
-          <td class='lineno'>527</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>        if should_use_main_entrypoint&#40;&#41; &amp;&amp; &#33;is_interactive</span>
-          </td>
-        </tr>
-        <tr id='L528'>
-          <td class='lineno'>528</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>            if Core.Compiler.generating_output&#40;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L529'>
-          <td class='lineno'>529</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>                precompile&#40;Main.main, &#40;typeof&#40;ARGS&#41;,&#41;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L530'>
-          <td class='lineno'>530</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>            else</span>
-          </td>
-        </tr>
-        <tr id='L531'>
-          <td class='lineno'>531</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>                ret &#61; invokelatest&#40;Main.main, ARGS&#41;</span>
-          </td>
-        </tr>
-        <tr id='L532'>
-          <td class='lineno'>532</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>            end</span>
-          </td>
-        </tr>
-        <tr id='L533'>
-          <td class='lineno'>533</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>        elseif &#40;repl_was_requested || is_interactive&#41;</span>
-          </td>
-        </tr>
-        <tr id='L534'>
-          <td class='lineno'>534</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>            # Run the Base &#96;main&#96;, which will either load the REPL stdlib</span>
-          </td>
-        </tr>
-        <tr id='L535'>
-          <td class='lineno'>535</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>            # or run the fallback REPL</span>
-          </td>
-        </tr>
-        <tr id='L536'>
-          <td class='lineno'>536</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>            ret &#61; repl_main&#40;ARGS&#41;</span>
-          </td>
-        </tr>
-        <tr id='L537'>
-          <td class='lineno'>537</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>        end</span>
-          </td>
-        </tr>
-        <tr id='L538'>
-          <td class='lineno'>538</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>        ret &#61;&#61;&#61; nothing &amp;&amp; &#40;ret &#61; 0&#41;</span>
-          </td>
-        </tr>
-        <tr id='L539'>
-          <td class='lineno'>539</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>        ret &#61; Cint&#40;ret&#41;</span>
-          </td>
-        </tr>
-        <tr id='L540'>
-          <td class='lineno'>540</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    catch</span>
-          </td>
-        </tr>
-        <tr id='L541'>
-          <td class='lineno'>541</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>        ret &#61; Cint&#40;1&#41;</span>
-          </td>
-        </tr>
-        <tr id='L542'>
-          <td class='lineno'>542</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>        invokelatest&#40;display_error, scrub_repl_backtrace&#40;current_exceptions&#40;&#41;&#41;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L543'>
-          <td class='lineno'>543</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    end</span>
-          </td>
-        </tr>
-        <tr id='L544'>
-          <td class='lineno'>544</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    if is_interactive &amp;&amp; get&#40;stdout, :color, false&#41;</span>
-          </td>
-        </tr>
-        <tr id='L545'>
-          <td class='lineno'>545</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>        print&#40;color_normal&#41;</span>
-          </td>
-        </tr>
-        <tr id='L546'>
-          <td class='lineno'>546</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    end</span>
-          </td>
-        </tr>
-        <tr id='L547'>
-          <td class='lineno'>547</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    return ret</span>
-          </td>
-        </tr>
-        <tr id='L548'>
-          <td class='lineno'>548</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>end</span>
-          </td>
-        </tr>
-        <tr id='L549'>
-          <td class='lineno'>549</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L550'>
-          <td class='lineno'>550</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>function repl_main&#40;_&#41;</span>
-          </td>
-        </tr>
-        <tr id='L551'>
-          <td class='lineno'>551</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    opts &#61; Base.JLOptions&#40;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L552'>
-          <td class='lineno'>552</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    interactiveinput &#61; isa&#40;stdin, Base.TTY&#41;</span>
-          </td>
-        </tr>
-        <tr id='L553'>
-          <td class='lineno'>553</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    b &#61; opts.banner</span>
-          </td>
-        </tr>
-        <tr id='L554'>
-          <td class='lineno'>554</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    auto &#61; b &#61;&#61; -1</span>
-          </td>
-        </tr>
-        <tr id='L555'>
-          <td class='lineno'>555</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    banner &#61; b &#61;&#61; 0 || &#40;auto &amp;&amp; &#33;interactiveinput&#41; ? :no  :</span>
-          </td>
-        </tr>
-        <tr id='L556'>
-          <td class='lineno'>556</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>             b &#61;&#61; 1 || &#40;auto &amp;&amp; interactiveinput&#41;  ? :yes :</span>
-          </td>
-        </tr>
-        <tr id='L557'>
-          <td class='lineno'>557</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>             :short # b &#61;&#61; 2</span>
-          </td>
-        </tr>
-        <tr id='L558'>
-          <td class='lineno'>558</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L559'>
-          <td class='lineno'>559</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    quiet                 &#61; &#40;opts.quiet &#33;&#61; 0&#41;</span>
-          </td>
-        </tr>
-        <tr id='L560'>
-          <td class='lineno'>560</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    history_file          &#61; &#40;opts.historyfile &#33;&#61; 0&#41;</span>
-          </td>
-        </tr>
-        <tr id='L561'>
-          <td class='lineno'>561</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    color_set             &#61; &#40;opts.color &#33;&#61; 0&#41; # --color&#33;&#61;auto</span>
-          </td>
-        </tr>
-        <tr id='L562'>
-          <td class='lineno'>562</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    return run_main_repl&#40;interactiveinput, quiet, banner, history_file, color_set&#41;</span>
-          </td>
-        </tr>
-        <tr id='L563'>
-          <td class='lineno'>563</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>end</span>
-          </td>
-        </tr>
-        <tr id='L564'>
-          <td class='lineno'>564</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L565'>
-          <td class='lineno'>565</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&quot;&quot;&quot;</span>
-          </td>
-        </tr>
-        <tr id='L566'>
-          <td class='lineno'>566</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    @main</span>
-          </td>
-        </tr>
-        <tr id='L567'>
-          <td class='lineno'>567</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L568'>
-          <td class='lineno'>568</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>This macro is used to mark that the binding &#96;main&#96; in the current module is considered an</span>
-          </td>
-        </tr>
-        <tr id='L569'>
-          <td class='lineno'>569</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>entrypoint. The precise semantics of the entrypoint depend on the CLI driver.</span>
-          </td>
-        </tr>
-        <tr id='L570'>
-          <td class='lineno'>570</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L571'>
-          <td class='lineno'>571</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>In the &#96;julia&#96; driver, if &#96;Main.main&#96; is marked as an entrypoint, it will be automatically called upon</span>
-          </td>
-        </tr>
-        <tr id='L572'>
-          <td class='lineno'>572</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>the completion of script execution.</span>
-          </td>
-        </tr>
-        <tr id='L573'>
-          <td class='lineno'>573</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L574'>
-          <td class='lineno'>574</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>The &#96;@main&#96; macro may be used standalone or as part of the function definition, though in the latter</span>
-          </td>
-        </tr>
-        <tr id='L575'>
-          <td class='lineno'>575</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>case, parentheses are required. In particular, the following are equivalent:</span>
-          </td>
-        </tr>
-        <tr id='L576'>
-          <td class='lineno'>576</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L577'>
-          <td class='lineno'>577</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;&#96;&#96;</span>
-          </td>
-        </tr>
-        <tr id='L578'>
-          <td class='lineno'>578</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>function &#40;@main&#41;&#40;args&#41;</span>
-          </td>
-        </tr>
-        <tr id='L579'>
-          <td class='lineno'>579</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    println&#40;&quot;Hello World&quot;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L580'>
-          <td class='lineno'>580</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>end</span>
-          </td>
-        </tr>
-        <tr id='L581'>
-          <td class='lineno'>581</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;&#96;&#96;</span>
-          </td>
-        </tr>
-        <tr id='L582'>
-          <td class='lineno'>582</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L583'>
-          <td class='lineno'>583</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;&#96;&#96;</span>
-          </td>
-        </tr>
-        <tr id='L584'>
-          <td class='lineno'>584</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>function main&#40;ARGS&#41;</span>
-          </td>
-        </tr>
-        <tr id='L585'>
-          <td class='lineno'>585</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>end</span>
-          </td>
-        </tr>
-        <tr id='L586'>
-          <td class='lineno'>586</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>@main</span>
-          </td>
-        </tr>
-        <tr id='L587'>
-          <td class='lineno'>587</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;&#96;&#96;</span>
-          </td>
-        </tr>
-        <tr id='L588'>
-          <td class='lineno'>588</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L589'>
-          <td class='lineno'>589</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>## Detailed semantics</span>
-          </td>
-        </tr>
-        <tr id='L590'>
-          <td class='lineno'>590</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L591'>
-          <td class='lineno'>591</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>The entrypoint semantics attach to the owner of the binding owner. In particular, if a marked entrypoint is</span>
-          </td>
-        </tr>
-        <tr id='L592'>
-          <td class='lineno'>592</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>imported into &#96;Main&#96;, it will be treated as an entrypoint in &#96;Main&#96;:</span>
-          </td>
-        </tr>
-        <tr id='L593'>
-          <td class='lineno'>593</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L594'>
-          <td class='lineno'>594</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;&#96;&#96;</span>
-          </td>
-        </tr>
-        <tr id='L595'>
-          <td class='lineno'>595</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>module MyApp</span>
-          </td>
-        </tr>
-        <tr id='L596'>
-          <td class='lineno'>596</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    export main</span>
-          </td>
-        </tr>
-        <tr id='L597'>
-          <td class='lineno'>597</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    &#40;@main&#41;&#40;args&#41; &#61; println&#40;&quot;Hello World&quot;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L598'>
-          <td class='lineno'>598</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>end</span>
-          </td>
-        </tr>
-        <tr id='L599'>
-          <td class='lineno'>599</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>using .MyApp</span>
-          </td>
-        </tr>
-        <tr id='L600'>
-          <td class='lineno'>600</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'># &#96;julia&#96; Will execute MyApp.main at the conclusion of script execution</span>
-          </td>
-        </tr>
-        <tr id='L601'>
-          <td class='lineno'>601</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;&#96;&#96;</span>
-          </td>
-        </tr>
-        <tr id='L602'>
-          <td class='lineno'>602</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L603'>
-          <td class='lineno'>603</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>Note that in particular, the semantics do not attach to the method</span>
-          </td>
-        </tr>
-        <tr id='L604'>
-          <td class='lineno'>604</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>or the name:</span>
-          </td>
-        </tr>
-        <tr id='L605'>
-          <td class='lineno'>605</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;&#96;&#96;</span>
-          </td>
-        </tr>
-        <tr id='L606'>
-          <td class='lineno'>606</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>module MyApp</span>
-          </td>
-        </tr>
-        <tr id='L607'>
-          <td class='lineno'>607</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    &#40;@main&#41;&#40;args&#41; &#61; println&#40;&quot;Hello World&quot;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L608'>
-          <td class='lineno'>608</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>end</span>
-          </td>
-        </tr>
-        <tr id='L609'>
-          <td class='lineno'>609</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>const main &#61; MyApp.main</span>
-          </td>
-        </tr>
-        <tr id='L610'>
-          <td class='lineno'>610</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'># &#96;julia&#96; Will *NOT* execute MyApp.main unless there is a separate &#96;@main&#96; annotation in &#96;Main&#96;</span>
-          </td>
-        </tr>
-        <tr id='L611'>
-          <td class='lineno'>611</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;&#96;&#96;</span>
-          </td>
-        </tr>
-        <tr id='L612'>
-          <td class='lineno'>612</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L613'>
-          <td class='lineno'>613</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#33;&#33;&#33; compat &quot;Julia 1.11&quot;</span>
-          </td>
-        </tr>
-        <tr id='L614'>
-          <td class='lineno'>614</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    This macro is new in Julia 1.11. At present, the precise semantics of &#96;@main&#96; are still subject to change.</span>
-          </td>
-        </tr>
-        <tr id='L615'>
-          <td class='lineno'>615</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&quot;&quot;&quot;</span>
-          </td>
-        </tr>
-        <tr id='L616'>
-          <td class='lineno'>616</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>macro main&#40;args...&#41;</span>
-          </td>
-        </tr>
-        <tr id='L617'>
-          <td class='lineno'>617</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    if &#33;isempty&#40;args&#41;</span>
-          </td>
-        </tr>
-        <tr id='L618'>
-          <td class='lineno'>618</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>        error&#40;&quot;USAGE: &#96;@main&#96; is expected to be used as &#96;&#40;@main&#41;&#96; without macro arguments.&quot;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L619'>
-          <td class='lineno'>619</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    end</span>
-          </td>
-        </tr>
-        <tr id='L620'>
-          <td class='lineno'>620</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    if isdefined&#40;__module__, :main&#41;</span>
-          </td>
-        </tr>
-        <tr id='L621'>
-          <td class='lineno'>621</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>        if Base.binding_module&#40;__module__, :main&#41; &#33;&#61;&#61; __module__</span>
-          </td>
-        </tr>
-        <tr id='L622'>
-          <td class='lineno'>622</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>            error&#40;&quot;USAGE: Symbol &#96;main&#96; is already a resolved import in module &#36;&#40;__module__&#41;. &#96;@main&#96; must be used in the defining module.&quot;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L623'>
-          <td class='lineno'>623</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>        end</span>
-          </td>
-        </tr>
-        <tr id='L624'>
-          <td class='lineno'>624</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    end</span>
-          </td>
-        </tr>
-        <tr id='L625'>
-          <td class='lineno'>625</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    Core.eval&#40;__module__, quote</span>
-          </td>
-        </tr>
-        <tr id='L626'>
-          <td class='lineno'>626</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>        # Force the binding to resolve to this module</span>
-          </td>
-        </tr>
-        <tr id='L627'>
-          <td class='lineno'>627</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>        global main</span>
-          </td>
-        </tr>
-        <tr id='L628'>
-          <td class='lineno'>628</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>        global var&quot;#__main_is_entrypoint__#&quot;::Bool &#61; true</span>
-          </td>
-        </tr>
-        <tr id='L629'>
-          <td class='lineno'>629</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    end&#41;</span>
-          </td>
-        </tr>
-        <tr id='L630'>
-          <td class='lineno'>630</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    esc&#40;:main&#41;</span>
-          </td>
-        </tr>
-        <tr id='L631'>
-          <td class='lineno'>631</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>end</span>
+            <span class='code'>struct FairSchedule &lt;: AbstractSchedule end</span>
           </td>
         </tr>
       </tbody>

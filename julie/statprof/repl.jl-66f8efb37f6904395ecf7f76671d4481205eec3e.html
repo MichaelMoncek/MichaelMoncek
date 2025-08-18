@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'></meta>
     <link rel='stylesheet' type='text/css' href='statprofiler.css'></link>
-    <title>StatProfilerHTML - ../../../../../usr/share/julia/base/number.jl</title>
+    <title>StatProfilerHTML - ../../../.vscode/extensions/julialang.language-julia-1.149.2/scripts/packages/VSCodeServer/src/repl.jl</title>
   </head>
   <body>
     <div class='report-header'>
@@ -14,7 +14,7 @@
         StatProfilerHTML.jl report
       </div>
       <div class='generated-on'>
-        Generated on Sun, 17 Aug 2025 12:41:30
+        Generated on Mon, 18 Aug 2025 17:36:15
       </div>
     </div>
     <table>
@@ -35,7 +35,7 @@
           <td>
             
             
-            <span class='code'># This file is a part of Julia. License is MIT: https://julialang.org/license</span>
+            <span class='code'># Most of the code here is copied from the Juno codebase</span>
           </td>
         </tr>
         <tr id='L2'>
@@ -55,7 +55,7 @@
           <td>
             
             
-            <span class='code'>## generic operations on numbers ##</span>
+            <span class='code'>using REPL</span>
           </td>
         </tr>
         <tr id='L4'>
@@ -65,7 +65,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>using REPL.LineEdit</span>
           </td>
         </tr>
         <tr id='L5'>
@@ -75,7 +75,7 @@
           <td>
             
             
-            <span class='code'># Numbers are convertible</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L6'>
@@ -85,7 +85,7 @@
           <td>
             
             
-            <span class='code'>convert&#40;::Type&#123;T&#125;, x::T&#41;      where &#123;T&lt;:Number&#125; &#61; x</span>
+            <span class='code'>const ENABLE_SHELL_INTEGRATION &#61; Ref&#123;Bool&#125;&#40;false&#41;</span>
           </td>
         </tr>
         <tr id='L7'>
@@ -95,7 +95,7 @@
           <td>
             
             
-            <span class='code'>convert&#40;::Type&#123;T&#125;, x::Number&#41; where &#123;T&lt;:Number&#125; &#61; T&#40;x&#41;::T</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L8'>
@@ -105,7 +105,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>isREPL&#40;&#41; &#61; isdefined&#40;Base, :active_repl&#41; &amp;&amp;</span>
           </td>
         </tr>
         <tr id='L9'>
@@ -115,7 +115,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>           isdefined&#40;Base.active_repl, :interface&#41; &amp;&amp;</span>
           </td>
         </tr>
         <tr id='L10'>
@@ -125,7 +125,7 @@
           <td>
             
             
-            <span class='code'>    isinteger&#40;x&#41; -&gt; Bool</span>
+            <span class='code'>           isdefined&#40;Base.active_repl.interface, :modes&#41; &amp;&amp;</span>
           </td>
         </tr>
         <tr id='L11'>
@@ -135,7 +135,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>           isdefined&#40;Base.active_repl, :mistate&#41; &amp;&amp;</span>
           </td>
         </tr>
         <tr id='L12'>
@@ -145,7 +145,7 @@
           <td>
             
             
-            <span class='code'>Test whether &#96;x&#96; is numerically equal to some integer.</span>
+            <span class='code'>           isdefined&#40;Base.active_repl.mistate, :current_mode&#41;</span>
           </td>
         </tr>
         <tr id='L13'>
@@ -165,7 +165,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>juliaprompt &#61; &quot;julia&gt; &quot;</span>
           </td>
         </tr>
         <tr id='L15'>
@@ -175,7 +175,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L16'>
@@ -185,7 +185,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; isinteger&#40;4.0&#41;</span>
+            <span class='code'>current_prompt &#61; juliaprompt</span>
           </td>
         </tr>
         <tr id='L17'>
@@ -195,7 +195,7 @@
           <td>
             
             
-            <span class='code'>true</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L18'>
@@ -205,7 +205,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>function get_main_mode&#40;repl &#61; Base.active_repl&#41;</span>
           </td>
         </tr>
         <tr id='L19'>
@@ -215,7 +215,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    mode &#61; repl.interface.modes&#91;1&#93;</span>
           </td>
         </tr>
         <tr id='L20'>
@@ -225,7 +225,7 @@
           <td>
             
             
-            <span class='code'>isinteger&#40;x::Integer&#41; &#61; true</span>
+            <span class='code'>    mode isa LineEdit.Prompt || error&#40;&quot;no julia repl mode found&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L21'>
@@ -235,7 +235,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    mode</span>
           </td>
         </tr>
         <tr id='L22'>
@@ -245,7 +245,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L23'>
@@ -255,7 +255,7 @@
           <td>
             
             
-            <span class='code'>    iszero&#40;x&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L24'>
@@ -265,7 +265,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>function hideprompt&#40;f&#41;</span>
           </td>
         </tr>
         <tr id='L25'>
@@ -275,7 +275,7 @@
           <td>
             
             
-            <span class='code'>Return &#96;true&#96; if &#96;x &#61;&#61; zero&#40;x&#41;&#96;; if &#96;x&#96; is an array, this checks whether</span>
+            <span class='code'>    isREPL&#40;&#41; || return f&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L26'>
@@ -285,7 +285,7 @@
           <td>
             
             
-            <span class='code'>all of the elements of &#96;x&#96; are zero.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L27'>
@@ -295,7 +295,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    repl &#61; Base.active_repl</span>
           </td>
         </tr>
         <tr id='L28'>
@@ -305,7 +305,7 @@
           <td>
             
             
-            <span class='code'>See also: &#91;&#96;isone&#96;&#93;&#40;@ref&#41;, &#91;&#96;isinteger&#96;&#93;&#40;@ref&#41;, &#91;&#96;isfinite&#96;&#93;&#40;@ref&#41;, &#91;&#96;isnan&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'>    mistate &#61; repl.mistate</span>
           </td>
         </tr>
         <tr id='L29'>
@@ -315,7 +315,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    mode &#61; mistate.current_mode</span>
           </td>
         </tr>
         <tr id='L30'>
@@ -325,7 +325,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L31'>
@@ -335,7 +335,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>    buf &#61; String&#40;take&#33;&#40;copy&#40;LineEdit.buffer&#40;mistate&#41;&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L32'>
@@ -345,7 +345,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; iszero&#40;0.0&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L33'>
@@ -355,7 +355,7 @@
           <td>
             
             
-            <span class='code'>true</span>
+            <span class='code'>    # clear input buffer</span>
           </td>
         </tr>
         <tr id='L34'>
@@ -365,7 +365,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    truncate&#40;LineEdit.buffer&#40;mistate&#41;, 0&#41;</span>
           </td>
         </tr>
         <tr id='L35'>
@@ -375,7 +375,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; iszero&#40;&#91;1, 9, 0&#93;&#41;</span>
+            <span class='code'>    LineEdit.refresh_multi_line&#40;mistate&#41;</span>
           </td>
         </tr>
         <tr id='L36'>
@@ -385,7 +385,7 @@
           <td>
             
             
-            <span class='code'>false</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L37'>
@@ -395,7 +395,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    print&#40;stdout, &quot;\e&#91;1K\r&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L38'>
@@ -405,7 +405,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; iszero&#40;&#91;false, 0, 0&#93;&#41;</span>
+            <span class='code'>    r &#61; f&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L39'>
@@ -415,7 +415,7 @@
           <td>
             
             
-            <span class='code'>true</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L40'>
@@ -425,7 +425,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>    flush&#40;stdout&#41;</span>
           </td>
         </tr>
         <tr id='L41'>
@@ -435,7 +435,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    flush&#40;stderr&#41;</span>
           </td>
         </tr>
         <tr id='L42'>
@@ -445,7 +445,7 @@
           <td>
             
             
-            <span class='code'>iszero&#40;x&#41; &#61; x &#61;&#61; zero&#40;x&#41; # fallback method</span>
+            <span class='code'>    sleep&#40;0.05&#41;</span>
           </td>
         </tr>
         <tr id='L43'>
@@ -465,7 +465,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    # TODO Fix this</span>
           </td>
         </tr>
         <tr id='L45'>
@@ -475,7 +475,7 @@
           <td>
             
             
-            <span class='code'>    isone&#40;x&#41;</span>
+            <span class='code'>    # pos &#61; @rpc cursorpos&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L46'>
@@ -485,7 +485,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    pos &#61; 1, 1</span>
           </td>
         </tr>
         <tr id='L47'>
@@ -495,7 +495,7 @@
           <td>
             
             
-            <span class='code'>Return &#96;true&#96; if &#96;x &#61;&#61; one&#40;x&#41;&#96;; if &#96;x&#96; is an array, this checks whether</span>
+            <span class='code'>    pos&#91;1&#93; &#33;&#61; 0 &amp;&amp; println&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L48'>
@@ -505,7 +505,7 @@
           <td>
             
             
-            <span class='code'>&#96;x&#96; is an identity matrix.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L49'>
@@ -515,7 +515,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    # restore prompt</span>
           </td>
         </tr>
         <tr id='L50'>
@@ -525,7 +525,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>    if applicable&#40;LineEdit.write_prompt, stdout, mode&#41;</span>
           </td>
         </tr>
         <tr id='L51'>
@@ -535,7 +535,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>        LineEdit.write_prompt&#40;stdout, mode&#41;</span>
           </td>
         </tr>
         <tr id='L52'>
@@ -545,7 +545,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; isone&#40;1.0&#41;</span>
+            <span class='code'>    elseif applicable&#40;LineEdit.write_prompt, stdout, mode, true&#41;</span>
           </td>
         </tr>
         <tr id='L53'>
@@ -555,7 +555,7 @@
           <td>
             
             
-            <span class='code'>true</span>
+            <span class='code'>        LineEdit.write_prompt&#40;stdout, mode, true&#41;</span>
           </td>
         </tr>
         <tr id='L54'>
@@ -565,7 +565,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    elseif mode isa LineEdit.PrefixHistoryPrompt || :parent_prompt in fieldnames&#40;typeof&#40;mode&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L55'>
@@ -575,7 +575,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; isone&#40;&#91;1 0; 0 2&#93;&#41;</span>
+            <span class='code'>        if applicable&#40;LineEdit.write_prompt, stdout, mode.parent_prompt&#41;</span>
           </td>
         </tr>
         <tr id='L56'>
@@ -585,7 +585,7 @@
           <td>
             
             
-            <span class='code'>false</span>
+            <span class='code'>            LineEdit.write_prompt&#40;stdout, mode.parent_prompt&#41;</span>
           </td>
         </tr>
         <tr id='L57'>
@@ -595,7 +595,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        elseif applicable&#40;LineEdit.write_prompt, stdout, mode.parent_prompt, true&#41;</span>
           </td>
         </tr>
         <tr id='L58'>
@@ -605,7 +605,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; isone&#40;&#91;1 0; 0 true&#93;&#41;</span>
+            <span class='code'>            LineEdit.write_prompt&#40;stdout, mode.parent_prompt, true&#41;</span>
           </td>
         </tr>
         <tr id='L59'>
@@ -615,7 +615,7 @@
           <td>
             
             
-            <span class='code'>true</span>
+            <span class='code'>        else</span>
           </td>
         </tr>
         <tr id='L60'>
@@ -625,7 +625,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>            printstyled&#40;stdout, current_prompt, color &#61; :green, bold &#61; true&#41;</span>
           </td>
         </tr>
         <tr id='L61'>
@@ -635,7 +635,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L62'>
@@ -645,7 +645,7 @@
           <td>
             
             
-            <span class='code'>isone&#40;x&#41; &#61; x &#61;&#61; one&#40;x&#41; # fallback method</span>
+            <span class='code'>    else</span>
           </td>
         </tr>
         <tr id='L63'>
@@ -655,7 +655,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        printstyled&#40;stdout, current_prompt, color &#61; :green, bold &#61; true&#41;</span>
           </td>
         </tr>
         <tr id='L64'>
@@ -665,7 +665,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L65'>
@@ -675,7 +675,7 @@
           <td>
             
             
-            <span class='code'>    isfinite&#40;f&#41; -&gt; Bool</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L66'>
@@ -685,7 +685,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    truncate&#40;LineEdit.buffer&#40;mistate&#41;, 0&#41;</span>
           </td>
         </tr>
         <tr id='L67'>
@@ -695,7 +695,7 @@
           <td>
             
             
-            <span class='code'>Test whether a number is finite.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L68'>
@@ -705,7 +705,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    # restore input buffer</span>
           </td>
         </tr>
         <tr id='L69'>
@@ -715,7 +715,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>    LineEdit.edit_insert&#40;LineEdit.buffer&#40;mistate&#41;, buf&#41;</span>
           </td>
         </tr>
         <tr id='L70'>
@@ -725,7 +725,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>    LineEdit.refresh_multi_line&#40;mistate&#41;</span>
           </td>
         </tr>
         <tr id='L71'>
@@ -735,7 +735,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; isfinite&#40;5&#41;</span>
+            <span class='code'>    r</span>
           </td>
         </tr>
         <tr id='L72'>
@@ -745,7 +745,7 @@
           <td>
             
             
-            <span class='code'>true</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L73'>
@@ -765,7 +765,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; isfinite&#40;NaN32&#41;</span>
+            <span class='code'>si&#40;f&#41; &#61; &#40;args...&#41; -&gt; ENABLE_SHELL_INTEGRATION&#91;&#93; ? f&#40;args...&#41; : &quot;&quot;</span>
           </td>
         </tr>
         <tr id='L75'>
@@ -775,7 +775,7 @@
           <td>
             
             
-            <span class='code'>false</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L76'>
@@ -785,7 +785,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>function sanitize_shell_integration_string&#40;cmd&#41;</span>
           </td>
         </tr>
         <tr id='L77'>
@@ -795,7 +795,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    replace&#40;replace&#40;replace&#40;cmd, &quot;\n&quot; &#61;&gt; &quot;&lt;LF&gt;&quot;&#41;, &quot;;&quot; &#61;&gt; &quot;&lt;CL&gt;&quot;&#41;, &quot;\a&quot; &#61;&gt; &quot;&lt;ST&gt;&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L78'>
@@ -805,7 +805,7 @@
           <td>
             
             
-            <span class='code'>isfinite&#40;x::Number&#41; &#61; iszero&#40;x - x&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L79'>
@@ -825,7 +825,7 @@
           <td>
             
             
-            <span class='code'>size&#40;x::Number&#41; &#61; &#40;&#41;</span>
+            <span class='code'>const SHELL &#61; &#40;</span>
           </td>
         </tr>
         <tr id='L81'>
@@ -835,7 +835,7 @@
           <td>
             
             
-            <span class='code'>size&#40;x::Number, d::Integer&#41; &#61; d &lt; 1 ? throw&#40;BoundsError&#40;&#41;&#41; : 1</span>
+            <span class='code'>    prompt_start &#61; si&#40;&#40;&#41; -&gt; &quot;\e&#93;633;A\a&quot;&#41;,</span>
           </td>
         </tr>
         <tr id='L82'>
@@ -845,7 +845,7 @@
           <td>
             
             
-            <span class='code'>axes&#40;x::Number&#41; &#61; &#40;&#41;</span>
+            <span class='code'>    prompt_end &#61; si&#40;&#40;&#41; -&gt; &quot;\e&#93;633;B\a&quot;&#41;,</span>
           </td>
         </tr>
         <tr id='L83'>
@@ -855,7 +855,7 @@
           <td>
             
             
-            <span class='code'>axes&#40;x::Number, d::Integer&#41; &#61; d &lt; 1 ? throw&#40;BoundsError&#40;&#41;&#41; : OneTo&#40;1&#41;</span>
+            <span class='code'>    output_start &#61; si&#40;&#40;&#41; -&gt; &quot;\e&#93;633;C\a&quot;&#41;,</span>
           </td>
         </tr>
         <tr id='L84'>
@@ -865,7 +865,7 @@
           <td>
             
             
-            <span class='code'>eltype&#40;::Type&#123;T&#125;&#41; where &#123;T&lt;:Number&#125; &#61; T</span>
+            <span class='code'>    output_end &#61; si&#40;function &#40;&#41;</span>
           </td>
         </tr>
         <tr id='L85'>
@@ -875,7 +875,7 @@
           <td>
             
             
-            <span class='code'>ndims&#40;x::Number&#41; &#61; 0</span>
+            <span class='code'>        if REPL_PROMPT_STATE&#91;&#93; &#61;&#61;&#61; REPLPromptStates.NoUpdate</span>
           </td>
         </tr>
         <tr id='L86'>
@@ -885,7 +885,7 @@
           <td>
             
             
-            <span class='code'>ndims&#40;::Type&#123;&lt;:Number&#125;&#41; &#61; 0</span>
+            <span class='code'>            return &quot;&quot;</span>
           </td>
         </tr>
         <tr id='L87'>
@@ -895,7 +895,7 @@
           <td>
             
             
-            <span class='code'>length&#40;x::Number&#41; &#61; 1</span>
+            <span class='code'>        elseif REPL_PROMPT_STATE&#91;&#93; &#61;&#61;&#61; REPLPromptStates.NoStatus</span>
           </td>
         </tr>
         <tr id='L88'>
@@ -905,7 +905,7 @@
           <td>
             
             
-            <span class='code'>firstindex&#40;x::Number&#41; &#61; 1</span>
+            <span class='code'>            REPL_PROMPT_STATE&#91;&#93; &#61; REPLPromptStates.NoUpdate</span>
           </td>
         </tr>
         <tr id='L89'>
@@ -915,7 +915,7 @@
           <td>
             
             
-            <span class='code'>firstindex&#40;x::Number, d::Int&#41; &#61; d &lt; 1 ? throw&#40;BoundsError&#40;&#41;&#41; : 1</span>
+            <span class='code'>            return &quot;\e&#93;633;D\a&quot;</span>
           </td>
         </tr>
         <tr id='L90'>
@@ -925,7 +925,7 @@
           <td>
             
             
-            <span class='code'>lastindex&#40;x::Number&#41; &#61; 1</span>
+            <span class='code'>        else</span>
           </td>
         </tr>
         <tr id='L91'>
@@ -935,7 +935,7 @@
           <td>
             
             
-            <span class='code'>lastindex&#40;x::Number, d::Int&#41; &#61; d &lt; 1 ? throw&#40;BoundsError&#40;&#41;&#41; : 1</span>
+            <span class='code'>            exitcode &#61; REPL_PROMPT_STATE&#91;&#93; &#61;&#61; REPLPromptStates.Error</span>
           </td>
         </tr>
         <tr id='L92'>
@@ -945,7 +945,7 @@
           <td>
             
             
-            <span class='code'>IteratorSize&#40;::Type&#123;&lt;:Number&#125;&#41; &#61; HasShape&#123;0&#125;&#40;&#41;</span>
+            <span class='code'>            REPL_PROMPT_STATE&#91;&#93; &#61; REPLPromptStates.NoUpdate</span>
           </td>
         </tr>
         <tr id='L93'>
@@ -955,7 +955,7 @@
           <td>
             
             
-            <span class='code'>keys&#40;::Number&#41; &#61; OneTo&#40;1&#41;</span>
+            <span class='code'>            return &quot;\e&#93;633;D;&#36;&#40;Int&#40;exitcode&#41;&#41;\a&quot;</span>
           </td>
         </tr>
         <tr id='L94'>
@@ -965,7 +965,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L95'>
@@ -975,7 +975,7 @@
           <td>
             
             
-            <span class='code'>getindex&#40;x::Number&#41; &#61; x</span>
+            <span class='code'>    end&#41;,</span>
           </td>
         </tr>
         <tr id='L96'>
@@ -985,7 +985,7 @@
           <td>
             
             
-            <span class='code'>function getindex&#40;x::Number, i::Integer&#41;</span>
+            <span class='code'>    update_cmd &#61; si&#40;function &#40;cmd&#41;</span>
           </td>
         </tr>
         <tr id='L97'>
@@ -995,7 +995,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'>        cmd &#61; sanitize_shell_integration_string&#40;cmd&#41;</span>
           </td>
         </tr>
         <tr id='L98'>
@@ -1005,7 +1005,7 @@
           <td>
             
             
-            <span class='code'>    @boundscheck i &#61;&#61; 1 || throw&#40;BoundsError&#40;x, i&#41;&#41;</span>
+            <span class='code'>        &quot;\e&#93;633;E;&#36;cmd\a&quot;</span>
           </td>
         </tr>
         <tr id='L99'>
@@ -1015,7 +1015,7 @@
           <td>
             
             
-            <span class='code'>    x</span>
+            <span class='code'>    end&#41;,</span>
           </td>
         </tr>
         <tr id='L100'>
@@ -1025,7 +1025,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    continuation_prompt_start &#61; si&#40;&#40;&#41; -&gt; &quot;\e&#93;633;F\a&quot;&#41;,</span>
           </td>
         </tr>
         <tr id='L101'>
@@ -1035,7 +1035,7 @@
           <td>
             
             
-            <span class='code'>function getindex&#40;x::Number, I::Integer...&#41;</span>
+            <span class='code'>    continuation_prompt_end &#61; si&#40;&#40;&#41; -&gt; &quot;\e&#93;633;G\a&quot;&#41;,</span>
           </td>
         </tr>
         <tr id='L102'>
@@ -1045,7 +1045,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'>    update_cwd &#61; si&#40;&#40;&#41; -&gt; &quot;\e&#93;633;P;Cwd&#61;&#36;&#40;pwd&#40;&#41;&#41;\a&quot;&#41;,</span>
           </td>
         </tr>
         <tr id='L103'>
@@ -1055,7 +1055,7 @@
           <td>
             
             
-            <span class='code'>    @boundscheck all&#40;isone, I&#41; || throw&#40;BoundsError&#40;x, I&#41;&#41;</span>
+            <span class='code'>    windows_compat &#61; si&#40;&#40;&#41; -&gt; &quot;\e&#93;633;P;IsWindows&#61;True\a&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L104'>
@@ -1065,7 +1065,7 @@
           <td>
             
             
-            <span class='code'>    x</span>
+            <span class='code'>&#41;</span>
           </td>
         </tr>
         <tr id='L105'>
@@ -1075,7 +1075,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L106'>
@@ -1085,7 +1085,7 @@
           <td>
             
             
-            <span class='code'>get&#40;x::Number, i::Integer, default&#41; &#61; isone&#40;i&#41; ? x : default</span>
+            <span class='code'>as_func&#40;x&#41; &#61; &#40;&#41; -&gt; x</span>
           </td>
         </tr>
         <tr id='L107'>
@@ -1095,7 +1095,7 @@
           <td>
             
             
-            <span class='code'>get&#40;x::Number, ind::Tuple, default&#41; &#61; all&#40;isone, ind&#41; ? x : default</span>
+            <span class='code'>as_func&#40;x::Function&#41; &#61; x</span>
           </td>
         </tr>
         <tr id='L108'>
@@ -1105,7 +1105,7 @@
           <td>
             
             
-            <span class='code'>get&#40;f::Callable, x::Number, i::Integer&#41; &#61; isone&#40;i&#41; ? x : f&#40;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L109'>
@@ -1115,7 +1115,7 @@
           <td>
             
             
-            <span class='code'>get&#40;f::Callable, x::Number, ind::Tuple&#41; &#61; all&#40;isone, ind&#41; ? x : f&#40;&#41;</span>
+            <span class='code'>function install_vscode_shell_integration&#40;prompt&#41;</span>
           </td>
         </tr>
         <tr id='L110'>
@@ -1125,7 +1125,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    if Sys.iswindows&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L111'>
@@ -1135,7 +1135,7 @@
           <td>
             
             
-            <span class='code'>first&#40;x::Number&#41; &#61; x</span>
+            <span class='code'>        print&#40;stdout, SHELL.windows_compat&#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L112'>
@@ -1145,7 +1145,7 @@
           <td>
             
             
-            <span class='code'>last&#40;x::Number&#41; &#61; x</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L113'>
@@ -1155,7 +1155,7 @@
           <td>
             
             
-            <span class='code'>copy&#40;x::Number&#41; &#61; x # some code treats numbers as collection-like</span>
+            <span class='code'>    prefix &#61; as_func&#40;prompt.prompt_prefix&#41;</span>
           </td>
         </tr>
         <tr id='L114'>
@@ -1165,7 +1165,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    suffix &#61; as_func&#40;prompt.prompt_suffix&#41;</span>
           </td>
         </tr>
         <tr id='L115'>
@@ -1175,7 +1175,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    prompt.prompt_prefix &#61; &#40;&#41; -&gt; string&#40;SHELL.output_end&#40;&#41;, SHELL.prompt_start&#40;&#41;, prefix&#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L116'>
@@ -1185,7 +1185,7 @@
           <td>
             
             
-            <span class='code'>    signbit&#40;x&#41;</span>
+            <span class='code'>    prompt.prompt_suffix &#61; &#40;&#41; -&gt; string&#40;suffix&#40;&#41;, SHELL.update_cwd&#40;&#41;, SHELL.prompt_end&#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L117'>
@@ -1205,7 +1205,7 @@
           <td>
             
             
-            <span class='code'>Return &#96;true&#96; if the value of the sign of &#96;x&#96; is negative, otherwise &#96;false&#96;.</span>
+            <span class='code'>    on_done &#61; prompt.on_done</span>
           </td>
         </tr>
         <tr id='L119'>
@@ -1215,7 +1215,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    prompt.on_done &#61; function &#40;mi, buf, ok&#41;</span>
           </td>
         </tr>
         <tr id='L120'>
@@ -1225,7 +1225,7 @@
           <td>
             
             
-            <span class='code'>See also &#91;&#96;sign&#96;&#93;&#40;@ref&#41; and &#91;&#96;copysign&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'>        print&#40;stdout, SHELL.output_start&#40;&#41;, SHELL.update_cmd&#40;String&#40;take&#33;&#40;deepcopy&#40;buf&#41;&#41;&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L121'>
@@ -1235,7 +1235,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        REPL_PROMPT_STATE&#91;&#93; &#61; REPLPromptStates.NoStatus</span>
           </td>
         </tr>
         <tr id='L122'>
@@ -1245,7 +1245,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>        on_done&#40;mi, buf, ok&#41;</span>
           </td>
         </tr>
         <tr id='L123'>
@@ -1255,7 +1255,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L124'>
@@ -1265,7 +1265,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; signbit&#40;-4&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L125'>
@@ -1275,7 +1275,7 @@
           <td>
             
             
-            <span class='code'>true</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L126'>
@@ -1285,7 +1285,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>if VERSION &gt; v&quot;1.9-&quot;</span>
           </td>
         </tr>
         <tr id='L127'>
@@ -1295,7 +1295,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; signbit&#40;5&#41;</span>
+            <span class='code'>    active_module &#61; Base.active_module</span>
           </td>
         </tr>
         <tr id='L128'>
@@ -1305,7 +1305,7 @@
           <td>
             
             
-            <span class='code'>false</span>
+            <span class='code'>else</span>
           </td>
         </tr>
         <tr id='L129'>
@@ -1315,7 +1315,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    active_module&#40;&#41; &#61; Main</span>
           </td>
         </tr>
         <tr id='L130'>
@@ -1325,7 +1325,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; signbit&#40;5.5&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L131'>
@@ -1335,7 +1335,7 @@
           <td>
             
             
-            <span class='code'>false</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L132'>
@@ -1345,7 +1345,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>const HAS_REPL_TRANSFORM &#61; Ref&#123;Bool&#125;&#40;false&#41;</span>
           </td>
         </tr>
         <tr id='L133'>
@@ -1355,7 +1355,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; signbit&#40;-4.1&#41;</span>
+            <span class='code'>function hook_repl&#40;repl&#41;</span>
           </td>
         </tr>
         <tr id='L134'>
@@ -1365,7 +1365,7 @@
           <td>
             
             
-            <span class='code'>true</span>
+            <span class='code'>    if HAS_REPL_TRANSFORM&#91;&#93;</span>
           </td>
         </tr>
         <tr id='L135'>
@@ -1375,7 +1375,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>        return</span>
           </td>
         </tr>
         <tr id='L136'>
@@ -1385,7 +1385,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L137'>
@@ -1395,7 +1395,7 @@
           <td>
             
             
-            <span class='code'>signbit&#40;x::Real&#41; &#61; x &lt; 0</span>
+            <span class='code'>    @debug &quot;installing REPL hook&quot;</span>
           </td>
         </tr>
         <tr id='L138'>
@@ -1405,7 +1405,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    if &#33;isdefined&#40;repl, :interface&#41;</span>
           </td>
         </tr>
         <tr id='L139'>
@@ -1415,7 +1415,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>        repl.interface &#61; REPL.setup_interface&#40;repl&#41;</span>
           </td>
         </tr>
         <tr id='L140'>
@@ -1425,7 +1425,7 @@
           <td>
             
             
-            <span class='code'>    sign&#40;x&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L141'>
@@ -1435,7 +1435,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    main_mode &#61; get_main_mode&#40;repl&#41;</span>
           </td>
         </tr>
         <tr id='L142'>
@@ -1445,7 +1445,7 @@
           <td>
             
             
-            <span class='code'>Return zero if &#96;x&#61;&#61;0&#96; and &#96;&#96;x/|x|&#96;&#96; otherwise &#40;i.e., ±1 for real &#96;x&#96;&#41;.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L143'>
@@ -1455,7 +1455,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    if VERSION &gt; v&quot;1.5-&quot;</span>
           </td>
         </tr>
         <tr id='L144'>
@@ -1465,7 +1465,7 @@
           <td>
             
             
-            <span class='code'>See also &#91;&#96;signbit&#96;&#93;&#40;@ref&#41;, &#91;&#96;zero&#96;&#93;&#40;@ref&#41;, &#91;&#96;copysign&#96;&#93;&#40;@ref&#41;, &#91;&#96;flipsign&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'>        for _ &#61; 1:20 # repl backend should be set up after 10s -- fall back to the pre-ast-transform approach otherwise</span>
           </td>
         </tr>
         <tr id='L145'>
@@ -1475,7 +1475,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>            isdefined&#40;Base, :active_repl_backend&#41; &amp;&amp; continue</span>
           </td>
         </tr>
         <tr id='L146'>
@@ -1485,7 +1485,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>            sleep&#40;0.5&#41;</span>
           </td>
         </tr>
         <tr id='L147'>
@@ -1495,7 +1495,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L148'>
@@ -1505,7 +1505,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; sign&#40;-4.0&#41;</span>
+            <span class='code'>        if isdefined&#40;Base, :active_repl_backend&#41;</span>
           </td>
         </tr>
         <tr id='L149'>
@@ -1515,7 +1515,7 @@
           <td>
             
             
-            <span class='code'>-1.0</span>
+            <span class='code'>            push&#33;&#40;Base.active_repl_backend.ast_transforms, ast -&gt; transform_backend&#40;ast, repl, main_mode&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L150'>
@@ -1525,7 +1525,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>            HAS_REPL_TRANSFORM&#91;&#93; &#61; true</span>
           </td>
         </tr>
         <tr id='L151'>
@@ -1535,7 +1535,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; sign&#40;99&#41;</span>
+            <span class='code'>            install_vscode_shell_integration&#40;main_mode&#41;</span>
           </td>
         </tr>
         <tr id='L152'>
@@ -1545,7 +1545,7 @@
           <td>
             
             
-            <span class='code'>1</span>
+            <span class='code'>            @debug &quot;REPL AST transform installed&quot;</span>
           </td>
         </tr>
         <tr id='L153'>
@@ -1555,7 +1555,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>            return</span>
           </td>
         </tr>
         <tr id='L154'>
@@ -1565,7 +1565,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; sign&#40;-0.0&#41;</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L155'>
@@ -1575,7 +1575,7 @@
           <td>
             
             
-            <span class='code'>-0.0</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L156'>
@@ -1595,7 +1595,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; sign&#40;0 &#43; im&#41;</span>
+            <span class='code'>    main_mode.on_done &#61; REPL.respond&#40;repl, main_mode; pass_empty &#61; false&#41; do line</span>
           </td>
         </tr>
         <tr id='L158'>
@@ -1605,7 +1605,7 @@
           <td>
             
             
-            <span class='code'>0.0 &#43; 1.0im</span>
+            <span class='code'>        quote</span>
           </td>
         </tr>
         <tr id='L159'>
@@ -1615,7 +1615,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>            &#36;&#40;evalrepl&#41;&#40;&#36;&#40;active_module&#41;&#40;&#41;, &#36;line, &#36;repl, &#36;main_mode&#41;</span>
           </td>
         </tr>
         <tr id='L160'>
@@ -1625,7 +1625,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L161'>
@@ -1635,7 +1635,7 @@
           <td>
             
             
-            <span class='code'>sign&#40;x::Number&#41; &#61; iszero&#40;x&#41; ? x/abs&#40;oneunit&#40;x&#41;&#41; : x/abs&#40;x&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L162'>
@@ -1645,7 +1645,7 @@
           <td>
             
             
-            <span class='code'>sign&#40;x::Real&#41; &#61; ifelse&#40;x &lt; zero&#40;x&#41;, oftype&#40;one&#40;x&#41;,-1&#41;, ifelse&#40;x &gt; zero&#40;x&#41;, one&#40;x&#41;, typeof&#40;one&#40;x&#41;&#41;&#40;x&#41;&#41;&#41;</span>
+            <span class='code'>    @debug &quot;legacy REPL hook installed&quot;</span>
           </td>
         </tr>
         <tr id='L163'>
@@ -1655,7 +1655,7 @@
           <td>
             
             
-            <span class='code'>sign&#40;x::Unsigned&#41; &#61; ifelse&#40;x &gt; zero&#40;x&#41;, one&#40;x&#41;, oftype&#40;one&#40;x&#41;,0&#41;&#41;</span>
+            <span class='code'>    HAS_REPL_TRANSFORM&#91;&#93; &#61; true</span>
           </td>
         </tr>
         <tr id='L164'>
@@ -1665,7 +1665,7 @@
           <td>
             
             
-            <span class='code'>abs&#40;x::Real&#41; &#61; ifelse&#40;signbit&#40;x&#41;, -x, x&#41;</span>
+            <span class='code'>    return nothing</span>
           </td>
         </tr>
         <tr id='L165'>
@@ -1675,7 +1675,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L166'>
@@ -1685,7 +1685,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L167'>
@@ -1695,7 +1695,7 @@
           <td>
             
             
-            <span class='code'>    abs2&#40;x&#41;</span>
+            <span class='code'>function transform_backend&#40;ast, repl, main_mode&#41;</span>
           </td>
         </tr>
         <tr id='L168'>
@@ -1705,7 +1705,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    quote</span>
           </td>
         </tr>
         <tr id='L169'>
@@ -1715,7 +1715,7 @@
           <td>
             
             
-            <span class='code'>Squared absolute value of &#96;x&#96;.</span>
+            <span class='code'>        &#36;&#40;evalrepl&#41;&#40;&#36;&#40;active_module&#41;&#40;&#41;, &#36;&#40;QuoteNode&#40;ast&#41;&#41;, &#36;repl, &#36;main_mode&#41;</span>
           </td>
         </tr>
         <tr id='L170'>
@@ -1725,7 +1725,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L171'>
@@ -1735,7 +1735,7 @@
           <td>
             
             
-            <span class='code'>This can be faster than &#96;abs&#40;x&#41;^2&#96;, especially for complex</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L172'>
@@ -1745,7 +1745,7 @@
           <td>
             
             
-            <span class='code'>numbers where &#96;abs&#40;x&#41;&#96; requires a square root via &#91;&#96;hypot&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L173'>
@@ -1755,7 +1755,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>const REPLPromptStates &#61; &#40;</span>
           </td>
         </tr>
         <tr id='L174'>
@@ -1765,7 +1765,7 @@
           <td>
             
             
-            <span class='code'>See also &#91;&#96;abs&#96;&#93;&#40;@ref&#41;, &#91;&#96;conj&#96;&#93;&#40;@ref&#41;, &#91;&#96;real&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'>    NoUpdate &#61; 0,</span>
           </td>
         </tr>
         <tr id='L175'>
@@ -1775,7 +1775,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    NoStatus &#61; 1,</span>
           </td>
         </tr>
         <tr id='L176'>
@@ -1785,7 +1785,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>    Success &#61; 2,</span>
           </td>
         </tr>
         <tr id='L177'>
@@ -1795,7 +1795,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>    Error &#61; 3,</span>
           </td>
         </tr>
         <tr id='L178'>
@@ -1805,7 +1805,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; abs2&#40;-3&#41;</span>
+            <span class='code'>&#41;</span>
           </td>
         </tr>
         <tr id='L179'>
@@ -1815,7 +1815,7 @@
           <td>
             
             
-            <span class='code'>9</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L180'>
@@ -1825,7 +1825,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>const REPL_PROMPT_STATE &#61; Ref&#123;Int&#125;&#40;REPLPromptStates.NoUpdate&#41;</span>
           </td>
         </tr>
         <tr id='L181'>
@@ -1835,7 +1835,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; abs2&#40;3.0 &#43; 4.0im&#41;</span>
+            <span class='code'>function evalrepl&#40;m, line, repl, main_mode&#41;</span>
           </td>
         </tr>
         <tr id='L182'>
@@ -1845,7 +1845,7 @@
           <td>
             
             
-            <span class='code'>25.0</span>
+            <span class='code'>    did_notify &#61; false</span>
           </td>
         </tr>
         <tr id='L183'>
@@ -1855,7 +1855,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    return try</span>
           </td>
         </tr>
         <tr id='L184'>
@@ -1865,7 +1865,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; sum&#40;abs2, &#91;1&#43;2im, 3&#43;4im&#93;&#41;  # LinearAlgebra.norm&#40;x&#41;^2</span>
+            <span class='code'>        try</span>
           </td>
         </tr>
         <tr id='L185'>
@@ -1875,7 +1875,7 @@
           <td>
             
             
-            <span class='code'>30</span>
+            <span class='code'>            JSONRPC.send_notification&#40;conn_endpoint&#91;&#93;, &quot;repl/starteval&quot;, nothing&#41;</span>
           </td>
         </tr>
         <tr id='L186'>
@@ -1885,7 +1885,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>            did_notify &#61; true</span>
           </td>
         </tr>
         <tr id='L187'>
@@ -1895,7 +1895,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>        catch err</span>
           </td>
         </tr>
         <tr id='L188'>
@@ -1905,31 +1905,17 @@
           <td>
             
             
-            <span class='code'>abs2&#40;x::Number&#41; &#61; abs&#40;x&#41;^2</span>
+            <span class='code'>            @debug &quot;Could not send repl/starteval notification&quot; exception &#61; &#40;err, catch_backtrace&#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L189'>
           <td class='lineno'>189</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'></td>
           <td>
-            <div class='call-sites'>
-              1 &#40;0 &#37;&#41;
-              samples spent in abs2
-              <br />
-              
-              1 &#40;100 &#37;&#41; &#40;incl.&#41;
-              when called from norm_sqr
-              <a href='generic.jl-669e576cdef04f979af49613717ae8e66469a770.html#L465'>line 465</a>
-              <br />
-            </div>
-            <div class='callees'>
-              1 &#40;100 &#37;&#41;
-              samples spent calling
-              <a href='float.jl-7170cf60e6d4e9b40a7dcd98416202990131c908.html#L493'>*</a>
-              <br />
-            </div>
-            <span class='code'>abs2&#40;x::Real&#41; &#61; x*x</span>
+            
+            
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L190'>
@@ -1939,7 +1925,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        r &#61; run_with_backend&#40;&#41; do</span>
           </td>
         </tr>
         <tr id='L191'>
@@ -1947,29 +1933,57 @@
           <td class='tracecount excl'></td>
           <td class='tracecount incl'></td>
           <td>
+            <div class='call-sites'>
+              237 &#40;100 &#37;&#41;
+              samples spent in #111
+              <br />
+              
+              237 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from #invokelatest#2
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L1054'>line 1054</a>
+              <br />
+            </div>
             
-            
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>            fix_displays&#40;; is_repl &#61; true&#41;</span>
           </td>
         </tr>
         <tr id='L192'>
           <td class='lineno'>192</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>237 &#40;100 &#37;&#41;</td>
           <td>
-            
-            
-            <span class='code'>    flipsign&#40;x, y&#41;</span>
+            <div class='call-sites'>
+              237 &#40;100 &#37;&#41;
+              samples spent in #112
+              <br />
+              
+              237 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from with_logstate
+              <a href='logging.jl-9268cab4baaf7c7c9c1a1758e80b89a326a13be1.html#L522'>line 522</a>
+              <br />
+            </div>
+            <div class='callees'>
+              237 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='repl.jl-66f8efb37f6904395ecf7f76671d4481205eec3e.html#L228'>repleval</a>
+              <br />
+            </div>
+            <span class='code'>            f &#61; &#40;&#41; -&gt; repleval&#40;m, line, REPL.repl_filename&#40;repl, main_mode.hist&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L193'>
           <td class='lineno'>193</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>237 &#40;100 &#37;&#41;</td>
           <td>
             
-            
-            <span class='code'></span>
+            <div class='callees'>
+              237 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='logging.jl-9268cab4baaf7c7c9c1a1758e80b89a326a13be1.html#L632'>with_logger</a>
+              <br />
+            </div>
+            <span class='code'>            PROGRESS_ENABLED&#91;&#93; ? Logging.with_logger&#40;f, VSCodeLogger&#40;&#41;&#41; : f&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L194'>
@@ -1979,7 +1993,7 @@
           <td>
             
             
-            <span class='code'>Return &#96;x&#96; with its sign flipped if &#96;y&#96; is negative. For example &#96;abs&#40;x&#41; &#61; flipsign&#40;x,x&#41;&#96;.</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L195'>
@@ -1989,7 +2003,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        REPL_PROMPT_STATE&#91;&#93; &#61; REPLPromptStates.Error</span>
           </td>
         </tr>
         <tr id='L196'>
@@ -1999,7 +2013,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>        if r isa EvalError</span>
           </td>
         </tr>
         <tr id='L197'>
@@ -2009,7 +2023,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>            display_repl_error&#40;stderr, r.err, r.bt&#41;</span>
           </td>
         </tr>
         <tr id='L198'>
@@ -2019,7 +2033,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; flipsign&#40;5, 3&#41;</span>
+            <span class='code'>            nothing</span>
           </td>
         </tr>
         <tr id='L199'>
@@ -2029,7 +2043,7 @@
           <td>
             
             
-            <span class='code'>5</span>
+            <span class='code'>        elseif r isa EvalErrorStack</span>
           </td>
         </tr>
         <tr id='L200'>
@@ -2039,7 +2053,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>            set_error_global&#40;r&#41;</span>
           </td>
         </tr>
         <tr id='L201'>
@@ -2049,7 +2063,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; flipsign&#40;5, -3&#41;</span>
+            <span class='code'>            display_repl_error&#40;stderr, r&#41;</span>
           </td>
         </tr>
         <tr id='L202'>
@@ -2059,7 +2073,7 @@
           <td>
             
             
-            <span class='code'>-5</span>
+            <span class='code'>            nothing</span>
           </td>
         </tr>
         <tr id='L203'>
@@ -2069,7 +2083,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>        else</span>
           </td>
         </tr>
         <tr id='L204'>
@@ -2079,7 +2093,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>            REPL_PROMPT_STATE&#91;&#93; &#61; REPLPromptStates.Success</span>
           </td>
         </tr>
         <tr id='L205'>
@@ -2089,7 +2103,7 @@
           <td>
             
             
-            <span class='code'>flipsign&#40;x::Real, y::Real&#41; &#61; ifelse&#40;signbit&#40;y&#41;, -x, &#43;x&#41; # the &#43; is for type-stability on Bool</span>
+            <span class='code'>            r</span>
           </td>
         </tr>
         <tr id='L206'>
@@ -2099,7 +2113,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L207'>
@@ -2109,7 +2123,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    catch err</span>
           </td>
         </tr>
         <tr id='L208'>
@@ -2119,7 +2133,7 @@
           <td>
             
             
-            <span class='code'>    copysign&#40;x, y&#41; -&gt; z</span>
+            <span class='code'>        # This is for internal errors only.</span>
           </td>
         </tr>
         <tr id='L209'>
@@ -2129,7 +2143,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        Base.display_error&#40;stderr, err, catch_backtrace&#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L210'>
@@ -2139,7 +2153,7 @@
           <td>
             
             
-            <span class='code'>Return &#96;z&#96; which has the magnitude of &#96;x&#96; and the same sign as &#96;y&#96;.</span>
+            <span class='code'>        nothing</span>
           </td>
         </tr>
         <tr id='L211'>
@@ -2149,7 +2163,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    finally</span>
           </td>
         </tr>
         <tr id='L212'>
@@ -2159,7 +2173,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>        if did_notify</span>
           </td>
         </tr>
         <tr id='L213'>
@@ -2169,7 +2183,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>            try</span>
           </td>
         </tr>
         <tr id='L214'>
@@ -2179,7 +2193,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; copysign&#40;1, -2&#41;</span>
+            <span class='code'>                JSONRPC.send_notification&#40;conn_endpoint&#91;&#93;, &quot;repl/finisheval&quot;, nothing&#41;</span>
           </td>
         </tr>
         <tr id='L215'>
@@ -2189,7 +2203,7 @@
           <td>
             
             
-            <span class='code'>-1</span>
+            <span class='code'>            catch err</span>
           </td>
         </tr>
         <tr id='L216'>
@@ -2199,7 +2213,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>                @debug &quot;Could not send repl/finisheval notification&quot; exception &#61; &#40;err, catch_backtrace&#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L217'>
@@ -2209,7 +2223,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; copysign&#40;-1, 2&#41;</span>
+            <span class='code'>            end</span>
           </td>
         </tr>
         <tr id='L218'>
@@ -2219,7 +2233,7 @@
           <td>
             
             
-            <span class='code'>1</span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L219'>
@@ -2229,7 +2243,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L220'>
@@ -2239,7 +2253,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L221'>
@@ -2249,7 +2263,7 @@
           <td>
             
             
-            <span class='code'>copysign&#40;x::Real, y::Real&#41; &#61; ifelse&#40;signbit&#40;x&#41;&#33;&#61;signbit&#40;y&#41;, -x, &#43;x&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L222'>
@@ -2259,7 +2273,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># don&#39;t inline this so we can find it in the stacktrace</span>
           </td>
         </tr>
         <tr id='L223'>
@@ -2269,7 +2283,7 @@
           <td>
             
             
-            <span class='code'>conj&#40;x::Real&#41; &#61; x</span>
+            <span class='code'>@noinline function repleval&#40;m, code::String, file&#41;</span>
           </td>
         </tr>
         <tr id='L224'>
@@ -2279,7 +2293,7 @@
           <td>
             
             
-            <span class='code'>transpose&#40;x::Number&#41; &#61; x</span>
+            <span class='code'>    args &#61; VERSION &gt;&#61; v&quot;1.5&quot; ? &#40;REPL.softscope, m, code, file&#41; : &#40;m, code, file&#41;</span>
           </td>
         </tr>
         <tr id='L225'>
@@ -2289,7 +2303,7 @@
           <td>
             
             
-            <span class='code'>adjoint&#40;x::Number&#41; &#61; conj&#40;x&#41;</span>
+            <span class='code'>    return include_string&#40;args...&#41;</span>
           </td>
         </tr>
         <tr id='L226'>
@@ -2299,7 +2313,7 @@
           <td>
             
             
-            <span class='code'>angle&#40;z::Real&#41; &#61; atan&#40;zero&#40;z&#41;, z&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L227'>
@@ -2317,19 +2331,33 @@
           <td class='tracecount excl'></td>
           <td class='tracecount incl'></td>
           <td>
+            <div class='call-sites'>
+              237 &#40;100 &#37;&#41;
+              samples spent in repleval
+              <br />
+              
+              237 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from #112
+              <a href='repl.jl-66f8efb37f6904395ecf7f76671d4481205eec3e.html#L192'>line 192</a>
+              <br />
+            </div>
             
-            
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>@noinline function repleval&#40;m, code, _&#41;</span>
           </td>
         </tr>
         <tr id='L229'>
           <td class='lineno'>229</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>237 &#40;100 &#37;&#41;</td>
           <td>
             
-            
-            <span class='code'>    inv&#40;x&#41;</span>
+            <div class='callees'>
+              237 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='Base.jl-b63de1b034843e706f34083efa09828330e9b63e.html#L130'>eval</a>
+              <br />
+            </div>
+            <span class='code'>    return Base.eval&#40;m, code&#41;</span>
           </td>
         </tr>
         <tr id='L230'>
@@ -2339,7 +2367,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L231'>
@@ -2349,7 +2377,7 @@
           <td>
             
             
-            <span class='code'>Return the multiplicative inverse of &#96;x&#96;, such that &#96;x*inv&#40;x&#41;&#96; or &#96;inv&#40;x&#41;*x&#96;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L232'>
@@ -2359,7 +2387,7 @@
           <td>
             
             
-            <span class='code'>yields &#91;&#96;one&#40;x&#41;&#96;&#93;&#40;@ref&#41; &#40;the multiplicative identity&#41; up to roundoff errors.</span>
+            <span class='code'>replcontext&#40;io, limitflag&#41; &#61; IOContext&#40;</span>
           </td>
         </tr>
         <tr id='L233'>
@@ -2369,7 +2397,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    io,</span>
           </td>
         </tr>
         <tr id='L234'>
@@ -2379,7 +2407,7 @@
           <td>
             
             
-            <span class='code'>If &#96;x&#96; is a number, this is essentially the same as &#96;one&#40;x&#41;/x&#96;, but for</span>
+            <span class='code'>    :limit &#61;&gt; true,</span>
           </td>
         </tr>
         <tr id='L235'>
@@ -2389,7 +2417,7 @@
           <td>
             
             
-            <span class='code'>some types &#96;inv&#40;x&#41;&#96; may be slightly more efficient.</span>
+            <span class='code'>    :displaysize &#61;&gt; get&#40;stdout, :displaysize, &#40;60, 120&#41;&#41;,</span>
           </td>
         </tr>
         <tr id='L236'>
@@ -2399,7 +2427,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    :stacktrace_types_limited &#61;&gt; limitflag,</span>
           </td>
         </tr>
         <tr id='L237'>
@@ -2409,7 +2437,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>&#41;</span>
           </td>
         </tr>
         <tr id='L238'>
@@ -2419,7 +2447,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L239'>
@@ -2429,7 +2457,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; inv&#40;2&#41;</span>
+            <span class='code'># basically the same as Base&#39;s &#96;display_error&#96;, with internal frames removed</span>
           </td>
         </tr>
         <tr id='L240'>
@@ -2439,7 +2467,7 @@
           <td>
             
             
-            <span class='code'>0.5</span>
+            <span class='code'>display_repl_error&#40;io, err::EvalError; unwrap&#61;false&#41; &#61; display_repl_error&#40;io, err.err, err.bt; unwrap &#61; unwrap&#41;</span>
           </td>
         </tr>
         <tr id='L241'>
@@ -2459,7 +2487,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; inv&#40;1 &#43; 2im&#41;</span>
+            <span class='code'>function display_repl_error&#40;io, err, bt; unwrap &#61; false&#41;</span>
           </td>
         </tr>
         <tr id='L243'>
@@ -2469,7 +2497,7 @@
           <td>
             
             
-            <span class='code'>0.2 - 0.4im</span>
+            <span class='code'>    limitflag &#61; Ref&#40;false&#41;</span>
           </td>
         </tr>
         <tr id='L244'>
@@ -2489,7 +2517,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; inv&#40;1 &#43; 2im&#41; * &#40;1 &#43; 2im&#41;</span>
+            <span class='code'>    st &#61; stacktrace&#40;crop_backtrace&#40;bt&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L246'>
@@ -2499,7 +2527,7 @@
           <td>
             
             
-            <span class='code'>1.0 &#43; 0.0im</span>
+            <span class='code'>    printstyled&#40;io, &quot;ERROR: &quot;; bold &#61; true, color &#61; Base.error_color&#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L247'>
@@ -2509,7 +2537,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    showerror&#40;replcontext&#40;io, limitflag&#41;, err, st&#41;</span>
           </td>
         </tr>
         <tr id='L248'>
@@ -2519,7 +2547,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; inv&#40;2//3&#41;</span>
+            <span class='code'>    if limitflag&#91;&#93;</span>
           </td>
         </tr>
         <tr id='L249'>
@@ -2529,7 +2557,7 @@
           <td>
             
             
-            <span class='code'>3//2</span>
+            <span class='code'>        print&#40;io, &quot;Some type information was truncated. Use &#96;show&#40;err&#41;&#96; to see complete types.&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L250'>
@@ -2539,7 +2567,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L251'>
@@ -2549,7 +2577,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    println&#40;io&#41;</span>
           </td>
         </tr>
         <tr id='L252'>
@@ -2559,7 +2587,7 @@
           <td>
             
             
-            <span class='code'>&#33;&#33;&#33; compat &quot;Julia 1.2&quot;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L253'>
@@ -2569,7 +2597,7 @@
           <td>
             
             
-            <span class='code'>    &#96;inv&#40;::Missing&#41;&#96; requires at least Julia 1.2.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L254'>
@@ -2579,7 +2607,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>function display_repl_error&#40;io, stack::EvalErrorStack; unwrap &#61; false&#41;</span>
           </td>
         </tr>
         <tr id='L255'>
@@ -2589,7 +2617,7 @@
           <td>
             
             
-            <span class='code'>inv&#40;x::Number&#41; &#61; one&#40;x&#41;/x</span>
+            <span class='code'>    limitflag &#61; Ref&#40;false&#41;</span>
           </td>
         </tr>
         <tr id='L256'>
@@ -2609,7 +2637,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    printstyled&#40;io, &quot;ERROR: &quot;; bold &#61; true, color &#61; Base.error_color&#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L258'>
@@ -2619,7 +2647,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    for &#40;i, &#40;err, bt&#41;&#41; in enumerate&#40;reverse&#40;stack.stack&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L259'>
@@ -2629,7 +2657,7 @@
           <td>
             
             
-            <span class='code'>    widemul&#40;x, y&#41;</span>
+            <span class='code'>        i &#33;&#61;&#61; 1 &amp;&amp; print&#40;io, &quot;\ncaused by: &quot;&#41;</span>
           </td>
         </tr>
         <tr id='L260'>
@@ -2639,7 +2667,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        st &#61; stacktrace&#40;crop_backtrace&#40;bt&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L261'>
@@ -2649,7 +2677,7 @@
           <td>
             
             
-            <span class='code'>Multiply &#96;x&#96; and &#96;y&#96;, giving the result as a larger type.</span>
+            <span class='code'>        showerror&#40;replcontext&#40;io, limitflag&#41;, unwrap &amp;&amp; i &#61;&#61; 1 ? unwrap_loaderror&#40;err&#41; : err, st&#41;</span>
           </td>
         </tr>
         <tr id='L262'>
@@ -2659,7 +2687,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        println&#40;io&#41;</span>
           </td>
         </tr>
         <tr id='L263'>
@@ -2669,7 +2697,7 @@
           <td>
             
             
-            <span class='code'>See also &#91;&#96;promote&#96;&#93;&#40;@ref&#41;, &#91;&#96;Base.add_sum&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L264'>
@@ -2689,7 +2717,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>    if limitflag&#91;&#93;</span>
           </td>
         </tr>
         <tr id='L266'>
@@ -2699,7 +2727,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>        println&#40;io, &quot;Some type information was truncated. Use &#96;show&#40;err&#41;&#96; to see complete types.&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L267'>
@@ -2709,7 +2737,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; widemul&#40;Float32&#40;3.0&#41;, 4.0&#41; isa BigFloat</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L268'>
@@ -2719,7 +2747,7 @@
           <td>
             
             
-            <span class='code'>true</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L269'>
@@ -2739,7 +2767,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; typemax&#40;Int8&#41; * typemax&#40;Int8&#41;</span>
+            <span class='code'>function withpath&#40;f, path&#41;</span>
           </td>
         </tr>
         <tr id='L271'>
@@ -2749,7 +2777,7 @@
           <td>
             
             
-            <span class='code'>1</span>
+            <span class='code'>    tls &#61; task_local_storage&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L272'>
@@ -2759,7 +2787,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    hassource &#61; haskey&#40;tls, :SOURCE_PATH&#41;</span>
           </td>
         </tr>
         <tr id='L273'>
@@ -2769,7 +2797,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; widemul&#40;typemax&#40;Int8&#41;, typemax&#40;Int8&#41;&#41;  # &#61;&#61; 127^2</span>
+            <span class='code'>    hassource &amp;&amp; &#40;path′ &#61; tls&#91;:SOURCE_PATH&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L274'>
@@ -2779,7 +2807,7 @@
           <td>
             
             
-            <span class='code'>16129</span>
+            <span class='code'>    tls&#91;:SOURCE_PATH&#93; &#61; path</span>
           </td>
         </tr>
         <tr id='L275'>
@@ -2789,7 +2817,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>    try</span>
           </td>
         </tr>
         <tr id='L276'>
@@ -2799,7 +2827,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>        return f&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L277'>
@@ -2809,7 +2837,7 @@
           <td>
             
             
-            <span class='code'>widemul&#40;x::Number, y::Number&#41; &#61; widen&#40;x&#41;*widen&#40;y&#41;</span>
+            <span class='code'>    finally</span>
           </td>
         </tr>
         <tr id='L278'>
@@ -2819,7 +2847,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        hassource ? &#40;tls&#91;:SOURCE_PATH&#93; &#61; path′&#41; : delete&#33;&#40;tls, :SOURCE_PATH&#41;</span>
           </td>
         </tr>
         <tr id='L279'>
@@ -2829,7 +2857,7 @@
           <td>
             
             
-            <span class='code'>iterate&#40;x::Number&#41; &#61; &#40;x, nothing&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L280'>
@@ -2839,1147 +2867,7 @@
           <td>
             
             
-            <span class='code'>iterate&#40;x::Number, ::Any&#41; &#61; nothing</span>
-          </td>
-        </tr>
-        <tr id='L281'>
-          <td class='lineno'>281</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>isempty&#40;x::Number&#41; &#61; false</span>
-          </td>
-        </tr>
-        <tr id='L282'>
-          <td class='lineno'>282</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>in&#40;x::Number, y::Number&#41; &#61; x &#61;&#61; y</span>
-          </td>
-        </tr>
-        <tr id='L283'>
-          <td class='lineno'>283</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L284'>
-          <td class='lineno'>284</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>map&#40;f, x::Number, ys::Number...&#41; &#61; f&#40;x, ys...&#41;</span>
-          </td>
-        </tr>
-        <tr id='L285'>
-          <td class='lineno'>285</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L286'>
-          <td class='lineno'>286</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&quot;&quot;&quot;</span>
-          </td>
-        </tr>
-        <tr id='L287'>
-          <td class='lineno'>287</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    zero&#40;x&#41;</span>
-          </td>
-        </tr>
-        <tr id='L288'>
-          <td class='lineno'>288</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    zero&#40;::Type&#41;</span>
-          </td>
-        </tr>
-        <tr id='L289'>
-          <td class='lineno'>289</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L290'>
-          <td class='lineno'>290</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>Get the additive identity element for the type of &#96;x&#96; &#40;&#96;x&#96; can also specify the type itself&#41;.</span>
-          </td>
-        </tr>
-        <tr id='L291'>
-          <td class='lineno'>291</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L292'>
-          <td class='lineno'>292</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>See also &#91;&#96;iszero&#96;&#93;&#40;@ref&#41;, &#91;&#96;one&#96;&#93;&#40;@ref&#41;, &#91;&#96;oneunit&#96;&#93;&#40;@ref&#41;, &#91;&#96;oftype&#96;&#93;&#40;@ref&#41;.</span>
-          </td>
-        </tr>
-        <tr id='L293'>
-          <td class='lineno'>293</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L294'>
-          <td class='lineno'>294</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'># Examples</span>
-          </td>
-        </tr>
-        <tr id='L295'>
-          <td class='lineno'>295</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
-          </td>
-        </tr>
-        <tr id='L296'>
-          <td class='lineno'>296</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>julia&gt; zero&#40;1&#41;</span>
-          </td>
-        </tr>
-        <tr id='L297'>
-          <td class='lineno'>297</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>0</span>
-          </td>
-        </tr>
-        <tr id='L298'>
-          <td class='lineno'>298</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L299'>
-          <td class='lineno'>299</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>julia&gt; zero&#40;big&quot;2.0&quot;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L300'>
-          <td class='lineno'>300</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>0.0</span>
-          </td>
-        </tr>
-        <tr id='L301'>
-          <td class='lineno'>301</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L302'>
-          <td class='lineno'>302</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>julia&gt; zero&#40;rand&#40;2,2&#41;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L303'>
-          <td class='lineno'>303</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>2×2 Matrix&#123;Float64&#125;:</span>
-          </td>
-        </tr>
-        <tr id='L304'>
-          <td class='lineno'>304</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'> 0.0  0.0</span>
-          </td>
-        </tr>
-        <tr id='L305'>
-          <td class='lineno'>305</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'> 0.0  0.0</span>
-          </td>
-        </tr>
-        <tr id='L306'>
-          <td class='lineno'>306</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;&#96;&#96;</span>
-          </td>
-        </tr>
-        <tr id='L307'>
-          <td class='lineno'>307</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&quot;&quot;&quot;</span>
-          </td>
-        </tr>
-        <tr id='L308'>
-          <td class='lineno'>308</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>zero&#40;x::Number&#41; &#61; oftype&#40;x,0&#41;</span>
-          </td>
-        </tr>
-        <tr id='L309'>
-          <td class='lineno'>309</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>zero&#40;::Type&#123;T&#125;&#41; where &#123;T&lt;:Number&#125; &#61; convert&#40;T,0&#41;</span>
-          </td>
-        </tr>
-        <tr id='L310'>
-          <td class='lineno'>310</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>zero&#40;::Type&#123;Union&#123;&#125;&#125;, slurp...&#41; &#61; Union&#123;&#125;&#40;0&#41;</span>
-          </td>
-        </tr>
-        <tr id='L311'>
-          <td class='lineno'>311</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L312'>
-          <td class='lineno'>312</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&quot;&quot;&quot;</span>
-          </td>
-        </tr>
-        <tr id='L313'>
-          <td class='lineno'>313</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    one&#40;x&#41;</span>
-          </td>
-        </tr>
-        <tr id='L314'>
-          <td class='lineno'>314</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    one&#40;T::type&#41;</span>
-          </td>
-        </tr>
-        <tr id='L315'>
-          <td class='lineno'>315</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L316'>
-          <td class='lineno'>316</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>Return a multiplicative identity for &#96;x&#96;: a value such that</span>
-          </td>
-        </tr>
-        <tr id='L317'>
-          <td class='lineno'>317</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;one&#40;x&#41;*x &#61;&#61; x*one&#40;x&#41; &#61;&#61; x&#96;.  Alternatively &#96;one&#40;T&#41;&#96; can</span>
-          </td>
-        </tr>
-        <tr id='L318'>
-          <td class='lineno'>318</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>take a type &#96;T&#96;, in which case &#96;one&#96; returns a multiplicative</span>
-          </td>
-        </tr>
-        <tr id='L319'>
-          <td class='lineno'>319</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>identity for any &#96;x&#96; of type &#96;T&#96;.</span>
-          </td>
-        </tr>
-        <tr id='L320'>
-          <td class='lineno'>320</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L321'>
-          <td class='lineno'>321</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>If possible, &#96;one&#40;x&#41;&#96; returns a value of the same type as &#96;x&#96;,</span>
-          </td>
-        </tr>
-        <tr id='L322'>
-          <td class='lineno'>322</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>and &#96;one&#40;T&#41;&#96; returns a value of type &#96;T&#96;.  However, this may</span>
-          </td>
-        </tr>
-        <tr id='L323'>
-          <td class='lineno'>323</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>not be the case for types representing dimensionful quantities</span>
-          </td>
-        </tr>
-        <tr id='L324'>
-          <td class='lineno'>324</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#40;e.g. time in days&#41;, since the multiplicative</span>
-          </td>
-        </tr>
-        <tr id='L325'>
-          <td class='lineno'>325</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>identity must be dimensionless.  In that case, &#96;one&#40;x&#41;&#96;</span>
-          </td>
-        </tr>
-        <tr id='L326'>
-          <td class='lineno'>326</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>should return an identity value of the same precision</span>
-          </td>
-        </tr>
-        <tr id='L327'>
-          <td class='lineno'>327</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#40;and shape, for matrices&#41; as &#96;x&#96;.</span>
-          </td>
-        </tr>
-        <tr id='L328'>
-          <td class='lineno'>328</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L329'>
-          <td class='lineno'>329</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>If you want a quantity that is of the same type as &#96;x&#96;, or of type &#96;T&#96;,</span>
-          </td>
-        </tr>
-        <tr id='L330'>
-          <td class='lineno'>330</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>even if &#96;x&#96; is dimensionful, use &#91;&#96;oneunit&#96;&#93;&#40;@ref&#41; instead.</span>
-          </td>
-        </tr>
-        <tr id='L331'>
-          <td class='lineno'>331</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L332'>
-          <td class='lineno'>332</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>See also the &#91;&#96;identity&#96;&#93;&#40;@ref&#41; function,</span>
-          </td>
-        </tr>
-        <tr id='L333'>
-          <td class='lineno'>333</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>and &#96;I&#96; in &#91;&#96;LinearAlgebra&#96;&#93;&#40;@ref man-linalg&#41; for the identity matrix.</span>
-          </td>
-        </tr>
-        <tr id='L334'>
-          <td class='lineno'>334</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L335'>
-          <td class='lineno'>335</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'># Examples</span>
-          </td>
-        </tr>
-        <tr id='L336'>
-          <td class='lineno'>336</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
-          </td>
-        </tr>
-        <tr id='L337'>
-          <td class='lineno'>337</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>julia&gt; one&#40;3.7&#41;</span>
-          </td>
-        </tr>
-        <tr id='L338'>
-          <td class='lineno'>338</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>1.0</span>
-          </td>
-        </tr>
-        <tr id='L339'>
-          <td class='lineno'>339</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L340'>
-          <td class='lineno'>340</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>julia&gt; one&#40;Int&#41;</span>
-          </td>
-        </tr>
-        <tr id='L341'>
-          <td class='lineno'>341</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>1</span>
-          </td>
-        </tr>
-        <tr id='L342'>
-          <td class='lineno'>342</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L343'>
-          <td class='lineno'>343</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>julia&gt; import Dates; one&#40;Dates.Day&#40;1&#41;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L344'>
-          <td class='lineno'>344</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>1</span>
-          </td>
-        </tr>
-        <tr id='L345'>
-          <td class='lineno'>345</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;&#96;&#96;</span>
-          </td>
-        </tr>
-        <tr id='L346'>
-          <td class='lineno'>346</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&quot;&quot;&quot;</span>
-          </td>
-        </tr>
-        <tr id='L347'>
-          <td class='lineno'>347</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>one&#40;::Type&#123;T&#125;&#41; where &#123;T&lt;:Number&#125; &#61; convert&#40;T,1&#41;</span>
-          </td>
-        </tr>
-        <tr id='L348'>
-          <td class='lineno'>348</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>one&#40;x::T&#41; where &#123;T&lt;:Number&#125; &#61; one&#40;T&#41;</span>
-          </td>
-        </tr>
-        <tr id='L349'>
-          <td class='lineno'>349</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>one&#40;::Type&#123;Union&#123;&#125;&#125;, slurp...&#41; &#61; Union&#123;&#125;&#40;1&#41;</span>
-          </td>
-        </tr>
-        <tr id='L350'>
-          <td class='lineno'>350</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'># note that convert&#40;T, 1&#41; should throw an error if T is dimensionful,</span>
-          </td>
-        </tr>
-        <tr id='L351'>
-          <td class='lineno'>351</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'># so this fallback definition should be okay.</span>
-          </td>
-        </tr>
-        <tr id='L352'>
-          <td class='lineno'>352</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L353'>
-          <td class='lineno'>353</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&quot;&quot;&quot;</span>
-          </td>
-        </tr>
-        <tr id='L354'>
-          <td class='lineno'>354</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    oneunit&#40;x::T&#41;</span>
-          </td>
-        </tr>
-        <tr id='L355'>
-          <td class='lineno'>355</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    oneunit&#40;T::Type&#41;</span>
-          </td>
-        </tr>
-        <tr id='L356'>
-          <td class='lineno'>356</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L357'>
-          <td class='lineno'>357</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>Return &#96;T&#40;one&#40;x&#41;&#41;&#96;, where &#96;T&#96; is either the type of the argument or</span>
-          </td>
-        </tr>
-        <tr id='L358'>
-          <td class='lineno'>358</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#40;if a type is passed&#41; the argument.  This differs from &#91;&#96;one&#96;&#93;&#40;@ref&#41; for</span>
-          </td>
-        </tr>
-        <tr id='L359'>
-          <td class='lineno'>359</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>dimensionful quantities: &#96;one&#96; is dimensionless &#40;a multiplicative identity&#41;</span>
-          </td>
-        </tr>
-        <tr id='L360'>
-          <td class='lineno'>360</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>while &#96;oneunit&#96; is dimensionful &#40;of the same type as &#96;x&#96;, or of type &#96;T&#96;&#41;.</span>
-          </td>
-        </tr>
-        <tr id='L361'>
-          <td class='lineno'>361</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L362'>
-          <td class='lineno'>362</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'># Examples</span>
-          </td>
-        </tr>
-        <tr id='L363'>
-          <td class='lineno'>363</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
-          </td>
-        </tr>
-        <tr id='L364'>
-          <td class='lineno'>364</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>julia&gt; oneunit&#40;3.7&#41;</span>
-          </td>
-        </tr>
-        <tr id='L365'>
-          <td class='lineno'>365</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>1.0</span>
-          </td>
-        </tr>
-        <tr id='L366'>
-          <td class='lineno'>366</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L367'>
-          <td class='lineno'>367</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>julia&gt; import Dates; oneunit&#40;Dates.Day&#41;</span>
-          </td>
-        </tr>
-        <tr id='L368'>
-          <td class='lineno'>368</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>1 day</span>
-          </td>
-        </tr>
-        <tr id='L369'>
-          <td class='lineno'>369</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;&#96;&#96;</span>
-          </td>
-        </tr>
-        <tr id='L370'>
-          <td class='lineno'>370</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&quot;&quot;&quot;</span>
-          </td>
-        </tr>
-        <tr id='L371'>
-          <td class='lineno'>371</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>oneunit&#40;x::T&#41; where &#123;T&#125; &#61; T&#40;one&#40;x&#41;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L372'>
-          <td class='lineno'>372</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>oneunit&#40;::Type&#123;T&#125;&#41; where &#123;T&#125; &#61; T&#40;one&#40;T&#41;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L373'>
-          <td class='lineno'>373</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>oneunit&#40;::Type&#123;Union&#123;&#125;&#125;, slurp...&#41; &#61; Union&#123;&#125;&#40;1&#41;</span>
-          </td>
-        </tr>
-        <tr id='L374'>
-          <td class='lineno'>374</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L375'>
-          <td class='lineno'>375</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&quot;&quot;&quot;</span>
-          </td>
-        </tr>
-        <tr id='L376'>
-          <td class='lineno'>376</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    big&#40;T::Type&#41;</span>
-          </td>
-        </tr>
-        <tr id='L377'>
-          <td class='lineno'>377</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L378'>
-          <td class='lineno'>378</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>Compute the type that represents the numeric type &#96;T&#96; with arbitrary precision.</span>
-          </td>
-        </tr>
-        <tr id='L379'>
-          <td class='lineno'>379</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>Equivalent to &#96;typeof&#40;big&#40;zero&#40;T&#41;&#41;&#41;&#96;.</span>
-          </td>
-        </tr>
-        <tr id='L380'>
-          <td class='lineno'>380</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L381'>
-          <td class='lineno'>381</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'># Examples</span>
-          </td>
-        </tr>
-        <tr id='L382'>
-          <td class='lineno'>382</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
-          </td>
-        </tr>
-        <tr id='L383'>
-          <td class='lineno'>383</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>julia&gt; big&#40;Rational&#41;</span>
-          </td>
-        </tr>
-        <tr id='L384'>
-          <td class='lineno'>384</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>Rational&#123;BigInt&#125;</span>
-          </td>
-        </tr>
-        <tr id='L385'>
-          <td class='lineno'>385</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L386'>
-          <td class='lineno'>386</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>julia&gt; big&#40;Float64&#41;</span>
-          </td>
-        </tr>
-        <tr id='L387'>
-          <td class='lineno'>387</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>BigFloat</span>
-          </td>
-        </tr>
-        <tr id='L388'>
-          <td class='lineno'>388</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L389'>
-          <td class='lineno'>389</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>julia&gt; big&#40;Complex&#123;Int&#125;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L390'>
-          <td class='lineno'>390</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>Complex&#123;BigInt&#125;</span>
-          </td>
-        </tr>
-        <tr id='L391'>
-          <td class='lineno'>391</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&#96;&#96;&#96;</span>
-          </td>
-        </tr>
-        <tr id='L392'>
-          <td class='lineno'>392</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>&quot;&quot;&quot;</span>
-          </td>
-        </tr>
-        <tr id='L393'>
-          <td class='lineno'>393</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>big&#40;::Type&#123;T&#125;&#41; where &#123;T&lt;:Number&#125; &#61; typeof&#40;big&#40;zero&#40;T&#41;&#41;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L394'>
-          <td class='lineno'>394</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>big&#40;::Type&#123;Union&#123;&#125;&#125;, slurp...&#41; &#61; Union&#123;&#125;&#40;0&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
       </tbody>

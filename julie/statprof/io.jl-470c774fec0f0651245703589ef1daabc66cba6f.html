@@ -14,7 +14,7 @@
         StatProfilerHTML.jl report
       </div>
       <div class='generated-on'>
-        Generated on Sun, 17 Aug 2025 12:41:30
+        Generated on Mon, 18 Aug 2025 17:36:15
       </div>
     </div>
     <table>
@@ -3524,10 +3524,10 @@
           <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              2 &#40;0 &#37;&#41;
+              2 &#40;1 &#37;&#41;
               samples spent in save
               <br />
-              
+              1 &#40;50 &#37;&#41; &#40;ex.&#41;,
               1 &#40;50 &#37;&#41; &#40;incl.&#41;
               when called from save
               <a href='io.jl-470c774fec0f0651245703589ef1daabc66cba6f.html#L350'>line 350</a>
@@ -3719,8 +3719,8 @@
         </tr>
         <tr id='L368'>
           <td class='lineno'>368</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
           <td>
             
             
@@ -3810,15 +3810,10 @@
         <tr id='L377'>
           <td class='lineno'>377</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'></td>
           <td>
             
-            <div class='callees'>
-              1 &#40;100 &#37;&#41;
-              samples spent calling
-              <a href='io.jl-470c774fec0f0651245703589ef1daabc66cba6f.html#L427'>_save</a>
-              <br />
-            </div>
+            
             <span class='code'>    _save&#40;png_ptr, info_ptr, image,</span>
           </td>
         </tr>
@@ -4315,29 +4310,10 @@
         <tr id='L427'>
           <td class='lineno'>427</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'></td>
           <td>
-            <div class='call-sites'>
-              2 &#40;0 &#37;&#41;
-              samples spent in _save
-              <br />
-              
-              1 &#40;50 &#37;&#41; &#40;incl.&#41;
-              when called from _save
-              <a href='io.jl-470c774fec0f0651245703589ef1daabc66cba6f.html#L427'>line 427</a>
-              <br />
-              
-              1 &#40;50 &#37;&#41; &#40;incl.&#41;
-              when called from #save#9
-              <a href='io.jl-470c774fec0f0651245703589ef1daabc66cba6f.html#L377'>line 377</a>
-              <br />
-            </div>
-            <div class='callees'>
-              1 &#40;100 &#37;&#41;
-              samples spent calling
-              <a href='io.jl-470c774fec0f0651245703589ef1daabc66cba6f.html#L427'>#_save#13</a>
-              <br />
-            </div>
+            
+            
             <span class='code'>function _save&#40;png_ptr, info_ptr, image::S;</span>
           </td>
         </tr>
@@ -5364,15 +5340,10 @@
         <tr id='L530'>
           <td class='lineno'>530</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'></td>
           <td>
             
-            <div class='callees'>
-              1 &#40;100 &#37;&#41;
-              samples spent calling
-              <a href='io.jl-470c774fec0f0651245703589ef1daabc66cba6f.html#L543'>_write_image</a>
-              <br />
-            </div>
+            
             <span class='code'>    _write_image&#40;permutedims&#40;_prepare_buffer&#40;image&#41;, &#40;2, 1&#41;&#41;, png_ptr, info_ptr&#41;</span>
           </td>
         </tr>
@@ -5498,19 +5469,10 @@
         </tr>
         <tr id='L543'>
           <td class='lineno'>543</td>
-          <td class='tracecount excl'>1 &#40;0 &#37;&#41;</td>
-          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
           <td>
-            <div class='call-sites'>
-              1 &#40;0 &#37;&#41;
-              samples spent in _write_image
-              <br />
-              1 &#40;100 &#37;&#41; &#40;ex.&#41;,
-              1 &#40;100 &#37;&#41; &#40;incl.&#41;
-              when called from #_save#13
-              <a href='io.jl-470c774fec0f0651245703589ef1daabc66cba6f.html#L530'>line 530</a>
-              <br />
-            </div>
+            
             
             <span class='code'>        ccall&#40;</span>
           </td>

@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'></meta>
     <link rel='stylesheet' type='text/css' href='statprofiler.css'></link>
-    <title>StatProfilerHTML - ../../../../../usr/share/julia/base/indices.jl</title>
+    <title>StatProfilerHTML - ../../../.julia/packages/StaticArrays/MTYJP/src/linalg.jl</title>
   </head>
   <body>
     <div class='report-header'>
@@ -14,7 +14,7 @@
         StatProfilerHTML.jl report
       </div>
       <div class='generated-on'>
-        Generated on Sun, 17 Aug 2025 12:41:30
+        Generated on Mon, 18 Aug 2025 17:36:15
       </div>
     </div>
     <table>
@@ -35,7 +35,7 @@
           <td>
             
             
-            <span class='code'># This file is a part of Julia. License is MIT: https://julialang.org/license</span>
+            <span class='code'>import Base: &#43;, -, *, /, \</span>
           </td>
         </tr>
         <tr id='L2'>
@@ -55,7 +55,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>#--------------------------------------------------</span>
           </td>
         </tr>
         <tr id='L4'>
@@ -65,7 +65,7 @@
           <td>
             
             
-            <span class='code'>    Dims&#123;N&#125;</span>
+            <span class='code'># Vector space algebra</span>
           </td>
         </tr>
         <tr id='L5'>
@@ -83,18 +83,9 @@
           <td class='tracecount excl'></td>
           <td class='tracecount incl'></td>
           <td>
-            <div class='call-sites'>
-              9 &#40;0 &#37;&#41;
-              samples spent in -
-              <br />
-              9 &#40;100 &#37;&#41; &#40;ex.&#41;,
-              9 &#40;100 &#37;&#41; &#40;incl.&#41;
-              when called from check_for_intersection_curved
-              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L262'>line 262</a>
-              <br />
-            </div>
             
-            <span class='code'>An &#96;NTuple&#96; of &#96;N&#96; &#96;Int&#96;s used to represent the dimensions</span>
+            
+            <span class='code'># Unary ops</span>
           </td>
         </tr>
         <tr id='L7'>
@@ -104,7 +95,7 @@
           <td>
             
             
-            <span class='code'>of an &#91;&#96;AbstractArray&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'>@inline &#43;&#40;a::StaticArray&#41; &#61; map&#40;&#43;, a&#41;</span>
           </td>
         </tr>
         <tr id='L8'>
@@ -114,7 +105,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>@inline -&#40;a::StaticArray&#41; &#61; map&#40;-, a&#41;</span>
           </td>
         </tr>
         <tr id='L9'>
@@ -124,7 +115,7 @@
           <td>
             
             
-            <span class='code'>Dims&#123;N&#125; &#61; NTuple&#123;N,Int&#125;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L10'>
@@ -134,7 +125,7 @@
           <td>
             
             
-            <span class='code'>DimsInteger&#123;N&#125; &#61; NTuple&#123;N,Integer&#125;</span>
+            <span class='code'># Binary ops</span>
           </td>
         </tr>
         <tr id='L11'>
@@ -144,7 +135,7 @@
           <td>
             
             
-            <span class='code'>Indices&#123;N&#125; &#61; NTuple&#123;N,AbstractUnitRange&#125;</span>
+            <span class='code'># Between arrays</span>
           </td>
         </tr>
         <tr id='L12'>
@@ -154,7 +145,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@inline &#43;&#40;a::StaticArray, b::StaticArray&#41; &#61; map&#40;&#43;, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L13'>
@@ -164,7 +155,7 @@
           <td>
             
             
-            <span class='code'>## Traits for array types ##</span>
+            <span class='code'>@inline &#43;&#40;a::AbstractArray, b::StaticArray&#41; &#61; map&#40;&#43;, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L14'>
@@ -174,7 +165,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@inline &#43;&#40;a::StaticArray, b::AbstractArray&#41; &#61; map&#40;&#43;, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L15'>
@@ -184,17 +175,31 @@
           <td>
             
             
-            <span class='code'>abstract type IndexStyle end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L16'>
           <td class='lineno'>16</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>10 &#40;4 &#37;&#41;</td>
           <td>
-            
-            
-            <span class='code'>&quot;&quot;&quot;</span>
+            <div class='call-sites'>
+              10 &#40;4 &#37;&#41;
+              samples spent in -
+              <br />
+              
+              10 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from check_for_intersection_curved
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L284'>line 284</a>
+              <br />
+            </div>
+            <div class='callees'>
+              10 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='mapreduce.jl-e10303cea1d682bf49ed6b838522121366eb9ddf.html#L39'>map</a>
+              <br />
+            </div>
+            <span class='code'>@inline -&#40;a::StaticArray, b::StaticArray&#41; &#61; map&#40;-, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L17'>
@@ -204,7 +209,7 @@
           <td>
             
             
-            <span class='code'>    IndexLinear&#40;&#41;</span>
+            <span class='code'>@inline -&#40;a::AbstractArray, b::StaticArray&#41; &#61; map&#40;-, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L18'>
@@ -214,7 +219,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@inline -&#40;a::StaticArray, b::AbstractArray&#41; &#61; map&#40;-, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L19'>
@@ -224,7 +229,7 @@
           <td>
             
             
-            <span class='code'>Subtype of &#91;&#96;IndexStyle&#96;&#93;&#40;@ref&#41; used to describe arrays which</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L20'>
@@ -234,7 +239,7 @@
           <td>
             
             
-            <span class='code'>are optimally indexed by one linear index.</span>
+            <span class='code'># Scalar-array</span>
           </td>
         </tr>
         <tr id='L21'>
@@ -244,7 +249,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@inline *&#40;a::Number, b::StaticArray&#41; &#61; map&#40;c-&gt;a*c, b&#41;</span>
           </td>
         </tr>
         <tr id='L22'>
@@ -254,7 +259,7 @@
           <td>
             
             
-            <span class='code'>A linear indexing style uses one integer index to describe the position in the array</span>
+            <span class='code'>@inline *&#40;a::StaticArray, b::Number&#41; &#61; map&#40;c-&gt;c*b, a&#41;</span>
           </td>
         </tr>
         <tr id='L23'>
@@ -264,7 +269,7 @@
           <td>
             
             
-            <span class='code'>&#40;even if it&#39;s a multidimensional array&#41; and column-major</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L24'>
@@ -274,7 +279,7 @@
           <td>
             
             
-            <span class='code'>ordering is used to efficiently access the elements. This means that</span>
+            <span class='code'>@inline /&#40;a::StaticArray, b::Number&#41; &#61; map&#40;c-&gt;c/b, a&#41;</span>
           </td>
         </tr>
         <tr id='L25'>
@@ -284,7 +289,7 @@
           <td>
             
             
-            <span class='code'>requesting &#91;&#96;eachindex&#96;&#93;&#40;@ref&#41; from an array that is &#96;IndexLinear&#96; will return</span>
+            <span class='code'>@inline \&#40;a::Number, b::StaticArray&#41; &#61; map&#40;c-&gt;a\c, b&#41;</span>
           </td>
         </tr>
         <tr id='L26'>
@@ -294,7 +299,7 @@
           <td>
             
             
-            <span class='code'>a simple one-dimensional range, even if it is multidimensional.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L27'>
@@ -314,7 +319,7 @@
           <td>
             
             
-            <span class='code'>A custom array that reports its &#96;IndexStyle&#96; as &#96;IndexLinear&#96; only needs</span>
+            <span class='code'># With UniformScaling</span>
           </td>
         </tr>
         <tr id='L29'>
@@ -324,7 +329,7 @@
           <td>
             
             
-            <span class='code'>to implement indexing &#40;and indexed assignment&#41; with a single &#96;Int&#96; index;</span>
+            <span class='code'>@inline &#43;&#40;a::StaticMatrix, b::UniformScaling&#41; &#61; _plus_uniform&#40;Size&#40;a&#41;, a, b.λ&#41;</span>
           </td>
         </tr>
         <tr id='L30'>
@@ -334,7 +339,7 @@
           <td>
             
             
-            <span class='code'>all other indexing expressions — including multidimensional accesses — will</span>
+            <span class='code'>@inline &#43;&#40;a::UniformScaling, b::StaticMatrix&#41; &#61; _plus_uniform&#40;Size&#40;b&#41;, b, a.λ&#41;</span>
           </td>
         </tr>
         <tr id='L31'>
@@ -344,7 +349,7 @@
           <td>
             
             
-            <span class='code'>be recomputed to the linear index.  For example, if &#96;A&#96; were a &#96;2×3&#96; custom</span>
+            <span class='code'>@inline -&#40;a::StaticMatrix, b::UniformScaling&#41; &#61; _plus_uniform&#40;Size&#40;a&#41;, a, -b.λ&#41;</span>
           </td>
         </tr>
         <tr id='L32'>
@@ -354,7 +359,7 @@
           <td>
             
             
-            <span class='code'>matrix with linear indexing, and we referenced &#96;A&#91;1, 3&#93;&#96;, this would be</span>
+            <span class='code'>@inline -&#40;a::UniformScaling, b::StaticMatrix&#41; &#61; _plus_uniform&#40;Size&#40;b&#41;, -b, a.λ&#41;</span>
           </td>
         </tr>
         <tr id='L33'>
@@ -364,7 +369,7 @@
           <td>
             
             
-            <span class='code'>recomputed to the equivalent linear index and call &#96;A&#91;5&#93;&#96; since &#96;1 &#43; 2*&#40;3 - 1&#41; &#61; 5&#96;.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L34'>
@@ -374,7 +379,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@generated function _plus_uniform&#40;::Size&#123;S&#125;, a::StaticMatrix, λ&#41; where &#123;S&#125;</span>
           </td>
         </tr>
         <tr id='L35'>
@@ -384,7 +389,7 @@
           <td>
             
             
-            <span class='code'>See also &#91;&#96;IndexCartesian&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'>    n &#61; checksquare&#40;a&#41;</span>
           </td>
         </tr>
         <tr id='L36'>
@@ -394,7 +399,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    exprs &#61; &#91;i &#61;&#61; j ? :&#40;a&#91;&#36;&#40;LinearIndices&#40;S&#41;&#91;i, j&#93;&#41;&#93; &#43; λ&#41; : :&#40;a&#91;&#36;&#40;LinearIndices&#40;S&#41;&#91;i, j&#93;&#41;&#93;&#41; for i &#61; 1:n, j &#61; 1:n&#93;</span>
           </td>
         </tr>
         <tr id='L37'>
@@ -404,7 +409,7 @@
           <td>
             
             
-            <span class='code'>struct IndexLinear &lt;: IndexStyle end</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L38'>
@@ -414,7 +419,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        &#36;&#40;Expr&#40;:meta, :inline&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L39'>
@@ -424,7 +429,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>        @inbounds return similar_type&#40;a, promote_type&#40;eltype&#40;a&#41;, typeof&#40;λ&#41;&#41;&#41;&#40;tuple&#40;&#36;&#40;exprs...&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L40'>
@@ -434,7 +439,7 @@
           <td>
             
             
-            <span class='code'>    IndexCartesian&#40;&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L41'>
@@ -444,7 +449,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L42'>
@@ -454,7 +459,7 @@
           <td>
             
             
-            <span class='code'>Subtype of &#91;&#96;IndexStyle&#96;&#93;&#40;@ref&#41; used to describe arrays which</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L43'>
@@ -464,7 +469,7 @@
           <td>
             
             
-            <span class='code'>are optimally indexed by a Cartesian index. This is the default</span>
+            <span class='code'>@inline *&#40;a::UniformScaling, b::Union&#123;StaticMatrix,StaticVector&#125;&#41; &#61; a.λ * b</span>
           </td>
         </tr>
         <tr id='L44'>
@@ -474,7 +479,7 @@
           <td>
             
             
-            <span class='code'>for new custom &#91;&#96;AbstractArray&#96;&#93;&#40;@ref&#41; subtypes.</span>
+            <span class='code'>@inline *&#40;a::StaticMatrix, b::UniformScaling&#41; &#61; a * b.λ</span>
           </td>
         </tr>
         <tr id='L45'>
@@ -484,7 +489,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@inline \&#40;a::UniformScaling, b::Union&#123;StaticMatrix,StaticVector&#125;&#41; &#61; a.λ \ b</span>
           </td>
         </tr>
         <tr id='L46'>
@@ -494,7 +499,7 @@
           <td>
             
             
-            <span class='code'>A Cartesian indexing style uses multiple integer indices to describe the position in</span>
+            <span class='code'>@inline /&#40;a::StaticMatrix, b::UniformScaling&#41; &#61; a / b.λ</span>
           </td>
         </tr>
         <tr id='L47'>
@@ -504,7 +509,7 @@
           <td>
             
             
-            <span class='code'>a multidimensional array, with exactly one index per dimension. This means that</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L48'>
@@ -514,7 +519,7 @@
           <td>
             
             
-            <span class='code'>requesting &#91;&#96;eachindex&#96;&#93;&#40;@ref&#41; from an array that is &#96;IndexCartesian&#96; will return</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L49'>
@@ -524,7 +529,7 @@
           <td>
             
             
-            <span class='code'>a range of &#91;&#96;CartesianIndices&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'># Ternary ops</span>
           </td>
         </tr>
         <tr id='L50'>
@@ -534,7 +539,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@inline Base.muladd&#40;scalar::Number, a::StaticArray, b::StaticArray&#41; &#61; map&#40;&#40;ai, bi&#41; -&gt; muladd&#40;scalar, ai, bi&#41;, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L51'>
@@ -544,7 +549,7 @@
           <td>
             
             
-            <span class='code'>A &#96;N&#96;-dimensional custom array that reports its &#96;IndexStyle&#96; as &#96;IndexCartesian&#96; needs</span>
+            <span class='code'>@inline Base.muladd&#40;a::StaticArray, scalar::Number, b::StaticArray&#41; &#61; map&#40;&#40;ai, bi&#41; -&gt; muladd&#40;ai, scalar, bi&#41;, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L52'>
@@ -554,7 +559,7 @@
           <td>
             
             
-            <span class='code'>to implement indexing &#40;and indexed assignment&#41; with exactly &#96;N&#96; &#96;Int&#96; indices;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L53'>
@@ -564,7 +569,7 @@
           <td>
             
             
-            <span class='code'>all other indexing expressions — including linear indexing — will</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L54'>
@@ -574,7 +579,7 @@
           <td>
             
             
-            <span class='code'>be recomputed to the equivalent Cartesian location.  For example, if &#96;A&#96; were a &#96;2×3&#96; custom</span>
+            <span class='code'># @fastmath operators</span>
           </td>
         </tr>
         <tr id='L55'>
@@ -584,7 +589,7 @@
           <td>
             
             
-            <span class='code'>matrix with cartesian indexing, and we referenced &#96;A&#91;5&#93;&#96;, this would be</span>
+            <span class='code'>@inline Base.FastMath.mul_fast&#40;a::Number, b::StaticArray&#41; &#61; map&#40;c -&gt; Base.FastMath.mul_fast&#40;a, c&#41;, b&#41;</span>
           </td>
         </tr>
         <tr id='L56'>
@@ -594,7 +599,7 @@
           <td>
             
             
-            <span class='code'>recomputed to the equivalent Cartesian index and call &#96;A&#91;1, 3&#93;&#96; since &#96;5 &#61; 1 &#43; 2*&#40;3 - 1&#41;&#96;.</span>
+            <span class='code'>@inline Base.FastMath.mul_fast&#40;a::StaticArray, b::Number&#41; &#61; map&#40;c -&gt; Base.FastMath.mul_fast&#40;c, b&#41;, a&#41;</span>
           </td>
         </tr>
         <tr id='L57'>
@@ -614,7 +619,7 @@
           <td>
             
             
-            <span class='code'>It is significantly more expensive to compute Cartesian indices from a linear index than it is</span>
+            <span class='code'>@inline Base.FastMath.add_fast&#40;a::StaticArray, b::StaticArray&#41; &#61; map&#40;Base.FastMath.add_fast, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L59'>
@@ -624,7 +629,7 @@
           <td>
             
             
-            <span class='code'>to go the other way.  The former operation requires division — a very costly operation — whereas</span>
+            <span class='code'>@inline Base.FastMath.sub_fast&#40;a::StaticArray, b::StaticArray&#41; &#61; map&#40;Base.FastMath.sub_fast, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L60'>
@@ -634,7 +639,7 @@
           <td>
             
             
-            <span class='code'>the latter only uses multiplication and addition and is essentially free. This asymmetry means it</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L61'>
@@ -644,7 +649,7 @@
           <td>
             
             
-            <span class='code'>is far more costly to use linear indexing with an &#96;IndexCartesian&#96; array than it is to use</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L62'>
@@ -654,7 +659,7 @@
           <td>
             
             
-            <span class='code'>Cartesian indexing with an &#96;IndexLinear&#96; array.</span>
+            <span class='code'>#--------------------------------------------------</span>
           </td>
         </tr>
         <tr id='L63'>
@@ -664,7 +669,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># Matrix algebra</span>
           </td>
         </tr>
         <tr id='L64'>
@@ -674,7 +679,7 @@
           <td>
             
             
-            <span class='code'>See also &#91;&#96;IndexLinear&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L65'>
@@ -684,7 +689,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'># _adjointtype returns the eltype of the container when computing the adjoint/transpose</span>
           </td>
         </tr>
         <tr id='L66'>
@@ -694,7 +699,7 @@
           <td>
             
             
-            <span class='code'>struct IndexCartesian &lt;: IndexStyle end</span>
+            <span class='code'># of a static array. Using this method instead of calling &#96;Base.promote_op&#96; directly</span>
           </td>
         </tr>
         <tr id='L67'>
@@ -704,7 +709,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># helps with type-inference, particularly for nested static arrays,</span>
           </td>
         </tr>
         <tr id='L68'>
@@ -714,7 +719,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'># where the adjoint is applied recursively.</span>
           </td>
         </tr>
         <tr id='L69'>
@@ -724,7 +729,7 @@
           <td>
             
             
-            <span class='code'>    IndexStyle&#40;A&#41;</span>
+            <span class='code'>@inline _adjointtype&#40;f, ::Type&#123;T&#125;&#41; where &#123;T&#125; &#61; Base.promote_op&#40;f, T&#41;</span>
           </td>
         </tr>
         <tr id='L70'>
@@ -734,7 +739,7 @@
           <td>
             
             
-            <span class='code'>    IndexStyle&#40;typeof&#40;A&#41;&#41;</span>
+            <span class='code'>for S in &#40;:SMatrix, :MMatrix&#41;</span>
           </td>
         </tr>
         <tr id='L71'>
@@ -744,7 +749,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    @eval @inline _adjointtype&#40;f, ::Type&#123;&#36;S&#123;M,N,T,L&#125;&#125;&#41; where &#123;M,N,T,L&#125; &#61; &#36;S&#123;N,M,_adjointtype&#40;f, T&#41;,L&#125;</span>
           </td>
         </tr>
         <tr id='L72'>
@@ -754,7 +759,7 @@
           <td>
             
             
-            <span class='code'>&#96;IndexStyle&#96; specifies the &quot;native indexing style&quot; for array &#96;A&#96;. When</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L73'>
@@ -764,7 +769,7 @@
           <td>
             
             
-            <span class='code'>you define a new &#91;&#96;AbstractArray&#96;&#93;&#40;@ref&#41; type, you can choose to implement</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L74'>
@@ -774,7 +779,7 @@
           <td>
             
             
-            <span class='code'>either linear indexing &#40;with &#91;&#96;IndexLinear&#96;&#93;&#40;@ref&#41;&#41; or cartesian indexing.</span>
+            <span class='code'># Transpose, etc</span>
           </td>
         </tr>
         <tr id='L75'>
@@ -784,7 +789,7 @@
           <td>
             
             
-            <span class='code'>If you decide to only implement linear indexing, then you must set this trait for your array</span>
+            <span class='code'>@inline transpose&#40;m::StaticMatrix&#41; &#61; _transpose&#40;Size&#40;m&#41;, m&#41;</span>
           </td>
         </tr>
         <tr id='L76'>
@@ -794,7 +799,7 @@
           <td>
             
             
-            <span class='code'>type:</span>
+            <span class='code'># note: transpose of StaticVector is a Transpose, handled by Base</span>
           </td>
         </tr>
         <tr id='L77'>
@@ -804,7 +809,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@inline transpose&#40;a::Transpose&#123;&lt;:Any,&lt;:Union&#123;StaticVector,StaticMatrix&#125;&#125;&#41; &#61; a.parent</span>
           </td>
         </tr>
         <tr id='L78'>
@@ -814,7 +819,7 @@
           <td>
             
             
-            <span class='code'>    Base.IndexStyle&#40;::Type&#123;&lt;:MyArray&#125;&#41; &#61; IndexLinear&#40;&#41;</span>
+            <span class='code'>@inline transpose&#40;a::Adjoint&#123;&lt;:Any,&lt;:Union&#123;StaticVector,StaticMatrix&#125;&#125;&#41; &#61; conj&#40;a.parent&#41;</span>
           </td>
         </tr>
         <tr id='L79'>
@@ -824,7 +829,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@inline transpose&#40;a::Adjoint&#123;&lt;:Real,&lt;:Union&#123;StaticVector,StaticMatrix&#125;&#125;&#41; &#61; a.parent</span>
           </td>
         </tr>
         <tr id='L80'>
@@ -834,7 +839,7 @@
           <td>
             
             
-            <span class='code'>The default is &#91;&#96;IndexCartesian&#40;&#41;&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L81'>
@@ -844,7 +849,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@generated function _transpose&#40;::Size&#123;S&#125;, m::StaticMatrix&#123;n1, n2, T&#125;&#41; where &#123;n1, n2, S, T&#125;</span>
           </td>
         </tr>
         <tr id='L82'>
@@ -854,7 +859,7 @@
           <td>
             
             
-            <span class='code'>Julia&#39;s internal indexing machinery will automatically &#40;and invisibly&#41;</span>
+            <span class='code'>    exprs &#61; &#91;:&#40;transpose&#40;m&#91;&#36;&#40;LinearIndices&#40;S&#41;&#91;j1, j2&#93;&#41;&#93;&#41;&#41; for j2 in 1:n2, j1 in 1:n1&#93;</span>
           </td>
         </tr>
         <tr id='L83'>
@@ -864,7 +869,7 @@
           <td>
             
             
-            <span class='code'>recompute all indexing operations into the preferred style. This allows users</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L84'>
@@ -874,7 +879,7 @@
           <td>
             
             
-            <span class='code'>to access elements of your array using any indexing style, even when explicit</span>
+            <span class='code'>        &#36;&#40;Expr&#40;:meta, :inline&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L85'>
@@ -884,7 +889,7 @@
           <td>
             
             
-            <span class='code'>methods have not been provided.</span>
+            <span class='code'>        elements &#61; tuple&#40;&#36;&#40;exprs...&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L86'>
@@ -894,7 +899,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        @inbounds return similar_type&#40;&#36;m, _adjointtype&#40;transpose, T&#41;, Size&#40;&#36;&#40;n2,n1&#41;&#41;&#41;&#40;elements&#41;</span>
           </td>
         </tr>
         <tr id='L87'>
@@ -904,7 +909,7 @@
           <td>
             
             
-            <span class='code'>If you define both styles of indexing for your &#96;AbstractArray&#96;, this</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L88'>
@@ -914,7 +919,7 @@
           <td>
             
             
-            <span class='code'>trait can be used to select the most performant indexing style. Some</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L89'>
@@ -924,7 +929,7 @@
           <td>
             
             
-            <span class='code'>methods check this trait on their inputs, and dispatch to different</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L90'>
@@ -934,7 +939,7 @@
           <td>
             
             
-            <span class='code'>algorithms depending on the most efficient access pattern. In</span>
+            <span class='code'>@inline adjoint&#40;m::StaticMatrix&#41; &#61; _adjoint&#40;Size&#40;m&#41;, m&#41;</span>
           </td>
         </tr>
         <tr id='L91'>
@@ -944,7 +949,7 @@
           <td>
             
             
-            <span class='code'>particular, &#91;&#96;eachindex&#96;&#93;&#40;@ref&#41; creates an iterator whose type depends</span>
+            <span class='code'>@inline adjoint&#40;a::Transpose&#123;&lt;:Any,&lt;:Union&#123;StaticVector,StaticMatrix&#125;&#125;&#41; &#61; conj&#40;a.parent&#41;</span>
           </td>
         </tr>
         <tr id='L92'>
@@ -954,7 +959,7 @@
           <td>
             
             
-            <span class='code'>on the setting of this trait.</span>
+            <span class='code'>@inline adjoint&#40;a::Transpose&#123;&lt;:Real,&lt;:Union&#123;StaticVector,StaticMatrix&#125;&#125;&#41; &#61; a.parent</span>
           </td>
         </tr>
         <tr id='L93'>
@@ -964,7 +969,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>@inline adjoint&#40;a::Adjoint&#123;&lt;:Any,&lt;:Union&#123;StaticVector,StaticMatrix&#125;&#125;&#41; &#61; a.parent</span>
           </td>
         </tr>
         <tr id='L94'>
@@ -974,7 +979,7 @@
           <td>
             
             
-            <span class='code'>IndexStyle&#40;A::AbstractArray&#41; &#61; IndexStyle&#40;typeof&#40;A&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L95'>
@@ -984,7 +989,7 @@
           <td>
             
             
-            <span class='code'>IndexStyle&#40;::Type&#123;Union&#123;&#125;&#125;, slurp...&#41; &#61; IndexLinear&#40;&#41;</span>
+            <span class='code'>@generated function _adjoint&#40;::Size&#123;S&#125;, m::StaticMatrix&#123;n1, n2, T&#125;&#41; where &#123;n1, n2, S, T&#125;</span>
           </td>
         </tr>
         <tr id='L96'>
@@ -994,7 +999,7 @@
           <td>
             
             
-            <span class='code'>IndexStyle&#40;::Type&#123;&lt;:AbstractArray&#125;&#41; &#61; IndexCartesian&#40;&#41;</span>
+            <span class='code'>    exprs &#61; &#91;:&#40;adjoint&#40;m&#91;&#36;&#40;LinearIndices&#40;S&#41;&#91;j1, j2&#93;&#41;&#93;&#41;&#41; for j2 in 1:n2, j1 in 1:n1&#93;</span>
           </td>
         </tr>
         <tr id='L97'>
@@ -1004,7 +1009,7 @@
           <td>
             
             
-            <span class='code'>IndexStyle&#40;::Type&#123;&lt;:Array&#125;&#41; &#61; IndexLinear&#40;&#41;</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L98'>
@@ -1014,7 +1019,7 @@
           <td>
             
             
-            <span class='code'>IndexStyle&#40;::Type&#123;&lt;:AbstractRange&#125;&#41; &#61; IndexLinear&#40;&#41;</span>
+            <span class='code'>        &#36;&#40;Expr&#40;:meta, :inline&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L99'>
@@ -1024,7 +1029,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        elements &#61; tuple&#40;&#36;&#40;exprs...&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L100'>
@@ -1034,7 +1039,7 @@
           <td>
             
             
-            <span class='code'>IndexStyle&#40;A::AbstractArray, B::AbstractArray&#41; &#61; IndexStyle&#40;IndexStyle&#40;A&#41;, IndexStyle&#40;B&#41;&#41;</span>
+            <span class='code'>        @inbounds return similar_type&#40;&#36;m, _adjointtype&#40;adjoint, T&#41;, Size&#40;&#36;&#40;n2,n1&#41;&#41;&#41;&#40;elements&#41;</span>
           </td>
         </tr>
         <tr id='L101'>
@@ -1044,7 +1049,7 @@
           <td>
             
             
-            <span class='code'>IndexStyle&#40;A::AbstractArray, B::AbstractArray...&#41; &#61; IndexStyle&#40;IndexStyle&#40;A&#41;, IndexStyle&#40;B...&#41;&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L102'>
@@ -1054,7 +1059,7 @@
           <td>
             
             
-            <span class='code'>IndexStyle&#40;::IndexLinear, ::IndexLinear&#41; &#61; IndexLinear&#40;&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L103'>
@@ -1064,7 +1069,7 @@
           <td>
             
             
-            <span class='code'>IndexStyle&#40;::IndexStyle, ::IndexStyle&#41; &#61; IndexCartesian&#40;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L104'>
@@ -1074,7 +1079,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@inline Base.zero&#40;a::SA&#41; where &#123;SA &lt;: StaticArray&#125; &#61; zeros&#40;SA&#41;</span>
           </td>
         </tr>
         <tr id='L105'>
@@ -1084,7 +1089,7 @@
           <td>
             
             
-            <span class='code'># array shape rules</span>
+            <span class='code'>@inline Base.zero&#40;a::Type&#123;SA&#125;&#41; where &#123;SA &lt;: StaticArray&#125; &#61; zeros&#40;SA&#41;</span>
           </td>
         </tr>
         <tr id='L106'>
@@ -1104,7 +1109,7 @@
           <td>
             
             
-            <span class='code'>promote_shape&#40;::Tuple&#123;&#125;, ::Tuple&#123;&#125;&#41; &#61; &#40;&#41;</span>
+            <span class='code'>@inline _construct_sametype&#40;a::Type, elements&#41; &#61; a&#40;elements&#41;</span>
           </td>
         </tr>
         <tr id='L108'>
@@ -1114,7 +1119,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@inline _construct_sametype&#40;a, elements&#41; &#61; typeof&#40;a&#41;&#40;elements&#41;</span>
           </td>
         </tr>
         <tr id='L109'>
@@ -1124,7 +1129,7 @@
           <td>
             
             
-            <span class='code'># Consistent error message for promote_shape mismatch, hiding type details like</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L110'>
@@ -1134,7 +1139,7 @@
           <td>
             
             
-            <span class='code'># OneTo. When b ≡ nothing, it is omitted; i can be supplied for an index.</span>
+            <span class='code'>@inline one&#40;m::StaticMatrixLike&#41; &#61; _one&#40;Size&#40;m&#41;, m&#41;</span>
           </td>
         </tr>
         <tr id='L111'>
@@ -1144,7 +1149,7 @@
           <td>
             
             
-            <span class='code'>function throw_promote_shape_mismatch&#40;a::Tuple, b::Union&#123;Nothing,Tuple&#125;, i &#61; nothing&#41;</span>
+            <span class='code'>@inline one&#40;::Type&#123;SM&#125;&#41; where &#123;SM&lt;:StaticMatrixLike&#125;&#61; _one&#40;Size&#40;SM&#41;, SM&#41;</span>
           </td>
         </tr>
         <tr id='L112'>
@@ -1154,7 +1159,7 @@
           <td>
             
             
-            <span class='code'>    if a isa Tuple&#123;Vararg&#123;Base.OneTo&#125;&#125; &amp;&amp; &#40;b &#61;&#61;&#61; nothing || b isa Tuple&#123;Vararg&#123;Base.OneTo&#125;&#125;&#41;</span>
+            <span class='code'>function _one&#40;s::Size, m_or_SM&#41;</span>
           </td>
         </tr>
         <tr id='L113'>
@@ -1164,7 +1169,7 @@
           <td>
             
             
-            <span class='code'>        a &#61; map&#40;lastindex, a&#41;::Dims</span>
+            <span class='code'>    if &#40;length&#40;s&#41; &#33;&#61; 2&#41; || &#40;s&#91;1&#93; &#33;&#61; s&#91;2&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L114'>
@@ -1174,7 +1179,7 @@
           <td>
             
             
-            <span class='code'>        b &#61;&#61;&#61; nothing || &#40;b &#61; map&#40;lastindex, b&#41;::Dims&#41;</span>
+            <span class='code'>        throw&#40;DimensionMismatch&#40;&quot;multiplicative identity defined only for square matrices&quot;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L115'>
@@ -1194,7 +1199,7 @@
           <td>
             
             
-            <span class='code'>    _has_axes &#61; &#33;&#40;a isa Dims &amp;&amp; &#40;b &#61;&#61;&#61; nothing || b isa Dims&#41;&#41;</span>
+            <span class='code'>    λ &#61; one&#40;_eltype_or&#40;m_or_SM, Float64&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L117'>
@@ -1204,7 +1209,7 @@
           <td>
             
             
-            <span class='code'>    if _has_axes</span>
+            <span class='code'>    _construct_sametype&#40;m_or_SM, _scalar_matrix_elements&#40;s, λ&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L118'>
@@ -1214,7 +1219,7 @@
           <td>
             
             
-            <span class='code'>        _normalize&#40;d&#41; &#61; map&#40;x -&gt; firstindex&#40;x&#41;:lastindex&#40;x&#41;, d&#41;</span>
+            <span class='code'>    # TODO: Bring back the use of _construct_similar here:</span>
           </td>
         </tr>
         <tr id='L119'>
@@ -1224,7 +1229,7 @@
           <td>
             
             
-            <span class='code'>        a &#61; _normalize&#40;a&#41;</span>
+            <span class='code'>    # _construct_similar&#40;m_or_SM, s, _scalar_matrix_elements&#40;s, λ&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L120'>
@@ -1234,7 +1239,7 @@
           <td>
             
             
-            <span class='code'>        b &#61;&#61;&#61; nothing || &#40;b &#61; _normalize&#40;b&#41;&#41;</span>
+            <span class='code'>    #</span>
           </td>
         </tr>
         <tr id='L121'>
@@ -1244,7 +1249,7 @@
           <td>
             
             
-            <span class='code'>        _things &#61; &quot;axes &quot;</span>
+            <span class='code'>    # However, because _construct_similar uses &#96;similar_type&#96;, it will be</span>
           </td>
         </tr>
         <tr id='L122'>
@@ -1254,7 +1259,7 @@
           <td>
             
             
-            <span class='code'>    else</span>
+            <span class='code'>    # breaking for some StaticMatrix types &#40;in particular Rotations.RotMatrix&#41;</span>
           </td>
         </tr>
         <tr id='L123'>
@@ -1264,7 +1269,7 @@
           <td>
             
             
-            <span class='code'>        _things &#61; &quot;size &quot;</span>
+            <span class='code'>    # which must have similar_type return a general type able to hold any</span>
           </td>
         </tr>
         <tr id='L124'>
@@ -1274,7 +1279,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>    # matrix in the full general linear group.</span>
           </td>
         </tr>
         <tr id='L125'>
@@ -1284,7 +1289,7 @@
           <td>
             
             
-            <span class='code'>    msg &#61; IOBuffer&#40;&#41;</span>
+            <span class='code'>    #</span>
           </td>
         </tr>
         <tr id='L126'>
@@ -1294,7 +1299,7 @@
           <td>
             
             
-            <span class='code'>    print&#40;msg, &quot;a has &quot;, _things&#41;</span>
+            <span class='code'>    # &#40;Generally we&#39;re stuck here and things like RotMatrix really need to</span>
           </td>
         </tr>
         <tr id='L127'>
@@ -1304,7 +1309,7 @@
           <td>
             
             
-            <span class='code'>    print&#40;msg, a&#41;</span>
+            <span class='code'>    # override one&#40;&#41; and zero&#40;&#41; themselves: on the one hand, one&#40;RotMatrix&#41;</span>
           </td>
         </tr>
         <tr id='L128'>
@@ -1314,7 +1319,7 @@
           <td>
             
             
-            <span class='code'>    if b ≢ nothing</span>
+            <span class='code'>    # should return a RotMatrix, but zero&#40;RotMatrix&#41; can not be a RotMatrix.</span>
           </td>
         </tr>
         <tr id='L129'>
@@ -1324,7 +1329,7 @@
           <td>
             
             
-            <span class='code'>        print&#40;msg, &quot;, b has &quot;, _things&#41;</span>
+            <span class='code'>    # The best StaticArrays can do is to use similar_type to return an SMatrix</span>
           </td>
         </tr>
         <tr id='L130'>
@@ -1334,7 +1339,7 @@
           <td>
             
             
-            <span class='code'>        print&#40;msg, b&#41;</span>
+            <span class='code'>    # for both of these, and let the more specialized library define the</span>
           </td>
         </tr>
         <tr id='L131'>
@@ -1344,7 +1349,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>    # correct algebraic properties.&#41;</span>
           </td>
         </tr>
         <tr id='L132'>
@@ -1354,7 +1359,7 @@
           <td>
             
             
-            <span class='code'>    if i ≢ nothing</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L133'>
@@ -1364,7 +1369,7 @@
           <td>
             
             
-            <span class='code'>        print&#40;msg, &quot;, mismatch at dim &quot;, i&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L134'>
@@ -1374,7 +1379,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'># StaticMatrix&#40;I::UniformScaling&#41;</span>
           </td>
         </tr>
         <tr id='L135'>
@@ -1384,7 +1389,7 @@
           <td>
             
             
-            <span class='code'>    throw&#40;DimensionMismatch&#40;String&#40;take&#33;&#40;msg&#41;&#41;&#41;&#41;</span>
+            <span class='code'>&#40;::Type&#123;SM&#125;&#41;&#40;I::UniformScaling&#41; where &#123;SM&lt;:StaticMatrix&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L136'>
@@ -1394,7 +1399,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    SM&#40;_scalar_matrix_elements&#40;Size&#40;SM&#41;, I.λ&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L137'>
@@ -1404,7 +1409,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># The following oddity is needed if we want &#96;SArray&#123;Tuple&#123;2,3&#125;&#125;&#40;I&#41;&#96; to work</span>
           </td>
         </tr>
         <tr id='L138'>
@@ -1414,7 +1419,7 @@
           <td>
             
             
-            <span class='code'>function promote_shape&#40;a::Tuple&#123;Int,&#125;, b::Tuple&#123;Int,&#125;&#41;</span>
+            <span class='code'># because we do not have &#96;SArray&#123;Tuple&#123;2,3&#125;&#125; &lt;: StaticMatrix&#96;.</span>
           </td>
         </tr>
         <tr id='L139'>
@@ -1424,7 +1429,7 @@
           <td>
             
             
-            <span class='code'>    a&#91;1&#93; &#33;&#61; b&#91;1&#93; &amp;&amp; throw_promote_shape_mismatch&#40;a, b&#41;</span>
+            <span class='code'>&#40;::Type&#123;SM&#125;&#41;&#40;I::UniformScaling&#41; where &#123;SM&lt;:&#40;StaticArray&#123;Tuple&#123;N,M&#125;&#125; where &#123;N,M&#125;&#41;&#125; &#61;</span>
           </td>
         </tr>
         <tr id='L140'>
@@ -1434,7 +1439,7 @@
           <td>
             
             
-            <span class='code'>    return a</span>
+            <span class='code'>    SM&#40;_scalar_matrix_elements&#40;Size&#40;SM&#41;, I.λ&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L141'>
@@ -1444,7 +1449,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L142'>
@@ -1454,7 +1459,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'># Construct a matrix with the scalar λ on the diagonal and zeros off the</span>
           </td>
         </tr>
         <tr id='L143'>
@@ -1464,7 +1469,7 @@
           <td>
             
             
-            <span class='code'>function promote_shape&#40;a::Tuple&#123;Int,Int&#125;, b::Tuple&#123;Int,&#125;&#41;</span>
+            <span class='code'># diagonal. The matrix can be non-square.</span>
           </td>
         </tr>
         <tr id='L144'>
@@ -1474,7 +1479,7 @@
           <td>
             
             
-            <span class='code'>    &#40;a&#91;1&#93; &#33;&#61; b&#91;1&#93; || a&#91;2&#93; &#33;&#61; 1&#41; &amp;&amp; throw_promote_shape_mismatch&#40;a, b&#41;</span>
+            <span class='code'>@generated function _scalar_matrix_elements&#40;s::Size&#123;S&#125;, λ&#41; where &#123;S&#125;</span>
           </td>
         </tr>
         <tr id='L145'>
@@ -1484,7 +1489,7 @@
           <td>
             
             
-            <span class='code'>    return a</span>
+            <span class='code'>    elements &#61; Symbol&#91;i &#61;&#61; j ? :λ : :λzero for i in 1:S&#91;1&#93;, j in 1:S&#91;2&#93;&#93;</span>
           </td>
         </tr>
         <tr id='L146'>
@@ -1494,7 +1499,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L147'>
@@ -1504,7 +1509,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        &#36;&#40;Expr&#40;:meta, :inline&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L148'>
@@ -1514,7 +1519,7 @@
           <td>
             
             
-            <span class='code'>promote_shape&#40;a::Tuple&#123;Int,&#125;, b::Tuple&#123;Int,Int&#125;&#41; &#61; promote_shape&#40;b, a&#41;</span>
+            <span class='code'>        λzero &#61; zero&#40;λ&#41;</span>
           </td>
         </tr>
         <tr id='L149'>
@@ -1524,7 +1529,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        tuple&#40;&#36;&#40;elements...&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L150'>
@@ -1534,7 +1539,7 @@
           <td>
             
             
-            <span class='code'>function promote_shape&#40;a::Tuple&#123;Int, Int&#125;, b::Tuple&#123;Int, Int&#125;&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L151'>
@@ -1544,7 +1549,7 @@
           <td>
             
             
-            <span class='code'>    &#40;a&#91;1&#93; &#33;&#61; b&#91;1&#93; || a&#91;2&#93; &#33;&#61; b&#91;2&#93;&#41; &amp;&amp; throw_promote_shape_mismatch&#40;a, b&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L152'>
@@ -1554,7 +1559,7 @@
           <td>
             
             
-            <span class='code'>    return a</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L153'>
@@ -1564,7 +1569,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>@generated function diagm&#40;kv1::Pair&#123;&lt;:Val,&lt;:StaticVector&#125;, other_kvs::Pair&#123;&lt;:Val,&lt;:StaticVector&#125;...&#41;</span>
           </td>
         </tr>
         <tr id='L154'>
@@ -1574,7 +1579,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    kvs &#61; &#40;kv1, other_kvs...&#41;</span>
           </td>
         </tr>
         <tr id='L155'>
@@ -1584,7 +1589,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    diag_ind_and_length &#61; &#91;&#40;kv.parameters&#91;1&#93;.parameters&#91;1&#93;, length&#40;kv.parameters&#91;2&#93;&#41;&#41; for kv in kvs&#93;</span>
           </td>
         </tr>
         <tr id='L156'>
@@ -1594,7 +1599,7 @@
           <td>
             
             
-            <span class='code'>    promote_shape&#40;s1, s2&#41;</span>
+            <span class='code'>    N &#61; maximum&#40;abs&#40;di&#41; &#43; dl for &#40;di,dl&#41; in diag_ind_and_length&#41;</span>
           </td>
         </tr>
         <tr id='L157'>
@@ -1604,7 +1609,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    vs &#61; &#91;Symbol&#40;&quot;v&#36;i&quot;&#41; for i&#61;1:length&#40;kvs&#41;&#93;</span>
           </td>
         </tr>
         <tr id='L158'>
@@ -1614,7 +1619,7 @@
           <td>
             
             
-            <span class='code'>Check two array shapes for compatibility, allowing trailing singleton dimensions, and return</span>
+            <span class='code'>    vs_exprs &#61; &#91;:&#40;@inbounds &#36;&#40;vs&#91;i&#93;&#41; &#61; kvs&#91;&#36;i&#93;.second&#41; for i&#61;eachindex&#40;kvs&#41;&#93;</span>
           </td>
         </tr>
         <tr id='L159'>
@@ -1624,7 +1629,7 @@
           <td>
             
             
-            <span class='code'>whichever shape has more dimensions.</span>
+            <span class='code'>    element_exprs &#61; Any&#91;false for _&#61;1:N*N&#93;</span>
           </td>
         </tr>
         <tr id='L160'>
@@ -1634,7 +1639,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    for &#40;i, &#40;di, dl&#41;&#41; in enumerate&#40;diag_ind_and_length&#41;</span>
           </td>
         </tr>
         <tr id='L161'>
@@ -1644,7 +1649,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>        diaginds &#61; diagind&#40;N, N, di&#41;</span>
           </td>
         </tr>
         <tr id='L162'>
@@ -1654,7 +1659,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>        for n &#61; 1:dl</span>
           </td>
         </tr>
         <tr id='L163'>
@@ -1664,7 +1669,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; a &#61; fill&#40;1, &#40;3,4,1,1,1&#41;&#41;;</span>
+            <span class='code'>            element_exprs&#91;diaginds&#91;n&#93;&#93; &#61; :&#40;&#36;&#40;vs_exprs&#91;i&#93;&#41;&#91;&#36;n&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L164'>
@@ -1674,7 +1679,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        end</span>
           </td>
         </tr>
         <tr id='L165'>
@@ -1684,7 +1689,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; b &#61; fill&#40;1, &#40;3,4&#41;&#41;;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L166'>
@@ -1694,7 +1699,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L167'>
@@ -1704,7 +1709,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; promote_shape&#40;a,b&#41;</span>
+            <span class='code'>        &#36;&#40;Expr&#40;:meta, :inline&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L168'>
@@ -1714,7 +1719,7 @@
           <td>
             
             
-            <span class='code'>&#40;Base.OneTo&#40;3&#41;, Base.OneTo&#40;4&#41;, Base.OneTo&#40;1&#41;, Base.OneTo&#40;1&#41;, Base.OneTo&#40;1&#41;&#41;</span>
+            <span class='code'>        kvs &#61; &#40;kv1, other_kvs...&#41;</span>
           </td>
         </tr>
         <tr id='L169'>
@@ -1724,7 +1729,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        &#36;&#40;vs_exprs...&#41;</span>
           </td>
         </tr>
         <tr id='L170'>
@@ -1734,7 +1739,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; promote_shape&#40;&#40;2,3,1,4&#41;, &#40;2, 3, 1, 4, 1&#41;&#41;</span>
+            <span class='code'>        @inbounds elements &#61; tuple&#40;&#36;&#40;element_exprs...&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L171'>
@@ -1744,7 +1749,7 @@
           <td>
             
             
-            <span class='code'>&#40;2, 3, 1, 4, 1&#41;</span>
+            <span class='code'>        T &#61; promote_tuple_eltype&#40;elements&#41;</span>
           </td>
         </tr>
         <tr id='L172'>
@@ -1754,7 +1759,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>        @inbounds return similar_type&#40;v1, T, Size&#40;&#36;N,&#36;N&#41;&#41;&#40;elements&#41;</span>
           </td>
         </tr>
         <tr id='L173'>
@@ -1764,7 +1769,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L174'>
@@ -1774,7 +1779,7 @@
           <td>
             
             
-            <span class='code'>function promote_shape&#40;a::Dims, b::Dims&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L175'>
@@ -1784,7 +1789,7 @@
           <td>
             
             
-            <span class='code'>    if length&#40;a&#41; &lt; length&#40;b&#41;</span>
+            <span class='code'>@inline diagm&#40;v::StaticVector&#41; &#61; diagm&#40;Val&#40;0&#41;&#61;&gt;v&#41;</span>
           </td>
         </tr>
         <tr id='L176'>
@@ -1794,7 +1799,7 @@
           <td>
             
             
-            <span class='code'>        return promote_shape&#40;b, a&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L177'>
@@ -1804,7 +1809,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>@inline diag&#40;m::StaticMatrix, k::Type&#123;Val&#123;D&#125;&#125;&#61;Val&#123;0&#125;&#41; where &#123;D&#125; &#61; _diag&#40;Size&#40;m&#41;, m, k&#41;</span>
           </td>
         </tr>
         <tr id='L178'>
@@ -1814,7 +1819,7 @@
           <td>
             
             
-            <span class='code'>    for i&#61;1:length&#40;b&#41;</span>
+            <span class='code'>@generated function _diag&#40;::Size&#123;S&#125;, m::StaticMatrix, ::Type&#123;Val&#123;D&#125;&#125;&#41; where &#123;S,D&#125;</span>
           </td>
         </tr>
         <tr id='L179'>
@@ -1824,7 +1829,7 @@
           <td>
             
             
-            <span class='code'>        a&#91;i&#93; &#33;&#61; b&#91;i&#93; &amp;&amp; throw_promote_shape_mismatch&#40;a, b, i&#41;</span>
+            <span class='code'>    S1, S2 &#61; S</span>
           </td>
         </tr>
         <tr id='L180'>
@@ -1834,7 +1839,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>    rng &#61; D ≤ 0 ? range&#40;1-D, step&#61;S1&#43;1, length&#61;min&#40;S1&#43;D, S2&#41;&#41; :</span>
           </td>
         </tr>
         <tr id='L181'>
@@ -1844,7 +1849,7 @@
           <td>
             
             
-            <span class='code'>    for i&#61;length&#40;b&#41;&#43;1:length&#40;a&#41;</span>
+            <span class='code'>                  range&#40;D*S1&#43;1, step&#61;S1&#43;1, length&#61;min&#40;S1, S2-D&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L182'>
@@ -1854,7 +1859,7 @@
           <td>
             
             
-            <span class='code'>        a&#91;i&#93; &#33;&#61; 1 &amp;&amp; throw_promote_shape_mismatch&#40;a, nothing, i&#41;</span>
+            <span class='code'>    Snew &#61; length&#40;rng&#41;</span>
           </td>
         </tr>
         <tr id='L183'>
@@ -1864,7 +1869,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>    T &#61; eltype&#40;m&#41;</span>
           </td>
         </tr>
         <tr id='L184'>
@@ -1874,7 +1879,7 @@
           <td>
             
             
-            <span class='code'>    return a</span>
+            <span class='code'>    exprs &#61; &#91;:&#40;m&#91;&#36;i&#93;&#41; for i &#61; rng&#93;</span>
           </td>
         </tr>
         <tr id='L185'>
@@ -1884,7 +1889,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L186'>
@@ -1894,7 +1899,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        &#36;&#40;Expr&#40;:meta, :inline&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L187'>
@@ -1904,35 +1909,17 @@
           <td>
             
             
-            <span class='code'>function promote_shape&#40;a::AbstractArray, b::AbstractArray&#41;</span>
+            <span class='code'>        @inbounds return similar_type&#40;&#36;m, Size&#40;&#36;Snew&#41;&#41;&#40;tuple&#40;&#36;&#40;exprs...&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L188'>
           <td class='lineno'>188</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>68 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'></td>
           <td>
-            <div class='call-sites'>
-              68 &#40;0 &#37;&#41;
-              samples spent in promote_shape
-              <br />
-              
-              68 &#40;100 &#37;&#41; &#40;incl.&#41;
-              when called from -
-              <a href='arraymath.jl-fdbe1c320a0e21e8f0e8d9424658dbf6cd674c3d.html#L7'>line 7</a>
-              <br />
-            </div>
-            <div class='callees'>
-              34 &#40;50 &#37;&#41;
-              samples spent calling
-              <a href='indices.jl-dbbb1ad77bcdeee5841d089829b60511b870b50e.html#L196'>promote_shape</a>
-              <br />
-              34 &#40;50 &#37;&#41;
-              samples spent calling
-              <a href='abstractarray.jl-19cb862b60b8167236b95dc9fd58efafbb7fc02a.html#L98'>axes</a>
-              <br />
-            </div>
-            <span class='code'>    promote_shape&#40;axes&#40;a&#41;, axes&#40;b&#41;&#41;</span>
+            
+            
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L189'>
@@ -1962,7 +1949,7 @@
           <td>
             
             
-            <span class='code'>function promote_shape&#40;a::Indices, b::Indices&#41;</span>
+            <span class='code'>#--------------------------------------------------</span>
           </td>
         </tr>
         <tr id='L192'>
@@ -1972,7 +1959,7 @@
           <td>
             
             
-            <span class='code'>    if length&#40;a&#41; &lt; length&#40;b&#41;</span>
+            <span class='code'># Vector products</span>
           </td>
         </tr>
         <tr id='L193'>
@@ -1982,7 +1969,7 @@
           <td>
             
             
-            <span class='code'>        return promote_shape&#40;b, a&#41;</span>
+            <span class='code'>@inline cross&#40;a::StaticVector, b::StaticVector&#41; &#61; _cross&#40;same_size&#40;a, b&#41;, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L194'>
@@ -1992,7 +1979,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>_cross&#40;::Size&#123;S&#125;, a::StaticVector, b::StaticVector&#41; where &#123;S&#125; &#61; error&#40;&quot;Cross product not defined for &#36;&#40;S&#91;1&#93;&#41;-vectors&quot;&#41;</span>
           </td>
         </tr>
         <tr id='L195'>
@@ -2002,31 +1989,17 @@
           <td>
             
             
-            <span class='code'>    for i&#61;1:length&#40;b&#41;</span>
+            <span class='code'>@inline function _cross&#40;::Size&#123;&#40;2,&#41;&#125;, a::StaticVector, b::StaticVector&#41;</span>
           </td>
         </tr>
         <tr id='L196'>
           <td class='lineno'>196</td>
-          <td class='tracecount excl'>12 &#40;0 &#37;&#41;</td>
-          <td class='tracecount incl'>34 &#40;0 &#37;&#41;</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
           <td>
-            <div class='call-sites'>
-              34 &#40;0 &#37;&#41;
-              samples spent in promote_shape
-              <br />
-              12 &#40;35 &#37;&#41; &#40;ex.&#41;,
-              34 &#40;100 &#37;&#41; &#40;incl.&#41;
-              when called from promote_shape
-              <a href='indices.jl-dbbb1ad77bcdeee5841d089829b60511b870b50e.html#L188'>line 188</a>
-              <br />
-            </div>
-            <div class='callees'>
-              22 &#40;100 &#37;&#41;
-              samples spent calling
-              <a href='operators.jl-5dc7f749ee81f9a1b69996e91008bb7712afdf35.html#L277'>&#33;&#61;</a>
-              <br />
-            </div>
-            <span class='code'>        a&#91;i&#93; &#33;&#61; b&#91;i&#93; &amp;&amp; throw_promote_shape_mismatch&#40;a, b, i&#41;</span>
+            
+            
+            <span class='code'>    @inbounds return a&#91;1&#93;*b&#91;2&#93; - a&#91;2&#93;*b&#91;1&#93;</span>
           </td>
         </tr>
         <tr id='L197'>
@@ -2036,7 +2009,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L198'>
@@ -2046,7 +2019,7 @@
           <td>
             
             
-            <span class='code'>    for i&#61;length&#40;b&#41;&#43;1:length&#40;a&#41;</span>
+            <span class='code'>@inline function _cross&#40;::Size&#123;&#40;3,&#41;&#125;, a::StaticVector, b::StaticVector&#41;</span>
           </td>
         </tr>
         <tr id='L199'>
@@ -2056,7 +2029,7 @@
           <td>
             
             
-            <span class='code'>        a&#91;i&#93; &#33;&#61; 1:1 &amp;&amp; throw_promote_shape_mismatch&#40;a, nothing, i&#41;</span>
+            <span class='code'>    @inbounds return similar_type&#40;a, typeof&#40;a&#91;2&#93;*b&#91;3&#93;-a&#91;3&#93;*b&#91;2&#93;&#41;&#41;&#40;&#40;a&#91;2&#93;*b&#91;3&#93;-a&#91;3&#93;*b&#91;2&#93;, a&#91;3&#93;*b&#91;1&#93;-a&#91;1&#93;*b&#91;3&#93;, a&#91;1&#93;*b&#91;2&#93;-a&#91;2&#93;*b&#91;1&#93;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L200'>
@@ -2066,7 +2039,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L201'>
@@ -2076,7 +2049,7 @@
           <td>
             
             
-            <span class='code'>    return a</span>
+            <span class='code'>@inline function _cross&#40;::Size&#123;&#40;2,&#41;&#125;, a::StaticVector&#123;&lt;:Any, &lt;:Unsigned&#125;, b::StaticVector&#123;&lt;:Any, &lt;:Unsigned&#125;&#41;</span>
           </td>
         </tr>
         <tr id='L202'>
@@ -2086,7 +2059,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    @inbounds return Signed&#40;a&#91;1&#93;*b&#91;2&#93;&#41; - Signed&#40;a&#91;2&#93;*b&#91;1&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L203'>
@@ -2096,7 +2069,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L204'>
@@ -2106,7 +2079,7 @@
           <td>
             
             
-            <span class='code'>function throw_setindex_mismatch&#40;X, I&#41;</span>
+            <span class='code'>@inline function _cross&#40;::Size&#123;&#40;3,&#41;&#125;, a::StaticVector&#123;&lt;:Any, &lt;:Unsigned&#125;, b::StaticVector&#123;&lt;:Any, &lt;:Unsigned&#125;&#41;</span>
           </td>
         </tr>
         <tr id='L205'>
@@ -2116,7 +2089,7 @@
           <td>
             
             
-            <span class='code'>    if length&#40;I&#41; &#61;&#61; 1</span>
+            <span class='code'>    @inbounds return similar_type&#40;a, typeof&#40;Signed&#40;a&#91;2&#93;*b&#91;3&#93;&#41;-Signed&#40;a&#91;3&#93;*b&#91;2&#93;&#41;&#41;&#41;&#40;&#40;&#40;Signed&#40;a&#91;2&#93;*b&#91;3&#93;&#41;-Signed&#40;a&#91;3&#93;*b&#91;2&#93;&#41;, Signed&#40;a&#91;3&#93;*b&#91;1&#93;&#41;-Signed&#40;a&#91;1&#93;*b&#91;3&#93;&#41;, Signed&#40;a&#91;1&#93;*b&#91;2&#93;&#41;-Signed&#40;a&#91;2&#93;*b&#91;1&#93;&#41;&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L206'>
@@ -2126,7 +2099,7 @@
           <td>
             
             
-            <span class='code'>        throw&#40;DimensionMismatch&#40;&quot;tried to assign &#36;&#40;length&#40;X&#41;&#41; elements to &#36;&#40;I&#91;1&#93;&#41; destinations&quot;&#41;&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L207'>
@@ -2136,7 +2109,7 @@
           <td>
             
             
-            <span class='code'>    else</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L208'>
@@ -2146,7 +2119,7 @@
           <td>
             
             
-            <span class='code'>        throw&#40;DimensionMismatch&#40;&quot;tried to assign &#36;&#40;dims2string&#40;size&#40;X&#41;&#41;&#41; array to &#36;&#40;dims2string&#40;I&#41;&#41; destination&quot;&#41;&#41;</span>
+            <span class='code'>@inline dot&#40;a::StaticArray, b::StaticArray&#41; &#61; _vecdot&#40;same_size&#40;a, b&#41;, a, b, dot&#41;</span>
           </td>
         </tr>
         <tr id='L209'>
@@ -2156,7 +2129,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>@inline bilinear_vecdot&#40;a::StaticArray, b::StaticArray&#41; &#61; _vecdot&#40;same_size&#40;a, b&#41;, a, b, *&#41;</span>
           </td>
         </tr>
         <tr id='L210'>
@@ -2166,7 +2139,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L211'>
@@ -2176,7 +2149,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@inline function _vecdot&#40;::Size&#123;S&#125;, a::StaticArray, b::StaticArray, product&#41; where &#123;S&#125;</span>
           </td>
         </tr>
         <tr id='L212'>
@@ -2186,7 +2159,7 @@
           <td>
             
             
-            <span class='code'># check for valid sizes in A&#91;I...&#93; &#61; X where X &lt;: AbstractArray</span>
+            <span class='code'>    if prod&#40;S&#41; &#61;&#61; 0</span>
           </td>
         </tr>
         <tr id='L213'>
@@ -2196,7 +2169,7 @@
           <td>
             
             
-            <span class='code'># we want to allow dimensions that are equal up to permutation, but only</span>
+            <span class='code'>        za, zb &#61; zero&#40;eltype&#40;a&#41;&#41;, zero&#40;eltype&#40;b&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L214'>
@@ -2206,7 +2179,7 @@
           <td>
             
             
-            <span class='code'># for permutations that leave array elements in the same linear order.</span>
+            <span class='code'>    else</span>
           </td>
         </tr>
         <tr id='L215'>
@@ -2216,7 +2189,7 @@
           <td>
             
             
-            <span class='code'># those are the permutations that preserve the order of the non-singleton</span>
+            <span class='code'>        # Use an actual element if there is one, to support e.g. Vector&#123;&lt;:Number&#125;</span>
           </td>
         </tr>
         <tr id='L216'>
@@ -2226,7 +2199,7 @@
           <td>
             
             
-            <span class='code'># dimensions.</span>
+            <span class='code'>        # element types for which runtime size information is required to construct</span>
           </td>
         </tr>
         <tr id='L217'>
@@ -2236,7 +2209,7 @@
           <td>
             
             
-            <span class='code'>function setindex_shape_check&#40;X::AbstractArray, I::Integer...&#41;</span>
+            <span class='code'>        # a zero element.</span>
           </td>
         </tr>
         <tr id='L218'>
@@ -2246,7 +2219,7 @@
           <td>
             
             
-            <span class='code'>    li &#61; ndims&#40;X&#41;</span>
+            <span class='code'>        za, zb &#61; zero&#40;a&#91;1&#93;&#41;, zero&#40;b&#91;1&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L219'>
@@ -2256,7 +2229,7 @@
           <td>
             
             
-            <span class='code'>    lj &#61; length&#40;I&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L220'>
@@ -2266,7 +2239,7 @@
           <td>
             
             
-            <span class='code'>    i &#61; j &#61; 1</span>
+            <span class='code'>    ret &#61; product&#40;za, zb&#41; &#43; product&#40;za, zb&#41;</span>
           </td>
         </tr>
         <tr id='L221'>
@@ -2276,7 +2249,7 @@
           <td>
             
             
-            <span class='code'>    while true</span>
+            <span class='code'>    @inbounds @simd for j &#61; 1 : prod&#40;S&#41;</span>
           </td>
         </tr>
         <tr id='L222'>
@@ -2286,7 +2259,7 @@
           <td>
             
             
-            <span class='code'>        ii &#61; length&#40;axes&#40;X,i&#41;&#41;</span>
+            <span class='code'>        ret &#43;&#61; product&#40;a&#91;j&#93;, b&#91;j&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L223'>
@@ -2296,7 +2269,7 @@
           <td>
             
             
-            <span class='code'>        jj &#61; I&#91;j&#93;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L224'>
@@ -2306,7 +2279,7 @@
           <td>
             
             
-            <span class='code'>        if i &#61;&#61; li || j &#61;&#61; lj</span>
+            <span class='code'>    return ret</span>
           </td>
         </tr>
         <tr id='L225'>
@@ -2316,7 +2289,7 @@
           <td>
             
             
-            <span class='code'>            while i &lt; li</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L226'>
@@ -2326,7 +2299,7 @@
           <td>
             
             
-            <span class='code'>                i &#43;&#61; 1</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L227'>
@@ -2336,7 +2309,7 @@
           <td>
             
             
-            <span class='code'>                ii *&#61; length&#40;axes&#40;X,i&#41;&#41;</span>
+            <span class='code'>#--------------------------------------------------</span>
           </td>
         </tr>
         <tr id='L228'>
@@ -2346,7 +2319,7 @@
           <td>
             
             
-            <span class='code'>            end</span>
+            <span class='code'># Norms</span>
           </td>
         </tr>
         <tr id='L229'>
@@ -2356,7 +2329,7 @@
           <td>
             
             
-            <span class='code'>            while j &lt; lj</span>
+            <span class='code'>_inner_eltype&#40;v::AbstractArray&#41; &#61; isempty&#40;v&#41; ? eltype&#40;v&#41; : _inner_eltype&#40;first&#40;v&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L230'>
@@ -2366,7 +2339,7 @@
           <td>
             
             
-            <span class='code'>                j &#43;&#61; 1</span>
+            <span class='code'>_inner_eltype&#40;x::Number&#41; &#61; typeof&#40;x&#41;</span>
           </td>
         </tr>
         <tr id='L231'>
@@ -2376,7 +2349,7 @@
           <td>
             
             
-            <span class='code'>                jj *&#61; I&#91;j&#93;</span>
+            <span class='code'>@inline _init_zero&#40;v::AbstractArray&#41; &#61; float&#40;norm&#40;zero&#40;_inner_eltype&#40;v&#41;&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L232'>
@@ -2386,7 +2359,7 @@
           <td>
             
             
-            <span class='code'>            end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L233'>
@@ -2396,7 +2369,7 @@
           <td>
             
             
-            <span class='code'>            if ii &#33;&#61; jj</span>
+            <span class='code'>@inline function LinearAlgebra.norm_sqr&#40;v::StaticArray&#41;</span>
           </td>
         </tr>
         <tr id='L234'>
@@ -2406,7 +2379,7 @@
           <td>
             
             
-            <span class='code'>                throw_setindex_mismatch&#40;X, I&#41;</span>
+            <span class='code'>    return mapreduce&#40;LinearAlgebra.norm_sqr, &#43;, v; init&#61;_init_zero&#40;v&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L235'>
@@ -2416,7 +2389,7 @@
           <td>
             
             
-            <span class='code'>            end</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L236'>
@@ -2426,7 +2399,7 @@
           <td>
             
             
-            <span class='code'>            return</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L237'>
@@ -2436,7 +2409,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>@inline maxabs_nested&#40;a::Number&#41; &#61; abs&#40;a&#41;</span>
           </td>
         </tr>
         <tr id='L238'>
@@ -2446,7 +2419,7 @@
           <td>
             
             
-            <span class='code'>        if ii &#61;&#61; jj</span>
+            <span class='code'>@inline function maxabs_nested&#40;a::AbstractArray&#41;</span>
           </td>
         </tr>
         <tr id='L239'>
@@ -2456,7 +2429,7 @@
           <td>
             
             
-            <span class='code'>            i &#43;&#61; 1</span>
+            <span class='code'>    prod&#40;size&#40;a&#41;&#41; &#61;&#61; 0 &amp;&amp; &#40;return _init_zero&#40;a&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L240'>
@@ -2466,7 +2439,7 @@
           <td>
             
             
-            <span class='code'>            j &#43;&#61; 1</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L241'>
@@ -2476,7 +2449,7 @@
           <td>
             
             
-            <span class='code'>        elseif ii &#61;&#61; 1</span>
+            <span class='code'>    m &#61; maxabs_nested&#40;a&#91;1&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L242'>
@@ -2486,7 +2459,7 @@
           <td>
             
             
-            <span class='code'>            i &#43;&#61; 1</span>
+            <span class='code'>    for j &#61; 2:prod&#40;size&#40;a&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L243'>
@@ -2496,7 +2469,7 @@
           <td>
             
             
-            <span class='code'>        elseif jj &#61;&#61; 1</span>
+            <span class='code'>        m &#61; max&#40;m, maxabs_nested&#40;a&#91;j&#93;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L244'>
@@ -2506,7 +2479,7 @@
           <td>
             
             
-            <span class='code'>            j &#43;&#61; 1</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L245'>
@@ -2516,7 +2489,7 @@
           <td>
             
             
-            <span class='code'>        else</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L246'>
@@ -2526,7 +2499,7 @@
           <td>
             
             
-            <span class='code'>            throw_setindex_mismatch&#40;X, I&#41;</span>
+            <span class='code'>    return m</span>
           </td>
         </tr>
         <tr id='L247'>
@@ -2536,7 +2509,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L248'>
@@ -2546,7 +2519,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L249'>
@@ -2556,7 +2529,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>@generated function _norm_scaled&#40;::Size&#123;S&#125;, a::StaticArray&#41; where &#123;S&#125;</span>
           </td>
         </tr>
         <tr id='L250'>
@@ -2566,7 +2539,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    expr &#61; :&#40;LinearAlgebra.norm_sqr&#40;a&#91;1&#93;/scale&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L251'>
@@ -2576,7 +2549,7 @@
           <td>
             
             
-            <span class='code'>setindex_shape_check&#40;X::AbstractArray&#41; &#61;</span>
+            <span class='code'>    for j &#61; 2:prod&#40;S&#41;</span>
           </td>
         </tr>
         <tr id='L252'>
@@ -2586,7 +2559,7 @@
           <td>
             
             
-            <span class='code'>    &#40;length&#40;X&#41;&#61;&#61;1 || throw_setindex_mismatch&#40;X,&#40;&#41;&#41;&#41;</span>
+            <span class='code'>        expr &#61; :&#40;&#36;expr &#43; LinearAlgebra.norm_sqr&#40;a&#91;&#36;j&#93;/scale&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L253'>
@@ -2596,7 +2569,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L254'>
@@ -2606,7 +2579,7 @@
           <td>
             
             
-            <span class='code'>setindex_shape_check&#40;X::AbstractArray, i::Integer&#41; &#61;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L255'>
@@ -2616,7 +2589,7 @@
           <td>
             
             
-            <span class='code'>    &#40;length&#40;X&#41;&#61;&#61;i || throw_setindex_mismatch&#40;X, &#40;i,&#41;&#41;&#41;</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L256'>
@@ -2626,7 +2599,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        &#36;&#40;Expr&#40;:meta, :inline&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L257'>
@@ -2636,7 +2609,7 @@
           <td>
             
             
-            <span class='code'>setindex_shape_check&#40;X::AbstractArray&#123;&lt;:Any, 0&#125;, i::Integer...&#41; &#61;</span>
+            <span class='code'>        scale &#61; maxabs_nested&#40;a&#41;</span>
           </td>
         </tr>
         <tr id='L258'>
@@ -2646,7 +2619,7 @@
           <td>
             
             
-            <span class='code'>    &#40;length&#40;X&#41; &#61;&#61; prod&#40;i&#41; || throw_setindex_mismatch&#40;X, i&#41;&#41;</span>
+            <span class='code'>        &#33;isfinite&#40;scale&#41; &amp;&amp; return scale</span>
           </td>
         </tr>
         <tr id='L259'>
@@ -2666,7 +2639,7 @@
           <td>
             
             
-            <span class='code'>setindex_shape_check&#40;X::AbstractArray&#123;&lt;:Any,1&#125;, i::Integer&#41; &#61;</span>
+            <span class='code'>        iszero&#40;scale&#41; &amp;&amp; return _init_zero&#40;a&#41;</span>
           </td>
         </tr>
         <tr id='L261'>
@@ -2676,7 +2649,7 @@
           <td>
             
             
-            <span class='code'>    &#40;length&#40;X&#41;&#61;&#61;i || throw_setindex_mismatch&#40;X, &#40;i,&#41;&#41;&#41;</span>
+            <span class='code'>        return @inbounds scale * sqrt&#40;&#36;expr&#41;</span>
           </td>
         </tr>
         <tr id='L262'>
@@ -2686,7 +2659,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L263'>
@@ -2696,7 +2669,7 @@
           <td>
             
             
-            <span class='code'>setindex_shape_check&#40;X::AbstractArray&#123;&lt;:Any,1&#125;, i::Integer, j::Integer&#41; &#61;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L264'>
@@ -2706,7 +2679,7 @@
           <td>
             
             
-            <span class='code'>    &#40;length&#40;X&#41;&#61;&#61;i*j || throw_setindex_mismatch&#40;X, &#40;i,j&#41;&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L265'>
@@ -2716,7 +2689,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@inline norm&#40;a::StaticArray&#41; &#61; _norm&#40;Size&#40;a&#41;, a&#41;</span>
           </td>
         </tr>
         <tr id='L266'>
@@ -2726,7 +2699,7 @@
           <td>
             
             
-            <span class='code'>function setindex_shape_check&#40;X::AbstractArray&#123;&lt;:Any,2&#125;, i::Integer, j::Integer&#41;</span>
+            <span class='code'>@generated function _norm&#40;::Size&#123;S&#125;, a::StaticArray&#41; where &#123;S&#125;</span>
           </td>
         </tr>
         <tr id='L267'>
@@ -2736,7 +2709,7 @@
           <td>
             
             
-            <span class='code'>    if length&#40;X&#41; &#33;&#61; i*j</span>
+            <span class='code'>    prod&#40;S&#41; &#61;&#61; 0 &amp;&amp; return :&#40;_init_zero&#40;a&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L268'>
@@ -2746,7 +2719,7 @@
           <td>
             
             
-            <span class='code'>        throw_setindex_mismatch&#40;X, &#40;i,j&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L269'>
@@ -2756,7 +2729,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>    expr &#61; :&#40;LinearAlgebra.norm_sqr&#40;a&#91;1&#93;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L270'>
@@ -2766,7 +2739,7 @@
           <td>
             
             
-            <span class='code'>    sx1 &#61; length&#40;axes&#40;X,1&#41;&#41;</span>
+            <span class='code'>    for j &#61; 2:prod&#40;S&#41;</span>
           </td>
         </tr>
         <tr id='L271'>
@@ -2776,7 +2749,7 @@
           <td>
             
             
-            <span class='code'>    if &#33;&#40;i &#61;&#61; 1 || i &#61;&#61; sx1 || sx1 &#61;&#61; 1&#41;</span>
+            <span class='code'>        expr &#61; :&#40;&#36;expr &#43; LinearAlgebra.norm_sqr&#40;a&#91;&#36;j&#93;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L272'>
@@ -2786,7 +2759,7 @@
           <td>
             
             
-            <span class='code'>        throw_setindex_mismatch&#40;X, &#40;i,j&#41;&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L273'>
@@ -2796,7 +2769,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L274'>
@@ -2806,7 +2779,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L275'>
@@ -2816,7 +2789,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        &#36;&#40;Expr&#40;:meta, :inline&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L276'>
@@ -2826,7 +2799,7 @@
           <td>
             
             
-            <span class='code'>setindex_shape_check&#40;::Any...&#41; &#61;</span>
+            <span class='code'>        l &#61; @inbounds sqrt&#40;&#36;expr&#41;</span>
           </td>
         </tr>
         <tr id='L277'>
@@ -2836,7 +2809,7 @@
           <td>
             
             
-            <span class='code'>    throw&#40;ArgumentError&#40;&quot;indexed assignment with a single value to possibly many locations is not supported; perhaps use broadcasting &#96;.&#61;&#96; instead?&quot;&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L278'>
@@ -2846,7 +2819,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        zero&#40;l&#41; &lt; l &amp;&amp; isfinite&#40;l&#41; &amp;&amp; return l</span>
           </td>
         </tr>
         <tr id='L279'>
@@ -2856,7 +2829,7 @@
           <td>
             
             
-            <span class='code'># convert to a supported index type &#40;array or Int&#41;</span>
+            <span class='code'>        return _norm_scaled&#40;Size&#40;a&#41;, a&#41;</span>
           </td>
         </tr>
         <tr id='L280'>
@@ -2866,7 +2839,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L281'>
@@ -2876,7 +2849,7 @@
           <td>
             
             
-            <span class='code'>    to_index&#40;A, i&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L282'>
@@ -2896,7 +2869,7 @@
           <td>
             
             
-            <span class='code'>Convert index &#96;i&#96; to an &#96;Int&#96; or array of indices to be used as an index into array &#96;A&#96;.</span>
+            <span class='code'>function _norm_p0&#40;x&#41;</span>
           </td>
         </tr>
         <tr id='L284'>
@@ -2906,7 +2879,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    T &#61; _inner_eltype&#40;x&#41;</span>
           </td>
         </tr>
         <tr id='L285'>
@@ -2916,7 +2889,7 @@
           <td>
             
             
-            <span class='code'>Custom array types may specialize &#96;to_index&#40;::CustomArray, i&#41;&#96; to provide</span>
+            <span class='code'>    return float&#40;norm&#40;iszero&#40;x&#41; ? zero&#40;T&#41; : one&#40;T&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L286'>
@@ -2926,7 +2899,7 @@
           <td>
             
             
-            <span class='code'>special indexing behaviors. Note that some index types &#40;like &#96;Colon&#96;&#41; require</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L287'>
@@ -2936,7 +2909,7 @@
           <td>
             
             
-            <span class='code'>more context in order to transform them into an array of indices; those get</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L288'>
@@ -2946,7 +2919,7 @@
           <td>
             
             
-            <span class='code'>converted in the more complicated &#96;to_indices&#96; function. By default, this</span>
+            <span class='code'># Do not need to deal with p &#61;&#61; 0, 2, Inf; see norm&#40;a, p&#41;.</span>
           </td>
         </tr>
         <tr id='L289'>
@@ -2956,7 +2929,7 @@
           <td>
             
             
-            <span class='code'>simply calls the generic &#96;to_index&#40;i&#41;&#96;. This must return either an &#96;Int&#96; or an</span>
+            <span class='code'>@generated function _norm_scaled&#40;::Size&#123;S&#125;, a::StaticArray, p::Real&#41; where &#123;S&#125;</span>
           </td>
         </tr>
         <tr id='L290'>
@@ -2966,7 +2939,7 @@
           <td>
             
             
-            <span class='code'>&#96;AbstractArray&#96; of scalar indices that are supported by &#96;A&#96;.</span>
+            <span class='code'>    expr &#61; :&#40;norm&#40;a&#91;1&#93;/scale&#41;^p&#41;</span>
           </td>
         </tr>
         <tr id='L291'>
@@ -2976,7 +2949,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    for j &#61; 2:prod&#40;S&#41;</span>
           </td>
         </tr>
         <tr id='L292'>
@@ -2986,7 +2959,7 @@
           <td>
             
             
-            <span class='code'>to_index&#40;A, i&#41; &#61; to_index&#40;i&#41;</span>
+            <span class='code'>        expr &#61; :&#40;&#36;expr &#43; norm&#40;a&#91;&#36;j&#93;/scale&#41;^p&#41;</span>
           </td>
         </tr>
         <tr id='L293'>
@@ -2996,7 +2969,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L294'>
@@ -3006,7 +2979,7 @@
           <td>
             
             
-            <span class='code'># This is ok for Array because values larger than</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L295'>
@@ -3016,7 +2989,7 @@
           <td>
             
             
-            <span class='code'># typemax&#40;Int&#41; will BoundsError anyway</span>
+            <span class='code'>    expr_p1 &#61; :&#40;norm&#40;a&#91;1&#93;/scale&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L296'>
@@ -3026,7 +2999,7 @@
           <td>
             
             
-            <span class='code'>to_index&#40;A::Array, i::UInt&#41; &#61; reinterpret&#40;Int, i&#41;</span>
+            <span class='code'>    for j &#61; 2:prod&#40;S&#41;</span>
           </td>
         </tr>
         <tr id='L297'>
@@ -3036,7 +3009,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        expr_p1 &#61; :&#40;&#36;expr_p1 &#43; norm&#40;a&#91;&#36;j&#93;/scale&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L298'>
@@ -3046,7 +3019,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L299'>
@@ -3056,7 +3029,7 @@
           <td>
             
             
-            <span class='code'>    to_index&#40;i&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L300'>
@@ -3066,7 +3039,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L301'>
@@ -3076,7 +3049,7 @@
           <td>
             
             
-            <span class='code'>Convert index &#96;i&#96; to an &#96;Int&#96; or array of &#96;Int&#96;s to be used as an index for all arrays.</span>
+            <span class='code'>        &#36;&#40;Expr&#40;:meta, :inline&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L302'>
@@ -3086,7 +3059,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        scale &#61; maxabs_nested&#40;a&#41;</span>
           </td>
         </tr>
         <tr id='L303'>
@@ -3096,7 +3069,7 @@
           <td>
             
             
-            <span class='code'>Custom index types may specialize &#96;to_index&#40;::CustomIndex&#41;&#96; to provide special</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L304'>
@@ -3106,7 +3079,7 @@
           <td>
             
             
-            <span class='code'>indexing behaviors. This must return either an &#96;Int&#96; or an &#96;AbstractArray&#96; of</span>
+            <span class='code'>        iszero&#40;scale&#41; &amp;&amp; return _init_zero&#40;a&#41;</span>
           </td>
         </tr>
         <tr id='L305'>
@@ -3116,7 +3089,7 @@
           <td>
             
             
-            <span class='code'>&#96;Int&#96;s.</span>
+            <span class='code'>        p &#61;&#61; 1 &amp;&amp; return @inbounds scale * &#36;expr_p1</span>
           </td>
         </tr>
         <tr id='L306'>
@@ -3126,7 +3099,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>        return @inbounds scale * &#40;&#36;expr&#41;^&#40;inv&#40;p&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L307'>
@@ -3136,7 +3109,7 @@
           <td>
             
             
-            <span class='code'>to_index&#40;i::Integer&#41; &#61; convert&#40;Int,i&#41;::Int</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L308'>
@@ -3146,7 +3119,7 @@
           <td>
             
             
-            <span class='code'>to_index&#40;i::Bool&#41; &#61; throw&#40;ArgumentError&#40;&quot;invalid index: &#36;i of type Bool&quot;&#41;&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L309'>
@@ -3156,7 +3129,7 @@
           <td>
             
             
-            <span class='code'>to_index&#40;I::AbstractArray&#123;Bool&#125;&#41; &#61; LogicalIndex&#40;I&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L310'>
@@ -3166,7 +3139,7 @@
           <td>
             
             
-            <span class='code'>to_index&#40;I::AbstractArray&#41; &#61; I</span>
+            <span class='code'>@inline norm&#40;a::StaticArray, p::Real&#41; &#61; _norm&#40;Size&#40;a&#41;, a, p&#41;</span>
           </td>
         </tr>
         <tr id='L311'>
@@ -3176,7 +3149,7 @@
           <td>
             
             
-            <span class='code'>to_index&#40;I::AbstractArray&#123;Union&#123;&#125;&#125;&#41; &#61; I</span>
+            <span class='code'>@generated function _norm&#40;::Size&#123;S&#125;, a::StaticArray, p::Real&#41; where &#123;S&#125;</span>
           </td>
         </tr>
         <tr id='L312'>
@@ -3186,7 +3159,7 @@
           <td>
             
             
-            <span class='code'>to_index&#40;I::AbstractArray&#123;&lt;:Union&#123;AbstractArray, Colon&#125;&#125;&#41; &#61;</span>
+            <span class='code'>    prod&#40;S&#41; &#61;&#61; 0 &amp;&amp; return :&#40;_init_zero&#40;a&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L313'>
@@ -3196,7 +3169,7 @@
           <td>
             
             
-            <span class='code'>    throw&#40;ArgumentError&#40;LazyString&#40;&quot;invalid index: &quot;, limitrepr&#40;I&#41;, &quot; of type &quot;, typeof&#40;I&#41;&#41;&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L314'>
@@ -3206,7 +3179,7 @@
           <td>
             
             
-            <span class='code'>to_index&#40;::Colon&#41; &#61; throw&#40;ArgumentError&#40;&quot;colons must be converted by to_indices&#40;...&#41;&quot;&#41;&#41;</span>
+            <span class='code'>    expr &#61; :&#40;norm&#40;a&#91;1&#93;&#41;^p&#41;</span>
           </td>
         </tr>
         <tr id='L315'>
@@ -3216,7 +3189,7 @@
           <td>
             
             
-            <span class='code'>to_index&#40;i&#41; &#61; throw&#40;ArgumentError&#40;LazyString&#40;&quot;invalid index: &quot;, limitrepr&#40;i&#41;, &quot; of type &quot;, typeof&#40;i&#41;&#41;&#41;&#41;</span>
+            <span class='code'>    for j &#61; 2:prod&#40;S&#41;</span>
           </td>
         </tr>
         <tr id='L316'>
@@ -3226,7 +3199,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        expr &#61; :&#40;&#36;expr &#43; norm&#40;a&#91;&#36;j&#93;&#41;^p&#41;</span>
           </td>
         </tr>
         <tr id='L317'>
@@ -3236,7 +3209,7 @@
           <td>
             
             
-            <span class='code'># The general to_indices is mostly defined in multidimensional.jl, but this</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L318'>
@@ -3246,7 +3219,7 @@
           <td>
             
             
-            <span class='code'># definition is required for bootstrap:</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L319'>
@@ -3256,7 +3229,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    expr_p1 &#61; :&#40;norm&#40;a&#91;1&#93;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L320'>
@@ -3266,7 +3239,7 @@
           <td>
             
             
-            <span class='code'>    to_indices&#40;A, I::Tuple&#41;</span>
+            <span class='code'>    for j &#61; 2:prod&#40;S&#41;</span>
           </td>
         </tr>
         <tr id='L321'>
@@ -3276,7 +3249,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        expr_p1 &#61; :&#40;&#36;expr_p1 &#43; norm&#40;a&#91;&#36;j&#93;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L322'>
@@ -3286,7 +3259,7 @@
           <td>
             
             
-            <span class='code'>Convert the tuple &#96;I&#96; to a tuple of indices for use in indexing into array &#96;A&#96;.</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L323'>
@@ -3306,7 +3279,7 @@
           <td>
             
             
-            <span class='code'>The returned tuple must only contain either &#96;Int&#96;s or &#96;AbstractArray&#96;s of</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L325'>
@@ -3316,7 +3289,7 @@
           <td>
             
             
-            <span class='code'>scalar indices that are supported by array &#96;A&#96;. It will error upon encountering</span>
+            <span class='code'>        &#36;&#40;Expr&#40;:meta, :inline&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L326'>
@@ -3326,7 +3299,7 @@
           <td>
             
             
-            <span class='code'>a novel index type that it does not know how to process.</span>
+            <span class='code'>        p &#61;&#61; 0 &amp;&amp; return mapreduce&#40;_norm_p0, &#43;, a&#41;  # no need for scaling</span>
           </td>
         </tr>
         <tr id='L327'>
@@ -3336,7 +3309,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        p &#61;&#61; 2 &amp;&amp; return norm&#40;a&#41;  # norm&#40;a&#41; takes care of scaling</span>
           </td>
         </tr>
         <tr id='L328'>
@@ -3346,7 +3319,7 @@
           <td>
             
             
-            <span class='code'>For simple index types, it defers to the unexported &#96;Base.to_index&#40;A, i&#41;&#96; to</span>
+            <span class='code'>        p &#61;&#61; Inf &amp;&amp; return mapreduce&#40;norm, max, a&#41;  # no need for scaling</span>
           </td>
         </tr>
         <tr id='L329'>
@@ -3356,7 +3329,7 @@
           <td>
             
             
-            <span class='code'>process each index &#96;i&#96;. While this internal function is not intended to be</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L330'>
@@ -3366,7 +3339,7 @@
           <td>
             
             
-            <span class='code'>called directly, &#96;Base.to_index&#96; may be extended by custom array or index types</span>
+            <span class='code'>        l &#61; p&#61;&#61;1 ? @inbounds&#40;&#36;expr_p1&#41; : @inbounds&#40;&#40;&#36;expr&#41;^&#40;inv&#40;p&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L331'>
@@ -3376,7 +3349,7 @@
           <td>
             
             
-            <span class='code'>to provide custom indexing behaviors.</span>
+            <span class='code'>        zero&#40;l&#41; &lt; l &amp;&amp; isfinite&#40;l&#41; &amp;&amp; return l</span>
           </td>
         </tr>
         <tr id='L332'>
@@ -3386,7 +3359,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        return _norm_scaled&#40;Size&#40;a&#41;, a, p&#41;  # p &#33;&#61; 0, 2, Inf</span>
           </td>
         </tr>
         <tr id='L333'>
@@ -3396,7 +3369,7 @@
           <td>
             
             
-            <span class='code'>More complicated index types may require more context about the dimension into</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L334'>
@@ -3406,7 +3379,7 @@
           <td>
             
             
-            <span class='code'>which they index. To support those cases, &#96;to_indices&#40;A, I&#41;&#96; calls</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L335'>
@@ -3416,7 +3389,7 @@
           <td>
             
             
-            <span class='code'>&#96;to_indices&#40;A, axes&#40;A&#41;, I&#41;&#96;, which then recursively walks through both the</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L336'>
@@ -3426,7 +3399,7 @@
           <td>
             
             
-            <span class='code'>given tuple of indices and the dimensional indices of &#96;A&#96; in tandem. As such,</span>
+            <span class='code'>@inline normalize&#40;a::StaticArray&#41; &#61; inv&#40;norm&#40;a&#41;&#41;*a</span>
           </td>
         </tr>
         <tr id='L337'>
@@ -3436,7 +3409,7 @@
           <td>
             
             
-            <span class='code'>not all index types are guaranteed to propagate to &#96;Base.to_index&#96;.</span>
+            <span class='code'>@inline normalize&#40;a::StaticArray, p::Real&#41; &#61; inv&#40;norm&#40;a, p&#41;&#41;*a</span>
           </td>
         </tr>
         <tr id='L338'>
@@ -3456,7 +3429,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>@inline normalize&#33;&#40;a::StaticArray&#41; &#61; &#40;a .*&#61; inv&#40;norm&#40;a&#41;&#41;; return a&#41;</span>
           </td>
         </tr>
         <tr id='L340'>
@@ -3466,7 +3439,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>@inline normalize&#33;&#40;a::StaticArray, p::Real&#41; &#61; &#40;a .*&#61; inv&#40;norm&#40;a, p&#41;&#41;; return a&#41;</span>
           </td>
         </tr>
         <tr id='L341'>
@@ -3476,7 +3449,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; A &#61; zeros&#40;1,2,3,4&#41;;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L342'>
@@ -3486,7 +3459,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@inline tr&#40;a::StaticMatrix&#41; &#61; _tr&#40;Size&#40;a&#41;, a&#41;</span>
           </td>
         </tr>
         <tr id='L343'>
@@ -3496,7 +3469,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; to_indices&#40;A, &#40;1,1,2,2&#41;&#41;</span>
+            <span class='code'>@generated function _tr&#40;::Size&#123;S&#125;, a::StaticMatrix&#41; where &#123;S&#125;</span>
           </td>
         </tr>
         <tr id='L344'>
@@ -3506,7 +3479,7 @@
           <td>
             
             
-            <span class='code'>&#40;1, 1, 2, 2&#41;</span>
+            <span class='code'>    checksquare&#40;a&#41;</span>
           </td>
         </tr>
         <tr id='L345'>
@@ -3526,7 +3499,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; to_indices&#40;A, &#40;1,1,2,20&#41;&#41; # no bounds checking</span>
+            <span class='code'>    if S&#91;1&#93; &#61;&#61; 0</span>
           </td>
         </tr>
         <tr id='L347'>
@@ -3536,7 +3509,7 @@
           <td>
             
             
-            <span class='code'>&#40;1, 1, 2, 20&#41;</span>
+            <span class='code'>        return :&#40;zero&#40;eltype&#40;a&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L348'>
@@ -3546,7 +3519,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L349'>
@@ -3556,7 +3529,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; to_indices&#40;A, &#40;CartesianIndex&#40;&#40;1,&#41;&#41;, 2, CartesianIndex&#40;&#40;3,4&#41;&#41;&#41;&#41; # exotic index</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L350'>
@@ -3566,7 +3539,7 @@
           <td>
             
             
-            <span class='code'>&#40;1, 2, 3, 4&#41;</span>
+            <span class='code'>    exprs &#61; &#91;:&#40;a&#91;&#36;&#40;LinearIndices&#40;S&#41;&#91;i, i&#93;&#41;&#93;&#41; for i &#61; 1:S&#91;1&#93;&#93;</span>
           </td>
         </tr>
         <tr id='L351'>
@@ -3576,7 +3549,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    total &#61; reduce&#40;&#40;ex1, ex2&#41; -&gt; :&#40;&#36;ex1 &#43; &#36;ex2&#41;, exprs&#41;</span>
           </td>
         </tr>
         <tr id='L352'>
@@ -3586,7 +3559,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; to_indices&#40;A, &#40;&#91;1,1&#93;, 1:2, 3, 4&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L353'>
@@ -3596,7 +3569,7 @@
           <td>
             
             
-            <span class='code'>&#40;&#91;1, 1&#93;, 1:2, 3, 4&#41;</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L354'>
@@ -3606,7 +3579,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        @_inline_meta</span>
           </td>
         </tr>
         <tr id='L355'>
@@ -3616,7 +3589,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; to_indices&#40;A, &#40;1,2&#41;&#41; # no shape checking</span>
+            <span class='code'>        @inbounds return &#36;total</span>
           </td>
         </tr>
         <tr id='L356'>
@@ -3626,7 +3599,7 @@
           <td>
             
             
-            <span class='code'>&#40;1, 2&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L357'>
@@ -3636,7 +3609,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L358'>
@@ -3646,7 +3619,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L359'>
@@ -3656,7 +3629,7 @@
           <td>
             
             
-            <span class='code'>to_indices&#40;A, I::Tuple&#41; &#61; &#40;@inline; to_indices&#40;A, axes&#40;A&#41;, I&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L360'>
@@ -3666,7 +3639,7 @@
           <td>
             
             
-            <span class='code'>to_indices&#40;A, I::Tuple&#123;Any&#125;&#41; &#61; &#40;@inline; to_indices&#40;A, &#40;eachindex&#40;IndexLinear&#40;&#41;, A&#41;,&#41;, I&#41;&#41;</span>
+            <span class='code'>#--------------------------------------------------</span>
           </td>
         </tr>
         <tr id='L361'>
@@ -3676,7 +3649,7 @@
           <td>
             
             
-            <span class='code'># In simple cases, we know that we don&#39;t need to use axes&#40;A&#41;, optimize those.</span>
+            <span class='code'># Outer products</span>
           </td>
         </tr>
         <tr id='L362'>
@@ -3686,7 +3659,7 @@
           <td>
             
             
-            <span class='code'># Having this here avoids invalidations from multidimensional.jl: to_indices&#40;A, I::Tuple&#123;Vararg&#123;Union&#123;Integer, CartesianIndex&#125;&#125;&#125;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L363'>
@@ -3696,7 +3669,7 @@
           <td>
             
             
-            <span class='code'>to_indices&#40;A, I::Tuple&#123;&#125;&#41; &#61; &#40;&#41;</span>
+            <span class='code'>const _length_limit &#61; Length&#40;200&#41;</span>
           </td>
         </tr>
         <tr id='L364'>
@@ -3706,7 +3679,7 @@
           <td>
             
             
-            <span class='code'>to_indices&#40;A, I::Tuple&#123;Vararg&#123;Int&#125;&#125;&#41; &#61; I</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L365'>
@@ -3716,7 +3689,7 @@
           <td>
             
             
-            <span class='code'>to_indices&#40;A, I::Tuple&#123;Vararg&#123;Integer&#125;&#125;&#41; &#61; &#40;@inline; to_indices&#40;A, &#40;&#41;, I&#41;&#41;</span>
+            <span class='code'>@inline kron&#40;a::StaticMatrix, b::StaticMatrix&#41; &#61; _kron&#40;_length_limit, Size&#40;a&#41;, Size&#40;b&#41;, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L366'>
@@ -3726,7 +3699,7 @@
           <td>
             
             
-            <span class='code'>to_indices&#40;A, inds, ::Tuple&#123;&#125;&#41; &#61; &#40;&#41;</span>
+            <span class='code'>@generated function _kron&#40;::Length&#123;length_limit&#125;, ::Size&#123;SA&#125;, ::Size&#123;SB&#125;, a, b&#41; where &#123;length_limit,SA,SB&#125;</span>
           </td>
         </tr>
         <tr id='L367'>
@@ -3736,7 +3709,7 @@
           <td>
             
             
-            <span class='code'>to_indices&#40;A, inds, I::Tuple&#123;Any, Vararg&#125;&#41; &#61;</span>
+            <span class='code'>    outsize &#61; SA .* SB</span>
           </td>
         </tr>
         <tr id='L368'>
@@ -3746,7 +3719,7 @@
           <td>
             
             
-            <span class='code'>    &#40;@inline; &#40;to_index&#40;A, I&#91;1&#93;&#41;, to_indices&#40;A, safe_tail&#40;inds&#41;, tail&#40;I&#41;&#41;...&#41;&#41;</span>
+            <span class='code'>    if prod&#40;outsize&#41; &gt; length_limit</span>
           </td>
         </tr>
         <tr id='L369'>
@@ -3756,7 +3729,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        return :&#40; SizedMatrix&#123;&#36;&#40;outsize&#91;1&#93;&#41;,&#36;&#40;outsize&#91;2&#93;&#41;&#125;&#40; kron&#40;drop_sdims&#40;a&#41;, drop_sdims&#40;b&#41;&#41; &#41; &#41;</span>
           </td>
         </tr>
         <tr id='L370'>
@@ -3766,7 +3739,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L371'>
@@ -3776,7 +3749,7 @@
           <td>
             
             
-            <span class='code'>    Slice&#40;indices&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L372'>
@@ -3786,7 +3759,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    M &#61; &#91; :&#40;a&#91;&#36;ia,&#36;ja&#93; * b&#91;&#36;ib,&#36;jb&#93;&#41; for ib in 1:SB&#91;1&#93;, ia in 1:SA&#91;1&#93;, jb in 1:SB&#91;2&#93;, ja in 1:SA&#91;2&#93; &#93;</span>
           </td>
         </tr>
         <tr id='L373'>
@@ -3796,7 +3769,7 @@
           <td>
             
             
-            <span class='code'>Represent an AbstractUnitRange of indices as a vector of the indices themselves,</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L374'>
@@ -3806,7 +3779,7 @@
           <td>
             
             
-            <span class='code'>with special handling to signal they represent a complete slice of a dimension &#40;:&#41;.</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L375'>
@@ -3816,7 +3789,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        @_inline_meta</span>
           </td>
         </tr>
         <tr id='L376'>
@@ -3826,7 +3799,7 @@
           <td>
             
             
-            <span class='code'>Upon calling &#96;to_indices&#96;, Colons are converted to Slice objects to represent</span>
+            <span class='code'>        @inbounds return  similar_type&#40;&#36;a, promote_type&#40;eltype&#40;a&#41;,eltype&#40;b&#41;&#41;, Size&#40;&#36;&#40;outsize&#41;&#41;&#41;&#40;tuple&#40;&#36;&#40;M...&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L377'>
@@ -3836,7 +3809,7 @@
           <td>
             
             
-            <span class='code'>the indices over which the Colon spans. Slice objects are themselves unit</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L378'>
@@ -3846,7 +3819,7 @@
           <td>
             
             
-            <span class='code'>ranges with the same indices as those they wrap. This means that indexing into</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L379'>
@@ -3856,7 +3829,7 @@
           <td>
             
             
-            <span class='code'>Slice objects with an integer always returns that exact integer, and they</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L380'>
@@ -3866,7 +3839,7 @@
           <td>
             
             
-            <span class='code'>iterate over all the wrapped indices, even supporting offset indices.</span>
+            <span class='code'>@inline kron&#40;a::StaticVector, b::StaticVector&#41; &#61; _kron_vec_x_vec&#40;_length_limit, Size&#40;a&#41;, Size&#40;b&#41;, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L381'>
@@ -3876,7 +3849,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>@generated function _kron_vec_x_vec&#40;::Length&#123;length_limit&#125;, ::Size&#123;SA&#125;, ::Size&#123;SB&#125;, a, b&#41; where &#123;length_limit,SA,SB&#125;</span>
           </td>
         </tr>
         <tr id='L382'>
@@ -3886,7 +3859,7 @@
           <td>
             
             
-            <span class='code'>struct Slice&#123;T&lt;:AbstractUnitRange&#125; &lt;: AbstractUnitRange&#123;Int&#125;</span>
+            <span class='code'>    outsize &#61; SA .* SB</span>
           </td>
         </tr>
         <tr id='L383'>
@@ -3896,7 +3869,7 @@
           <td>
             
             
-            <span class='code'>    indices::T</span>
+            <span class='code'>    if prod&#40;outsize&#41; &gt; length_limit</span>
           </td>
         </tr>
         <tr id='L384'>
@@ -3906,7 +3879,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>        return :&#40; SizedVector&#123;&#36;&#40;outsize&#91;1&#93;&#41;&#125;&#40; kron&#40;drop_sdims&#40;a&#41;, drop_sdims&#40;b&#41;&#41; &#41; &#41;</span>
           </td>
         </tr>
         <tr id='L385'>
@@ -3916,7 +3889,7 @@
           <td>
             
             
-            <span class='code'>Slice&#40;S::Slice&#41; &#61; S</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L386'>
@@ -3926,7 +3899,7 @@
           <td>
             
             
-            <span class='code'>Slice&#123;T&#125;&#40;S::Slice&#41; where &#123;T&lt;:AbstractUnitRange&#125; &#61; Slice&#123;T&#125;&#40;T&#40;S.indices&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L387'>
@@ -3936,7 +3909,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    m &#61; &#91; :&#40;a&#91;&#36;ia&#93; * b&#91;&#36;ib&#93;&#41; for ib in 1:SB&#91;1&#93;, ia in 1:SA&#91;1&#93;&#93;</span>
           </td>
         </tr>
         <tr id='L388'>
@@ -3946,7 +3919,7 @@
           <td>
             
             
-            <span class='code'>axes&#40;S::Slice&#41; &#61; &#40;IdentityUnitRange&#40;S.indices&#41;,&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L389'>
@@ -3956,7 +3929,7 @@
           <td>
             
             
-            <span class='code'>axes1&#40;S::Slice&#41; &#61; IdentityUnitRange&#40;S.indices&#41;</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L390'>
@@ -3966,7 +3939,7 @@
           <td>
             
             
-            <span class='code'>axes&#40;S::Slice&#123;&lt;:OneTo&#125;&#41; &#61; &#40;S.indices,&#41;</span>
+            <span class='code'>        @_inline_meta</span>
           </td>
         </tr>
         <tr id='L391'>
@@ -3976,7 +3949,7 @@
           <td>
             
             
-            <span class='code'>axes1&#40;S::Slice&#123;&lt;:OneTo&#125;&#41; &#61; S.indices</span>
+            <span class='code'>        @inbounds return similar_type&#40;&#36;a, promote_type&#40;eltype&#40;a&#41;,eltype&#40;b&#41;&#41;, Size&#40;&#36;&#40;outsize&#41;&#41;&#41;&#40;tuple&#40;&#36;&#40;m...&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L392'>
@@ -3986,7 +3959,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L393'>
@@ -3996,7 +3969,7 @@
           <td>
             
             
-            <span class='code'>first&#40;S::Slice&#41; &#61; first&#40;S.indices&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L394'>
@@ -4006,7 +3979,7 @@
           <td>
             
             
-            <span class='code'>last&#40;S::Slice&#41; &#61; last&#40;S.indices&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L395'>
@@ -4016,7 +3989,7 @@
           <td>
             
             
-            <span class='code'>size&#40;S::Slice&#41; &#61; &#40;length&#40;S.indices&#41;,&#41;</span>
+            <span class='code'>@inline function kron&#40;</span>
           </td>
         </tr>
         <tr id='L396'>
@@ -4026,7 +3999,7 @@
           <td>
             
             
-            <span class='code'>length&#40;S::Slice&#41; &#61; length&#40;S.indices&#41;</span>
+            <span class='code'>        a::Union&#123;Transpose&#123;&lt;:Number,&lt;:StaticVector&#125;, Adjoint&#123;&lt;:Number,&lt;:StaticVector&#125;&#125;,</span>
           </td>
         </tr>
         <tr id='L397'>
@@ -4036,7 +4009,7 @@
           <td>
             
             
-            <span class='code'>getindex&#40;S::Slice, i::Int&#41; &#61; &#40;@inline; @boundscheck checkbounds&#40;S, i&#41;; i&#41;</span>
+            <span class='code'>        b::Union&#123;Transpose&#123;&lt;:Number,&lt;:StaticVector&#125;, Adjoint&#123;&lt;:Number,&lt;:StaticVector&#125;&#125;&#41;</span>
           </td>
         </tr>
         <tr id='L398'>
@@ -4046,7 +4019,7 @@
           <td>
             
             
-            <span class='code'>getindex&#40;S::Slice, i::AbstractUnitRange&#123;&lt;:Integer&#125;&#41; &#61; &#40;@inline; @boundscheck checkbounds&#40;S, i&#41;; i&#41;</span>
+            <span class='code'>    _kron_tvec_x_tvec&#40;_length_limit, Size&#40;a&#41;, Size&#40;b&#41;, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L399'>
@@ -4056,7 +4029,7 @@
           <td>
             
             
-            <span class='code'>getindex&#40;S::Slice, i::StepRange&#123;&lt;:Integer&#125;&#41; &#61; &#40;@inline; @boundscheck checkbounds&#40;S, i&#41;; i&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L400'>
@@ -4066,7 +4039,7 @@
           <td>
             
             
-            <span class='code'>show&#40;io::IO, r::Slice&#41; &#61; print&#40;io, &quot;Base.Slice&#40;&quot;, r.indices, &quot;&#41;&quot;&#41;</span>
+            <span class='code'>@generated function _kron_tvec_x_tvec&#40;::Length&#123;length_limit&#125;, ::Size&#123;SA&#125;, ::Size&#123;SB&#125;, a, b&#41; where &#123;length_limit,SA,SB&#125;</span>
           </td>
         </tr>
         <tr id='L401'>
@@ -4076,7 +4049,7 @@
           <td>
             
             
-            <span class='code'>iterate&#40;S::Slice, s...&#41; &#61; iterate&#40;S.indices, s...&#41;</span>
+            <span class='code'>    outsize &#61; SA .* SB</span>
           </td>
         </tr>
         <tr id='L402'>
@@ -4086,7 +4059,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    if prod&#40;outsize&#41; &gt; length_limit</span>
           </td>
         </tr>
         <tr id='L403'>
@@ -4096,7 +4069,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>        return :&#40; SizedMatrix&#123;&#36;&#40;outsize&#91;1&#93;&#41;,&#36;&#40;outsize&#91;2&#93;&#41;&#125;&#40; kron&#40;drop_sdims&#40;a&#41;, drop_sdims&#40;b&#41;&#41; &#41; &#41;</span>
           </td>
         </tr>
         <tr id='L404'>
@@ -4106,7 +4079,7 @@
           <td>
             
             
-            <span class='code'>    IdentityUnitRange&#40;range::AbstractUnitRange&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L405'>
@@ -4126,7 +4099,7 @@
           <td>
             
             
-            <span class='code'>Represent an AbstractUnitRange &#96;range&#96; as an offset vector such that &#96;range&#91;i&#93; &#61;&#61; i&#96;.</span>
+            <span class='code'>    m &#61; &#91; :&#40;a&#91;&#36;ia&#93; * b&#91;&#36;ib&#93;&#41; for ib in 1:SB&#91;2&#93;, ia in 1:SA&#91;2&#93;&#93;</span>
           </td>
         </tr>
         <tr id='L407'>
@@ -4146,7 +4119,7 @@
           <td>
             
             
-            <span class='code'>&#96;IdentityUnitRange&#96;s are frequently used as axes for offset arrays.</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L409'>
@@ -4156,7 +4129,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>        @_inline_meta</span>
           </td>
         </tr>
         <tr id='L410'>
@@ -4166,7 +4139,7 @@
           <td>
             
             
-            <span class='code'>struct IdentityUnitRange&#123;T&lt;:AbstractUnitRange&#125; &lt;: AbstractUnitRange&#123;Int&#125;</span>
+            <span class='code'>        @inbounds return similar_type&#40;&#36;a, promote_type&#40;eltype&#40;a&#41;,eltype&#40;b&#41;&#41;, Size&#40;&#36;&#40;outsize&#41;&#41;&#41;&#40;tuple&#40;&#36;&#40;m...&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L411'>
@@ -4176,7 +4149,7 @@
           <td>
             
             
-            <span class='code'>    indices::T</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L412'>
@@ -4196,7 +4169,7 @@
           <td>
             
             
-            <span class='code'>IdentityUnitRange&#40;S::IdentityUnitRange&#41; &#61; S</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L414'>
@@ -4206,7 +4179,7 @@
           <td>
             
             
-            <span class='code'>IdentityUnitRange&#123;T&#125;&#40;S::IdentityUnitRange&#41; where &#123;T&lt;:AbstractUnitRange&#125; &#61; IdentityUnitRange&#123;T&#125;&#40;T&#40;S.indices&#41;&#41;</span>
+            <span class='code'>@inline function kron&#40;</span>
           </td>
         </tr>
         <tr id='L415'>
@@ -4216,7 +4189,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        a::Union&#123;Transpose&#123;&lt;:Number,&lt;:StaticVector&#125;, Adjoint&#123;&lt;:Number,&lt;:StaticVector&#125;&#125;,</span>
           </td>
         </tr>
         <tr id='L416'>
@@ -4226,7 +4199,7 @@
           <td>
             
             
-            <span class='code'># IdentityUnitRanges are offset and thus have offset axes, so they are their own axes</span>
+            <span class='code'>        b::StaticVector&#41;</span>
           </td>
         </tr>
         <tr id='L417'>
@@ -4236,7 +4209,7 @@
           <td>
             
             
-            <span class='code'>axes&#40;S::IdentityUnitRange&#41; &#61; &#40;S,&#41;</span>
+            <span class='code'>    _kron_tvec_x_vec&#40;_length_limit, Size&#40;a&#41;, Size&#40;b&#41;, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L418'>
@@ -4246,7 +4219,7 @@
           <td>
             
             
-            <span class='code'>axes1&#40;S::IdentityUnitRange&#41; &#61; S</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L419'>
@@ -4256,7 +4229,7 @@
           <td>
             
             
-            <span class='code'>axes&#40;S::IdentityUnitRange&#123;&lt;:OneTo&#125;&#41; &#61; &#40;S.indices,&#41;</span>
+            <span class='code'>@generated function _kron_tvec_x_vec&#40;::Length&#123;length_limit&#125;, ::Size&#123;SA&#125;, ::Size&#123;SB&#125;, a, b&#41; where &#123;length_limit,SA,SB&#125;</span>
           </td>
         </tr>
         <tr id='L420'>
@@ -4266,7 +4239,7 @@
           <td>
             
             
-            <span class='code'>axes1&#40;S::IdentityUnitRange&#123;&lt;:OneTo&#125;&#41; &#61; S.indices</span>
+            <span class='code'>    outsize &#61; &#40;SA&#91;1&#93; * SB&#91;1&#93;, SA&#91;2&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L421'>
@@ -4276,7 +4249,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    if prod&#40;outsize&#41; &gt; length_limit</span>
           </td>
         </tr>
         <tr id='L422'>
@@ -4286,7 +4259,7 @@
           <td>
             
             
-            <span class='code'>first&#40;S::IdentityUnitRange&#41; &#61; first&#40;S.indices&#41;</span>
+            <span class='code'>        return :&#40; SizedMatrix&#123;&#36;&#40;outsize&#91;1&#93;&#41;,&#36;&#40;outsize&#91;2&#93;&#41;&#125;&#40; kron&#40;drop_sdims&#40;a&#41;, drop_sdims&#40;b&#41;&#41; &#41; &#41;</span>
           </td>
         </tr>
         <tr id='L423'>
@@ -4296,7 +4269,7 @@
           <td>
             
             
-            <span class='code'>last&#40;S::IdentityUnitRange&#41; &#61; last&#40;S.indices&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L424'>
@@ -4306,7 +4279,7 @@
           <td>
             
             
-            <span class='code'>size&#40;S::IdentityUnitRange&#41; &#61; &#40;length&#40;S.indices&#41;,&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L425'>
@@ -4316,7 +4289,7 @@
           <td>
             
             
-            <span class='code'>length&#40;S::IdentityUnitRange&#41; &#61; length&#40;S.indices&#41;</span>
+            <span class='code'>    M &#61; &#91; :&#40;a&#91;&#36;ia&#93; * b&#91;&#36;ib&#93;&#41; for ib in 1:SB&#91;1&#93;, ia in 1:SA&#91;2&#93;&#93;</span>
           </td>
         </tr>
         <tr id='L426'>
@@ -4326,7 +4299,7 @@
           <td>
             
             
-            <span class='code'>getindex&#40;S::IdentityUnitRange, i::Int&#41; &#61; &#40;@inline; @boundscheck checkbounds&#40;S, i&#41;; i&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L427'>
@@ -4336,7 +4309,7 @@
           <td>
             
             
-            <span class='code'>getindex&#40;S::IdentityUnitRange, i::AbstractUnitRange&#123;&lt;:Integer&#125;&#41; &#61; &#40;@inline; @boundscheck checkbounds&#40;S, i&#41;; i&#41;</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L428'>
@@ -4346,7 +4319,7 @@
           <td>
             
             
-            <span class='code'>getindex&#40;S::IdentityUnitRange, i::StepRange&#123;&lt;:Integer&#125;&#41; &#61; &#40;@inline; @boundscheck checkbounds&#40;S, i&#41;; i&#41;</span>
+            <span class='code'>        @_inline_meta</span>
           </td>
         </tr>
         <tr id='L429'>
@@ -4356,7 +4329,7 @@
           <td>
             
             
-            <span class='code'>show&#40;io::IO, r::IdentityUnitRange&#41; &#61; print&#40;io, &quot;Base.IdentityUnitRange&#40;&quot;, r.indices, &quot;&#41;&quot;&#41;</span>
+            <span class='code'>        @inbounds return similar_type&#40;&#36;a, promote_type&#40;eltype&#40;a&#41;,eltype&#40;b&#41;&#41;, Size&#40;&#36;&#40;outsize&#41;&#41;&#41;&#40;tuple&#40;&#36;&#40;M...&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L430'>
@@ -4366,7 +4339,7 @@
           <td>
             
             
-            <span class='code'>iterate&#40;S::IdentityUnitRange, s...&#41; &#61; iterate&#40;S.indices, s...&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L431'>
@@ -4376,7 +4349,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L432'>
@@ -4386,7 +4359,7 @@
           <td>
             
             
-            <span class='code'># For OneTo, the values and indices of the values are identical, so this may be defined in Base.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L433'>
@@ -4396,7 +4369,7 @@
           <td>
             
             
-            <span class='code'># In general such an indexing operation would produce offset ranges</span>
+            <span class='code'>@inline function kron&#40;</span>
           </td>
         </tr>
         <tr id='L434'>
@@ -4406,7 +4379,7 @@
           <td>
             
             
-            <span class='code'>getindex&#40;S::OneTo, I::IdentityUnitRange&#123;&lt;:AbstractUnitRange&#123;&lt;:Integer&#125;&#125;&#41; &#61; &#40;@inline; @boundscheck checkbounds&#40;S, I&#41;; I&#41;</span>
+            <span class='code'>        a::StaticVector,</span>
           </td>
         </tr>
         <tr id='L435'>
@@ -4416,7 +4389,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        b::Union&#123;Transpose&#123;&lt;:Number,&lt;:StaticVector&#125;, Adjoint&#123;&lt;:Number,&lt;:StaticVector&#125;&#125;&#41;</span>
           </td>
         </tr>
         <tr id='L436'>
@@ -4426,7 +4399,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>    _kron_vec_x_tvec&#40;_length_limit, Size&#40;a&#41;, Size&#40;b&#41;, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L437'>
@@ -4436,7 +4409,7 @@
           <td>
             
             
-            <span class='code'>    LinearIndices&#40;A::AbstractArray&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L438'>
@@ -4446,7 +4419,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@generated function _kron_vec_x_tvec&#40;::Length&#123;length_limit&#125;, ::Size&#123;SA&#125;, ::Size&#123;SB&#125;, a, b&#41; where &#123;length_limit,SA,SB&#125;</span>
           </td>
         </tr>
         <tr id='L439'>
@@ -4456,7 +4429,7 @@
           <td>
             
             
-            <span class='code'>Return a &#96;LinearIndices&#96; array with the same shape and &#91;&#96;axes&#96;&#93;&#40;@ref&#41; as &#96;A&#96;,</span>
+            <span class='code'>    outsize &#61; &#40;SA&#91;1&#93; * SB&#91;1&#93;, SB&#91;2&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L440'>
@@ -4466,7 +4439,7 @@
           <td>
             
             
-            <span class='code'>holding the linear index of each entry in &#96;A&#96;. Indexing this array with</span>
+            <span class='code'>    if prod&#40;outsize&#41; &gt; length_limit</span>
           </td>
         </tr>
         <tr id='L441'>
@@ -4476,7 +4449,7 @@
           <td>
             
             
-            <span class='code'>cartesian indices allows mapping them to linear indices.</span>
+            <span class='code'>        return :&#40; SizedMatrix&#123;&#36;&#40;outsize&#91;1&#93;&#41;,&#36;&#40;outsize&#91;2&#93;&#41;&#125;&#40; kron&#40;drop_sdims&#40;a&#41;, drop_sdims&#40;b&#41;&#41; &#41; &#41;</span>
           </td>
         </tr>
         <tr id='L442'>
@@ -4486,7 +4459,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L443'>
@@ -4496,7 +4469,7 @@
           <td>
             
             
-            <span class='code'>For arrays with conventional indexing &#40;indices start at 1&#41;, or any multidimensional</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L444'>
@@ -4506,7 +4479,7 @@
           <td>
             
             
-            <span class='code'>array, linear indices range from 1 to &#96;length&#40;A&#41;&#96;. However, for &#96;AbstractVector&#96;s</span>
+            <span class='code'>    M &#61; &#91; :&#40;a&#91;&#36;ia&#93; * b&#91;&#36;ib&#93;&#41; for  ia in 1:SA&#91;1&#93;, ib in 1:SB&#91;2&#93;&#93;</span>
           </td>
         </tr>
         <tr id='L445'>
@@ -4516,7 +4489,7 @@
           <td>
             
             
-            <span class='code'>linear indices are &#96;axes&#40;A, 1&#41;&#96;, and therefore do not start at 1 for vectors with</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L446'>
@@ -4526,7 +4499,7 @@
           <td>
             
             
-            <span class='code'>unconventional indexing.</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L447'>
@@ -4536,7 +4509,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        @_inline_meta</span>
           </td>
         </tr>
         <tr id='L448'>
@@ -4546,7 +4519,7 @@
           <td>
             
             
-            <span class='code'>Calling this function is the &quot;safe&quot; way to write algorithms that</span>
+            <span class='code'>        @inbounds return similar_type&#40;&#36;a, promote_type&#40;eltype&#40;a&#41;,eltype&#40;b&#41;&#41;, Size&#40;&#36;&#40;outsize&#41;&#41;&#41;&#40;tuple&#40;&#36;&#40;M...&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L449'>
@@ -4556,7 +4529,7 @@
           <td>
             
             
-            <span class='code'>exploit linear indexing.</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L450'>
@@ -4566,7 +4539,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L451'>
@@ -4576,7 +4549,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L452'>
@@ -4586,7 +4559,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>@inline kron&#40;a::StaticVector, b::StaticMatrix&#41; &#61; _kron_vec_x_mat&#40;_length_limit, Size&#40;a&#41;, Size&#40;b&#41;, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L453'>
@@ -4596,7 +4569,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; A &#61; fill&#40;1, &#40;5,6,7&#41;&#41;;</span>
+            <span class='code'>@generated function _kron_vec_x_mat&#40;::Length&#123;length_limit&#125;, ::Size&#123;SA&#125;, ::Size&#123;SB&#125;, a, b&#41; where &#123;length_limit,SA,SB&#125;</span>
           </td>
         </tr>
         <tr id='L454'>
@@ -4606,7 +4579,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    outsize &#61; &#40;SA&#91;1&#93; * SB&#91;1&#93;, SB&#91;2&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L455'>
@@ -4616,7 +4589,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; b &#61; LinearIndices&#40;A&#41;;</span>
+            <span class='code'>    if prod&#40;outsize&#41; &gt; length_limit</span>
           </td>
         </tr>
         <tr id='L456'>
@@ -4626,7 +4599,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        return :&#40; SizedMatrix&#123;&#36;&#40;outsize&#91;1&#93;&#41;,&#36;&#40;outsize&#91;2&#93;&#41;&#125;&#40; kron&#40;drop_sdims&#40;a&#41;, drop_sdims&#40;b&#41;&#41; &#41; &#41;</span>
           </td>
         </tr>
         <tr id='L457'>
@@ -4636,7 +4609,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; extrema&#40;b&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L458'>
@@ -4646,7 +4619,7 @@
           <td>
             
             
-            <span class='code'>&#40;1, 210&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L459'>
@@ -4656,7 +4629,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'>    M &#61; &#91; :&#40;a&#91;&#36;ia&#93; * b&#91;&#36;ib,&#36;jb&#93;&#41; for ib in 1:SB&#91;1&#93;, ia in 1:SA&#91;1&#93;, jb in 1:SB&#91;2&#93;&#93;</span>
           </td>
         </tr>
         <tr id='L460'>
@@ -4676,7 +4649,7 @@
           <td>
             
             
-            <span class='code'>    LinearIndices&#40;inds::CartesianIndices&#41; -&gt; R</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L462'>
@@ -4686,7 +4659,7 @@
           <td>
             
             
-            <span class='code'>    LinearIndices&#40;sz::Dims&#41; -&gt; R</span>
+            <span class='code'>        @_inline_meta</span>
           </td>
         </tr>
         <tr id='L463'>
@@ -4696,7 +4669,7 @@
           <td>
             
             
-            <span class='code'>    LinearIndices&#40;&#40;istart:istop, jstart:jstop, ...&#41;&#41; -&gt; R</span>
+            <span class='code'>        @inbounds return similar_type&#40;&#36;b, promote_type&#40;eltype&#40;a&#41;,eltype&#40;b&#41;&#41;, Size&#40;&#36;&#40;outsize&#41;&#41;&#41;&#40;tuple&#40;&#36;&#40;M...&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L464'>
@@ -4706,7 +4679,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L465'>
@@ -4716,7 +4689,7 @@
           <td>
             
             
-            <span class='code'>Return a &#96;LinearIndices&#96; array with the specified shape or &#91;&#96;axes&#96;&#93;&#40;@ref&#41;.</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L466'>
@@ -4736,7 +4709,7 @@
           <td>
             
             
-            <span class='code'># Examples</span>
+            <span class='code'>@inline kron&#40;a::StaticMatrix, b::StaticVector&#41; &#61; _kron_mat_x_vec&#40;_length_limit, Size&#40;a&#41;, Size&#40;b&#41;, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L468'>
@@ -4746,7 +4719,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@generated function _kron_mat_x_vec&#40;::Length&#123;length_limit&#125;, ::Size&#123;SA&#125;, ::Size&#123;SB&#125;, a, b&#41; where &#123;length_limit,SA,SB&#125;</span>
           </td>
         </tr>
         <tr id='L469'>
@@ -4756,7 +4729,7 @@
           <td>
             
             
-            <span class='code'>The main purpose of this constructor is intuitive conversion</span>
+            <span class='code'>    outsize &#61; &#40;SA&#91;1&#93; * SB&#91;1&#93;, SA&#91;2&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L470'>
@@ -4766,7 +4739,7 @@
           <td>
             
             
-            <span class='code'>from cartesian to linear indexing:</span>
+            <span class='code'>    if prod&#40;outsize&#41; &gt; length_limit</span>
           </td>
         </tr>
         <tr id='L471'>
@@ -4776,7 +4749,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        return :&#40; SizedMatrix&#123;&#36;&#40;outsize&#91;1&#93;&#41;,&#36;&#40;outsize&#91;2&#93;&#41;&#125;&#40; kron&#40;drop_sdims&#40;a&#41;, drop_sdims&#40;b&#41;&#41; &#41; &#41;</span>
           </td>
         </tr>
         <tr id='L472'>
@@ -4786,7 +4759,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;jldoctest</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L473'>
@@ -4796,7 +4769,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; linear &#61; LinearIndices&#40;&#40;1:3, 1:2&#41;&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L474'>
@@ -4806,7 +4779,7 @@
           <td>
             
             
-            <span class='code'>3×2 LinearIndices&#123;2, Tuple&#123;UnitRange&#123;Int64&#125;, UnitRange&#123;Int64&#125;&#125;&#125;:</span>
+            <span class='code'>    M &#61; &#91; :&#40;a&#91;&#36;ia,&#36;ja&#93; * b&#91;&#36;ib&#93;&#41; for ib in 1:SB&#91;1&#93;, ia in 1:SA&#91;1&#93;, ja in 1:SA&#91;2&#93; &#93;</span>
           </td>
         </tr>
         <tr id='L475'>
@@ -4816,7 +4789,7 @@
           <td>
             
             
-            <span class='code'> 1  4</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L476'>
@@ -4826,7 +4799,7 @@
           <td>
             
             
-            <span class='code'> 2  5</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L477'>
@@ -4836,7 +4809,7 @@
           <td>
             
             
-            <span class='code'> 3  6</span>
+            <span class='code'>        @_inline_meta</span>
           </td>
         </tr>
         <tr id='L478'>
@@ -4846,7 +4819,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        @inbounds return similar_type&#40;&#36;a, promote_type&#40;eltype&#40;a&#41;,eltype&#40;b&#41;&#41;, Size&#40;&#36;&#40;outsize&#41;&#41;&#41;&#40;tuple&#40;&#36;&#40;M...&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L479'>
@@ -4856,7 +4829,7 @@
           <td>
             
             
-            <span class='code'>julia&gt; linear&#91;1,2&#93;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L480'>
@@ -4866,7 +4839,7 @@
           <td>
             
             
-            <span class='code'>4</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L481'>
@@ -4876,7 +4849,7 @@
           <td>
             
             
-            <span class='code'>&#96;&#96;&#96;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L482'>
@@ -4886,7 +4859,7 @@
           <td>
             
             
-            <span class='code'>&quot;&quot;&quot;</span>
+            <span class='code'>@inline function kron&#40;</span>
           </td>
         </tr>
         <tr id='L483'>
@@ -4896,7 +4869,7 @@
           <td>
             
             
-            <span class='code'>struct LinearIndices&#123;N,R&lt;:NTuple&#123;N,AbstractUnitRange&#123;Int&#125;&#125;&#125; &lt;: AbstractArray&#123;Int,N&#125;</span>
+            <span class='code'>        a::StaticMatrix,</span>
           </td>
         </tr>
         <tr id='L484'>
@@ -4906,7 +4879,7 @@
           <td>
             
             
-            <span class='code'>    indices::R</span>
+            <span class='code'>        b::Union&#123;Transpose&#123;&lt;:Number,&lt;:StaticVector&#125;, Adjoint&#123;&lt;:Number,&lt;:StaticVector&#125;&#125;&#41;</span>
           </td>
         </tr>
         <tr id='L485'>
@@ -4916,7 +4889,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    _kron_mat_x_tvec&#40;_length_limit, Size&#40;a&#41;, Size&#40;b&#41;, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L486'>
@@ -4926,7 +4899,7 @@
           <td>
             
             
-            <span class='code'>convert&#40;::Type&#123;LinearIndices&#123;N,R&#125;&#125;, inds::LinearIndices&#123;N&#125;&#41; where &#123;N,R&lt;:NTuple&#123;N,AbstractUnitRange&#123;Int&#125;&#125;&#125; &#61;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L487'>
@@ -4936,7 +4909,7 @@
           <td>
             
             
-            <span class='code'>    LinearIndices&#123;N,R&#125;&#40;convert&#40;R, inds.indices&#41;&#41;::LinearIndices&#123;N,R&#125;</span>
+            <span class='code'>@generated function _kron_mat_x_tvec&#40;::Length&#123;length_limit&#125;, ::Size&#123;SA&#125;, ::Size&#123;SB&#125;, a, b&#41; where &#123;length_limit,SA,SB&#125;</span>
           </td>
         </tr>
         <tr id='L488'>
@@ -4946,7 +4919,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    outsize &#61; SA .* SB</span>
           </td>
         </tr>
         <tr id='L489'>
@@ -4956,7 +4929,7 @@
           <td>
             
             
-            <span class='code'>LinearIndices&#40;::Tuple&#123;&#125;&#41; &#61; LinearIndices&#123;0,typeof&#40;&#40;&#41;&#41;&#125;&#40;&#40;&#41;&#41;</span>
+            <span class='code'>    if prod&#40;outsize&#41; &gt; length_limit</span>
           </td>
         </tr>
         <tr id='L490'>
@@ -4966,7 +4939,7 @@
           <td>
             
             
-            <span class='code'>LinearIndices&#40;inds::NTuple&#123;N,AbstractUnitRange&#123;&lt;:Integer&#125;&#125;&#41; where &#123;N&#125; &#61;</span>
+            <span class='code'>        return :&#40; SizedMatrix&#123;&#36;&#40;outsize&#91;1&#93;&#41;,&#36;&#40;outsize&#91;2&#93;&#41;&#125;&#40; kron&#40;drop_sdims&#40;a&#41;, drop_sdims&#40;b&#41;&#41; &#41; &#41;</span>
           </td>
         </tr>
         <tr id='L491'>
@@ -4976,7 +4949,7 @@
           <td>
             
             
-            <span class='code'>    LinearIndices&#40;map&#40;r-&gt;convert&#40;AbstractUnitRange&#123;Int&#125;, r&#41;, inds&#41;&#41;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L492'>
@@ -4986,7 +4959,7 @@
           <td>
             
             
-            <span class='code'>LinearIndices&#40;inds::NTuple&#123;N,Union&#123;&lt;:Integer,AbstractUnitRange&#123;&lt;:Integer&#125;&#125;&#125;&#41; where &#123;N&#125; &#61;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L493'>
@@ -4996,31 +4969,17 @@
           <td>
             
             
-            <span class='code'>    LinearIndices&#40;map&#40;_convert2ind, inds&#41;&#41;</span>
+            <span class='code'>    M &#61; &#91; :&#40;a&#91;&#36;ia,&#36;ja&#93; * b&#91;&#36;ib,&#36;jb&#93;&#41; for ib in 1:SB&#91;1&#93;, ia in 1:SA&#91;1&#93;, jb in 1:SB&#91;2&#93;, ja in 1:SA&#91;2&#93; &#93;</span>
           </td>
         </tr>
         <tr id='L494'>
           <td class='lineno'>494</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>64 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'></td>
           <td>
-            <div class='call-sites'>
-              64 &#40;0 &#37;&#41;
-              samples spent in LinearIndices
-              <br />
-              
-              64 &#40;100 &#37;&#41; &#40;incl.&#41;
-              when called from _mapreduce
-              <a href='reduce.jl-8bfdc267086819a530fd8fd17b0ae76484e820cc.html#L426'>line 426</a>
-              <br />
-            </div>
-            <div class='callees'>
-              64 &#40;100 &#37;&#41;
-              samples spent calling
-              <a href='abstractarray.jl-19cb862b60b8167236b95dc9fd58efafbb7fc02a.html#L98'>axes</a>
-              <br />
-            </div>
-            <span class='code'>LinearIndices&#40;A::Union&#123;AbstractArray,SimpleVector&#125;&#41; &#61; LinearIndices&#40;axes&#40;A&#41;&#41;</span>
+            
+            
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L495'>
@@ -5030,7 +4989,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L496'>
@@ -5040,7 +4999,7 @@
           <td>
             
             
-            <span class='code'>_convert2ind&#40;i::Integer&#41; &#61; oneto&#40;i&#41;</span>
+            <span class='code'>        @_inline_meta</span>
           </td>
         </tr>
         <tr id='L497'>
@@ -5050,7 +5009,7 @@
           <td>
             
             
-            <span class='code'>_convert2ind&#40;ind::AbstractUnitRange&#41; &#61; first&#40;ind&#41;:last&#40;ind&#41;</span>
+            <span class='code'>        @inbounds return  similar_type&#40;&#36;a, promote_type&#40;eltype&#40;a&#41;,eltype&#40;b&#41;&#41;, Size&#40;&#36;&#40;outsize&#41;&#41;&#41;&#40;tuple&#40;&#36;&#40;M...&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L498'>
@@ -5060,7 +5019,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L499'>
@@ -5070,7 +5029,7 @@
           <td>
             
             
-            <span class='code'>function indices_promote_type&#40;::Type&#123;Tuple&#123;R1,Vararg&#123;R1,N&#125;&#125;&#125;, ::Type&#123;Tuple&#123;R2,Vararg&#123;R2,N&#125;&#125;&#125;&#41; where &#123;R1,R2,N&#125;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L500'>
@@ -5080,7 +5039,7 @@
           <td>
             
             
-            <span class='code'>    R &#61; promote_type&#40;R1, R2&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L501'>
@@ -5090,7 +5049,7 @@
           <td>
             
             
-            <span class='code'>    return Tuple&#123;R, Vararg&#123;R, N&#125;&#125;</span>
+            <span class='code'>@inline function kron&#40;</span>
           </td>
         </tr>
         <tr id='L502'>
@@ -5100,7 +5059,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>        a::Union&#123;Transpose&#123;&lt;:Number,&lt;:StaticVector&#125;, Adjoint&#123;&lt;:Number,&lt;:StaticVector&#125;&#125;,</span>
           </td>
         </tr>
         <tr id='L503'>
@@ -5110,7 +5069,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        b::StaticMatrix&#41;</span>
           </td>
         </tr>
         <tr id='L504'>
@@ -5120,7 +5079,7 @@
           <td>
             
             
-            <span class='code'>promote_rule&#40;::Type&#123;LinearIndices&#123;N,R1&#125;&#125;, ::Type&#123;LinearIndices&#123;N,R2&#125;&#125;&#41; where &#123;N,R1,R2&#125; &#61;</span>
+            <span class='code'>    _kron_tvec_x_mat&#40;_length_limit, Size&#40;a&#41;, Size&#40;b&#41;, a, b&#41;</span>
           </td>
         </tr>
         <tr id='L505'>
@@ -5130,7 +5089,7 @@
           <td>
             
             
-            <span class='code'>    LinearIndices&#123;N,indices_promote_type&#40;R1,R2&#41;&#125;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L506'>
@@ -5140,7 +5099,7 @@
           <td>
             
             
-            <span class='code'>promote_rule&#40;a::Type&#123;Slice&#123;T1&#125;&#125;, b::Type&#123;Slice&#123;T2&#125;&#125;&#41; where &#123;T1,T2&#125; &#61;</span>
+            <span class='code'>@generated function _kron_tvec_x_mat&#40;::Length&#123;length_limit&#125;, ::Size&#123;SA&#125;, ::Size&#123;SB&#125;, a, b&#41; where &#123;length_limit,SA,SB&#125;</span>
           </td>
         </tr>
         <tr id='L507'>
@@ -5150,7 +5109,7 @@
           <td>
             
             
-            <span class='code'>    el_same&#40;promote_type&#40;T1, T2&#41;, a, b&#41;</span>
+            <span class='code'>    outsize &#61; SA .* SB</span>
           </td>
         </tr>
         <tr id='L508'>
@@ -5160,7 +5119,7 @@
           <td>
             
             
-            <span class='code'>promote_rule&#40;a::Type&#123;IdentityUnitRange&#123;T1&#125;&#125;, b::Type&#123;IdentityUnitRange&#123;T2&#125;&#125;&#41; where &#123;T1,T2&#125; &#61;</span>
+            <span class='code'>    if prod&#40;outsize&#41; &gt; length_limit</span>
           </td>
         </tr>
         <tr id='L509'>
@@ -5170,7 +5129,7 @@
           <td>
             
             
-            <span class='code'>    el_same&#40;promote_type&#40;T1, T2&#41;, a, b&#41;</span>
+            <span class='code'>        return :&#40; SizedMatrix&#123;&#36;&#40;outsize&#91;1&#93;&#41;,&#36;&#40;outsize&#91;2&#93;&#41;&#125;&#40; kron&#40;drop_sdims&#40;a&#41;, drop_sdims&#40;b&#41;&#41; &#41; &#41;</span>
           </td>
         </tr>
         <tr id='L510'>
@@ -5180,7 +5139,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L511'>
@@ -5190,7 +5149,7 @@
           <td>
             
             
-            <span class='code'># AbstractArray implementation</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L512'>
@@ -5200,7 +5159,7 @@
           <td>
             
             
-            <span class='code'>IndexStyle&#40;::Type&#123;&lt;:LinearIndices&#125;&#41; &#61; IndexLinear&#40;&#41;</span>
+            <span class='code'>    M &#61; &#91; :&#40;a&#91;&#36;ia,&#36;ja&#93; * b&#91;&#36;ib,&#36;jb&#93;&#41; for ib in 1:SB&#91;1&#93;, ia in 1:SA&#91;1&#93;, jb in 1:SB&#91;2&#93;, ja in 1:SA&#91;2&#93; &#93;</span>
           </td>
         </tr>
         <tr id='L513'>
@@ -5210,7 +5169,7 @@
           <td>
             
             
-            <span class='code'>axes&#40;iter::LinearIndices&#41; &#61; map&#40;axes1, iter.indices&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L514'>
@@ -5220,7 +5179,7 @@
           <td>
             
             
-            <span class='code'>size&#40;iter::LinearIndices&#41; &#61; map&#40;length, iter.indices&#41;</span>
+            <span class='code'>    return quote</span>
           </td>
         </tr>
         <tr id='L515'>
@@ -5230,7 +5189,7 @@
           <td>
             
             
-            <span class='code'>isassigned&#40;iter::LinearIndices, i::Int&#41; &#61; checkbounds&#40;Bool, iter, i&#41;</span>
+            <span class='code'>        @_inline_meta</span>
           </td>
         </tr>
         <tr id='L516'>
@@ -5240,7 +5199,7 @@
           <td>
             
             
-            <span class='code'>function getindex&#40;iter::LinearIndices, i::Int&#41;</span>
+            <span class='code'>        @inbounds return  similar_type&#40;&#36;b, promote_type&#40;eltype&#40;a&#41;,eltype&#40;b&#41;&#41;, Size&#40;&#36;&#40;outsize&#41;&#41;&#41;&#40;tuple&#40;&#36;&#40;M...&#41;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L517'>
@@ -5250,7 +5209,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L518'>
@@ -5260,7 +5219,7 @@
           <td>
             
             
-            <span class='code'>    @boundscheck checkbounds&#40;iter, i&#41;</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L519'>
@@ -5270,7 +5229,7 @@
           <td>
             
             
-            <span class='code'>    i</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L520'>
@@ -5280,7 +5239,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L521'>
@@ -5290,7 +5249,7 @@
           <td>
             
             
-            <span class='code'>function getindex&#40;iter::LinearIndices, i::AbstractRange&#123;&lt;:Integer&#125;&#41;</span>
+            <span class='code'>#--------------------------------------------------</span>
           </td>
         </tr>
         <tr id='L522'>
@@ -5300,7 +5259,7 @@
           <td>
             
             
-            <span class='code'>    @inline</span>
+            <span class='code'># Some shimming for special linear algebra matrix types</span>
           </td>
         </tr>
         <tr id='L523'>
@@ -5310,7 +5269,7 @@
           <td>
             
             
-            <span class='code'>    @boundscheck checkbounds&#40;iter, i&#41;</span>
+            <span class='code'>@inline LinearAlgebra.Symmetric&#40;A::StaticMatrix, uplo::Char&#61;&#39;U&#39;&#41; &#61; &#40;checksquare&#40;A&#41;; Symmetric&#123;eltype&#40;A&#41;,typeof&#40;A&#41;&#125;&#40;A, uplo&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L524'>
@@ -5320,7 +5279,7 @@
           <td>
             
             
-            <span class='code'>    @inbounds isa&#40;iter, LinearIndices&#123;1&#125;&#41; ? iter.indices&#91;1&#93;&#91;i&#93; : &#40;first&#40;iter&#41;:last&#40;iter&#41;&#41;&#91;i&#93;</span>
+            <span class='code'>@inline LinearAlgebra.Hermitian&#40;A::StaticMatrix, uplo::Char&#61;&#39;U&#39;&#41; &#61; &#40;checksquare&#40;A&#41;; Hermitian&#123;eltype&#40;A&#41;,typeof&#40;A&#41;&#125;&#40;A, uplo&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L525'>
@@ -5330,7 +5289,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L526'>
@@ -5340,7 +5299,7 @@
           <td>
             
             
-            <span class='code'># More efficient iteration — predominantly for non-vector LinearIndices</span>
+            <span class='code'># triu/tril</span>
           </td>
         </tr>
         <tr id='L527'>
@@ -5350,7 +5309,7 @@
           <td>
             
             
-            <span class='code'># but one-dimensional LinearIndices must be special-cased to support OffsetArrays</span>
+            <span class='code'>function triu&#40;S::StaticMatrix, k::Int&#61;0&#41;</span>
           </td>
         </tr>
         <tr id='L528'>
@@ -5360,7 +5319,7 @@
           <td>
             
             
-            <span class='code'>iterate&#40;iter::LinearIndices&#123;1&#125;, s...&#41; &#61; iterate&#40;axes1&#40;iter.indices&#91;1&#93;&#41;, s...&#41;</span>
+            <span class='code'>    if length&#40;S&#41; &lt;&#61; 32</span>
           </td>
         </tr>
         <tr id='L529'>
@@ -5370,7 +5329,7 @@
           <td>
             
             
-            <span class='code'>iterate&#40;iter::LinearIndices, i&#61;1&#41; &#61; i &gt; length&#40;iter&#41; ? nothing : &#40;i, i&#43;1&#41;</span>
+            <span class='code'>        C &#61; CartesianIndices&#40;S&#41;</span>
           </td>
         </tr>
         <tr id='L530'>
@@ -5380,7 +5339,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        t &#61; Tuple&#40;S&#41;</span>
           </td>
         </tr>
         <tr id='L531'>
@@ -5390,7 +5349,7 @@
           <td>
             
             
-            <span class='code'># Needed since firstindex and lastindex are defined in terms of LinearIndices</span>
+            <span class='code'>        for &#40;linind, CI&#41; in enumerate&#40;C&#41;</span>
           </td>
         </tr>
         <tr id='L532'>
@@ -5400,7 +5359,7 @@
           <td>
             
             
-            <span class='code'>first&#40;iter::LinearIndices&#41; &#61; 1</span>
+            <span class='code'>            i, j &#61; Tuple&#40;CI&#41;</span>
           </td>
         </tr>
         <tr id='L533'>
@@ -5410,7 +5369,7 @@
           <td>
             
             
-            <span class='code'>first&#40;iter::LinearIndices&#123;1&#125;&#41; &#61; &#40;@inline; first&#40;axes1&#40;iter.indices&#91;1&#93;&#41;&#41;&#41;</span>
+            <span class='code'>            if j-i &lt; k</span>
           </td>
         </tr>
         <tr id='L534'>
@@ -5420,7 +5379,7 @@
           <td>
             
             
-            <span class='code'>last&#40;iter::LinearIndices&#41; &#61; &#40;@inline; length&#40;iter&#41;&#41;</span>
+            <span class='code'>                t &#61; Base.setindex&#40;t, zero&#40;t&#91;linind&#93;&#41;, linind&#41;</span>
           </td>
         </tr>
         <tr id='L535'>
@@ -5430,7 +5389,237 @@
           <td>
             
             
-            <span class='code'>last&#40;iter::LinearIndices&#123;1&#125;&#41; &#61; &#40;@inline; last&#40;axes1&#40;iter.indices&#91;1&#93;&#41;&#41;&#41;</span>
+            <span class='code'>            end</span>
+          </td>
+        </tr>
+        <tr id='L536'>
+          <td class='lineno'>536</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        end</span>
+          </td>
+        </tr>
+        <tr id='L537'>
+          <td class='lineno'>537</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        similar_type&#40;S&#41;&#40;t&#41;</span>
+          </td>
+        </tr>
+        <tr id='L538'>
+          <td class='lineno'>538</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    else</span>
+          </td>
+        </tr>
+        <tr id='L539'>
+          <td class='lineno'>539</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        M &#61; triu&#33;&#40;copyto&#33;&#40;similar&#40;S&#41;, S&#41;, k&#41;</span>
+          </td>
+        </tr>
+        <tr id='L540'>
+          <td class='lineno'>540</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        similar_type&#40;S&#41;&#40;M&#41;</span>
+          </td>
+        </tr>
+        <tr id='L541'>
+          <td class='lineno'>541</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L542'>
+          <td class='lineno'>542</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L543'>
+          <td class='lineno'>543</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function tril&#40;S::StaticMatrix, k::Int&#61;0&#41;</span>
+          </td>
+        </tr>
+        <tr id='L544'>
+          <td class='lineno'>544</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    if length&#40;S&#41; &lt;&#61; 32</span>
+          </td>
+        </tr>
+        <tr id='L545'>
+          <td class='lineno'>545</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        C &#61; CartesianIndices&#40;S&#41;</span>
+          </td>
+        </tr>
+        <tr id='L546'>
+          <td class='lineno'>546</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        t &#61; Tuple&#40;S&#41;</span>
+          </td>
+        </tr>
+        <tr id='L547'>
+          <td class='lineno'>547</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        for &#40;linind, CI&#41; in enumerate&#40;C&#41;</span>
+          </td>
+        </tr>
+        <tr id='L548'>
+          <td class='lineno'>548</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            i, j &#61; Tuple&#40;CI&#41;</span>
+          </td>
+        </tr>
+        <tr id='L549'>
+          <td class='lineno'>549</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            if j-i &gt; k</span>
+          </td>
+        </tr>
+        <tr id='L550'>
+          <td class='lineno'>550</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>                t &#61; Base.setindex&#40;t, zero&#40;t&#91;linind&#93;&#41;, linind&#41;</span>
+          </td>
+        </tr>
+        <tr id='L551'>
+          <td class='lineno'>551</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>            end</span>
+          </td>
+        </tr>
+        <tr id='L552'>
+          <td class='lineno'>552</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        end</span>
+          </td>
+        </tr>
+        <tr id='L553'>
+          <td class='lineno'>553</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        similar_type&#40;S&#41;&#40;t&#41;</span>
+          </td>
+        </tr>
+        <tr id='L554'>
+          <td class='lineno'>554</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    else</span>
+          </td>
+        </tr>
+        <tr id='L555'>
+          <td class='lineno'>555</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        M &#61; tril&#33;&#40;copyto&#33;&#40;similar&#40;S&#41;, S&#41;, k&#41;</span>
+          </td>
+        </tr>
+        <tr id='L556'>
+          <td class='lineno'>556</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        similar_type&#40;S&#41;&#40;M&#41;</span>
+          </td>
+        </tr>
+        <tr id='L557'>
+          <td class='lineno'>557</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L558'>
+          <td class='lineno'>558</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
           </td>
         </tr>
       </tbody>
