@@ -1,4 +1,7 @@
-# TODO: 
+# TODO: add RK4
+# TODO: find out the Schwarzchild radius and test if it still breaks the code
+# TODO: optimize rest of the code - RK4
+# TODO: make the disc more colorful
 # The black hole will be centered at the origin.
 # We will use the Schwarzschild metric to describe 
 using LinearAlgebra
@@ -9,8 +12,8 @@ using Parameters
 include("algebra.jl") 
 # Parameters 
 # image size 
-const W = 200 # horizontal resolution 
-const H = 200 # vertical resolution 
+const W = 600 # horizontal resolution 
+const H = 600 # vertical resolution 
 # camera
 const camera_position = RealVector(1.0, 0.5, 4.0) # camera position in space
 const fov = π/3 # field of view
@@ -77,7 +80,7 @@ end
     return RealVector(dr, dθ, dϕ)
 end
 
-function make_system_curved!(rays::Vector{Ray}, W::Int, H::Int)::Vector{Ray}
+function make_system!(rays::Vector{Ray}, W::Int, H::Int)::Vector{Ray}
     # This function creates array of rays with initial positions and velocities
     # that are moving away from the camera position. 
     #rays = SArray{Tuple{W*H}, undef, 1, W*H}
@@ -108,7 +111,8 @@ function make_system_curved!(rays::Vector{Ray}, W::Int, H::Int)::Vector{Ray}
             dphi = D[3]
             r = pos[1]
             theta = pos[2]
-            dt = sqrt( (dr^2)/(f(r)^2) + (r^2*(dtheta^2 + sin(theta)^2 * dphi^2))/f(r) ) 
+            fr = f(r)
+            dt = sqrt( (dr^2)/(fr)^2) + (r^2*(dtheta^2 + sin(theta)^2 * dphi^2))/fr  
             D_spherical = to4Vector(D, dt) 
              
             pix = (i, j)
@@ -132,13 +136,8 @@ function render(rays::Array, t::Float64, dt::Float64 = 0.01)
         Threads.@threads for k in eachindex(rays)
             # Move each ray only if it is still active
             @inbounds if rays[k].flag == true  
-                #if type == "cartesian"
-                #    move_ray(rays[k], dt)
-                #    check_for_intersection(rays[k])
-                # else
-                move_ray_curved(rays[k], dt)
-                check_for_intersection_curved(rays[k])
-                # end
+                move_ray(rays[k], dt)
+                check_for_intersection(rays[k])
             end
         end 
 
@@ -158,7 +157,19 @@ function render(rays::Array, t::Float64, dt::Float64 = 0.01)
     return image
 end
 
-function move_ray_curved(ray::Ray, h::Float64)
+# This function does a single Runge-Kutta 4 step for the ray
+function RK4_step(ray::Ray, h::Float64)
+    # TODO: implement RK4 step 
+    return nothing
+end
+
+# This function provides the right-hand side of the Schwarzschild equation 
+function schwarzschild_rhs(ray::Ray)
+    # TODO: implement the right-hand side of the Schwarzschild equation
+    return nothing
+end 
+
+function move_ray(ray::Ray, h::Float64)
     # Euler iteration 
     r = ray.position[1]
     if r > 50.0 
@@ -167,8 +178,8 @@ function move_ray_curved(ray::Ray, h::Float64)
         return
     end 
     theta = ray.position[2]
-    phi = ray.position[3]
-    t = ray.position[4] # time coordinate     
+    #phi = ray.position[3]
+    #t = ray.position[4] # time coordinate     
 
     dr = ray.velocity[1] 
     dtheta = ray.velocity[2]
@@ -181,10 +192,12 @@ function move_ray_curved(ray::Ray, h::Float64)
     # dtheta += h * (- 2 / r * dtheta * dr + sin(theta) * cos(theta) * dtheta^2)
     # dphi += h * (- 2 / r * dphi * dr + 2 * cot(theta) * dphi * dtheta)
     # dt += h * (- 2 * M / (r^2 * f(r)) * dt * dr)
-    dr += h * ( (M/r^2) * (dr^2/f(r) - f(r)*dt^2) + r*f(r)*(dtheta^2 + sin(theta)^2 * dphi^2) )
-    dtheta += h * (-2/r * dr*dtheta + sin(theta)*cos(theta)*dphi^2)
+    fr = f(r)
+    sin_theta = sin(theta)
+    dr += h * ( (M/r^2) * (dr^2/fr - fr*dt^2) + r*fr*(dtheta^2 + sin_theta^2 * dphi^2) )
+    dtheta += h * (-2/r * dr*dtheta + sin_theta*cos(theta)*dphi^2)
     dphi += h * (-2/r * dr*dphi - 2*cot(theta)*dtheta*dphi)
-    dt += h * (-2*M/(r^2*f(r)) * dt*dr)
+    dt += h * (-2*M/(r^2*fr) * dt*dr)
 
 
     # Update the position 
@@ -201,7 +214,7 @@ function move_ray_curved(ray::Ray, h::Float64)
     # ray.velocity[4] = dt
 end
 
-# Convert spherical coordinates to cartesian coordinates for both 3D and 4D vectors
+# Convert spherical coordinates to cartesian coordinates for both 3D vectors
 function spherical_to_cartesian(position::RealVector)::RealVector
     r = position[1]
     theta = position[2]
@@ -210,6 +223,7 @@ function spherical_to_cartesian(position::RealVector)::RealVector
     @fastmath return RealVector(r*cos(phi)*sin_theta, r*cos(theta), r*sin(phi)*sin_theta)
 end    
 
+# Convert spherical coordinates to cartesian coordinates for 4D vectors
 function spherical_to_cartesian(position::Real4Vector)::RealVector
     r = position[1]
     theta = position[2]
@@ -226,7 +240,7 @@ function cartesian_to_spherical(position::RealVector)::RealVector
     return RealVector(r, theta, phi)
 end
 
-function check_for_intersection_curved(ray::Ray)
+function check_for_intersection(ray::Ray)
     # TODO: we need to convert the ray back to cartesian coordinates before checking for collisions  
     position = spherical_to_cartesian(ray.position)
     #R = norm(position - sphere_position)
@@ -260,8 +274,6 @@ function check_for_intersection_curved(ray::Ray)
         return
     end
     if abs(position[2]) < 5e-3  
-        #t_disc = - camera_position[2] / ray.velocity[2] # intersection with the y=0 plane 
-        #P = camera_position + t_disc * D
         rho = position[1]^2 + position[3]^2 
         if Rin^2 <= rho <= Rout^2
             ray.color = RGB(sqrt(rho) / Rout, sqrt(rho) / Rout, sqrt(rho) / Rout)
@@ -277,12 +289,10 @@ end
 function main()
     # rays = make_system(W, H)
     rays = Vector{Ray}(undef, W*H)
-    rays_curved = make_system_curved!(rays, W, H)
+    rays_curved = make_system!(rays, W, H)
     # Move the rays
-    # image = render(rays, 10.0, 0.01)
-    image_curved = render(rays_curved, 100.0, 0.01)
+    image_curved = render(rays_curved, 100.0, 0.001)
     # Save the image
-    # save("sphere_test_ray_casting.png", image)
     save("sphere_test_curved_ray_casting.png", image_curved)
     println("Saved sphere_test.png")
 end
