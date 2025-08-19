@@ -14,7 +14,7 @@
         StatProfilerHTML.jl report
       </div>
       <div class='generated-on'>
-        Generated on Mon, 18 Aug 2025 17:36:15
+        Generated on Tue, 19 Aug 2025 20:55:03
       </div>
     </div>
     <table>
@@ -351,10 +351,24 @@
         <tr id='L33'>
           <td class='lineno'>33</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>41 &#40;1 &#37;&#41;</td>
           <td>
-            
-            
+            <div class='call-sites'>
+              41 &#40;1 &#37;&#41;
+              samples spent in map
+              <br />
+              
+              41 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from *
+              <a href='linalg.jl-2060a21cc9859cb6c0f5d0fc2550d46be9fcfaa7.html#L21'>line 21</a>
+              <br />
+            </div>
+            <div class='callees'>
+              41 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='mapreduce.jl-e10303cea1d682bf49ed6b838522121366eb9ddf.html#L42'>_map</a>
+              <br />
+            </div>
             <span class='code'>    _map&#40;f, a1, as...&#41;</span>
           </td>
         </tr>
@@ -411,20 +425,25 @@
         <tr id='L39'>
           <td class='lineno'>39</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>10 &#40;4 &#37;&#41;</td>
+          <td class='tracecount incl'>72 &#40;2 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              10 &#40;4 &#37;&#41;
+              72 &#40;2 &#37;&#41;
               samples spent in map
               <br />
               
-              10 &#40;100 &#37;&#41; &#40;incl.&#41;
+              40 &#40;56 &#37;&#41; &#40;incl.&#41;
               when called from -
               <a href='linalg.jl-2060a21cc9859cb6c0f5d0fc2550d46be9fcfaa7.html#L16'>line 16</a>
               <br />
+              
+              32 &#40;44 &#37;&#41; &#40;incl.&#41;
+              when called from &#43;
+              <a href='linalg.jl-2060a21cc9859cb6c0f5d0fc2550d46be9fcfaa7.html#L12'>line 12</a>
+              <br />
             </div>
             <div class='callees'>
-              10 &#40;100 &#37;&#41;
+              72 &#40;100 &#37;&#41;
               samples spent calling
               <a href='mapreduce.jl-e10303cea1d682bf49ed6b838522121366eb9ddf.html#L42'>_map</a>
               <br />
@@ -455,20 +474,25 @@
         <tr id='L42'>
           <td class='lineno'>42</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>10 &#40;4 &#37;&#41;</td>
+          <td class='tracecount incl'>113 &#40;3 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              10 &#40;4 &#37;&#41;
+              113 &#40;3 &#37;&#41;
               samples spent in _map
               <br />
               
-              10 &#40;100 &#37;&#41; &#40;incl.&#41;
+              72 &#40;64 &#37;&#41; &#40;incl.&#41;
               when called from map
               <a href='mapreduce.jl-e10303cea1d682bf49ed6b838522121366eb9ddf.html#L39'>line 39</a>
               <br />
+              
+              41 &#40;36 &#37;&#41; &#40;incl.&#41;
+              when called from map
+              <a href='mapreduce.jl-e10303cea1d682bf49ed6b838522121366eb9ddf.html#L33'>line 33</a>
+              <br />
             </div>
             <div class='callees'>
-              10 &#40;100 &#37;&#41;
+              113 &#40;100 &#37;&#41;
               samples spent calling
               <a href='mapreduce.jl-e10303cea1d682bf49ed6b838522121366eb9ddf.html#L77'>macro expansion</a>
               <br />
@@ -819,22 +843,30 @@
         <tr id='L77'>
           <td class='lineno'>77</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>10 &#40;4 &#37;&#41;</td>
+          <td class='tracecount incl'>113 &#40;3 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              10 &#40;4 &#37;&#41;
+              113 &#40;3 &#37;&#41;
               samples spent in macro expansion
               <br />
               
-              10 &#40;100 &#37;&#41; &#40;incl.&#41;
+              113 &#40;100 &#37;&#41; &#40;incl.&#41;
               when called from _map
               <a href='mapreduce.jl-e10303cea1d682bf49ed6b838522121366eb9ddf.html#L42'>line 42</a>
               <br />
             </div>
             <div class='callees'>
-              10 &#40;100 &#37;&#41;
+              41 &#40;36 &#37;&#41;
+              samples spent calling
+              <a href='linalg.jl-2060a21cc9859cb6c0f5d0fc2550d46be9fcfaa7.html#L21'>#280</a>
+              <br />
+              40 &#40;35 &#37;&#41;
               samples spent calling
               <a href='float.jl-7170cf60e6d4e9b40a7dcd98416202990131c908.html#L492'>-</a>
+              <br />
+              32 &#40;28 &#37;&#41;
+              samples spent calling
+              <a href='float.jl-7170cf60e6d4e9b40a7dcd98416202990131c908.html#L491'>&#43;</a>
               <br />
             </div>
             <span class='code'>        @inbounds elements &#61; tuple&#40;&#36;&#40;exprs...&#41;&#41;</span>

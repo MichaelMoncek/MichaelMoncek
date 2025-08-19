@@ -14,7 +14,7 @@
         StatProfilerHTML.jl report
       </div>
       <div class='generated-on'>
-        Generated on Mon, 18 Aug 2025 17:36:15
+        Generated on Tue, 19 Aug 2025 20:55:03
       </div>
     </div>
     <table>
@@ -961,25 +961,35 @@
         <tr id='L94'>
           <td class='lineno'>94</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>5 &#40;2 &#37;&#41;</td>
+          <td class='tracecount incl'>128 &#40;3 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              5 &#40;2 &#37;&#41;
+              128 &#40;3 &#37;&#41;
               samples spent in evalpoly
               <br />
               
-              4 &#40;80 &#37;&#41; &#40;incl.&#41;
+              54 &#40;42 &#37;&#41; &#40;incl.&#41;
+              when called from tan_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L289'>line 289</a>
+              <br />
+              
+              37 &#40;29 &#37;&#41; &#40;incl.&#41;
               when called from cos_kernel
               <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L139'>line 139</a>
               <br />
               
-              1 &#40;20 &#37;&#41; &#40;incl.&#41;
+              29 &#40;23 &#37;&#41; &#40;incl.&#41;
               when called from sin_kernel
               <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L72'>line 72</a>
               <br />
+              
+              8 &#40;6 &#37;&#41; &#40;incl.&#41;
+              when called from tan_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L296'>line 296</a>
+              <br />
             </div>
             <div class='callees'>
-              5 &#40;100 &#37;&#41;
+              128 &#40;100 &#37;&#41;
               samples spent calling
               <a href='math.jl-56fc5e216cbc353b40644ff2bba59d7b9504f2a3.html#L95'>macro expansion</a>
               <br />
@@ -990,20 +1000,20 @@
         <tr id='L95'>
           <td class='lineno'>95</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>5 &#40;2 &#37;&#41;</td>
+          <td class='tracecount incl'>128 &#40;3 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              5 &#40;2 &#37;&#41;
+              128 &#40;3 &#37;&#41;
               samples spent in macro expansion
               <br />
               
-              5 &#40;100 &#37;&#41; &#40;incl.&#41;
+              128 &#40;100 &#37;&#41; &#40;incl.&#41;
               when called from evalpoly
               <a href='math.jl-56fc5e216cbc353b40644ff2bba59d7b9504f2a3.html#L94'>line 94</a>
               <br />
             </div>
             <div class='callees'>
-              5 &#40;100 &#37;&#41;
+              128 &#40;100 &#37;&#41;
               samples spent calling
               <a href='float.jl-7170cf60e6d4e9b40a7dcd98416202990131c908.html#L496'>muladd</a>
               <br />
@@ -14854,16 +14864,6 @@
         <tr id='L1480'>
           <td class='lineno'>1480</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>@inline highword&#40;x::Float64&#41; &#61; highword&#40;reinterpret&#40;UInt64, x&#41;&#41;</span>
-          </td>
-        </tr>
-        <tr id='L1481'>
-          <td class='lineno'>1481</td>
-          <td class='tracecount excl'></td>
           <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
@@ -14872,12 +14872,36 @@
               <br />
               
               1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from cody_waite_ext_pio2
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L83'>line 83</a>
+              <br />
+            </div>
+            <div class='callees'>
+              1 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L729'>reinterpret</a>
+              <br />
+            </div>
+            <span class='code'>@inline highword&#40;x::Float64&#41; &#61; highword&#40;reinterpret&#40;UInt64, x&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L1481'>
+          <td class='lineno'>1481</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>21 &#40;1 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              21 &#40;1 &#37;&#41;
+              samples spent in highword
+              <br />
+              
+              21 &#40;100 &#37;&#41; &#40;incl.&#41;
               when called from poshighword
               <a href='math.jl-56fc5e216cbc353b40644ff2bba59d7b9504f2a3.html#L1494'>line 1494</a>
               <br />
             </div>
             <div class='callees'>
-              1 &#40;100 &#37;&#41;
+              21 &#40;100 &#37;&#41;
               samples spent calling
               <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L538'>&gt;&gt;&gt;</a>
               <br />
@@ -14998,26 +15022,22 @@
         <tr id='L1493'>
           <td class='lineno'>1493</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>7 &#40;3 &#37;&#41;</td>
+          <td class='tracecount incl'>41 &#40;1 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              7 &#40;3 &#37;&#41;
+              41 &#40;1 &#37;&#41;
               samples spent in poshighword
               <br />
               
-              7 &#40;100 &#37;&#41; &#40;incl.&#41;
+              41 &#40;100 &#37;&#41; &#40;incl.&#41;
               when called from rem_pio2_kernel
               <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L221'>line 221</a>
               <br />
             </div>
             <div class='callees'>
-              6 &#40;86 &#37;&#41;
+              41 &#40;100 &#37;&#41;
               samples spent calling
               <a href='math.jl-56fc5e216cbc353b40644ff2bba59d7b9504f2a3.html#L1494'>poshighword</a>
-              <br />
-              1 &#40;14 &#37;&#41;
-              samples spent calling
-              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L729'>reinterpret</a>
               <br />
             </div>
             <span class='code'>@inline poshighword&#40;x::Float64&#41; &#61; poshighword&#40;reinterpret&#40;UInt64, x&#41;&#41;</span>
@@ -15026,26 +15046,26 @@
         <tr id='L1494'>
           <td class='lineno'>1494</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>6 &#40;3 &#37;&#41;</td>
+          <td class='tracecount incl'>41 &#40;1 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              6 &#40;3 &#37;&#41;
+              41 &#40;1 &#37;&#41;
               samples spent in poshighword
               <br />
               
-              6 &#40;100 &#37;&#41; &#40;incl.&#41;
+              41 &#40;100 &#37;&#41; &#40;incl.&#41;
               when called from poshighword
               <a href='math.jl-56fc5e216cbc353b40644ff2bba59d7b9504f2a3.html#L1493'>line 1493</a>
               <br />
             </div>
             <div class='callees'>
-              5 &#40;83 &#37;&#41;
-              samples spent calling
-              <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L347'>&amp;</a>
-              <br />
-              1 &#40;17 &#37;&#41;
+              21 &#40;51 &#37;&#41;
               samples spent calling
               <a href='math.jl-56fc5e216cbc353b40644ff2bba59d7b9504f2a3.html#L1481'>highword</a>
+              <br />
+              20 &#40;49 &#37;&#41;
+              samples spent calling
+              <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L347'>&amp;</a>
               <br />
             </div>
             <span class='code'>@inline poshighword&#40;x::UInt64&#41;  &#61; highword&#40;x&#41; &amp; 0x7fffffff</span>

@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'></meta>
     <link rel='stylesheet' type='text/css' href='statprofiler.css'></link>
-    <title>StatProfilerHTML - ../../../.julia/packages/ImageIO/Fs42T/src/ImageIO.jl</title>
+    <title>StatProfilerHTML - ../../../../../usr/share/julia/base/condition.jl</title>
   </head>
   <body>
     <div class='report-header'>
@@ -14,7 +14,7 @@
         StatProfilerHTML.jl report
       </div>
       <div class='generated-on'>
-        Generated on Tue, 19 Aug 2025 20:49:13
+        Generated on Tue, 19 Aug 2025 20:55:03
       </div>
     </div>
     <table>
@@ -35,7 +35,7 @@
           <td>
             
             
-            <span class='code'>module ImageIO</span>
+            <span class='code'># This file is a part of Julia. License is MIT: https://julialang.org/license</span>
           </td>
         </tr>
         <tr id='L2'>
@@ -55,7 +55,7 @@
           <td>
             
             
-            <span class='code'>using UUIDs</span>
+            <span class='code'>## thread/task locking abstraction</span>
           </td>
         </tr>
         <tr id='L4'>
@@ -65,7 +65,7 @@
           <td>
             
             
-            <span class='code'>using FileIO: File, DataFormat, Stream, stream, Formatted</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L5'>
@@ -75,7 +75,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@noinline function concurrency_violation&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L6'>
@@ -85,7 +85,7 @@
           <td>
             
             
-            <span class='code'>import IndirectArrays: IndirectArray</span>
+            <span class='code'>    # can be useful for debugging</span>
           </td>
         </tr>
         <tr id='L7'>
@@ -95,7 +95,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    #try; error&#40;&#41;; catch; ccall&#40;:jlbacktrace, Cvoid, &#40;&#41;&#41;; end</span>
           </td>
         </tr>
         <tr id='L8'>
@@ -105,7 +105,7 @@
           <td>
             
             
-            <span class='code'>using LazyModules # @lazy macro is used to delay the package loading to its first usage</span>
+            <span class='code'>    throw&#40;ConcurrencyViolationError&#40;&quot;lock must be held&quot;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L9'>
@@ -115,7 +115,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L10'>
@@ -125,7 +125,7 @@
           <td>
             
             
-            <span class='code'>@lazy import Sixel &#61; &quot;45858cf5-a6b0-47a3-bbea-62219f50df47&quot;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L11'>
@@ -135,7 +135,7 @@
           <td>
             
             
-            <span class='code'>@lazy import Netpbm &#61; &quot;f09324ee-3d7c-5217-9330-fc30815ba969&quot;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L12'>
@@ -145,7 +145,7 @@
           <td>
             
             
-            <span class='code'>@lazy import PNGFiles &#61; &quot;f57f5aa1-a3ce-4bc8-8ab9-96f992907883&quot;</span>
+            <span class='code'>    AbstractLock</span>
           </td>
         </tr>
         <tr id='L13'>
@@ -155,7 +155,7 @@
           <td>
             
             
-            <span class='code'>@lazy import TiffImages &#61; &quot;731e570b-9d59-4bfa-96dc-6df516fadf69&quot;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L14'>
@@ -165,7 +165,7 @@
           <td>
             
             
-            <span class='code'>@lazy import OpenEXR &#61; &quot;52e1d378-f018-4a11-a4be-720524705ac7&quot;</span>
+            <span class='code'>Abstract supertype describing types that</span>
           </td>
         </tr>
         <tr id='L15'>
@@ -175,7 +175,7 @@
           <td>
             
             
-            <span class='code'>@lazy import QOI &#61; &quot;4b34888f-f399-49d4-9bb3-47ed5cae4e65&quot;</span>
+            <span class='code'>implement the synchronization primitives:</span>
           </td>
         </tr>
         <tr id='L16'>
@@ -185,7 +185,7 @@
           <td>
             
             
-            <span class='code'>@lazy import JpegTurbo &#61; &quot;b835a17e-a41a-41e7-81f0-2f016b05efe0&quot;</span>
+            <span class='code'>&#91;&#96;lock&#96;&#93;&#40;@ref&#41;, &#91;&#96;trylock&#96;&#93;&#40;@ref&#41;, &#91;&#96;unlock&#96;&#93;&#40;@ref&#41;, and &#91;&#96;islocked&#96;&#93;&#40;@ref&#41;.</span>
           </td>
         </tr>
         <tr id='L17'>
@@ -195,7 +195,7 @@
           <td>
             
             
-            <span class='code'>@lazy import WebP &#61; &quot;e3aaa7dc-3e4b-44e0-be63-ffb868ccd7c1&quot;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L18'>
@@ -205,7 +205,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>abstract type AbstractLock end</span>
           </td>
         </tr>
         <tr id='L19'>
@@ -215,7 +215,7 @@
           <td>
             
             
-            <span class='code'># Enforce a type conversion to be backend independent &#40;issue #25&#41;</span>
+            <span class='code'>function lock end</span>
           </td>
         </tr>
         <tr id='L20'>
@@ -225,7 +225,7 @@
           <td>
             
             
-            <span class='code'># Note: If the backend does not provide efficient &#96;convert&#96; implementation,</span>
+            <span class='code'>function unlock end</span>
           </td>
         </tr>
         <tr id='L21'>
@@ -235,7 +235,7 @@
           <td>
             
             
-            <span class='code'>#       there will be an extra memory allocation and thus hurt the performance.</span>
+            <span class='code'>function trylock end</span>
           </td>
         </tr>
         <tr id='L22'>
@@ -245,7 +245,7 @@
           <td>
             
             
-            <span class='code'>for FMT in &#40;</span>
+            <span class='code'>function islocked end</span>
           </td>
         </tr>
         <tr id='L23'>
@@ -255,7 +255,7 @@
           <td>
             
             
-            <span class='code'>    :PBMBinary, :PGMBinary, :PPMBinary, :PBMText, :PGMText, :PPMText,</span>
+            <span class='code'>unlockall&#40;l::AbstractLock&#41; &#61; unlock&#40;l&#41; # internal function for implementing &#96;wait&#96;</span>
           </td>
         </tr>
         <tr id='L24'>
@@ -265,7 +265,7 @@
           <td>
             
             
-            <span class='code'>    :TIFF,</span>
+            <span class='code'>relockall&#40;l::AbstractLock, token::Nothing&#41; &#61; lock&#40;l&#41; # internal function for implementing &#96;wait&#96;</span>
           </td>
         </tr>
         <tr id='L25'>
@@ -275,7 +275,7 @@
           <td>
             
             
-            <span class='code'>    :EXR,</span>
+            <span class='code'>assert_havelock&#40;l::AbstractLock, tid::Integer&#41; &#61;</span>
           </td>
         </tr>
         <tr id='L26'>
@@ -285,7 +285,7 @@
           <td>
             
             
-            <span class='code'>    :QOI,</span>
+            <span class='code'>    &#40;islocked&#40;l&#41; &amp;&amp; tid &#61;&#61; Threads.threadid&#40;&#41;&#41; ? nothing : concurrency_violation&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L27'>
@@ -295,7 +295,7 @@
           <td>
             
             
-            <span class='code'>    :SIXEL,</span>
+            <span class='code'>assert_havelock&#40;l::AbstractLock, tid::Task&#41; &#61;</span>
           </td>
         </tr>
         <tr id='L28'>
@@ -305,7 +305,7 @@
           <td>
             
             
-            <span class='code'>    :JPEG,</span>
+            <span class='code'>    &#40;islocked&#40;l&#41; &amp;&amp; tid &#61;&#61;&#61; current_task&#40;&#41;&#41; ? nothing : concurrency_violation&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L29'>
@@ -315,7 +315,7 @@
           <td>
             
             
-            <span class='code'>    :WebP,</span>
+            <span class='code'>assert_havelock&#40;l::AbstractLock, tid::Nothing&#41; &#61; concurrency_violation&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L30'>
@@ -325,7 +325,7 @@
           <td>
             
             
-            <span class='code'>&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L31'>
@@ -335,7 +335,7 @@
           <td>
             
             
-            <span class='code'>    @eval canonical_type&#40;::DataFormat&#123;&#36;&#40;Expr&#40;:quote, FMT&#41;&#41;&#125;, ::AbstractArray&#123;T, N&#125;&#41; where &#123;T,N&#125; &#61;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L32'>
@@ -345,7 +345,7 @@
           <td>
             
             
-            <span class='code'>        Array&#123;T,N&#125;</span>
+            <span class='code'>    AlwaysLockedST</span>
           </td>
         </tr>
         <tr id='L33'>
@@ -355,7 +355,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L34'>
@@ -365,7 +365,7 @@
           <td>
             
             
-            <span class='code'>@inline canonical_type&#40;::DataFormat&#123;:PNG&#125;, ::AbstractArray&#123;T, N&#125;&#41; where &#123;T,N&#125; &#61; Union&#123;Array&#123;T,N&#125;, IndirectArray&#123;T,N&#125;&#125;</span>
+            <span class='code'>This struct does not implement a real lock, but instead</span>
           </td>
         </tr>
         <tr id='L35'>
@@ -375,7 +375,7 @@
           <td>
             
             
-            <span class='code'>@inline canonical_type&#40;::Formatted&#123;T&#125;, data&#41; where T &#61; canonical_type&#40;T&#40;&#41;, data&#41;</span>
+            <span class='code'>pretends to be always locked on the original thread it was allocated on,</span>
           </td>
         </tr>
         <tr id='L36'>
@@ -385,7 +385,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>and simply ignores all other interactions.</span>
           </td>
         </tr>
         <tr id='L37'>
@@ -395,7 +395,7 @@
           <td>
             
             
-            <span class='code'>function enforce_canonical_type&#40;f, data&#41;</span>
+            <span class='code'>It also does not synchronize tasks; for that use a real lock such as &#91;&#96;ReentrantLock&#96;&#93;&#40;@ref&#41;.</span>
           </td>
         </tr>
         <tr id='L38'>
@@ -405,7 +405,7 @@
           <td>
             
             
-            <span class='code'>    AT &#61; canonical_type&#40;f, data&#41;</span>
+            <span class='code'>This can be used in the place of a real lock to, instead, simply and cheaply assert</span>
           </td>
         </tr>
         <tr id='L39'>
@@ -415,7 +415,7 @@
           <td>
             
             
-            <span class='code'>    # This may not be type stable if &#96;AT&#96; is not a concrete type,</span>
+            <span class='code'>that the operation is only occurring on a single cooperatively-scheduled thread.</span>
           </td>
         </tr>
         <tr id='L40'>
@@ -425,7 +425,7 @@
           <td>
             
             
-            <span class='code'>    # but it&#39;s not an issue for &#96;load&#96;; it can never be type stable.</span>
+            <span class='code'>It is thus functionally equivalent to allocating a real, recursive, task-unaware lock</span>
           </td>
         </tr>
         <tr id='L41'>
@@ -435,7 +435,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>immediately calling &#96;lock&#96; on it, and then never calling a matching &#96;unlock&#96;,</span>
           </td>
         </tr>
         <tr id='L42'>
@@ -445,7 +445,7 @@
           <td>
             
             
-            <span class='code'>    # work around the invokelatest overhead with an eager type check</span>
+            <span class='code'>except that calling &#96;lock&#96; from another thread will throw a concurrency violation exception.</span>
           </td>
         </tr>
         <tr id='L43'>
@@ -455,7 +455,7 @@
           <td>
             
             
-            <span class='code'>    if data isa AT</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L44'>
@@ -465,7 +465,7 @@
           <td>
             
             
-            <span class='code'>        return data</span>
+            <span class='code'>struct AlwaysLockedST &lt;: AbstractLock</span>
           </td>
         </tr>
         <tr id='L45'>
@@ -475,7 +475,7 @@
           <td>
             
             
-            <span class='code'>    else</span>
+            <span class='code'>    ownertid::Int16</span>
           </td>
         </tr>
         <tr id='L46'>
@@ -485,7 +485,7 @@
           <td>
             
             
-            <span class='code'>        # the backend might provide its own convert method</span>
+            <span class='code'>    AlwaysLockedST&#40;&#41; &#61; new&#40;Threads.threadid&#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L47'>
@@ -495,7 +495,7 @@
           <td>
             
             
-            <span class='code'>        # use invokelatest to avoid world age issues</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L48'>
@@ -505,7 +505,7 @@
           <td>
             
             
-            <span class='code'>        # See issue #34</span>
+            <span class='code'>assert_havelock&#40;l::AlwaysLockedST&#41; &#61; assert_havelock&#40;l, l.ownertid&#41;</span>
           </td>
         </tr>
         <tr id='L49'>
@@ -515,7 +515,7 @@
           <td>
             
             
-            <span class='code'>        return Base.invokelatest&#40;convert, AT, data&#41;</span>
+            <span class='code'>lock&#40;l::AlwaysLockedST&#41; &#61; assert_havelock&#40;l&#41;</span>
           </td>
         </tr>
         <tr id='L50'>
@@ -525,7 +525,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>unlock&#40;l::AlwaysLockedST&#41; &#61; assert_havelock&#40;l&#41;</span>
           </td>
         </tr>
         <tr id='L51'>
@@ -535,7 +535,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>trylock&#40;l::AlwaysLockedST&#41; &#61; l.ownertid &#61;&#61; Threads.threadid&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L52'>
@@ -545,7 +545,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>islocked&#40;::AlwaysLockedST&#41; &#61; true</span>
           </td>
         </tr>
         <tr id='L53'>
@@ -555,7 +555,7 @@
           <td>
             
             
-            <span class='code'># For lazy loads by either of</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L54'>
@@ -565,7 +565,7 @@
           <td>
             
             
-            <span class='code'>#   load&#40;io; mmap&#61;true&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L55'>
@@ -575,7 +575,7 @@
           <td>
             
             
-            <span class='code'>#   load&#40;io; lazyio&#61;true&#41;</span>
+            <span class='code'>## condition variables</span>
           </td>
         </tr>
         <tr id='L56'>
@@ -585,7 +585,7 @@
           <td>
             
             
-            <span class='code'># do not canonicalize by default. A package that supports both is TiffImages v0.6&#43;.</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L57'>
@@ -595,7 +595,7 @@
           <td>
             
             
-            <span class='code'>uses_lazy&#40;kwargs&#41; &#61; get&#40;kwargs, :mmap, false&#41; || get&#40;kwargs, :lazyio, false&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L58'>
@@ -605,7 +605,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    GenericCondition</span>
           </td>
         </tr>
         <tr id='L59'>
@@ -615,7 +615,7 @@
           <td>
             
             
-            <span class='code'>## PNGs</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L60'>
@@ -625,7 +625,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>Abstract implementation of a condition object</span>
           </td>
         </tr>
         <tr id='L61'>
@@ -635,7 +635,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>for synchronizing tasks objects with a given lock.</span>
           </td>
         </tr>
         <tr id='L62'>
@@ -645,7 +645,7 @@
           <td>
             
             
-            <span class='code'>function load&#40;f::File&#123;DataFormat&#123;:PNG&#125;&#125;; kwargs...&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L63'>
@@ -655,7 +655,7 @@
           <td>
             
             
-            <span class='code'>    data &#61; PNGFiles.load&#40;f.filename; kwargs...&#41;</span>
+            <span class='code'>struct GenericCondition&#123;L&lt;:AbstractLock&#125;</span>
           </td>
         </tr>
         <tr id='L64'>
@@ -665,7 +665,7 @@
           <td>
             
             
-            <span class='code'>    return enforce_canonical_type&#40;f, data&#41;</span>
+            <span class='code'>    waitq::IntrusiveLinkedList&#123;Task&#125;</span>
           </td>
         </tr>
         <tr id='L65'>
@@ -675,7 +675,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    lock::L</span>
           </td>
         </tr>
         <tr id='L66'>
@@ -685,17 +685,31 @@
           <td>
             
             
-            <span class='code'>function load&#40;s::Stream&#123;DataFormat&#123;:PNG&#125;&#125;; kwargs...&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L67'>
           <td class='lineno'>67</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>34 &#40;1 &#37;&#41;</td>
           <td>
-            
-            
-            <span class='code'>    data &#61; PNGFiles.load&#40;stream&#40;s&#41;; kwargs...&#41;</span>
+            <div class='call-sites'>
+              34 &#40;1 &#37;&#41;
+              samples spent in GenericCondition
+              <br />
+              
+              34 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from Task
+              <a href='task.jl-37b7077be5c0dfb17fdc09414b91905ac2e13db1.html#L5'>line 5</a>
+              <br />
+            </div>
+            <div class='callees'>
+              34 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='linked_list.jl-6a0ce5c7bba93ef784f0e25433e9a33775515a83.html#L7'>IntrusiveLinkedList</a>
+              <br />
+            </div>
+            <span class='code'>    GenericCondition&#123;L&#125;&#40;&#41; where &#123;L&lt;:AbstractLock&#125; &#61; new&#123;L&#125;&#40;IntrusiveLinkedList&#123;Task&#125;&#40;&#41;, L&#40;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L68'>
@@ -705,7 +719,7 @@
           <td>
             
             
-            <span class='code'>    return enforce_canonical_type&#40;s, data&#41;</span>
+            <span class='code'>    GenericCondition&#123;L&#125;&#40;l::L&#41; where &#123;L&lt;:AbstractLock&#125; &#61; new&#123;L&#125;&#40;IntrusiveLinkedList&#123;Task&#125;&#40;&#41;, l&#41;</span>
           </td>
         </tr>
         <tr id='L69'>
@@ -715,7 +729,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    GenericCondition&#40;l::AbstractLock&#41; &#61; new&#123;typeof&#40;l&#41;&#125;&#40;IntrusiveLinkedList&#123;Task&#125;&#40;&#41;, l&#41;</span>
           </td>
         </tr>
         <tr id='L70'>
@@ -725,51 +739,27 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L71'>
           <td class='lineno'>71</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'></td>
           <td>
-            <div class='call-sites'>
-              2 &#40;0 &#37;&#41;
-              samples spent in save
-              <br />
-              
-              1 &#40;50 &#37;&#41; &#40;incl.&#41;
-              when called from #invokelatest#2
-              <a href='essentials.jl-ef42e60fe9a4e70de85188c0768f6801c10fd3cc.html#L1054'>line 1054</a>
-              <br />
-              
-              1 &#40;50 &#37;&#41; &#40;incl.&#41;
-              when called from save
-              <a href='ImageIO.jl-b3df127fd274afc6cbaf39ea3daf1dc8c99b8575.html#L71'>line 71</a>
-              <br />
-            </div>
-            <div class='callees'>
-              1 &#40;100 &#37;&#41;
-              samples spent calling
-              <a href='ImageIO.jl-b3df127fd274afc6cbaf39ea3daf1dc8c99b8575.html#L71'>#save#3</a>
-              <br />
-            </div>
-            <span class='code'>function save&#40;f::File&#123;DataFormat&#123;:PNG&#125;&#125;, image::S; kwargs...&#41; where &#123;T, S&lt;:Union&#123;AbstractMatrix, AbstractArray&#123;T,3&#125;&#125;&#125;</span>
+            
+            
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L72'>
           <td class='lineno'>72</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'></td>
           <td>
             
-            <div class='callees'>
-              1 &#40;100 &#37;&#41;
-              samples spent calling
-              <a href='LazyModules.jl-a9ba6d13f1dad0bdc2626485b28ddbdeea278682.html#L27'>LazyFunction</a>
-              <br />
-            </div>
-            <span class='code'>    PNGFiles.save&#40;f.filename, image; kwargs...&#41;</span>
+            
+            <span class='code'>assert_havelock&#40;c::GenericCondition&#41; &#61; assert_havelock&#40;c.lock&#41;</span>
           </td>
         </tr>
         <tr id='L73'>
@@ -779,7 +769,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>lock&#40;c::GenericCondition&#41; &#61; lock&#40;c.lock&#41;</span>
           </td>
         </tr>
         <tr id='L74'>
@@ -789,7 +779,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>unlock&#40;c::GenericCondition&#41; &#61; unlock&#40;c.lock&#41;</span>
           </td>
         </tr>
         <tr id='L75'>
@@ -799,7 +789,7 @@
           <td>
             
             
-            <span class='code'>function save&#40;s::Stream&#123;DataFormat&#123;:PNG&#125;&#125;, image::S; permute_horizontal&#61;false, mapi&#61;identity, kwargs...&#41; where &#123;T, S&lt;:Union&#123;AbstractMatrix, AbstractArray&#123;T,3&#125;&#125;&#125;</span>
+            <span class='code'>trylock&#40;c::GenericCondition&#41; &#61; trylock&#40;c.lock&#41;</span>
           </td>
         </tr>
         <tr id='L76'>
@@ -809,7 +799,7 @@
           <td>
             
             
-            <span class='code'>    imgout &#61; map&#40;mapi, image&#41;</span>
+            <span class='code'>islocked&#40;c::GenericCondition&#41; &#61; islocked&#40;c.lock&#41;</span>
           </td>
         </tr>
         <tr id='L77'>
@@ -819,7 +809,7 @@
           <td>
             
             
-            <span class='code'>    if permute_horizontal</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L78'>
@@ -829,7 +819,7 @@
           <td>
             
             
-            <span class='code'>        perm &#61; ndims&#40;imgout&#41; &#61;&#61; 2 ? &#40;2, 1&#41; : ndims&#40;imgout&#41; &#61;&#61; 3 ? &#40;2, 1, 3&#41; : error&#40;&quot;&#36;&#40;ndims&#40;imgout&#41;&#41; dims array is not supported&quot;&#41;</span>
+            <span class='code'>lock&#40;f, c::GenericCondition&#41; &#61; lock&#40;f, c.lock&#41;</span>
           </td>
         </tr>
         <tr id='L79'>
@@ -839,7 +829,7 @@
           <td>
             
             
-            <span class='code'>        PNGFiles.save&#40;stream&#40;s&#41;, PermutedDimsArray&#40;imgout, perm&#41;; kwargs...&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L80'>
@@ -849,7 +839,7 @@
           <td>
             
             
-            <span class='code'>    else</span>
+            <span class='code'># have waiter wait for c</span>
           </td>
         </tr>
         <tr id='L81'>
@@ -859,7 +849,7 @@
           <td>
             
             
-            <span class='code'>        PNGFiles.save&#40;stream&#40;s&#41;, imgout; kwargs...&#41;</span>
+            <span class='code'>function _wait2&#40;c::GenericCondition, waiter::Task, first::Bool&#61;false&#41;</span>
           </td>
         </tr>
         <tr id='L82'>
@@ -869,7 +859,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>    ct &#61; current_task&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L83'>
@@ -879,7 +869,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    assert_havelock&#40;c&#41;</span>
           </td>
         </tr>
         <tr id='L84'>
@@ -889,7 +879,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    if first</span>
           </td>
         </tr>
         <tr id='L85'>
@@ -899,7 +889,7 @@
           <td>
             
             
-            <span class='code'># Netpbm types</span>
+            <span class='code'>        pushfirst&#33;&#40;c.waitq, waiter&#41;</span>
           </td>
         </tr>
         <tr id='L86'>
@@ -909,7 +899,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    else</span>
           </td>
         </tr>
         <tr id='L87'>
@@ -919,7 +909,7 @@
           <td>
             
             
-            <span class='code'>for NETPBMFORMAT in &#40;:PBMBinary, :PGMBinary, :PPMBinary, :PBMText, :PGMText, :PPMText&#41;</span>
+            <span class='code'>        push&#33;&#40;c.waitq, waiter&#41;</span>
           </td>
         </tr>
         <tr id='L88'>
@@ -929,7 +919,7 @@
           <td>
             
             
-            <span class='code'>    @eval begin</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L89'>
@@ -939,7 +929,7 @@
           <td>
             
             
-            <span class='code'>        function load&#40;f::File&#123;DataFormat&#123;&#36;&#40;Expr&#40;:quote,NETPBMFORMAT&#41;&#41;&#125;&#125;&#41;</span>
+            <span class='code'>    # since _wait2 is similar to schedule, we should observe the sticky bit now</span>
           </td>
         </tr>
         <tr id='L90'>
@@ -949,7 +939,7 @@
           <td>
             
             
-            <span class='code'>            data &#61; Netpbm.load&#40;f&#41;</span>
+            <span class='code'>    if waiter.sticky &amp;&amp; Threads.threadid&#40;waiter&#41; &#61;&#61; 0 &amp;&amp; &#33;GC.in_finalizer&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L91'>
@@ -959,7 +949,7 @@
           <td>
             
             
-            <span class='code'>            return enforce_canonical_type&#40;f, data&#41;</span>
+            <span class='code'>        # Issue #41324</span>
           </td>
         </tr>
         <tr id='L92'>
@@ -969,7 +959,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>        # t.sticky &amp;&amp; tid &#61;&#61; 0 is a task that needs to be co-scheduled with</span>
           </td>
         </tr>
         <tr id='L93'>
@@ -979,7 +969,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        # the parent task. If the parent &#40;current_task&#41; is not sticky we must</span>
           </td>
         </tr>
         <tr id='L94'>
@@ -989,7 +979,7 @@
           <td>
             
             
-            <span class='code'>        function load&#40;s::Stream&#123;DataFormat&#123;&#36;&#40;Expr&#40;:quote,NETPBMFORMAT&#41;&#41;&#125;&#125;&#41;</span>
+            <span class='code'>        # set it to be sticky.</span>
           </td>
         </tr>
         <tr id='L95'>
@@ -999,7 +989,7 @@
           <td>
             
             
-            <span class='code'>            data &#61; Netpbm.load&#40;s&#41;</span>
+            <span class='code'>        # XXX: Ideally we would be able to unset this</span>
           </td>
         </tr>
         <tr id='L96'>
@@ -1009,7 +999,7 @@
           <td>
             
             
-            <span class='code'>            return enforce_canonical_type&#40;s, data&#41;</span>
+            <span class='code'>        ct.sticky &#61; true</span>
           </td>
         </tr>
         <tr id='L97'>
@@ -1019,7 +1009,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>        tid &#61; Threads.threadid&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L98'>
@@ -1029,7 +1019,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        ccall&#40;:jl_set_task_tid, Cint, &#40;Any, Cint&#41;, waiter, tid-1&#41;</span>
           </td>
         </tr>
         <tr id='L99'>
@@ -1039,7 +1029,7 @@
           <td>
             
             
-            <span class='code'>        function save&#40;f::File&#123;DataFormat&#123;&#36;&#40;Expr&#40;:quote,NETPBMFORMAT&#41;&#41;&#125;&#125;, image::S; kwargs...&#41; where &#123;S&lt;:AbstractMatrix&#125;</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L100'>
@@ -1049,7 +1039,7 @@
           <td>
             
             
-            <span class='code'>            return Netpbm.save&#40;f, image; kwargs...&#41;</span>
+            <span class='code'>    return</span>
           </td>
         </tr>
         <tr id='L101'>
@@ -1059,7 +1049,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L102'>
@@ -1079,7 +1069,7 @@
           <td>
             
             
-            <span class='code'>        function save&#40;s::Stream&#123;DataFormat&#123;&#36;&#40;Expr&#40;:quote,NETPBMFORMAT&#41;&#41;&#125;&#125;, image::S; kwargs...&#41; where &#123;S&lt;:AbstractMatrix&#125;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L104'>
@@ -1089,7 +1079,7 @@
           <td>
             
             
-            <span class='code'>            return Netpbm.save&#40;s, image; kwargs...&#41;</span>
+            <span class='code'>    wait&#40;&#91;x&#93;&#41;</span>
           </td>
         </tr>
         <tr id='L105'>
@@ -1099,7 +1089,7 @@
           <td>
             
             
-            <span class='code'>        end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L106'>
@@ -1109,7 +1099,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>Block the current task until some event occurs, depending on the type of the argument:</span>
           </td>
         </tr>
         <tr id='L107'>
@@ -1119,7 +1109,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L108'>
@@ -1129,7 +1119,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>* &#91;&#96;Channel&#96;&#93;&#40;@ref&#41;: Wait for a value to be appended to the channel.</span>
           </td>
         </tr>
         <tr id='L109'>
@@ -1139,7 +1129,7 @@
           <td>
             
             
-            <span class='code'>## TIFFs</span>
+            <span class='code'>* &#91;&#96;Condition&#96;&#93;&#40;@ref&#41;: Wait for &#91;&#96;notify&#96;&#93;&#40;@ref&#41; on a condition and return the &#96;val&#96;</span>
           </td>
         </tr>
         <tr id='L110'>
@@ -1149,7 +1139,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>  parameter passed to &#96;notify&#96;. Waiting on a condition additionally allows passing</span>
           </td>
         </tr>
         <tr id='L111'>
@@ -1159,7 +1149,7 @@
           <td>
             
             
-            <span class='code'>function load&#40;f::File&#123;DataFormat&#123;:TIFF&#125;&#125;; canonicalize::Union&#123;Bool,Nothing&#125;&#61;nothing, kwargs...&#41;</span>
+            <span class='code'>  &#96;first&#61;true&#96; which results in the waiter being put _first_ in line to wake up on &#96;notify&#96;</span>
           </td>
         </tr>
         <tr id='L112'>
@@ -1169,7 +1159,7 @@
           <td>
             
             
-            <span class='code'>    canonicalize &#61; something&#40;canonicalize, &#33;uses_lazy&#40;kwargs&#41;&#41;</span>
+            <span class='code'>  instead of the usual first-in-first-out behavior.</span>
           </td>
         </tr>
         <tr id='L113'>
@@ -1179,7 +1169,7 @@
           <td>
             
             
-            <span class='code'>    data &#61; TiffImages.load&#40;f.filename; kwargs...&#41;</span>
+            <span class='code'>* &#96;Process&#96;: Wait for a process or process chain to exit. The &#96;exitcode&#96; field of a process</span>
           </td>
         </tr>
         <tr id='L114'>
@@ -1189,7 +1179,7 @@
           <td>
             
             
-            <span class='code'>    return canonicalize ? enforce_canonical_type&#40;f, data&#41; : data</span>
+            <span class='code'>  can be used to determine success or failure.</span>
           </td>
         </tr>
         <tr id='L115'>
@@ -1199,7 +1189,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>* &#91;&#96;Task&#96;&#93;&#40;@ref&#41;: Wait for a &#96;Task&#96; to finish. If the task fails with an exception, a</span>
           </td>
         </tr>
         <tr id='L116'>
@@ -1209,7 +1199,7 @@
           <td>
             
             
-            <span class='code'>function load&#40;s::Stream&#123;DataFormat&#123;:TIFF&#125;&#125;; canonicalize::Union&#123;Bool,Nothing&#125;&#61;nothing, kwargs...&#41;</span>
+            <span class='code'>  &#96;TaskFailedException&#96; &#40;which wraps the failed task&#41; is thrown.</span>
           </td>
         </tr>
         <tr id='L117'>
@@ -1219,7 +1209,7 @@
           <td>
             
             
-            <span class='code'>    canonicalize &#61; something&#40;canonicalize, &#33;uses_lazy&#40;kwargs&#41;&#41;</span>
+            <span class='code'>* &#91;&#96;RawFD&#96;&#93;&#40;@ref&#41;: Wait for changes on a file descriptor &#40;see the &#96;FileWatching&#96; package&#41;.</span>
           </td>
         </tr>
         <tr id='L118'>
@@ -1229,7 +1219,7 @@
           <td>
             
             
-            <span class='code'>    data &#61; TiffImages.load&#40;stream&#40;s&#41;; kwargs...&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L119'>
@@ -1239,7 +1229,7 @@
           <td>
             
             
-            <span class='code'>    return canonicalize ? enforce_canonical_type&#40;s, data&#41; : data</span>
+            <span class='code'>If no argument is passed, the task blocks for an undefined period. A task can only be</span>
           </td>
         </tr>
         <tr id='L120'>
@@ -1249,7 +1239,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>restarted by an explicit call to &#91;&#96;schedule&#96;&#93;&#40;@ref&#41; or &#91;&#96;yieldto&#96;&#93;&#40;@ref&#41;.</span>
           </td>
         </tr>
         <tr id='L121'>
@@ -1269,7 +1259,7 @@
           <td>
             
             
-            <span class='code'>function save&#40;f::File&#123;DataFormat&#123;:TIFF&#125;&#125;, image::S&#41; where &#123;T, S&lt;:Union&#123;AbstractMatrix, AbstractArray&#123;T,3&#125;&#125;&#125;</span>
+            <span class='code'>Often &#96;wait&#96; is called within a &#96;while&#96; loop to ensure a waited-for condition is met before</span>
           </td>
         </tr>
         <tr id='L123'>
@@ -1279,7 +1269,7 @@
           <td>
             
             
-            <span class='code'>    TiffImages.save&#40;f.filename, image&#41;</span>
+            <span class='code'>proceeding.</span>
           </td>
         </tr>
         <tr id='L124'>
@@ -1289,7 +1279,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L125'>
@@ -1299,7 +1289,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>function wait&#40;c::GenericCondition; first::Bool&#61;false&#41;</span>
           </td>
         </tr>
         <tr id='L126'>
@@ -1309,7 +1299,7 @@
           <td>
             
             
-            <span class='code'>function save&#40;s::Stream&#123;DataFormat&#123;:TIFF&#125;&#125;, image::S; permute_horizontal&#61;false, mapi&#61;identity&#41; where &#123;T, S&lt;:Union&#123;AbstractMatrix, AbstractArray&#123;T,3&#125;&#125;&#125;</span>
+            <span class='code'>    ct &#61; current_task&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L127'>
@@ -1319,7 +1309,7 @@
           <td>
             
             
-            <span class='code'>    imgout &#61; map&#40;mapi, image&#41;</span>
+            <span class='code'>    _wait2&#40;c, ct, first&#41;</span>
           </td>
         </tr>
         <tr id='L128'>
@@ -1329,7 +1319,7 @@
           <td>
             
             
-            <span class='code'>    if permute_horizontal</span>
+            <span class='code'>    token &#61; unlockall&#40;c.lock&#41;</span>
           </td>
         </tr>
         <tr id='L129'>
@@ -1339,7 +1329,7 @@
           <td>
             
             
-            <span class='code'>        perm &#61; ndims&#40;imgout&#41; &#61;&#61; 2 ? &#40;2, 1&#41; : ndims&#40;imgout&#41; &#61;&#61; 3 ? &#40;2, 1, 3&#41; : error&#40;&quot;&#36;&#40;ndims&#40;imgout&#41;&#41; dims array is not supported&quot;&#41;</span>
+            <span class='code'>    try</span>
           </td>
         </tr>
         <tr id='L130'>
@@ -1349,7 +1339,7 @@
           <td>
             
             
-            <span class='code'>        TiffImages.save&#40;stream&#40;s&#41;, PermutedDimsArray&#40;imgout, perm&#41;&#41;</span>
+            <span class='code'>        return wait&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L131'>
@@ -1359,7 +1349,7 @@
           <td>
             
             
-            <span class='code'>    else</span>
+            <span class='code'>    catch</span>
           </td>
         </tr>
         <tr id='L132'>
@@ -1369,7 +1359,7 @@
           <td>
             
             
-            <span class='code'>        TiffImages.save&#40;stream&#40;s&#41;, imgout&#41;</span>
+            <span class='code'>        ct.queue &#61;&#61;&#61; nothing || list_deletefirst&#33;&#40;ct.queue::IntrusiveLinkedList&#123;Task&#125;, ct&#41;</span>
           </td>
         </tr>
         <tr id='L133'>
@@ -1379,7 +1369,7 @@
           <td>
             
             
-            <span class='code'>    end</span>
+            <span class='code'>        rethrow&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L134'>
@@ -1389,7 +1379,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    finally</span>
           </td>
         </tr>
         <tr id='L135'>
@@ -1399,7 +1389,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        relockall&#40;c.lock, token&#41;</span>
           </td>
         </tr>
         <tr id='L136'>
@@ -1409,7 +1399,7 @@
           <td>
             
             
-            <span class='code'>## OpenEXR</span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L137'>
@@ -1419,7 +1409,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L138'>
@@ -1429,7 +1419,7 @@
           <td>
             
             
-            <span class='code'>function load&#40;f::File&#123;DataFormat&#123;:EXR&#125;&#125;; kwargs...&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L139'>
@@ -1439,7 +1429,7 @@
           <td>
             
             
-            <span class='code'>    data &#61; OpenEXR.load&#40;f; kwargs...&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L140'>
@@ -1449,7 +1439,7 @@
           <td>
             
             
-            <span class='code'>    return enforce_canonical_type&#40;f, data&#41;</span>
+            <span class='code'>    notify&#40;condition, val&#61;nothing; all&#61;true, error&#61;false&#41;</span>
           </td>
         </tr>
         <tr id='L141'>
@@ -1459,7 +1449,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L142'>
@@ -1469,7 +1459,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>Wake up tasks waiting for a condition, passing them &#96;val&#96;. If &#96;all&#96; is &#96;true&#96; &#40;the default&#41;,</span>
           </td>
         </tr>
         <tr id='L143'>
@@ -1479,7 +1469,7 @@
           <td>
             
             
-            <span class='code'>function save&#40;f::File&#123;DataFormat&#123;:EXR&#125;&#125;, args...; kwargs...&#41;</span>
+            <span class='code'>all waiting tasks are woken, otherwise only one is. If &#96;error&#96; is &#96;true&#96;, the passed value</span>
           </td>
         </tr>
         <tr id='L144'>
@@ -1489,7 +1479,7 @@
           <td>
             
             
-            <span class='code'>    OpenEXR.save&#40;f, args...; kwargs...&#41;</span>
+            <span class='code'>is raised as an exception in the woken tasks.</span>
           </td>
         </tr>
         <tr id='L145'>
@@ -1499,7 +1489,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L146'>
@@ -1509,7 +1499,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>Return the count of tasks woken up. Return 0 if no tasks are waiting on &#96;condition&#96;.</span>
           </td>
         </tr>
         <tr id='L147'>
@@ -1519,7 +1509,7 @@
           <td>
             
             
-            <span class='code'>## QOI</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L148'>
@@ -1529,7 +1519,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>@constprop :none notify&#40;c::GenericCondition, @nospecialize&#40;arg &#61; nothing&#41;; all&#61;true, error&#61;false&#41; &#61; notify&#40;c, arg, all, error&#41;</span>
           </td>
         </tr>
         <tr id='L149'>
@@ -1539,7 +1529,7 @@
           <td>
             
             
-            <span class='code'>function load&#40;f::File&#123;DataFormat&#123;:QOI&#125;&#125;; kwargs...&#41;</span>
+            <span class='code'>function notify&#40;c::GenericCondition, @nospecialize&#40;arg&#41;, all, error&#41;</span>
           </td>
         </tr>
         <tr id='L150'>
@@ -1549,7 +1539,7 @@
           <td>
             
             
-            <span class='code'>    data &#61; QOI.qoi_decode&#40;f.filename; kwargs...&#41;</span>
+            <span class='code'>    assert_havelock&#40;c&#41;</span>
           </td>
         </tr>
         <tr id='L151'>
@@ -1559,7 +1549,7 @@
           <td>
             
             
-            <span class='code'>    return enforce_canonical_type&#40;f, data&#41;</span>
+            <span class='code'>    cnt &#61; 0</span>
           </td>
         </tr>
         <tr id='L152'>
@@ -1569,7 +1559,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    while &#33;isempty&#40;c.waitq&#41;</span>
           </td>
         </tr>
         <tr id='L153'>
@@ -1579,7 +1569,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>        t &#61; popfirst&#33;&#40;c.waitq&#41;</span>
           </td>
         </tr>
         <tr id='L154'>
@@ -1589,7 +1579,7 @@
           <td>
             
             
-            <span class='code'>function save&#40;f::File&#123;DataFormat&#123;:QOI&#125;&#125;, args...; kwargs...&#41;</span>
+            <span class='code'>        schedule&#40;t, arg, error&#61;error&#41;</span>
           </td>
         </tr>
         <tr id='L155'>
@@ -1599,7 +1589,7 @@
           <td>
             
             
-            <span class='code'>    QOI.qoi_encode&#40;f.filename, args...; kwargs...&#41;</span>
+            <span class='code'>        cnt &#43;&#61; 1</span>
           </td>
         </tr>
         <tr id='L156'>
@@ -1609,7 +1599,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>        all || break</span>
           </td>
         </tr>
         <tr id='L157'>
@@ -1619,7 +1609,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    end</span>
           </td>
         </tr>
         <tr id='L158'>
@@ -1629,7 +1619,7 @@
           <td>
             
             
-            <span class='code'>## Sixel</span>
+            <span class='code'>    return cnt</span>
           </td>
         </tr>
         <tr id='L159'>
@@ -1639,7 +1629,7 @@
           <td>
             
             
-            <span class='code'># Sixel.jl itself provides &#96;fileio_load&#96;/&#96;fileio_save&#96; so we simply delegate everything to it</span>
+            <span class='code'>end</span>
           </td>
         </tr>
         <tr id='L160'>
@@ -1649,7 +1639,7 @@
           <td>
             
             
-            <span class='code'>function load&#40;f::File&#123;DataFormat&#123;:SIXEL&#125;&#125;; kwargs...&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L161'>
@@ -1659,7 +1649,7 @@
           <td>
             
             
-            <span class='code'>    data &#61; Sixel.fileio_load&#40;f, kwargs...&#41;</span>
+            <span class='code'>notify_error&#40;c::GenericCondition, err&#41; &#61; notify&#40;c, err, true, true&#41;</span>
           </td>
         </tr>
         <tr id='L162'>
@@ -1669,7 +1659,7 @@
           <td>
             
             
-            <span class='code'>    return  enforce_canonical_type&#40;f, data&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L163'>
@@ -1679,7 +1669,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L164'>
@@ -1689,7 +1679,7 @@
           <td>
             
             
-            <span class='code'>function load&#40;s::Stream&#123;DataFormat&#123;:SIXEL&#125;&#125;; kwargs...&#41;</span>
+            <span class='code'>    isempty&#40;condition&#41;</span>
           </td>
         </tr>
         <tr id='L165'>
@@ -1699,7 +1689,7 @@
           <td>
             
             
-            <span class='code'>    data &#61; Sixel.fileio_load&#40;s, kwargs...&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L166'>
@@ -1709,7 +1699,7 @@
           <td>
             
             
-            <span class='code'>    return  enforce_canonical_type&#40;s, data&#41;</span>
+            <span class='code'>Return &#96;true&#96; if no tasks are waiting on the condition, &#96;false&#96; otherwise.</span>
           </td>
         </tr>
         <tr id='L167'>
@@ -1719,7 +1709,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L168'>
@@ -1729,7 +1719,7 @@
           <td>
             
             
-            <span class='code'>function save&#40;f::File&#123;DataFormat&#123;:SIXEL&#125;&#125;, image::AbstractArray; kwargs...&#41;</span>
+            <span class='code'>isempty&#40;c::GenericCondition&#41; &#61; isempty&#40;c.waitq&#41;</span>
           </td>
         </tr>
         <tr id='L169'>
@@ -1739,7 +1729,7 @@
           <td>
             
             
-            <span class='code'>    Sixel.fileio_save&#40;f, image; kwargs...&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L170'>
@@ -1749,7 +1739,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L171'>
@@ -1759,7 +1749,7 @@
           <td>
             
             
-            <span class='code'>function save&#40;s::Stream&#123;DataFormat&#123;:SIXEL&#125;&#125;, image::AbstractArray; kwargs...&#41;</span>
+            <span class='code'># default &#40;Julia v1.0&#41; is currently single-threaded</span>
           </td>
         </tr>
         <tr id='L172'>
@@ -1769,7 +1759,7 @@
           <td>
             
             
-            <span class='code'>    Sixel.fileio_save&#40;s, image; kwargs...&#41;</span>
+            <span class='code'># &#40;although it uses MT-safe versions, when possible&#41;</span>
           </td>
         </tr>
         <tr id='L173'>
@@ -1779,7 +1769,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L174'>
@@ -1789,7 +1779,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>    Condition&#40;&#41;</span>
           </td>
         </tr>
         <tr id='L175'>
@@ -1799,7 +1789,7 @@
           <td>
             
             
-            <span class='code'>## JPEG</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L176'>
@@ -1809,7 +1799,7 @@
           <td>
             
             
-            <span class='code'>function load&#40;f::File&#123;DataFormat&#123;:JPEG&#125;&#125;; kwargs...&#41;</span>
+            <span class='code'>Create an edge-triggered event source that tasks can wait for. Tasks that call &#91;&#96;wait&#96;&#93;&#40;@ref&#41; on a</span>
           </td>
         </tr>
         <tr id='L177'>
@@ -1819,7 +1809,7 @@
           <td>
             
             
-            <span class='code'>    data &#61; JpegTurbo.fileio_load&#40;f, kwargs...&#41;</span>
+            <span class='code'>&#96;Condition&#96; are suspended and queued. Tasks are woken up when &#91;&#96;notify&#96;&#93;&#40;@ref&#41; is later called on</span>
           </td>
         </tr>
         <tr id='L178'>
@@ -1829,7 +1819,7 @@
           <td>
             
             
-            <span class='code'>    return enforce_canonical_type&#40;f, data&#41;</span>
+            <span class='code'>the &#96;Condition&#96;. Waiting on a condition can return a value or raise an error if the optional arguments</span>
           </td>
         </tr>
         <tr id='L179'>
@@ -1839,7 +1829,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>of &#91;&#96;notify&#96;&#93;&#40;@ref&#41; are used. Edge triggering means that only tasks waiting at the time &#91;&#96;notify&#96;&#93;&#40;@ref&#41;</span>
           </td>
         </tr>
         <tr id='L180'>
@@ -1849,7 +1839,7 @@
           <td>
             
             
-            <span class='code'>function load&#40;s::Stream&#123;DataFormat&#123;:JPEG&#125;&#125;; kwargs...&#41;</span>
+            <span class='code'>is called can be woken up. For level-triggered notifications, you must keep extra state to keep</span>
           </td>
         </tr>
         <tr id='L181'>
@@ -1859,7 +1849,7 @@
           <td>
             
             
-            <span class='code'>    data &#61; JpegTurbo.fileio_load&#40;s, kwargs...&#41;</span>
+            <span class='code'>track of whether a notification has happened. The &#91;&#96;Channel&#96;&#93;&#40;@ref&#41; and &#91;&#96;Threads.Event&#96;&#93;&#40;@ref&#41; types do</span>
           </td>
         </tr>
         <tr id='L182'>
@@ -1869,7 +1859,7 @@
           <td>
             
             
-            <span class='code'>    return enforce_canonical_type&#40;s, data&#41;</span>
+            <span class='code'>this, and can be used for level-triggered events.</span>
           </td>
         </tr>
         <tr id='L183'>
@@ -1879,7 +1869,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L184'>
@@ -1889,7 +1879,7 @@
           <td>
             
             
-            <span class='code'>function save&#40;f::File&#123;DataFormat&#123;:JPEG&#125;&#125;, image::AbstractArray; kwargs...&#41;</span>
+            <span class='code'>This object is NOT thread-safe. See &#91;&#96;Threads.Condition&#96;&#93;&#40;@ref&#41; for a thread-safe version.</span>
           </td>
         </tr>
         <tr id='L185'>
@@ -1899,7 +1889,7 @@
           <td>
             
             
-            <span class='code'>    JpegTurbo.fileio_save&#40;f, image; kwargs...&#41;</span>
+            <span class='code'>&quot;&quot;&quot;</span>
           </td>
         </tr>
         <tr id='L186'>
@@ -1909,7 +1899,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>const Condition &#61; GenericCondition&#123;AlwaysLockedST&#125;</span>
           </td>
         </tr>
         <tr id='L187'>
@@ -1919,7 +1909,7 @@
           <td>
             
             
-            <span class='code'>function save&#40;s::Stream&#123;DataFormat&#123;:JPEG&#125;&#125;, image::AbstractArray; kwargs...&#41;</span>
+            <span class='code'></span>
           </td>
         </tr>
         <tr id='L188'>
@@ -1929,7 +1919,7 @@
           <td>
             
             
-            <span class='code'>    JpegTurbo.fileio_save&#40;s, image; kwargs...&#41;</span>
+            <span class='code'>lock&#40;c::GenericCondition&#123;AlwaysLockedST&#125;&#41; &#61;</span>
           </td>
         </tr>
         <tr id='L189'>
@@ -1939,7 +1929,7 @@
           <td>
             
             
-            <span class='code'>end</span>
+            <span class='code'>    throw&#40;ArgumentError&#40;&quot;&#96;Condition&#96; is not thread-safe. Please use &#96;Threads.Condition&#96; instead for multi-threaded code.&quot;&#41;&#41;</span>
           </td>
         </tr>
         <tr id='L190'>
@@ -1949,7 +1939,7 @@
           <td>
             
             
-            <span class='code'></span>
+            <span class='code'>unlock&#40;c::GenericCondition&#123;AlwaysLockedST&#125;&#41; &#61;</span>
           </td>
         </tr>
         <tr id='L191'>
@@ -1959,207 +1949,7 @@
           <td>
             
             
-            <span class='code'>## WebP</span>
-          </td>
-        </tr>
-        <tr id='L192'>
-          <td class='lineno'>192</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>function load&#40;f::File&#123;DataFormat&#123;:WebP&#125;&#125;; kwargs...&#41;</span>
-          </td>
-        </tr>
-        <tr id='L193'>
-          <td class='lineno'>193</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    data &#61; WebP.fileio_load&#40;f, kwargs...&#41;</span>
-          </td>
-        </tr>
-        <tr id='L194'>
-          <td class='lineno'>194</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    return enforce_canonical_type&#40;f, data&#41;</span>
-          </td>
-        </tr>
-        <tr id='L195'>
-          <td class='lineno'>195</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>end</span>
-          </td>
-        </tr>
-        <tr id='L196'>
-          <td class='lineno'>196</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>function load&#40;s::Stream&#123;DataFormat&#123;:WebP&#125;&#125;; kwargs...&#41;</span>
-          </td>
-        </tr>
-        <tr id='L197'>
-          <td class='lineno'>197</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    data &#61; WebP.fileio_load&#40;s, kwargs...&#41;</span>
-          </td>
-        </tr>
-        <tr id='L198'>
-          <td class='lineno'>198</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    return enforce_canonical_type&#40;s, data&#41;</span>
-          </td>
-        </tr>
-        <tr id='L199'>
-          <td class='lineno'>199</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>end</span>
-          </td>
-        </tr>
-        <tr id='L200'>
-          <td class='lineno'>200</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>function save&#40;f::File&#123;DataFormat&#123;:WebP&#125;&#125;, image::AbstractArray; kwargs...&#41;</span>
-          </td>
-        </tr>
-        <tr id='L201'>
-          <td class='lineno'>201</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    WebP.fileio_save&#40;f, image; kwargs...&#41;</span>
-          </td>
-        </tr>
-        <tr id='L202'>
-          <td class='lineno'>202</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>end</span>
-          </td>
-        </tr>
-        <tr id='L203'>
-          <td class='lineno'>203</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>function save&#40;s::Stream&#123;DataFormat&#123;:WebP&#125;&#125;, image::AbstractArray; kwargs...&#41;</span>
-          </td>
-        </tr>
-        <tr id='L204'>
-          <td class='lineno'>204</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>    WebP.fileio_save&#40;s, image; kwargs...&#41;</span>
-          </td>
-        </tr>
-        <tr id='L205'>
-          <td class='lineno'>205</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>end</span>
-          </td>
-        </tr>
-        <tr id='L206'>
-          <td class='lineno'>206</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L207'>
-          <td class='lineno'>207</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>## Function names labelled for FileIO. Makes FileIO lookup quicker</span>
-          </td>
-        </tr>
-        <tr id='L208'>
-          <td class='lineno'>208</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>const fileio_save &#61; save</span>
-          </td>
-        </tr>
-        <tr id='L209'>
-          <td class='lineno'>209</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>const fileio_load &#61; load</span>
-          </td>
-        </tr>
-        <tr id='L210'>
-          <td class='lineno'>210</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'></span>
-          </td>
-        </tr>
-        <tr id='L211'>
-          <td class='lineno'>211</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
-          <td>
-            
-            
-            <span class='code'>end # module</span>
+            <span class='code'>    throw&#40;ArgumentError&#40;&quot;&#96;Condition&#96; is not thread-safe. Please use &#96;Threads.Condition&#96; instead for multi-threaded code.&quot;&#41;&#41;</span>
           </td>
         </tr>
       </tbody>

@@ -14,7 +14,7 @@
         StatProfilerHTML.jl report
       </div>
       <div class='generated-on'>
-        Generated on Mon, 18 Aug 2025 17:36:15
+        Generated on Tue, 19 Aug 2025 20:55:03
       </div>
     </div>
     <table>
@@ -313,7 +313,16 @@
           <td class='tracecount excl'></td>
           <td class='tracecount incl'></td>
           <td>
-            
+            <div class='call-sites'>
+              1 &#40;0 &#37;&#41;
+              samples spent in sin
+              <br />
+              1 &#40;100 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from sin_fast
+              <a href='fastmath.jl-74148b78d58ce9205877cfc4386c9a0b5c4aee14.html#L353'>line 353</a>
+              <br />
+            </div>
             
             <span class='code'></span>
           </td>
@@ -870,30 +879,57 @@
         </tr>
         <tr id='L85'>
           <td class='lineno'>85</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
           <td>
-            
+            <div class='call-sites'>
+              1 &#40;0 &#37;&#41;
+              samples spent in -
+              <br />
+              1 &#40;100 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from flipsign
+              <a href='number.jl-1cd944a8b50f5e14f0813ffcd6360ef77025b1bf.html#L205'>line 205</a>
+              <br />
+            </div>
             
             <span class='code'>&#40;-&#41;&#40;x::BitInteger&#41;                    &#61; neg_int&#40;x&#41;</span>
           </td>
         </tr>
         <tr id='L86'>
           <td class='lineno'>86</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
           <td>
-            
+            <div class='call-sites'>
+              1 &#40;0 &#37;&#41;
+              samples spent in -
+              <br />
+              1 &#40;100 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from fromfraction
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L123'>line 123</a>
+              <br />
+            </div>
             
             <span class='code'>&#40;-&#41;&#40;x::T, y::T&#41; where &#123;T&lt;:BitInteger&#125; &#61; sub_int&#40;x, y&#41;</span>
           </td>
         </tr>
         <tr id='L87'>
           <td class='lineno'>87</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
           <td>
-            
+            <div class='call-sites'>
+              1 &#40;0 &#37;&#41;
+              samples spent in &#43;
+              <br />
+              1 &#40;100 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from fromfraction
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L125'>line 125</a>
+              <br />
+            </div>
             
             <span class='code'>&#40;&#43;&#41;&#40;x::T, y::T&#41; where &#123;T&lt;:BitInteger&#125; &#61; add_int&#40;x, y&#41;</span>
           </td>
@@ -1003,16 +1039,7 @@
           <td class='tracecount excl'></td>
           <td class='tracecount incl'></td>
           <td>
-            <div class='call-sites'>
-              1 &#40;0 &#37;&#41;
-              samples spent in cos
-              <br />
-              1 &#40;100 &#37;&#41; &#40;ex.&#41;,
-              1 &#40;100 &#37;&#41; &#40;incl.&#41;
-              when called from cos_fast
-              <a href='fastmath.jl-74148b78d58ce9205877cfc4386c9a0b5c4aee14.html#L353'>line 353</a>
-              <br />
-            </div>
+            
             
             <span class='code'></span>
           </td>
@@ -3499,17 +3526,27 @@
         </tr>
         <tr id='L347'>
           <td class='lineno'>347</td>
-          <td class='tracecount excl'>5 &#40;2 &#37;&#41;</td>
-          <td class='tracecount incl'>5 &#40;2 &#37;&#41;</td>
+          <td class='tracecount excl'>23 &#40;1 &#37;&#41;</td>
+          <td class='tracecount incl'>23 &#40;1 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              5 &#40;2 &#37;&#41;
+              23 &#40;1 &#37;&#41;
               samples spent in &amp;
               <br />
-              5 &#40;100 &#37;&#41; &#40;ex.&#41;,
-              5 &#40;100 &#37;&#41; &#40;incl.&#41;
+              20 &#40;87 &#37;&#41; &#40;ex.&#41;,
+              20 &#40;87 &#37;&#41; &#40;incl.&#41;
               when called from poshighword
               <a href='math.jl-56fc5e216cbc353b40644ff2bba59d7b9504f2a3.html#L1494'>line 1494</a>
+              <br />
+              2 &#40;9 &#37;&#41; &#40;ex.&#41;,
+              2 &#40;9 &#37;&#41; &#40;incl.&#41;
+              when called from paynehanek
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L139'>line 139</a>
+              <br />
+              1 &#40;4 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;4 &#37;&#41; &#40;incl.&#41;
+              when called from &amp;
+              <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L1013'>line 1013</a>
               <br />
             </div>
             
@@ -3758,10 +3795,24 @@
         </tr>
         <tr id='L372'>
           <td class='lineno'>372</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>3 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>3 &#40;0 &#37;&#41;</td>
           <td>
-            
+            <div class='call-sites'>
+              3 &#40;0 &#37;&#41;
+              samples spent in |
+              <br />
+              2 &#40;67 &#37;&#41; &#40;ex.&#41;,
+              2 &#40;67 &#37;&#41; &#40;incl.&#41;
+              when called from paynehanek
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L175'>line 175</a>
+              <br />
+              1 &#40;33 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;33 &#37;&#41; &#40;incl.&#41;
+              when called from fromfraction
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L115'>line 115</a>
+              <br />
+            </div>
             
             <span class='code'>&#40;|&#41;&#40;x::T, y::T&#41; where &#123;T&lt;:BitInteger&#125; &#61; or_int&#40;x, y&#41;</span>
           </td>
@@ -4318,10 +4369,19 @@
         </tr>
         <tr id='L428'>
           <td class='lineno'>428</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>3 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>3 &#40;0 &#37;&#41;</td>
           <td>
-            
+            <div class='call-sites'>
+              3 &#40;0 &#37;&#41;
+              samples spent in leading_zeros
+              <br />
+              3 &#40;100 &#37;&#41; &#40;ex.&#41;,
+              3 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from top_set_bit
+              <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L509'>line 509</a>
+              <br />
+            </div>
             
             <span class='code'>leading_zeros&#40;x::BitInteger&#41; &#61; &#40;ctlz_int&#40;x&#41; &#37; Int&#41;::Int</span>
           </td>
@@ -5129,10 +5189,29 @@
         <tr id='L509'>
           <td class='lineno'>509</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>3 &#40;0 &#37;&#41;</td>
           <td>
-            
-            
+            <div class='call-sites'>
+              3 &#40;0 &#37;&#41;
+              samples spent in top_set_bit
+              <br />
+              
+              2 &#40;67 &#37;&#41; &#40;incl.&#41;
+              when called from fromfraction
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L112'>line 112</a>
+              <br />
+              
+              1 &#40;33 &#37;&#41; &#40;incl.&#41;
+              when called from fromfraction
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L122'>line 122</a>
+              <br />
+            </div>
+            <div class='callees'>
+              3 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L428'>leading_zeros</a>
+              <br />
+            </div>
             <span class='code'>top_set_bit&#40;x::BitInteger&#41; &#61; 8sizeof&#40;x&#41; - leading_zeros&#40;x&#41;</span>
           </td>
         </tr>
@@ -5188,15 +5267,15 @@
         </tr>
         <tr id='L515'>
           <td class='lineno'>515</td>
-          <td class='tracecount excl'>1 &#40;0 &#37;&#41;</td>
-          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount excl'>11 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>11 &#40;0 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              1 &#40;0 &#37;&#41;
+              11 &#40;0 &#37;&#41;
               samples spent in &lt;&#61;
               <br />
-              1 &#40;100 &#37;&#41; &#40;ex.&#41;,
-              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              11 &#40;100 &#37;&#41; &#40;ex.&#41;,
+              11 &#40;100 &#37;&#41; &#40;incl.&#41;
               when called from rem_pio2_kernel
               <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L223'>line 223</a>
               <br />
@@ -5327,35 +5406,58 @@
         </tr>
         <tr id='L528'>
           <td class='lineno'>528</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>6 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>6 &#40;0 &#37;&#41;</td>
           <td>
-            
+            <div class='call-sites'>
+              6 &#40;0 &#37;&#41;
+              samples spent in &gt;&gt;
+              <br />
+              4 &#40;67 &#37;&#41; &#40;ex.&#41;,
+              4 &#40;67 &#37;&#41; &#40;incl.&#41;
+              when called from &gt;&gt;
+              <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L534'>line 534</a>
+              <br />
+              2 &#40;33 &#37;&#41; &#40;ex.&#41;,
+              2 &#40;33 &#37;&#41; &#40;incl.&#41;
+              when called from &lt;&lt;
+              <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L536'>line 536</a>
+              <br />
+            </div>
             
             <span class='code'>&gt;&gt;&#40;x::BitUnsigned, y::BitUnsigned&#41; &#61; lshr_int&#40;x, y&#41;</span>
           </td>
         </tr>
         <tr id='L529'>
           <td class='lineno'>529</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>101 &#40;3 &#37;&#41;</td>
+          <td class='tracecount incl'>101 &#40;3 &#37;&#41;</td>
           <td>
-            
+            <div class='call-sites'>
+              101 &#40;3 &#37;&#41;
+              samples spent in &lt;&lt;
+              <br />
+              101 &#40;100 &#37;&#41; &#40;ex.&#41;,
+              101 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from &lt;&lt;
+              <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L536'>line 536</a>
+              <br />
+            </div>
             
             <span class='code'>&lt;&lt;&#40;x::BitInteger,  y::BitUnsigned&#41; &#61; shl_int&#40;x, y&#41;</span>
           </td>
         </tr>
         <tr id='L530'>
           <td class='lineno'>530</td>
-          <td class='tracecount excl'>1 &#40;0 &#37;&#41;</td>
-          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount excl'>21 &#40;1 &#37;&#41;</td>
+          <td class='tracecount incl'>21 &#40;1 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              1 &#40;0 &#37;&#41;
+              21 &#40;1 &#37;&#41;
               samples spent in &gt;&gt;&gt;
               <br />
-              1 &#40;100 &#37;&#41; &#40;ex.&#41;,
-              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              21 &#40;100 &#37;&#41; &#40;ex.&#41;,
+              21 &#40;100 &#37;&#41; &#40;incl.&#41;
               when called from &gt;&gt;&gt;
               <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L538'>line 538</a>
               <br />
@@ -5397,10 +5499,34 @@
         <tr id='L534'>
           <td class='lineno'>534</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>4 &#40;0 &#37;&#41;</td>
           <td>
-            
-            
+            <div class='call-sites'>
+              4 &#40;0 &#37;&#41;
+              samples spent in &gt;&gt;
+              <br />
+              
+              2 &#40;50 &#37;&#41; &#40;incl.&#41;
+              when called from fromfraction
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L113'>line 113</a>
+              <br />
+              
+              1 &#40;25 &#37;&#41; &#40;incl.&#41;
+              when called from paynehanek
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L142'>line 142</a>
+              <br />
+              
+              1 &#40;25 &#37;&#41; &#40;incl.&#41;
+              when called from fromfraction
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L123'>line 123</a>
+              <br />
+            </div>
+            <div class='callees'>
+              4 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L528'>&gt;&gt;</a>
+              <br />
+            </div>
             <span class='code'>&gt;&gt;&#40;x::BitInteger, y::Int&#41; &#61;</span>
           </td>
         </tr>
@@ -5417,10 +5543,43 @@
         <tr id='L536'>
           <td class='lineno'>536</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>103 &#40;3 &#37;&#41;</td>
           <td>
-            
-            
+            <div class='call-sites'>
+              103 &#40;3 &#37;&#41;
+              samples spent in &lt;&lt;
+              <br />
+              
+              97 &#40;94 &#37;&#41; &#40;incl.&#41;
+              when called from tan_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L328'>line 328</a>
+              <br />
+              
+              4 &#40;4 &#37;&#41; &#40;incl.&#41;
+              when called from fromfraction
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L118'>line 118</a>
+              <br />
+              
+              1 &#40;1 &#37;&#41; &#40;incl.&#41;
+              when called from paynehanek
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L198'>line 198</a>
+              <br />
+              
+              1 &#40;1 &#37;&#41; &#40;incl.&#41;
+              when called from fromfraction
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L124'>line 124</a>
+              <br />
+            </div>
+            <div class='callees'>
+              101 &#40;98 &#37;&#41;
+              samples spent calling
+              <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L529'>&lt;&lt;</a>
+              <br />
+              2 &#40;2 &#37;&#41;
+              samples spent calling
+              <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L528'>&gt;&gt;</a>
+              <br />
+            </div>
             <span class='code'>&lt;&lt;&#40;x::BitInteger, y::Int&#41; &#61;</span>
           </td>
         </tr>
@@ -5437,20 +5596,20 @@
         <tr id='L538'>
           <td class='lineno'>538</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>21 &#40;1 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              1 &#40;0 &#37;&#41;
+              21 &#40;1 &#37;&#41;
               samples spent in &gt;&gt;&gt;
               <br />
               
-              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              21 &#40;100 &#37;&#41; &#40;incl.&#41;
               when called from highword
               <a href='math.jl-56fc5e216cbc353b40644ff2bba59d7b9504f2a3.html#L1481'>line 1481</a>
               <br />
             </div>
             <div class='callees'>
-              1 &#40;100 &#37;&#41;
+              21 &#40;100 &#37;&#41;
               samples spent calling
               <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L530'>&gt;&gt;&gt;</a>
               <br />
@@ -10050,10 +10209,19 @@
         </tr>
         <tr id='L998'>
           <td class='lineno'>998</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
           <td>
-            
+            <div class='call-sites'>
+              1 &#40;0 &#37;&#41;
+              samples spent in *
+              <br />
+              1 &#40;100 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from widemul
+              <a href='number.jl-1cd944a8b50f5e14f0813ffcd6360ef77025b1bf.html#L277'>line 277</a>
+              <br />
+            </div>
             
             <span class='code'>    *&#40;x::T, y::T&#41; where &#123;T&lt;:Union&#123;Int128,UInt128&#125;&#125;  &#61; mul_int&#40;x, y&#41;</span>
           </td>
@@ -10201,10 +10369,24 @@
         <tr id='L1013'>
           <td class='lineno'>1013</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
           <td>
-            
-            
+            <div class='call-sites'>
+              1 &#40;0 &#37;&#41;
+              samples spent in &amp;
+              <br />
+              
+              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from cody_waite_ext_pio2
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L76'>line 76</a>
+              <br />
+            </div>
+            <div class='callees'>
+              1 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='int.jl-05fb6d1e84fb5a9da342ab6be058586e8665bbc6.html#L347'>&amp;</a>
+              <br />
+            </div>
             <span class='code'>        return &#36;op&#40;aT, bT&#41;</span>
           </td>
         </tr>

@@ -14,7 +14,7 @@
         StatProfilerHTML.jl report
       </div>
       <div class='generated-on'>
-        Generated on Mon, 18 Aug 2025 17:36:15
+        Generated on Tue, 19 Aug 2025 20:55:03
       </div>
     </div>
     <table>
@@ -313,7 +313,21 @@
           <td class='tracecount excl'></td>
           <td class='tracecount incl'></td>
           <td>
-            
+            <div class='call-sites'>
+              13 &#40;0 &#37;&#41;
+              samples spent in sin
+              <br />
+              8 &#40;62 &#37;&#41; &#40;ex.&#41;,
+              8 &#40;62 &#37;&#41; &#40;incl.&#41;
+              when called from sin_fast
+              <a href='fastmath.jl-74148b78d58ce9205877cfc4386c9a0b5c4aee14.html#L353'>line 353</a>
+              <br />
+              5 &#40;38 &#37;&#41; &#40;ex.&#41;,
+              5 &#40;38 &#37;&#41; &#40;incl.&#41;
+              when called from move_ray
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L193'>line 193</a>
+              <br />
+            </div>
             
             <span class='code'></span>
           </td>
@@ -1004,13 +1018,18 @@
           <td class='tracecount incl'></td>
           <td>
             <div class='call-sites'>
-              2 &#40;1 &#37;&#41;
+              30 &#40;1 &#37;&#41;
               samples spent in cos
               <br />
-              2 &#40;100 &#37;&#41; &#40;ex.&#41;,
-              2 &#40;100 &#37;&#41; &#40;incl.&#41;
+              18 &#40;60 &#37;&#41; &#40;ex.&#41;,
+              18 &#40;60 &#37;&#41; &#40;incl.&#41;
               when called from cos_fast
               <a href='fastmath.jl-74148b78d58ce9205877cfc4386c9a0b5c4aee14.html#L353'>line 353</a>
+              <br />
+              12 &#40;40 &#37;&#41; &#40;ex.&#41;,
+              12 &#40;40 &#37;&#41; &#40;incl.&#41;
+              when called from move_ray
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L195'>line 195</a>
               <br />
             </div>
             
@@ -4919,27 +4938,32 @@
         </tr>
         <tr id='L489'>
           <td class='lineno'>489</td>
-          <td class='tracecount excl'>11 &#40;5 &#37;&#41;</td>
-          <td class='tracecount incl'>11 &#40;5 &#37;&#41;</td>
+          <td class='tracecount excl'>91 &#40;2 &#37;&#41;</td>
+          <td class='tracecount incl'>91 &#40;2 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              11 &#40;5 &#37;&#41;
+              91 &#40;2 &#37;&#41;
               samples spent in -
               <br />
-              7 &#40;64 &#37;&#41; &#40;ex.&#41;,
-              7 &#40;64 &#37;&#41; &#40;incl.&#41;
+              57 &#40;63 &#37;&#41; &#40;ex.&#41;,
+              57 &#40;63 &#37;&#41; &#40;incl.&#41;
+              when called from cos
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L115'>line 115</a>
+              <br />
+              28 &#40;31 &#37;&#41; &#40;ex.&#41;,
+              28 &#40;31 &#37;&#41; &#40;incl.&#41;
               when called from sin
               <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L50'>line 50</a>
               <br />
-              3 &#40;27 &#37;&#41; &#40;ex.&#41;,
-              3 &#40;27 &#37;&#41; &#40;incl.&#41;
-              when called from sin
-              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L48'>line 48</a>
-              <br />
-              1 &#40;9 &#37;&#41; &#40;ex.&#41;,
-              1 &#40;9 &#37;&#41; &#40;incl.&#41;
+              4 &#40;4 &#37;&#41; &#40;ex.&#41;,
+              4 &#40;4 &#37;&#41; &#40;incl.&#41;
               when called from cos
               <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L117'>line 117</a>
+              <br />
+              2 &#40;2 &#37;&#41; &#40;ex.&#41;,
+              2 &#40;2 &#37;&#41; &#40;incl.&#41;
+              when called from sin
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L48'>line 48</a>
               <br />
             </div>
             
@@ -4958,37 +4982,92 @@
         </tr>
         <tr id='L491'>
           <td class='lineno'>491</td>
-          <td class='tracecount excl'>27 &#40;11 &#37;&#41;</td>
-          <td class='tracecount incl'>27 &#40;11 &#37;&#41;</td>
+          <td class='tracecount excl'>448 &#40;12 &#37;&#41;</td>
+          <td class='tracecount incl'>448 &#40;12 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              27 &#40;11 &#37;&#41;
+              448 &#40;12 &#37;&#41;
               samples spent in &#43;
               <br />
-              12 &#40;44 &#37;&#41; &#40;ex.&#41;,
-              12 &#40;44 &#37;&#41; &#40;incl.&#41;
-              when called from &#43;
-              <a href='operators.jl-5dc7f749ee81f9a1b69996e91008bb7712afdf35.html#L596'>line 596</a>
-              <br />
-              8 &#40;30 &#37;&#41; &#40;ex.&#41;,
-              8 &#40;30 &#37;&#41; &#40;incl.&#41;
+              108 &#40;24 &#37;&#41; &#40;ex.&#41;,
+              108 &#40;24 &#37;&#41; &#40;incl.&#41;
               when called from cos_kernel
               <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L142'>line 142</a>
               <br />
-              3 &#40;11 &#37;&#41; &#40;ex.&#41;,
-              3 &#40;11 &#37;&#41; &#40;incl.&#41;
-              when called from cos_kernel
-              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L150'>line 150</a>
+              61 &#40;14 &#37;&#41; &#40;ex.&#41;,
+              61 &#40;14 &#37;&#41; &#40;incl.&#41;
+              when called from &#43;
+              <a href='operators.jl-5dc7f749ee81f9a1b69996e91008bb7712afdf35.html#L596'>line 596</a>
               <br />
-              3 &#40;11 &#37;&#41; &#40;ex.&#41;,
-              3 &#40;11 &#37;&#41; &#40;incl.&#41;
+              56 &#40;12 &#37;&#41; &#40;ex.&#41;,
+              56 &#40;12 &#37;&#41; &#40;incl.&#41;
+              when called from tan_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L306'>line 306</a>
+              <br />
+              38 &#40;8 &#37;&#41; &#40;ex.&#41;,
+              38 &#40;8 &#37;&#41; &#40;incl.&#41;
+              when called from move_ray
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L196'>line 196</a>
+              <br />
+              33 &#40;7 &#37;&#41; &#40;ex.&#41;,
+              33 &#40;7 &#37;&#41; &#40;incl.&#41;
+              when called from tan_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L333'>line 333</a>
+              <br />
+              32 &#40;7 &#37;&#41; &#40;ex.&#41;,
+              32 &#40;7 &#37;&#41; &#40;incl.&#41;
               when called from sin_kernel
               <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L72'>line 72</a>
               <br />
-              1 &#40;4 &#37;&#41; &#40;ex.&#41;,
-              1 &#40;4 &#37;&#41; &#40;incl.&#41;
+              32 &#40;7 &#37;&#41; &#40;ex.&#41;,
+              32 &#40;7 &#37;&#41; &#40;incl.&#41;
+              when called from macro expansion
+              <a href='mapreduce.jl-e10303cea1d682bf49ed6b838522121366eb9ddf.html#L77'>line 77</a>
+              <br />
+              28 &#40;6 &#37;&#41; &#40;ex.&#41;,
+              28 &#40;6 &#37;&#41; &#40;incl.&#41;
               when called from tan_kernel
-              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L333'>line 333</a>
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L334'>line 334</a>
+              <br />
+              26 &#40;6 &#37;&#41; &#40;ex.&#41;,
+              26 &#40;6 &#37;&#41; &#40;incl.&#41;
+              when called from move_ray
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L194'>line 194</a>
+              <br />
+              15 &#40;3 &#37;&#41; &#40;ex.&#41;,
+              15 &#40;3 &#37;&#41; &#40;incl.&#41;
+              when called from tan_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L310'>line 310</a>
+              <br />
+              12 &#40;3 &#37;&#41; &#40;ex.&#41;,
+              12 &#40;3 &#37;&#41; &#40;incl.&#41;
+              when called from cos_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L139'>line 139</a>
+              <br />
+              3 &#40;1 &#37;&#41; &#40;ex.&#41;,
+              3 &#40;1 &#37;&#41; &#40;incl.&#41;
+              when called from paynehanek
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L208'>line 208</a>
+              <br />
+              1 &#40;0 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;0 &#37;&#41; &#40;incl.&#41;
+              when called from tan_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L279'>line 279</a>
+              <br />
+              1 &#40;0 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;0 &#37;&#41; &#40;incl.&#41;
+              when called from cos_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L150'>line 150</a>
+              <br />
+              1 &#40;0 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;0 &#37;&#41; &#40;incl.&#41;
+              when called from sin_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L81'>line 81</a>
+              <br />
+              1 &#40;0 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;0 &#37;&#41; &#40;incl.&#41;
+              when called from paynehanek
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L207'>line 207</a>
               <br />
             </div>
             
@@ -4997,37 +5076,52 @@
         </tr>
         <tr id='L492'>
           <td class='lineno'>492</td>
-          <td class='tracecount excl'>28 &#40;12 &#37;&#41;</td>
-          <td class='tracecount incl'>28 &#40;12 &#37;&#41;</td>
+          <td class='tracecount excl'>343 &#40;9 &#37;&#41;</td>
+          <td class='tracecount incl'>343 &#40;9 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              28 &#40;12 &#37;&#41;
+              343 &#40;9 &#37;&#41;
               samples spent in -
               <br />
-              12 &#40;43 &#37;&#41; &#40;ex.&#41;,
-              12 &#40;43 &#37;&#41; &#40;incl.&#41;
+              152 &#40;44 &#37;&#41; &#40;ex.&#41;,
+              152 &#40;44 &#37;&#41; &#40;incl.&#41;
               when called from sin_kernel
               <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L74'>line 74</a>
               <br />
-              10 &#40;36 &#37;&#41; &#40;ex.&#41;,
-              10 &#40;36 &#37;&#41; &#40;incl.&#41;
-              when called from macro expansion
-              <a href='mapreduce.jl-e10303cea1d682bf49ed6b838522121366eb9ddf.html#L77'>line 77</a>
-              <br />
-              3 &#40;11 &#37;&#41; &#40;ex.&#41;,
-              3 &#40;11 &#37;&#41; &#40;incl.&#41;
-              when called from cos_kernel
-              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L141'>line 141</a>
-              <br />
-              2 &#40;7 &#37;&#41; &#40;ex.&#41;,
-              2 &#40;7 &#37;&#41; &#40;incl.&#41;
+              113 &#40;33 &#37;&#41; &#40;ex.&#41;,
+              113 &#40;33 &#37;&#41; &#40;incl.&#41;
               when called from cos_kernel
               <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L142'>line 142</a>
               <br />
-              1 &#40;4 &#37;&#41; &#40;ex.&#41;,
-              1 &#40;4 &#37;&#41; &#40;incl.&#41;
+              40 &#40;12 &#37;&#41; &#40;ex.&#41;,
+              40 &#40;12 &#37;&#41; &#40;incl.&#41;
+              when called from macro expansion
+              <a href='mapreduce.jl-e10303cea1d682bf49ed6b838522121366eb9ddf.html#L77'>line 77</a>
+              <br />
+              10 &#40;3 &#37;&#41; &#40;ex.&#41;,
+              10 &#40;3 &#37;&#41; &#40;incl.&#41;
+              when called from cody_waite_2c_pio2
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L54'>line 54</a>
+              <br />
+              10 &#40;3 &#37;&#41; &#40;ex.&#41;,
+              10 &#40;3 &#37;&#41; &#40;incl.&#41;
+              when called from move_ray
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L196'>line 196</a>
+              <br />
+              8 &#40;2 &#37;&#41; &#40;ex.&#41;,
+              8 &#40;2 &#37;&#41; &#40;incl.&#41;
               when called from cos_kernel
-              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L149'>line 149</a>
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L141'>line 141</a>
+              <br />
+              7 &#40;2 &#37;&#41; &#40;ex.&#41;,
+              7 &#40;2 &#37;&#41; &#40;incl.&#41;
+              when called from -
+              <a href='promotion.jl-4d777ef2dd291b72010bfae75f5754793732cf8f.html#L431'>line 431</a>
+              <br />
+              3 &#40;1 &#37;&#41; &#40;ex.&#41;,
+              3 &#40;1 &#37;&#41; &#40;incl.&#41;
+              when called from tan_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L316'>line 316</a>
               <br />
             </div>
             
@@ -5036,62 +5130,127 @@
         </tr>
         <tr id='L493'>
           <td class='lineno'>493</td>
-          <td class='tracecount excl'>24 &#40;10 &#37;&#41;</td>
-          <td class='tracecount incl'>24 &#40;10 &#37;&#41;</td>
+          <td class='tracecount excl'>529 &#40;14 &#37;&#41;</td>
+          <td class='tracecount incl'>529 &#40;14 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              24 &#40;10 &#37;&#41;
+              529 &#40;14 &#37;&#41;
               samples spent in *
               <br />
-              10 &#40;42 &#37;&#41; &#40;ex.&#41;,
-              10 &#40;42 &#37;&#41; &#40;incl.&#41;
-              when called from sin_kernel
-              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L74'>line 74</a>
-              <br />
-              3 &#40;12 &#37;&#41; &#40;ex.&#41;,
-              3 &#40;12 &#37;&#41; &#40;incl.&#41;
-              when called from cos_kernel
-              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L139'>line 139</a>
-              <br />
-              2 &#40;8 &#37;&#41; &#40;ex.&#41;,
-              2 &#40;8 &#37;&#41; &#40;incl.&#41;
-              when called from cos_kernel
-              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L142'>line 142</a>
-              <br />
-              2 &#40;8 &#37;&#41; &#40;ex.&#41;,
-              2 &#40;8 &#37;&#41; &#40;incl.&#41;
+              119 &#40;22 &#37;&#41; &#40;ex.&#41;,
+              119 &#40;22 &#37;&#41; &#40;incl.&#41;
               when called from *
               <a href='operators.jl-5dc7f749ee81f9a1b69996e91008bb7712afdf35.html#L596'>line 596</a>
               <br />
-              2 &#40;8 &#37;&#41; &#40;ex.&#41;,
-              2 &#40;8 &#37;&#41; &#40;incl.&#41;
-              when called from dot
-              <a href='algebra.jl-575e38fa550499497776214fd02343a097181c8c.html#L7'>line 7</a>
-              <br />
-              1 &#40;4 &#37;&#41; &#40;ex.&#41;,
-              1 &#40;4 &#37;&#41; &#40;incl.&#41;
+              79 &#40;15 &#37;&#41; &#40;ex.&#41;,
+              79 &#40;15 &#37;&#41; &#40;incl.&#41;
               when called from cos_kernel
-              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L145'>line 145</a>
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L142'>line 142</a>
               <br />
-              1 &#40;4 &#37;&#41; &#40;ex.&#41;,
-              1 &#40;4 &#37;&#41; &#40;incl.&#41;
+              76 &#40;14 &#37;&#41; &#40;ex.&#41;,
+              76 &#40;14 &#37;&#41; &#40;incl.&#41;
+              when called from sin_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L74'>line 74</a>
+              <br />
+              58 &#40;11 &#37;&#41; &#40;ex.&#41;,
+              58 &#40;11 &#37;&#41; &#40;incl.&#41;
+              when called from move_ray
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L194'>line 194</a>
+              <br />
+              41 &#40;8 &#37;&#41; &#40;ex.&#41;,
+              41 &#40;8 &#37;&#41; &#40;incl.&#41;
+              when called from #280
+              <a href='linalg.jl-2060a21cc9859cb6c0f5d0fc2550d46be9fcfaa7.html#L21'>line 21</a>
+              <br />
+              37 &#40;7 &#37;&#41; &#40;ex.&#41;,
+              37 &#40;7 &#37;&#41; &#40;incl.&#41;
+              when called from tan_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L304'>line 304</a>
+              <br />
+              24 &#40;5 &#37;&#41; &#40;ex.&#41;,
+              24 &#40;5 &#37;&#41; &#40;incl.&#41;
+              when called from tan_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L334'>line 334</a>
+              <br />
+              22 &#40;4 &#37;&#41; &#40;ex.&#41;,
+              22 &#40;4 &#37;&#41; &#40;incl.&#41;
               when called from cos_kernel
               <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L140'>line 140</a>
               <br />
-              1 &#40;4 &#37;&#41; &#40;ex.&#41;,
-              1 &#40;4 &#37;&#41; &#40;incl.&#41;
-              when called from sin_kernel
-              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L78'>line 78</a>
+              15 &#40;3 &#37;&#41; &#40;ex.&#41;,
+              15 &#40;3 &#37;&#41; &#40;incl.&#41;
+              when called from literal_pow
+              <a href='intfuncs.jl-4c1e7347b74cbfc2f238f8a655363f60c54bc2d3.html#L370'>line 370</a>
               <br />
-              1 &#40;4 &#37;&#41; &#40;ex.&#41;,
-              1 &#40;4 &#37;&#41; &#40;incl.&#41;
+              11 &#40;2 &#37;&#41; &#40;ex.&#41;,
+              11 &#40;2 &#37;&#41; &#40;incl.&#41;
+              when called from tan_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L283'>line 283</a>
+              <br />
+              9 &#40;2 &#37;&#41; &#40;ex.&#41;,
+              9 &#40;2 &#37;&#41; &#40;incl.&#41;
+              when called from tan_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L284'>line 284</a>
+              <br />
+              9 &#40;2 &#37;&#41; &#40;ex.&#41;,
+              9 &#40;2 &#37;&#41; &#40;incl.&#41;
+              when called from cos_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L139'>line 139</a>
+              <br />
+              5 &#40;1 &#37;&#41; &#40;ex.&#41;,
+              5 &#40;1 &#37;&#41; &#40;incl.&#41;
               when called from sin_kernel
               <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L73'>line 73</a>
               <br />
-              1 &#40;4 &#37;&#41; &#40;ex.&#41;,
-              1 &#40;4 &#37;&#41; &#40;incl.&#41;
+              4 &#40;1 &#37;&#41; &#40;ex.&#41;,
+              4 &#40;1 &#37;&#41; &#40;incl.&#41;
+              when called from tan_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L306'>line 306</a>
+              <br />
+              4 &#40;1 &#37;&#41; &#40;ex.&#41;,
+              4 &#40;1 &#37;&#41; &#40;incl.&#41;
+              when called from dot
+              <a href='algebra.jl-575e38fa550499497776214fd02343a097181c8c.html#L7'>line 7</a>
+              <br />
+              3 &#40;1 &#37;&#41; &#40;ex.&#41;,
+              3 &#40;1 &#37;&#41; &#40;incl.&#41;
+              when called from tan_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L308'>line 308</a>
+              <br />
+              3 &#40;1 &#37;&#41; &#40;ex.&#41;,
+              3 &#40;1 &#37;&#41; &#40;incl.&#41;
+              when called from sin_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L71'>line 71</a>
+              <br />
+              3 &#40;1 &#37;&#41; &#40;ex.&#41;,
+              3 &#40;1 &#37;&#41; &#40;incl.&#41;
               when called from sin_kernel
               <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L70'>line 70</a>
+              <br />
+              2 &#40;0 &#37;&#41; &#40;ex.&#41;,
+              2 &#40;0 &#37;&#41; &#40;incl.&#41;
+              when called from paynehanek
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L207'>line 207</a>
+              <br />
+              2 &#40;0 &#37;&#41; &#40;ex.&#41;,
+              2 &#40;0 &#37;&#41; &#40;incl.&#41;
+              when called from *
+              <a href='promotion.jl-4d777ef2dd291b72010bfae75f5754793732cf8f.html#L430'>line 430</a>
+              <br />
+              1 &#40;0 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;0 &#37;&#41; &#40;incl.&#41;
+              when called from tan_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L296'>line 296</a>
+              <br />
+              1 &#40;0 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;0 &#37;&#41; &#40;incl.&#41;
+              when called from cos_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L145'>line 145</a>
+              <br />
+              1 &#40;0 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;0 &#37;&#41; &#40;incl.&#41;
+              when called from move_ray
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L197'>line 197</a>
               <br />
             </div>
             
@@ -5100,10 +5259,29 @@
         </tr>
         <tr id='L494'>
           <td class='lineno'>494</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>66 &#40;2 &#37;&#41;</td>
+          <td class='tracecount incl'>66 &#40;2 &#37;&#41;</td>
           <td>
-            
+            <div class='call-sites'>
+              66 &#40;2 &#37;&#41;
+              samples spent in /
+              <br />
+              58 &#40;88 &#37;&#41; &#40;ex.&#41;,
+              58 &#40;88 &#37;&#41; &#40;incl.&#41;
+              when called from inv
+              <a href='number.jl-1cd944a8b50f5e14f0813ffcd6360ef77025b1bf.html#L255'>line 255</a>
+              <br />
+              4 &#40;6 &#37;&#41; &#40;ex.&#41;,
+              4 &#40;6 &#37;&#41; &#40;incl.&#41;
+              when called from move_ray
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L194'>line 194</a>
+              <br />
+              4 &#40;6 &#37;&#41; &#40;ex.&#41;,
+              4 &#40;6 &#37;&#41; &#40;incl.&#41;
+              when called from f
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L52'>line 52</a>
+              <br />
+            </div>
             
             <span class='code'>/&#40;x::T, y::T&#41; where &#123;T&lt;:IEEEFloat&#125; &#61; div_float&#40;x, y&#41;</span>
           </td>
@@ -5120,27 +5298,27 @@
         </tr>
         <tr id='L496'>
           <td class='lineno'>496</td>
-          <td class='tracecount excl'>11 &#40;5 &#37;&#41;</td>
-          <td class='tracecount incl'>11 &#40;5 &#37;&#41;</td>
+          <td class='tracecount excl'>210 &#40;6 &#37;&#41;</td>
+          <td class='tracecount incl'>210 &#40;6 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              11 &#40;5 &#37;&#41;
+              210 &#40;6 &#37;&#41;
               samples spent in muladd
               <br />
-              5 &#40;45 &#37;&#41; &#40;ex.&#41;,
-              5 &#40;45 &#37;&#41; &#40;incl.&#41;
-              when called from cody_waite_2c_pio2
-              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L54'>line 54</a>
-              <br />
-              5 &#40;45 &#37;&#41; &#40;ex.&#41;,
-              5 &#40;45 &#37;&#41; &#40;incl.&#41;
+              128 &#40;61 &#37;&#41; &#40;ex.&#41;,
+              128 &#40;61 &#37;&#41; &#40;incl.&#41;
               when called from macro expansion
               <a href='math.jl-56fc5e216cbc353b40644ff2bba59d7b9504f2a3.html#L95'>line 95</a>
               <br />
-              1 &#40;9 &#37;&#41; &#40;ex.&#41;,
-              1 &#40;9 &#37;&#41; &#40;incl.&#41;
+              51 &#40;24 &#37;&#41; &#40;ex.&#41;,
+              51 &#40;24 &#37;&#41; &#40;incl.&#41;
               when called from cody_waite_2c_pio2
               <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L52'>line 52</a>
+              <br />
+              31 &#40;15 &#37;&#41; &#40;ex.&#41;,
+              31 &#40;15 &#37;&#41; &#40;incl.&#41;
+              when called from cody_waite_2c_pio2
+              <a href='rem_pio2.jl-dbd3e0aae47d807719a4d7ed63d29d69c744ac43.html#L54'>line 54</a>
               <br />
             </div>
             
@@ -6349,27 +6527,51 @@
         </tr>
         <tr id='L617'>
           <td class='lineno'>617</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>30 &#40;1 &#37;&#41;</td>
+          <td class='tracecount incl'>30 &#40;1 &#37;&#41;</td>
           <td>
-            
+            <div class='call-sites'>
+              30 &#40;1 &#37;&#41;
+              samples spent in &#33;&#61;
+              <br />
+              30 &#40;100 &#37;&#41; &#40;ex.&#41;,
+              30 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from isnan
+              <a href='float.jl-7170cf60e6d4e9b40a7dcd98416202990131c908.html#L702'>line 702</a>
+              <br />
+            </div>
             
             <span class='code'>&#33;&#61;&#40;x::T, y::T&#41; where &#123;T&lt;:IEEEFloat&#125; &#61; ne_float&#40;x, y&#41;</span>
           </td>
         </tr>
         <tr id='L618'>
           <td class='lineno'>618</td>
-          <td class='tracecount excl'>3 &#40;1 &#37;&#41;</td>
-          <td class='tracecount incl'>3 &#40;1 &#37;&#41;</td>
+          <td class='tracecount excl'>22 &#40;1 &#37;&#41;</td>
+          <td class='tracecount incl'>22 &#40;1 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              3 &#40;1 &#37;&#41;
+              22 &#40;1 &#37;&#41;
               samples spent in &lt;
               <br />
-              3 &#40;100 &#37;&#41; &#40;ex.&#41;,
-              3 &#40;100 &#37;&#41; &#40;incl.&#41;
-              when called from check_for_intersection_curved
-              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L285'>line 285</a>
+              9 &#40;41 &#37;&#41; &#40;ex.&#41;,
+              9 &#40;41 &#37;&#41; &#40;incl.&#41;
+              when called from &gt;
+              <a href='operators.jl-5dc7f749ee81f9a1b69996e91008bb7712afdf35.html#L379'>line 379</a>
+              <br />
+              7 &#40;32 &#37;&#41; &#40;ex.&#41;,
+              7 &#40;32 &#37;&#41; &#40;incl.&#41;
+              when called from sin
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L31'>line 31</a>
+              <br />
+              5 &#40;23 &#37;&#41; &#40;ex.&#41;,
+              5 &#40;23 &#37;&#41; &#40;incl.&#41;
+              when called from check_for_intersection
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L245'>line 245</a>
+              <br />
+              1 &#40;5 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;5 &#37;&#41; &#40;incl.&#41;
+              when called from cos
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L100'>line 100</a>
               <br />
             </div>
             
@@ -7108,22 +7310,32 @@
         </tr>
         <tr id='L692'>
           <td class='lineno'>692</td>
-          <td class='tracecount excl'>3 &#40;1 &#37;&#41;</td>
-          <td class='tracecount incl'>3 &#40;1 &#37;&#41;</td>
+          <td class='tracecount excl'>24 &#40;1 &#37;&#41;</td>
+          <td class='tracecount incl'>24 &#40;1 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              3 &#40;1 &#37;&#41;
+              24 &#40;1 &#37;&#41;
               samples spent in abs
               <br />
-              2 &#40;67 &#37;&#41; &#40;ex.&#41;,
-              2 &#40;67 &#37;&#41; &#40;incl.&#41;
-              when called from check_for_intersection_curved
-              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L307'>line 307</a>
+              11 &#40;46 &#37;&#41; &#40;ex.&#41;,
+              11 &#40;46 &#37;&#41; &#40;incl.&#41;
+              when called from tan_kernel
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L273'>line 273</a>
               <br />
-              1 &#40;33 &#37;&#41; &#40;ex.&#41;,
-              1 &#40;33 &#37;&#41; &#40;incl.&#41;
-              when called from sin
-              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L30'>line 30</a>
+              8 &#40;33 &#37;&#41; &#40;ex.&#41;,
+              8 &#40;33 &#37;&#41; &#40;incl.&#41;
+              when called from check_for_intersection
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L273'>line 273</a>
+              <br />
+              4 &#40;17 &#37;&#41; &#40;ex.&#41;,
+              4 &#40;17 &#37;&#41; &#40;incl.&#41;
+              when called from tan
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L217'>line 217</a>
+              <br />
+              1 &#40;4 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;4 &#37;&#41; &#40;incl.&#41;
+              when called from cos
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L99'>line 99</a>
               <br />
             </div>
             
@@ -7223,10 +7435,29 @@
         <tr id='L702'>
           <td class='lineno'>702</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>30 &#40;1 &#37;&#41;</td>
           <td>
-            
-            
+            <div class='call-sites'>
+              30 &#40;1 &#37;&#41;
+              samples spent in isnan
+              <br />
+              
+              20 &#40;67 &#37;&#41; &#40;incl.&#41;
+              when called from sin
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L36'>line 36</a>
+              <br />
+              
+              10 &#40;33 &#37;&#41; &#40;incl.&#41;
+              when called from cos
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L105'>line 105</a>
+              <br />
+            </div>
+            <div class='callees'>
+              30 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='float.jl-7170cf60e6d4e9b40a7dcd98416202990131c908.html#L617'>&#33;&#61;</a>
+              <br />
+            </div>
             <span class='code'>isnan&#40;x::AbstractFloat&#41; &#61; &#40;x &#33;&#61; x&#41;::Bool</span>
           </td>
         </tr>
@@ -7372,10 +7603,29 @@
         </tr>
         <tr id='L717'>
           <td class='lineno'>717</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>25 &#40;1 &#37;&#41;</td>
+          <td class='tracecount incl'>25 &#40;1 &#37;&#41;</td>
           <td>
-            
+            <div class='call-sites'>
+              25 &#40;1 &#37;&#41;
+              samples spent in isinf
+              <br />
+              10 &#40;40 &#37;&#41; &#40;ex.&#41;,
+              10 &#40;40 &#37;&#41; &#40;incl.&#41;
+              when called from tan
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L225'>line 225</a>
+              <br />
+              8 &#40;32 &#37;&#41; &#40;ex.&#41;,
+              8 &#40;32 &#37;&#41; &#40;incl.&#41;
+              when called from sin
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L38'>line 38</a>
+              <br />
+              7 &#40;28 &#37;&#41; &#40;ex.&#41;,
+              7 &#40;28 &#37;&#41; &#40;incl.&#41;
+              when called from cos
+              <a href='trig.jl-dda7f67342c15340cfb39e4413ef3ddf2260b2b1.html#L107'>line 107</a>
+              <br />
+            </div>
             
             <span class='code'>isinf&#40;x::IEEEFloat&#41; &#61; abs&#40;x&#41; &#61;&#61;&#61; oftype&#40;x, Inf&#41;</span>
           </td>
