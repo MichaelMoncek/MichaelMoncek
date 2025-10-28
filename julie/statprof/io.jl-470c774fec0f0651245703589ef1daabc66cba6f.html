@@ -14,7 +14,7 @@
         StatProfilerHTML.jl report
       </div>
       <div class='generated-on'>
-        Generated on Tue, 19 Aug 2025 20:49:13
+        Generated on Fri, 22 Aug 2025 12:56:14
       </div>
     </div>
     <table>
@@ -5370,7 +5370,7 @@
             <div class='callees'>
               1 &#40;100 &#37;&#41;
               samples spent calling
-              <a href='multidimensional.jl-253adffcd52eca0cfa3d5bfd0bd4852ef511bf67.html#L1631'>permutedims</a>
+              <a href='io.jl-470c774fec0f0651245703589ef1daabc66cba6f.html#L543'>_write_image</a>
               <br />
             </div>
             <span class='code'>    _write_image&#40;permutedims&#40;_prepare_buffer&#40;image&#41;, &#40;2, 1&#41;&#41;, png_ptr, info_ptr&#41;</span>
@@ -5498,10 +5498,19 @@
         </tr>
         <tr id='L543'>
           <td class='lineno'>543</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
           <td>
-            
+            <div class='call-sites'>
+              1 &#40;0 &#37;&#41;
+              samples spent in _write_image
+              <br />
+              1 &#40;100 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from #_save#13
+              <a href='io.jl-470c774fec0f0651245703589ef1daabc66cba6f.html#L530'>line 530</a>
+              <br />
+            </div>
             
             <span class='code'>        ccall&#40;</span>
           </td>

@@ -14,7 +14,7 @@
         StatProfilerHTML.jl report
       </div>
       <div class='generated-on'>
-        Generated on Tue, 19 Aug 2025 20:55:03
+        Generated on Fri, 22 Aug 2025 12:56:14
       </div>
     </div>
     <table>
@@ -9780,10 +9780,19 @@
         </tr>
         <tr id='L976'>
           <td class='lineno'>976</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
           <td>
-            
+            <div class='call-sites'>
+              1 &#40;0 &#37;&#41;
+              samples spent in setindex&#33;
+              <br />
+              1 &#40;100 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from filter&#33;
+              <a href='array.jl-9351c8e3c3e31a3b8a0c690f5e177533744c07f5.html#L2904'>line 2904</a>
+              <br />
+            </div>
             
             <span class='code'>    memoryrefset&#33;&#40;memoryrefnew&#40;A.ref, i, false&#41;, x isa T ? x : convert&#40;T,x&#41;::T, :not_atomic, false&#41;</span>
           </td>
@@ -9850,10 +9859,19 @@
         </tr>
         <tr id='L983'>
           <td class='lineno'>983</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
           <td>
-            
+            <div class='call-sites'>
+              1 &#40;0 &#37;&#41;
+              samples spent in setindex&#33;
+              <br />
+              1 &#40;100 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from macro expansion
+              <a href='interstellar2.jl-38f7cc00682e152cf486c344084612d0adfc37d2.html#L186'>line 186</a>
+              <br />
+            </div>
             
             <span class='code'>    memoryrefset&#33;&#40;memoryrefnew&#40;A.ref, _to_linear_index&#40;A, i1, i2, I...&#41;, false&#41;, x isa T ? x : convert&#40;T,x&#41;::T, :not_atomic, false&#41;</span>
           </td>
@@ -14820,15 +14838,15 @@
         </tr>
         <tr id='L1480'>
           <td class='lineno'>1480</td>
-          <td class='tracecount excl'>1 &#40;0 &#37;&#41;</td>
-          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount excl'>4 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>4 &#40;0 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              1 &#40;0 &#37;&#41;
+              4 &#40;0 &#37;&#41;
               samples spent in sizehint&#33;
               <br />
-              1 &#40;100 &#37;&#41; &#40;ex.&#41;,
-              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              4 &#40;100 &#37;&#41; &#40;ex.&#41;,
+              4 &#40;100 &#37;&#41; &#40;incl.&#41;
               when called from filter&#33;
               <a href='array.jl-9351c8e3c3e31a3b8a0c690f5e177533744c07f5.html#L2910'>line 2910</a>
               <br />
@@ -29039,17 +29057,22 @@
         </tr>
         <tr id='L2901'>
           <td class='lineno'>2901</td>
-          <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount excl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              1 &#40;0 &#37;&#41;
+              6 &#40;0 &#37;&#41;
               samples spent in filter&#33;
               <br />
               
-              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              5 &#40;83 &#37;&#41; &#40;incl.&#41;
               when called from threading_run
               <a href='threadingconstructs.jl-be65946e359bb76596da77e48f0bf89571986361.html#L170'>line 170</a>
+              <br />
+              1 &#40;17 &#37;&#41; &#40;ex.&#41;,
+              1 &#40;17 &#37;&#41; &#40;incl.&#41;
+              when called from macro expansion
+              <a href='threadingconstructs.jl-be65946e359bb76596da77e48f0bf89571986361.html#L189'>line 189</a>
               <br />
             </div>
             
@@ -29079,10 +29102,15 @@
         <tr id='L2904'>
           <td class='lineno'>2904</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'></td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
           <td>
             
-            
+            <div class='callees'>
+              1 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='array.jl-9351c8e3c3e31a3b8a0c690f5e177533744c07f5.html#L976'>setindex&#33;</a>
+              <br />
+            </div>
             <span class='code'>        @inbounds a&#91;j&#93; &#61; ai</span>
           </td>
         </tr>
@@ -29139,11 +29167,11 @@
         <tr id='L2910'>
           <td class='lineno'>2910</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td class='tracecount incl'>4 &#40;0 &#37;&#41;</td>
           <td>
             
             <div class='callees'>
-              1 &#40;100 &#37;&#41;
+              4 &#40;100 &#37;&#41;
               samples spent calling
               <a href='array.jl-9351c8e3c3e31a3b8a0c690f5e177533744c07f5.html#L1480'>sizehint&#33;</a>
               <br />

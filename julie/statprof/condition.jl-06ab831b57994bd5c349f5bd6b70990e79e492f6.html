@@ -14,7 +14,7 @@
         StatProfilerHTML.jl report
       </div>
       <div class='generated-on'>
-        Generated on Tue, 19 Aug 2025 20:55:03
+        Generated on Fri, 22 Aug 2025 12:56:14
       </div>
     </div>
     <table>
@@ -691,22 +691,26 @@
         <tr id='L67'>
           <td class='lineno'>67</td>
           <td class='tracecount excl'></td>
-          <td class='tracecount incl'>34 &#40;1 &#37;&#41;</td>
+          <td class='tracecount incl'>37 &#40;0 &#37;&#41;</td>
           <td>
             <div class='call-sites'>
-              34 &#40;1 &#37;&#41;
+              37 &#40;0 &#37;&#41;
               samples spent in GenericCondition
               <br />
               
-              34 &#40;100 &#37;&#41; &#40;incl.&#41;
+              37 &#40;100 &#37;&#41; &#40;incl.&#41;
               when called from Task
               <a href='task.jl-37b7077be5c0dfb17fdc09414b91905ac2e13db1.html#L5'>line 5</a>
               <br />
             </div>
             <div class='callees'>
-              34 &#40;100 &#37;&#41;
+              36 &#40;97 &#37;&#41;
               samples spent calling
               <a href='linked_list.jl-6a0ce5c7bba93ef784f0e25433e9a33775515a83.html#L7'>IntrusiveLinkedList</a>
+              <br />
+              1 &#40;3 &#37;&#41;
+              samples spent calling
+              <a href='locks-mt.jl-290a78f496ea150682901781088e252ebdcce083.html#L34'>SpinLock</a>
               <br />
             </div>
             <span class='code'>    GenericCondition&#123;L&#125;&#40;&#41; where &#123;L&lt;:AbstractLock&#125; &#61; new&#123;L&#125;&#40;IntrusiveLinkedList&#123;Task&#125;&#40;&#41;, L&#40;&#41;&#41;</span>

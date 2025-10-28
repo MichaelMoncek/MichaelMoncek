@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'></meta>
+    <link rel='stylesheet' type='text/css' href='statprofiler.css'></link>
+    <title>StatProfilerHTML - ../../../.julia/packages/ColorTypes/L7biZ/src/conversions.jl</title>
+  </head>
+  <body>
+    <div class='report-header'>
+      <div class='backlink'>
+        <a href='index.html'>Report index</a>
+      </div>
+      <div class='report-title'>
+        StatProfilerHTML.jl report
+      </div>
+      <div class='generated-on'>
+        Generated on Fri, 22 Aug 2025 12:52:02
+      </div>
+    </div>
+    <table>
+      <caption>File source code</caption>
+      <thead>
+        <tr>
+          <th>Line</th>
+          <th>Exclusive</th>
+          <th>Inclusive</th>
+          <th>Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id='L1'>
+          <td class='lineno'>1</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># Get the promoted element type</span>
+          </td>
+        </tr>
+        <tr id='L2'>
+          <td class='lineno'>2</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># Note that &#96;promote_eltype&#96; defined in &quot;types.jl&quot; means promote &quot;arguments&quot;.</span>
+          </td>
+        </tr>
+        <tr id='L3'>
+          <td class='lineno'>3</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function _promote_et&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;C1&lt;:Colorant, C2&lt;:Colorant&#125;</span>
+          </td>
+        </tr>
+        <tr id='L4'>
+          <td class='lineno'>4</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    T1 &#61; isconcretetype&#40;eltype&#40;C1&#41;&#41; ? eltype&#40;C1&#41; : eltypes_supported&#40;C1&#41;</span>
+          </td>
+        </tr>
+        <tr id='L5'>
+          <td class='lineno'>5</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    T2 &#61; isconcretetype&#40;eltype&#40;C2&#41;&#41; ? eltype&#40;C2&#41; : eltypes_supported&#40;C2&#41;</span>
+          </td>
+        </tr>
+        <tr id='L6'>
+          <td class='lineno'>6</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    promote_type&#40;T1, T2&#41;</span>
+          </td>
+        </tr>
+        <tr id='L7'>
+          <td class='lineno'>7</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L8'>
+          <td class='lineno'>8</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># Get the promoted base &quot;color&quot; type</span>
+          </td>
+        </tr>
+        <tr id='L9'>
+          <td class='lineno'>9</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_promote_color&#40;::Type&#123;C&#125;,  ::Type&#123;C&#125;&#41;  where &#123;C&lt;:Color&#125; &#61; C</span>
+          </td>
+        </tr>
+        <tr id='L10'>
+          <td class='lineno'>10</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_promote_color&#40;::Type&#123;C&#125;,  ::Type&#123;C&#125;&#41;  where &#123;N, C&lt;:ColorN&#123;N&#125;&#125; &#61; C</span>
+          </td>
+        </tr>
+        <tr id='L11'>
+          <td class='lineno'>11</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_promote_color&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;C1&lt;:Color, C2&lt;:Color&#125; &#61; Color</span>
+          </td>
+        </tr>
+        <tr id='L12'>
+          <td class='lineno'>12</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_promote_color&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;N1, C1&lt;:ColorN&#123;N1&#125;, N2, C2&lt;:ColorN&#123;N2&#125;&#125; &#61; ColorN&#123;max&#40;N1, N2&#41;&#125;</span>
+          </td>
+        </tr>
+        <tr id='L13'>
+          <td class='lineno'>13</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_promote_color&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;C1&lt;:AbstractGray, C2&lt;:Color&#125; &#61; _promote_color&#40;C2, C2&#41; # C2 may be AbstractRGB</span>
+          </td>
+        </tr>
+        <tr id='L14'>
+          <td class='lineno'>14</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_promote_color&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;C1&lt;:Color, C2&lt;:AbstractGray&#125; &#61; _promote_color&#40;C1, C1&#41; # C1 may be AbstractRGB</span>
+          </td>
+        </tr>
+        <tr id='L15'>
+          <td class='lineno'>15</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_promote_color&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;C1&lt;:AbstractGray, N2, C2&lt;:ColorN&#123;N2&#125;&#125; &#61; _promote_color&#40;C2, C2&#41;</span>
+          </td>
+        </tr>
+        <tr id='L16'>
+          <td class='lineno'>16</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_promote_color&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;N1, C1&lt;:ColorN&#123;N1&#125;, C2&lt;:AbstractGray&#125; &#61; _promote_color&#40;C1, C1&#41;</span>
+          </td>
+        </tr>
+        <tr id='L17'>
+          <td class='lineno'>17</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_promote_color&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;C1&lt;:AbstractGray, C2&lt;:AbstractGray&#125; &#61; Gray</span>
+          </td>
+        </tr>
+        <tr id='L18'>
+          <td class='lineno'>18</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function _promote_color&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;C1&lt;:AbstractRGB, C2&lt;:AbstractRGB&#125;</span>
+          </td>
+        </tr>
+        <tr id='L19'>
+          <td class='lineno'>19</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    &#40;C1 &#61;&#61;&#61; XRGB || C2 &#61;&#61;&#61; XRGB&#41; &amp;&amp; return XRGB</span>
+          </td>
+        </tr>
+        <tr id='L20'>
+          <td class='lineno'>20</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    &#40;C1 &#61;&#61;&#61; RGBX || C2 &#61;&#61;&#61; RGBX&#41; &amp;&amp; return RGBX</span>
+          </td>
+        </tr>
+        <tr id='L21'>
+          <td class='lineno'>21</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    RGB</span>
+          </td>
+        </tr>
+        <tr id='L22'>
+          <td class='lineno'>22</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L23'>
+          <td class='lineno'>23</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L24'>
+          <td class='lineno'>24</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># Get the promoted transparent type</span>
+          </td>
+        </tr>
+        <tr id='L25'>
+          <td class='lineno'>25</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_promote_alpha&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;C1&lt;:Colorant, C2&lt;:Colorant&#125; &#61; AlphaColor</span>
+          </td>
+        </tr>
+        <tr id='L26'>
+          <td class='lineno'>26</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_promote_alpha&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;C1&lt;:ColorAlpha, C2&lt;:Color&#125; &#61; ColorAlpha</span>
+          </td>
+        </tr>
+        <tr id='L27'>
+          <td class='lineno'>27</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_promote_alpha&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;C1&lt;:ColorAlpha, C2&lt;:ColorAlpha&#125; &#61; ColorAlpha</span>
+          </td>
+        </tr>
+        <tr id='L28'>
+          <td class='lineno'>28</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_promote_alpha&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;C1&lt;:ColorAlpha, C2&lt;:AbstractAGray&#125; &#61; ColorAlpha</span>
+          </td>
+        </tr>
+        <tr id='L29'>
+          <td class='lineno'>29</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_promote_alpha&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;C1&lt;:AbstractAGray, C2&lt;:ColorAlpha&#125; &#61; ColorAlpha</span>
+          </td>
+        </tr>
+        <tr id='L30'>
+          <td class='lineno'>30</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_promote_alpha&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;C1&lt;:Color, C2&lt;:Color&#125; &#61; Color</span>
+          </td>
+        </tr>
+        <tr id='L31'>
+          <td class='lineno'>31</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L32'>
+          <td class='lineno'>32</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>Base.promote_rule&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;C1&lt;:Colorant, C2&lt;:Colorant&#125; &#61; _promote_rule&#40;C1, C2&#41;</span>
+          </td>
+        </tr>
+        <tr id='L33'>
+          <td class='lineno'>33</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>Base.promote_rule&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;C1&lt;:Color, C2&lt;:TransparentColor&#125; &#61; Base.Bottom # to reduce rules</span>
+          </td>
+        </tr>
+        <tr id='L34'>
+          <td class='lineno'>34</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L35'>
+          <td class='lineno'>35</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>Base.promote_rule&#40;::Type&#123;RGB24&#125;,   ::Type&#123;Gray24&#125;&#41;  &#61; RGB24 # C vs. C</span>
+          </td>
+        </tr>
+        <tr id='L36'>
+          <td class='lineno'>36</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>Base.promote_rule&#40;::Type&#123;Gray24&#125;,  ::Type&#123;RGB24&#125;&#41;   &#61; RGB24 # C vs. C</span>
+          </td>
+        </tr>
+        <tr id='L37'>
+          <td class='lineno'>37</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>Base.promote_rule&#40;::Type&#123;ARGB32&#125;,  ::Type&#123;AGray32&#125;&#41; &#61; ARGB32 # TC vs. TC</span>
+          </td>
+        </tr>
+        <tr id='L38'>
+          <td class='lineno'>38</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>Base.promote_rule&#40;::Type&#123;AGray32&#125;, ::Type&#123;ARGB32&#125;&#41;  &#61; ARGB32 # TC vs. TC</span>
+          </td>
+        </tr>
+        <tr id='L39'>
+          <td class='lineno'>39</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>Base.promote_rule&#40;::Type&#123;AGray32&#125;, ::Type&#123;Gray24&#125;&#41;  &#61; AGray32</span>
+          </td>
+        </tr>
+        <tr id='L40'>
+          <td class='lineno'>40</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>Base.promote_rule&#40;::Type&#123;AGray32&#125;, ::Type&#123;RGB24&#125;&#41;   &#61; ARGB32</span>
+          </td>
+        </tr>
+        <tr id='L41'>
+          <td class='lineno'>41</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>Base.promote_rule&#40;::Type&#123;ARGB32&#125;,  ::Type&#123;Gray24&#125;&#41;  &#61; ARGB32</span>
+          </td>
+        </tr>
+        <tr id='L42'>
+          <td class='lineno'>42</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>Base.promote_rule&#40;::Type&#123;ARGB32&#125;,  ::Type&#123;RGB24&#125;&#41;   &#61; ARGB32</span>
+          </td>
+        </tr>
+        <tr id='L43'>
+          <td class='lineno'>43</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L44'>
+          <td class='lineno'>44</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L45'>
+          <td class='lineno'>45</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function _promote_rule&#40;::Type&#123;C1&#125;, ::Type&#123;C2&#125;&#41; where &#123;C1&lt;:Colorant, C2&lt;:Colorant&#125;</span>
+          </td>
+        </tr>
+        <tr id='L46'>
+          <td class='lineno'>46</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    et, alpha &#61; _promote_et&#40;C1, C2&#41;, _promote_alpha&#40;C1, C2&#41;</span>
+          </td>
+        </tr>
+        <tr id='L47'>
+          <td class='lineno'>47</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    Cp1, Cp2 &#61; parametric_colorant&#40;C1&#41;, parametric_colorant&#40;C2&#41;</span>
+          </td>
+        </tr>
+        <tr id='L48'>
+          <td class='lineno'>48</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    color &#61; _promote_color&#40;base_color_type&#40;Cp1&#41;, base_color_type&#40;Cp2&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L49'>
+          <td class='lineno'>49</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    _with_et&#40;C::UnionAll, et&#41; &#61; isconcretetype&#40;et&#41; ? C&#123;et&#125; : C</span>
+          </td>
+        </tr>
+        <tr id='L50'>
+          <td class='lineno'>50</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    if &#33;isabstracttype&#40;color&#41;</span>
+          </td>
+        </tr>
+        <tr id='L51'>
+          <td class='lineno'>51</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        alpha &lt;: Color &amp;&amp; return _with_et&#40;color, et&#41;</span>
+          </td>
+        </tr>
+        <tr id='L52'>
+          <td class='lineno'>52</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        c &#61; color &lt;: XRGB || color &lt;: RGBX ? RGB : color</span>
+          </td>
+        </tr>
+        <tr id='L53'>
+          <td class='lineno'>53</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        return _with_et&#40;alpha &lt;: ColorAlpha ? coloralpha&#40;c&#41; : alphacolor&#40;c&#41;, et&#41;</span>
+          </td>
+        </tr>
+        <tr id='L54'>
+          <td class='lineno'>54</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L55'>
+          <td class='lineno'>55</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L56'>
+          <td class='lineno'>56</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    function _with_et&#40;A::UnionAll, ::Type&#123;Cb&#125;, et&#41; where &#123;Nb, Cb&lt;:ColorN&#123;Nb&#125;&#125;</span>
+          </td>
+        </tr>
+        <tr id='L57'>
+          <td class='lineno'>57</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        A &lt;: Color &amp;&amp; return isconcretetype&#40;et&#41; ? Color&#123;et,Nb&#125; : ColorN&#123;Nb&#125;</span>
+          </td>
+        </tr>
+        <tr id='L58'>
+          <td class='lineno'>58</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        N &#61; min&#40;4, Nb &#43; 1&#41; # FIXME: N should be calculated based on C1 and C2</span>
+          </td>
+        </tr>
+        <tr id='L59'>
+          <td class='lineno'>59</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        isconcretetype&#40;et&#41; ? A&#123;C,et,N&#125; where &#123;C&lt;:Cb&#123;et&#125;&#125; : A&#123;C,T,N&#125; where &#123;T, C&lt;:Cb&#123;T&#125;&#125;</span>
+          </td>
+        </tr>
+        <tr id='L60'>
+          <td class='lineno'>60</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L61'>
+          <td class='lineno'>61</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    function _with_et&#40;A::UnionAll, ::Type&#123;Cb&#125;, et&#41; where &#123;Cb&lt;:Color&#125;</span>
+          </td>
+        </tr>
+        <tr id='L62'>
+          <td class='lineno'>62</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        A &lt;: Color &amp;&amp; return isconcretetype&#40;et&#41; ? Color&#123;et&#125; : Color</span>
+          </td>
+        </tr>
+        <tr id='L63'>
+          <td class='lineno'>63</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        isconcretetype&#40;et&#41; ? A&#123;C,et&#125; where &#123;C&lt;:Cb&#123;et&#125;&#125; : A&#123;C,T&#125; where &#123;T, C&lt;:Cb&#123;T&#125;&#125;</span>
+          </td>
+        </tr>
+        <tr id='L64'>
+          <td class='lineno'>64</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L65'>
+          <td class='lineno'>65</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    _with_et&#40;alpha, color, et&#41;</span>
+          </td>
+        </tr>
+        <tr id='L66'>
+          <td class='lineno'>66</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L67'>
+          <td class='lineno'>67</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L68'>
+          <td class='lineno'>68</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L69'>
+          <td class='lineno'>69</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># no-op and element-type conversions, plus conversion to and from transparency</span>
+          </td>
+        </tr>
+        <tr id='L70'>
+          <td class='lineno'>70</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># Colorimetry conversions are in Colors.jl</span>
+          </td>
+        </tr>
+        <tr id='L71'>
+          <td class='lineno'>71</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>convert&#40;::Type&#123;C&#125;, c::C&#41; where &#123;C&lt;:Colorant&#125; &#61; c</span>
+          </td>
+        </tr>
+        <tr id='L72'>
+          <td class='lineno'>72</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              1 &#40;0 &#37;&#41;
+              samples spent in convert
+              <br />
+              
+              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from _new_colorant
+              <a href='types.jl-71f53dc3e04d74405d092d1fc4912eefe69521b0.html#L558'>line 558</a>
+              <br />
+            </div>
+            <div class='callees'>
+              1 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='conversions.jl-f56d8925685aa0b9a5ec53aaaa3b4f64876c55d8.html#L75'>cconvert</a>
+              <br />
+            </div>
+            <span class='code'>convert&#40;::Type&#123;C&#125;, c::Colorant&#41; where &#123;C&lt;:Colorant&#125; &#61; cconvert&#40;ccolor&#40;C, typeof&#40;c&#41;&#41;, c&#41;</span>
+          </td>
+        </tr>
+        <tr id='L73'>
+          <td class='lineno'>73</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>convert&#40;::Type&#123;C&#125;, c::Number&#41; where &#123;C&lt;:Colorant&#125; &#61; cconvert&#40;ccolor&#40;C, typeof&#40;c&#41;&#41;, c&#41;</span>
+          </td>
+        </tr>
+        <tr id='L74'>
+          <td class='lineno'>74</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>cconvert&#40;::Type&#123;C&#125;, c::C&#41; where &#123;C&#125; &#61; c</span>
+          </td>
+        </tr>
+        <tr id='L75'>
+          <td class='lineno'>75</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              1 &#40;0 &#37;&#41;
+              samples spent in cconvert
+              <br />
+              
+              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from convert
+              <a href='conversions.jl-f56d8925685aa0b9a5ec53aaaa3b4f64876c55d8.html#L72'>line 72</a>
+              <br />
+            </div>
+            <div class='callees'>
+              1 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='conversions.jl-f56d8925685aa0b9a5ec53aaaa3b4f64876c55d8.html#L85'>_convert</a>
+              <br />
+            </div>
+            <span class='code'>cconvert&#40;::Type&#123;C&#125;, c&#41; where &#123;C&#125; &#61; _convert&#40;C, base_color_type&#40;C&#41;, base_color_type&#40;c&#41;, c&#41;</span>
+          </td>
+        </tr>
+        <tr id='L76'>
+          <td class='lineno'>76</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L77'>
+          <td class='lineno'>77</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>convert&#40;::Type&#123;C&#125;, c::Color, alpha&#41; where &#123;C&lt;:TransparentColor&#125; &#61; cconvert&#40;ccolor&#40;C, typeof&#40;c&#41;&#41;, c, alpha&#41;</span>
+          </td>
+        </tr>
+        <tr id='L78'>
+          <td class='lineno'>78</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>cconvert&#40;::Type&#123;C&#125;, c::Color, alpha&#41; where &#123;C&lt;:TransparentColor&#125; &#61;_convert&#40;C, base_color_type&#40;C&#41;, base_color_type&#40;c&#41;, c, alpha&#41;</span>
+          </td>
+        </tr>
+        <tr id='L79'>
+          <td class='lineno'>79</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L80'>
+          <td class='lineno'>80</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># Fallback definitions that print nice error messages</span>
+          </td>
+        </tr>
+        <tr id='L81'>
+          <td class='lineno'>81</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_convert&#40;C::Type, ::Any, ::Any, c&#41; &#61; error&#40;&quot;No conversion of &quot;, c, &quot; to &quot;, C, &quot; has been defined&quot;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L82'>
+          <td class='lineno'>82</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_convert&#40;C::Type, C1::Any, C2::Any, c, alpha&#41; &#61; error&#40;&quot;No conversion of &#40;&quot;, c, &quot;,alpha&#61;&#36;alpha&#41; to &quot;, C, &quot; with consistency-types &#36;C1 and &#36;C2 has been defined&quot;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L83'>
+          <td class='lineno'>83</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L84'>
+          <td class='lineno'>84</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># Any AbstractRGB types can be interconverted</span>
+          </td>
+        </tr>
+        <tr id='L85'>
+          <td class='lineno'>85</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'>1 &#40;0 &#37;&#41;</td>
+          <td>
+            <div class='call-sites'>
+              1 &#40;0 &#37;&#41;
+              samples spent in _convert
+              <br />
+              
+              1 &#40;100 &#37;&#41; &#40;incl.&#41;
+              when called from cconvert
+              <a href='conversions.jl-f56d8925685aa0b9a5ec53aaaa3b4f64876c55d8.html#L75'>line 75</a>
+              <br />
+            </div>
+            <div class='callees'>
+              1 &#40;100 &#37;&#41;
+              samples spent calling
+              <a href='types.jl-71f53dc3e04d74405d092d1fc4912eefe69521b0.html#L537'>Color</a>
+              <br />
+            </div>
+            <span class='code'>_convert&#40;::Type&#123;Cout&#125;, ::Type&#123;C1&#125;, ::Type&#123;C2&#125;, c&#41; where &#123;Cout&lt;:AbstractRGB,C1&lt;:AbstractRGB,C2&lt;:AbstractRGB&#125; &#61; Cout&#40;red&#40;c&#41;, green&#40;c&#41;, blue&#40;c&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L86'>
+          <td class='lineno'>86</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_convert&#40;::Type&#123;A&#125;, ::Type&#123;C1&#125;, ::Type&#123;C2&#125;, c, alpha&#61;alpha&#40;c&#41;&#41; where &#123;A&lt;:TransparentRGB,C1&lt;:AbstractRGB,C2&lt;:AbstractRGB&#125; &#61; A&#40;red&#40;c&#41;, green&#40;c&#41;, blue&#40;c&#41;, alpha&#41;</span>
+          </td>
+        </tr>
+        <tr id='L87'>
+          <td class='lineno'>87</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L88'>
+          <td class='lineno'>88</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># Implementations for when the base color type is not changing</span>
+          </td>
+        </tr>
+        <tr id='L89'>
+          <td class='lineno'>89</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># These might strip/add transparency, however</span>
+          </td>
+        </tr>
+        <tr id='L90'>
+          <td class='lineno'>90</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function _convert&#40;::Type&#123;Cout&#125;, ::Type&#123;C1&#125;, ::Type&#123;C1&#125;, c&#41; where &#123;Cout&lt;:Color, C1&lt;:Color&#125;</span>
+          </td>
+        </tr>
+        <tr id='L91'>
+          <td class='lineno'>91</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    Cout&#40;comps&#40;color&#40;c&#41;&#41;...&#41;</span>
+          </td>
+        </tr>
+        <tr id='L92'>
+          <td class='lineno'>92</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L93'>
+          <td class='lineno'>93</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>function _convert&#40;::Type&#123;Cout&#125;, ::Type&#123;C1&#125;, ::Type&#123;C1&#125;, c,</span>
+          </td>
+        </tr>
+        <tr id='L94'>
+          <td class='lineno'>94</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>                  alpha&#61;alpha&#40;c&#41;&#41; where &#123;Cout&lt;:TransparentColor, C1&lt;:Color&#125;</span>
+          </td>
+        </tr>
+        <tr id='L95'>
+          <td class='lineno'>95</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    Cout&#40;comps&#40;color&#40;c&#41;&#41;..., alpha&#41;</span>
+          </td>
+        </tr>
+        <tr id='L96'>
+          <td class='lineno'>96</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L97'>
+          <td class='lineno'>97</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L98'>
+          <td class='lineno'>98</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># Grayscale</span>
+          </td>
+        </tr>
+        <tr id='L99'>
+          <td class='lineno'>99</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_convert&#40;::Type&#123;Cout&#125;, ::Type&#123;C1&#125;, ::Type&#123;C2&#125;, c&#41; where &#123;Cout&lt;:AbstractGray,C1&lt;:AbstractGray,C2&lt;:AbstractGray&#125; &#61; Cout&#40;gray&#40;c&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L100'>
+          <td class='lineno'>100</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_convert&#40;::Type&#123;A&#125;, ::Type&#123;C1&#125;, ::Type&#123;C2&#125;, c, alpha&#61;alpha&#40;c&#41;&#41; where &#123;A&lt;:TransparentGray,C1&lt;:AbstractGray,C2&lt;:AbstractGray&#125; &#61; A&#40;gray&#40;c&#41;, alpha&#41;</span>
+          </td>
+        </tr>
+        <tr id='L101'>
+          <td class='lineno'>101</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L102'>
+          <td class='lineno'>102</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_convert&#40;::Type&#123;Cout&#125;, ::Type&#123;C1&#125;, ::Type&#123;C2&#125;, c&#41; where &#123;Cout&lt;:AbstractRGB,C1&lt;:AbstractRGB,C2&lt;:AbstractGray&#125; &#61; &#40;g &#61; convert&#40;eltype&#40;Cout&#41;, gray&#40;c&#41;&#41;; Cout&#40;g, g, g&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L103'>
+          <td class='lineno'>103</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>_convert&#40;::Type&#123;A&#125;, ::Type&#123;C1&#125;, ::Type&#123;C2&#125;, c, alpha&#61;alpha&#40;c&#41;&#41; where &#123;A&lt;:TransparentRGB,C1&lt;:AbstractRGB,C2&lt;:AbstractGray&#125; &#61; &#40;g &#61; convert&#40;eltype&#40;A&#41;, gray&#40;c&#41;&#41;; A&#40;g, g, g, alpha&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L104'>
+          <td class='lineno'>104</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L105'>
+          <td class='lineno'>105</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>convert&#40;::Type&#123;C&#125;, x::Real&#41; where &#123;C&lt;:Union&#123;ColorantN&#123;1&#125;, TransparentColorN&#123;2&#125;&#125;&#125; &#61; C&#40;x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L106'>
+          <td class='lineno'>106</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>convert&#40;::Type&#123;C&#125;, x::Real&#41; where &#123;C&lt;:Union&#123;AbstractRGB, TransparentRGB&#125;&#125; &#61; C&#40;x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L107'>
+          <td class='lineno'>107</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>convert&#40;::Type&#123;C&#125;, x::Real, alpha&#41; where &#123;C&lt;:TransparentColorN&#123;2&#125;&#125; &#61; C&#40;x, alpha&#41;</span>
+          </td>
+        </tr>
+        <tr id='L108'>
+          <td class='lineno'>108</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>convert&#40;::Type&#123;C&#125;, x::Real, alpha&#41; where &#123;C&lt;:TransparentRGB&#125; &#61; C&#40;x, alpha&#41;</span>
+          </td>
+        </tr>
+        <tr id='L109'>
+          <td class='lineno'>109</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L110'>
+          <td class='lineno'>110</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>convert&#40;::Type&#123;T&#125;, x::ColorantN&#123;1&#125;&#41; where &#123;T&lt;:Real&#125; &#61; convert&#40;T, comp1&#40;x&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L111'>
+          <td class='lineno'>111</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L112'>
+          <td class='lineno'>112</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>&#40;::Type&#123;T&#125;&#41;&#40;x::ColorantN&#123;1&#125;&#41;  where &#123;T&lt;:Real&#125; &#61; T&#40;comp1&#40;x&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L113'>
+          <td class='lineno'>113</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L114'>
+          <td class='lineno'>114</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>real&#40;x::ColorantN&#123;1&#125;&#41; &#61; comp1&#40;x&#41;</span>
+          </td>
+        </tr>
+        <tr id='L115'>
+          <td class='lineno'>115</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>real&#40;x::Type&#123;&lt;:ColorantN&#123;1&#125;&#125;&#41; &#61; real&#40;eltype&#40;x&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L116'>
+          <td class='lineno'>116</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L117'>
+          <td class='lineno'>117</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># reinterpret</span>
+          </td>
+        </tr>
+        <tr id='L118'>
+          <td class='lineno'>118</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>for T in &#40;RGB24, ARGB32, Gray24, AGray32&#41;</span>
+          </td>
+        </tr>
+        <tr id='L119'>
+          <td class='lineno'>119</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    @eval begin</span>
+          </td>
+        </tr>
+        <tr id='L120'>
+          <td class='lineno'>120</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        reinterpret&#40;::Type&#123;UInt32&#125;, x::&#36;T&#41; &#61; x.color</span>
+          </td>
+        </tr>
+        <tr id='L121'>
+          <td class='lineno'>121</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>        reinterpret&#40;::Type&#123;&#36;T&#125;, x::UInt32&#41; &#61; &#36;T&#40;x, Val&#123;true&#125;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L122'>
+          <td class='lineno'>122</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>    end</span>
+          </td>
+        </tr>
+        <tr id='L123'>
+          <td class='lineno'>123</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>end</span>
+          </td>
+        </tr>
+        <tr id='L124'>
+          <td class='lineno'>124</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L125'>
+          <td class='lineno'>125</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># Generate the transparent analog of a color</span>
+          </td>
+        </tr>
+        <tr id='L126'>
+          <td class='lineno'>126</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>alphacolor&#40;c::C&#41; where &#123;C&lt;:Color&#125; &#61; alphacolor&#40;C&#41;&#40;c&#41;</span>
+          </td>
+        </tr>
+        <tr id='L127'>
+          <td class='lineno'>127</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>alphacolor&#40;c::C,a&#41; where &#123;C&lt;:Color&#125; &#61; alphacolor&#40;C&#41;&#40;c,a&#41;</span>
+          </td>
+        </tr>
+        <tr id='L128'>
+          <td class='lineno'>128</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>alphacolor&#40;c::C&#41; where &#123;C&lt;:TransparentColor&#125; &#61; alphacolor&#40;base_color_type&#40;C&#41;&#41;&#40;color&#40;c&#41;, alpha&#40;c&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L129'>
+          <td class='lineno'>129</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>alphacolor&#40;c::C,a&#41; where &#123;C&lt;:TransparentColor&#125; &#61; alphacolor&#40;base_color_type&#40;C&#41;&#41;&#40;color&#40;c&#41;, a&#41;</span>
+          </td>
+        </tr>
+        <tr id='L130'>
+          <td class='lineno'>130</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>coloralpha&#40;c::C&#41; where &#123;C&lt;:Color&#125; &#61; coloralpha&#40;C&#41;&#40;c&#41;</span>
+          </td>
+        </tr>
+        <tr id='L131'>
+          <td class='lineno'>131</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>coloralpha&#40;c::C,a&#41; where &#123;C&lt;:Color&#125; &#61; coloralpha&#40;C&#41;&#40;c,a&#41;</span>
+          </td>
+        </tr>
+        <tr id='L132'>
+          <td class='lineno'>132</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>coloralpha&#40;c::C&#41; where &#123;C&lt;:TransparentColor&#125; &#61; coloralpha&#40;base_color_type&#40;C&#41;&#41;&#40;color&#40;c&#41;, alpha&#40;c&#41;&#41;</span>
+          </td>
+        </tr>
+        <tr id='L133'>
+          <td class='lineno'>133</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>coloralpha&#40;c::C,a&#41; where &#123;C&lt;:TransparentColor&#125; &#61; coloralpha&#40;base_color_type&#40;C&#41;&#41;&#40;color&#40;c&#41;, a&#41;</span>
+          </td>
+        </tr>
+        <tr id='L134'>
+          <td class='lineno'>134</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'></span>
+          </td>
+        </tr>
+        <tr id='L135'>
+          <td class='lineno'>135</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'># Tuple</span>
+          </td>
+        </tr>
+        <tr id='L136'>
+          <td class='lineno'>136</td>
+          <td class='tracecount excl'></td>
+          <td class='tracecount incl'></td>
+          <td>
+            
+            
+            <span class='code'>Base.Tuple&#40;c::Colorant&#123;T, N&#125;&#41; where &#123;T, N&#125; &#61; &#40;comps&#40;c&#41;...,&#41;::NTuple&#123;N, T&#125;</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
+

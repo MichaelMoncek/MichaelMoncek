@@ -1,7 +1,5 @@
-using SmoothedParticles
-import LinearAlgebra
 const EPS = 1.4901161193847656e-8
-const EPS1 = 1.4901161193847656e-9
+
 #STRUCTURAL KERNELS
 #------------------
 
@@ -48,23 +46,6 @@ end
     idet = 1.0/(A[1,1]*A[2,2] - A[2,1]*A[1,2])
     return RealMatrix(
         +idet*A[2,2], -idet*A[2,1], 0., 
-        -idet*A[1,2], +idet*A[1,1], 0.,
-        0., 0., 0.
-    )
-end
-
-@inbounds function safe_subinv(A::RealMatrix)::RealMatrix
-    det_val = A[1,1]*A[2,2] - A[2,1]*A[1,2]
-    
-    # Regularize small determinants
-    if abs(det_val) < EPS1
-        det_val = sign(det_val) * EPS1
-    end
-    
-    idet = 1.0/det_val
-    
-    return RealMatrix(
-        +idet*A[2,2], -idet*A[2,1], 0.,
         -idet*A[1,2], +idet*A[1,1], 0.,
         0., 0., 0.
     )
